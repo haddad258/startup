@@ -1,38 +1,28 @@
 import { DefaultTheme } from 'react-native-paper'
+import {Dimensions} from 'react-native';
 
 export const theme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
 
-    primary: "#0F2167",
-    secondary: "#3559E0",
-    info: "#4CB9E7",
-    light: "#eaeaf6",
-    white: "#f4f4f9",
-    black: "#3c3c3d",
-    gray: "#95a5a6",
-    text: "#ED1C24",
-    error: '#e03f52',
-    backgroundColor: "#4CB9E7",
-    colorTiers: "#FFECD6"
+ 
 
   },
 }
 export const Colors = {
+  primary: "#218d1e",        // Bright green for main actions
+  secondary: "#c0c668",      // Natural green for accents
+  light: "#e2edcf",          // Soft off-white for light backgrounds
+  white: "#f4f4f9",          // Pure white for clean backgrounds or text
+  black: "#218d1e",          // Dark tone for high-contrast text and elements
+  gray: "#c8c8c3",           // Neutral gray for borders and secondary text
+  text: "#ED1C24",           // Vibrant red for critical or highlighted text
+  error: "#e03f52",          // Bright red for error messages and alerts
+  backgroundColor: "#eaeaf6",// Soothing blue for backgrounds related to tech
+  colorTiers: "#FFECD6"      // Warm pastel for tier or status indicators
+};
 
-  primary: "#0F2167",
-  secondary: "#3559E0",
-  info: "#4CB9E7",
-  light: "#eaeaf6",
-  white: "#f4f4f9",
-  black: "#3c3c3d",
-  gray: "#95a5a6",
-  text: "#ED1C24",
-  error: '#e03f52',
-  backgroundColor: "#4CB9E7",
-  colorTiers: "#FFECD6"
-}
 export const SIZES = {
   // global sizes
   base: 8,
@@ -66,4 +56,9 @@ export const FONTS = {
   body3: { fontSize: SIZES.body3, lineHeight: 22 },
   body4: { fontSize: SIZES.body4, lineHeight: 22 },
   body5: { fontSize: SIZES.body5, lineHeight: 22 },
+};
+
+export const units = {
+  width: Dimensions.get('window').width,
+  height: Dimensions.get('window').height,
 };

@@ -21,15 +21,15 @@ const TabPublic = () => {
             initialRouteName="HomeScreen"
             screenOptions={{
                 headerTitleStyle: styles.headerTitleStyle,
-                tabBarActiveTintColor: Colors.info,
-                tabBarInactiveTintColor: Colors.secondary,
+                tabBarActiveTintColor: Colors.primary,
+                tabBarInactiveTintColor: Colors.gray,
                 tabBarStyle: { backgroundColor: Colors.white },
                 headerStyle: styles.headerStyle,
             }}>
 
             <Tab.Screen
                 options={{
-                    title: "Home",
+                    title: "Acceuil",
                     tabBarIcon: ({ color, size }) => (
                         <FontAwesome5 name="home" color={color} size={size} />
                     ),
