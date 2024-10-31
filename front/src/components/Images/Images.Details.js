@@ -10,14 +10,14 @@ const ImagesDetailsC = ({  selectedImagesConfigs, type }) => {
     return (
         <>
 
-
               
             <img
                 style={{
-                    width: "20%",
-                    height: "20%",
+                    width: "40%",
+                    height: "40%",
                     alignItems: "center",
                     justifyContent: "center",
+                    margin:"10%"
                 }}
                 src={API_URLPublic +type+"/"+ selectedImagesConfigs?.images}
                 alt="preview"

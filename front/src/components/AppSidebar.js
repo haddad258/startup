@@ -60,7 +60,7 @@ function AppSidebar() {
           <span 
           className="small text-body-secondary"
           style={{ textDecoration: 'none', marginLeft: '8px' }}
-          >{i18n.t('sirhSidebarTitle')}</span>
+          >{i18n.t('SISidebarTitle')}</span>
           {/* <CIcon customClassName="sidebar-brand-full" icon={logo} height={32} /> */}
           <CIcon customClassName="sidebar-brand-narrow" icon={"sygnet"} height={32} />
         </CSidebarBrand>
