@@ -351,7 +351,7 @@ const Home = ({navigation}) => {
                 borderBottomWidth: 1,
                 borderBottomColor: COLOURS.black,
               }}>
-              Load more
+              Load moress
             </Text>
           </TouchableOpacity>
         </View>

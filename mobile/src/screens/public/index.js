@@ -72,7 +72,7 @@ const TabPublic = () => {
                 options={{
                     title: "Paiement",
                     tabBarIcon: ({ color, size }) => (
-                        <FontAwesome5 name="home" color={color} size={size} />
+                        <FontAwesome5 name="credit-card" color={color} size={size} />
                     ),
                 }}
                 name="Stocks"
@@ -81,9 +81,9 @@ const TabPublic = () => {
 
             <Tab.Screen
                 options={{
-                    title: "Private",
+                    title: "KPI",
                     tabBarIcon: ({ color, size }) => (
-                        <FontAwesome5 name="home" color={color} size={size} />
+                        <FontAwesome5 name="mail-bulk" color={color} size={size} />
                     ),
                 }}
                 name="Private"
