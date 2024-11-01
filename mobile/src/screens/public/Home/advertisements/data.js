@@ -1,23 +1,26 @@
  const data = [
+  {
+    name: "Smart Irrigation",
+    image: "https://i.ibb.co/3R3Qw09/TM.webp"
+  },
+  {
+    name: "BioTech Solutions",
+    image: "https://i.ibb.co/pwrHmM5/Screenshot-from-2024-10-31-14-21-50.png"
+  },
+  {
+    name: "EcoFarm",
+    image: "https://i.ibb.co/2shZTg4/Screenshot-from-2024-10-31-14-21-59.png"
+  },
     {
       name: "GreenTech Solar",
       image: "https://i.ibb.co/SdPsJYp/Screenshot-from-2024-10-22-08-26-07.png"
     },
     {
       name: "AgriConnect Drones",
-      image: "https://example.com/images/agriconnect-drones.png"
+      image: "https://i.ibb.co/PDFB3N1/pubA.webp"
     },
-    {
-      name: "EcoFarm",
-      image: "https://example.com/images/ecofarm.png"
-    },
-    {
-      name: "Smart Irrigation",
-      image: "https://example.com/images/smart-irrigation.png"
-    },
-    {
-      name: "BioTech Solutions",
-      image: "https://example.com/images/biotech-solutions.png"
-    }
+ 
+  
+   
   ];
   export default data

@@ -5,7 +5,7 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 
 
 
-class Documents extends Component {
+class TasksToDo extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -95,4 +95,4 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
 });
-export default Documents;
+export default TasksToDo;

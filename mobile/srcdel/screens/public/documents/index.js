@@ -25,7 +25,7 @@ const TabPublic = () => {
 
             <Tab.Screen
                 options={{
-                    title: "HelpIndex",
+                    title: "HelpIzzndex",
                     tabBarIcon: ({ color, size }) => (
                         <FontAwesome5 name="home" color={color} size={size} />
                     ),

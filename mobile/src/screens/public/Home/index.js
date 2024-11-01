@@ -18,8 +18,13 @@ const HomeApp = () => {
           flex: 1,
           alignItems: 'center',
         }}>
-        <Text>{t('welcome')}</Text>
-        <View style={{ marginLeft: 30, flexDirection: 'row' }}>
+        <Text
+         style={{
+          fontSize: 15,
+          fontWeight: "bold",
+          color: "#ef6136"
+        }}>{t('welcome')}</Text>
+        <View style={{ marginLeft: 50,width:"110%", flexDirection: 'row' }}>
           <View style={style.searchContainer}>
             <Icon name="search" size={25} style={{ marginLeft: 20 }} />
             <TextInput placeholder="Search" style={style.input} />

@@ -44,7 +44,7 @@ const HomeScreen = ({navigation}) => {
     return (
       <TouchableOpacity
         activeOpacity={0.8}
-        onPress={() => navigation.navigate('Details', plant)}>
+        onPress={() => alert("ici sera une page pour chaque projet")}>
         <View style={style.card}>
           <View style={{alignItems: 'flex-end'}}>
             <View
@@ -77,7 +77,7 @@ const HomeScreen = ({navigation}) => {
             />
           </View>
 
-          <Text style={{fontWeight: 'bold', fontSize: 17, marginTop: 10}}>
+          <Text style={{fontWeight: 'bold', fontSize: 15, marginTop: 5}}>
             {plant.name}
           </Text>
           <View
@@ -99,7 +99,7 @@ const HomeScreen = ({navigation}) => {
                 alignItems: 'center',
               }}>
               <Text
-                style={{fontSize: 22, color: Colors.white, fontWeight: 'bold'}}>
+                style={{fontSize: 22, color: Colors.primary, fontWeight: 'bold'}}>
                 +
               </Text>
             </View>
@@ -148,10 +148,10 @@ const style = StyleSheet.create({
     height: 240,
     backgroundColor: Colors.light,
     width,
-    marginHorizontal: 2,
+    marginHorizontal: 4,
     borderRadius: 10,
-    marginBottom: 40,
-    padding: 15,
+    marginBottom: 20,
+    padding: 5,
   },
   header: {
     marginTop: 30,

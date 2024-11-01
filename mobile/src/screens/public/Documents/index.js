@@ -2,11 +2,11 @@ import * as React from "react";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { StyleSheet } from "react-native";
-import HelpIndex from './index.helps'
-import HelpVideo from './index.video'
+import Documentations from './Documentations'
 
 
 import { Colors } from '../../../core/theme'
+import DocumentationsScreens from "./Homes";
 
 const Tab = createBottomTabNavigator();
 
@@ -24,27 +24,26 @@ const TabPublic = () => {
 
             <Tab.Screen
                 options={{
-                    title: "Formations",
+                    title: "à faire",
                     tabBarIcon: ({ color, size }) => (
-                        <FontAwesome5 name="arrows-alt" color={color} size={size} />
+                        <FontAwesome5 name="book-open" color={color} size={size} />
                     ),
                 }}
-                name="HelpIndex"
-                component={HelpIndex}
+                name="Documentations"
+                component={Documentations}
             />
             <Tab.Screen
                 options={{
-                    title: "Example de formation",
+                    title: "en cours",
                     tabBarIcon: ({ color, size }) => (
-                        <FontAwesome5 name="list-ol" color={color} size={size} />
+                        <FontAwesome5 name="bookmark" color={color} size={size} />
                     ),
                 }}
-                name="HelpVideo"
-                component={HelpVideo}
+                name="Documentations2"
+                component={DocumentationsScreens}
             />
           
-
-
+      
 
         </Tab.Navigator>
     );
@@ -64,3 +63,4 @@ const styles = StyleSheet.create({
 });
 
 export default TabPublic;
+

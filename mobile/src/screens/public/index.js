@@ -12,6 +12,7 @@ import Stocks from "./stocks";
 import { LoginScreen, Private } from '../index'
 
 import { Colors } from '../../core/theme'
+import Documentations from "./Documents";
 
 const Tab = createBottomTabNavigator();
 
@@ -39,19 +40,19 @@ const TabPublic = () => {
             />
             <Tab.Screen
                 options={{
-                    title: "Articles",
+                    title: "Documents",
                     tabBarIcon: ({ color, size }) => (
-                        <FontAwesome5 name="home" color={color} size={size} />
+                        <FontAwesome5 name="file" color={color} size={size} />
                     ),
                 }}
-                name="Articles"
-                component={Articles}
+                name="Documentations"
+                component={Documentations}
             />
             <Tab.Screen
                 options={{
-                    title: "Services",
+                    title: "Tâches",
                     tabBarIcon: ({ color, size }) => (
-                        <FontAwesome5 name="home" color={color} size={size} />
+                        <FontAwesome5 name="calendar" color={color} size={size} />
                     ),
                 }}
                 name="Services"
@@ -61,12 +62,23 @@ const TabPublic = () => {
                 options={{
                     title: "Help",
                     tabBarIcon: ({ color, size }) => (
-                        <FontAwesome5 name="home" color={color} size={size} />
+                        <FontAwesome5 name="list-ul" color={color} size={size} />
                     ),
                 }}
                 name="Help"
                 component={Help}
             />
+            <Tab.Screen
+                options={{
+                    title: "Paiement",
+                    tabBarIcon: ({ color, size }) => (
+                        <FontAwesome5 name="home" color={color} size={size} />
+                    ),
+                }}
+                name="Stocks"
+                component={Stocks}
+            />
+
             <Tab.Screen
                 options={{
                     title: "Private",
@@ -77,6 +89,8 @@ const TabPublic = () => {
                 name="Private"
                 component={Private}
             />
+
+
             <Tab.Screen
                 options={{
                     title: "Orders",
@@ -88,16 +102,7 @@ const TabPublic = () => {
                 component={Orders}
             />
 
-            <Tab.Screen
-                options={{
-                    title: "Stocks",
-                    tabBarIcon: ({ color, size }) => (
-                        <FontAwesome5 name="home" color={color} size={size} />
-                    ),
-                }}
-                name="Stocks"
-                component={Stocks}
-            />
+
             <Tab.Screen
                 options={{
                     title: "LoginScreen",

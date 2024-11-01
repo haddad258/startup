@@ -4,7 +4,7 @@ const projets = [
     name: 'Analyse de la Santé des Sols',
     price: '150.000',
     like: true,
-    img: require('../../../../../assets/im.webp'),
+    img: require('../../../../../assets/dale.webp'),
     about:
       'Le projet d’Analyse de la Santé des Sols se concentre sur l’évaluation de la fertilité et de la santé des sols pour optimiser les rendements des cultures. Il inclut des tests de pH, des niveaux de nutriments et de matière organique pour améliorer la productivité et la durabilité en agriculture.',
   },
@@ -23,7 +23,7 @@ const projets = [
     name: 'Système de Gestion de l’Eau',
     price: '180.000',
     like: false,
-    img: require('../../../../../assets/plant1.png'),
+    img: require('../../../../../assets/imao.webp'),
     about:
       'Un projet de Système de Gestion de l’Eau conçu pour améliorer l’efficacité de l’irrigation. Il surveille les niveaux d’eau, les habitudes d’utilisation et les précipitations pour garantir une distribution optimale de l’eau et réduire le gaspillage.',
   },
@@ -43,7 +43,7 @@ const projets = [
     name: 'Suivi des Cultures par Drone',
     price: '250.000',
     like: true,
-    img: require('../../../../../assets/plant1.png'),
+    img: require('../../../../../assets/im.webp'),
     about:
       'Le projet de Suivi des Cultures par Drone permet une surveillance aérienne des cultures, en détectant les zones nécessitant une attention particulière. Grâce aux drones, les agriculteurs peuvent repérer les problèmes précocement pour intervenir rapidement.',
   },
@@ -53,7 +53,7 @@ const projets = [
     name: 'Gestion Intelligente des Engrais',
     price: '220.000',
     like: false,
-    img: require('../../../../../assets/plant1.png'),
+    img: require('../../../../../assets/test.webp'),
     about:
       'Ce projet propose une Gestion Intelligente des Engrais pour fournir les nutriments nécessaires aux plantes, sans excès ni insuffisance. Grâce aux analyses des sols et des cultures, les agriculteurs peuvent ajuster précisément leurs pratiques.',
   },
