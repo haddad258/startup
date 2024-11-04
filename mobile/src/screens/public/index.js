@@ -91,7 +91,7 @@ const TabPublic = () => {
             />
 
 
-            <Tab.Screen
+            {/* <Tab.Screen
                 options={{
                     title: "Orders",
                     tabBarIcon: ({ color, size }) => (
@@ -113,7 +113,7 @@ const TabPublic = () => {
                 name="LoginScreen"
                 component={LoginScreen}
             />
-
+ */}
 
 
 

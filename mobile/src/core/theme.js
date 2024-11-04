@@ -13,7 +13,7 @@ export const theme = {
 export const Colors = {
   primary: "#218d1e",        // Bright green for main actions
   secondary: "#c0c668",      // Natural green for accents
-  light: "#e2edcf",          // Soft off-white for light backgrounds
+  light: "#4caf50",          // Soft off-white for light backgrounds
   white: "#f4f4f9",          // Pure white for clean backgrounds or text
   black: "#218d1e",          // Dark tone for high-contrast text and elements
   gray: "#c8c8c3",           // Neutral gray for borders and secondary text

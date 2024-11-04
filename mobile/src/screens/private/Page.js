@@ -5,7 +5,7 @@ import VerticalBarGraph from '@chartiful/react-native-vertical-bar-graph';
 export default function VerticalBarGraphExample() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Graphique en Barres Verticales</Text>
+      <Text style={styles.title}>Budget annuel</Text>
       <VerticalBarGraph
         data={[20, 45, 28, 80, 99, 43]}
         labels={['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun']}

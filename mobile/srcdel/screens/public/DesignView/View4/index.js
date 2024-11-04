@@ -21,10 +21,10 @@ const SignInScreen = ({navigation}) => {
         </View>
 
         <View style={{marginTop: 70}}>
-          <Text style={{fontSize: 27, fontWeight: 'bold', color: Colors.dark}}>
-            Welcome Back,
+          <Text style={{fontSize: 27, fontWeight: 'bold', color: Colors.primary}}>
+            Welcome Bacaak,
           </Text>
-          <Text style={{fontSize: 19, fontWeight: 'bold', color: Colors.light}}>
+          <Text style={{fontSize: 19, fontWeight: 'bold', color: Colors.primary}}>
             Sign in to continue
           </Text>
         </View>
@@ -33,7 +33,7 @@ const SignInScreen = ({navigation}) => {
           <View style={STYLES.inputContainer}>
             <Icon
               name="mail-outline"
-              color={Colors.light}
+              color={Colors.primary}
               size={20}
               style={STYLES.inputIcon}
             />
@@ -42,7 +42,7 @@ const SignInScreen = ({navigation}) => {
           <View style={STYLES.inputContainer}>
             <Icon
               name="lock-outline"
-              color={Colors.light}
+              color={Colors.primary}
               size={20}
               style={STYLES.inputIcon}
             />
