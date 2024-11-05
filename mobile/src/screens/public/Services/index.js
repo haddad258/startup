@@ -7,7 +7,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { StyleSheet } from "react-native";
 import Documentations from './add.tasks'
 
-
+import Rapports from './rapport'
 import { Colors } from '../../../core/theme'
 import DocumentationsScreens from "./List.tasks";
 import AddTask from './Ajout.Budget'
@@ -30,11 +30,21 @@ const TabPublic = () => {
                 options={{
                     title: "à faire",
                     tabBarIcon: ({ color, size }) => (
-                        <FontAwesome5 name="book-open" color={color} size={size} />
+                        <FontAwesome5 name="clipboard-list" color={color} size={size} />
                     ),
                 }}
                 name="Taskss"
                 component={Documentations}
+            />
+               <Tab.Screen
+                options={{
+                    title: "rapport",
+                    tabBarIcon: ({ color, size }) => (
+                        <FontAwesome5 name="chart-bar" color={color} size={size} />
+                    ),
+                }}
+                name="rapport"
+                component={Rapports}
             />
             <Tab.Screen
                 options={{

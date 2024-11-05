@@ -60,7 +60,7 @@ const TabPublic = () => {
             />
             <Tab.Screen
                 options={{
-                    title: "Help",
+                    title: "Formations",
                     tabBarIcon: ({ color, size }) => (
                         <FontAwesome5 name="list-ul" color={color} size={size} />
                     ),

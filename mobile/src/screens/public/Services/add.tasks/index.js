@@ -124,8 +124,8 @@ class TasksToDo extends Component {
         <View style={styles.categoryItem}>
           <View>
             <Text style={[styles.title,{color:Colors.primary}]}> {item.nom}</Text>
-            <Text style={styles.title}> {item.priorite}</Text>
-            <Text style={[styles.title,{color:Colors.error}]}> {item.statut}</Text>
+            <Text style={styles.title}> priorité :{item.priorite}</Text>
+            <Text style={[styles.title,{color:Colors.error}]}> responsable :{item.responsable}</Text>
             <Text style={{fontSize:14,color:Colors.gray}}> {item.dateDebut}</Text>
             <Text style={{fontSize:14,color:Colors.gray}}> {item.dateFinEstimee}</Text>
             </View>

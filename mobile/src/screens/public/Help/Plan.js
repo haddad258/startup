@@ -19,6 +19,7 @@ function Plan({ item, props }) {
                 <Text style={styles.title}>{item.titre}</Text>
                 <View style={styles.divider} />
                 <Text style={styles.description}>{item.responsable}</Text>
+                <Text style={styles.localisation}>{item.localisation}</Text>
                 <Text style={styles.descriptionT}>{item.duree}</Text>
                 <View style={styles.iconsView}>
                     <FontAwesome name="download" size={20} color={Colors.yellow} />
@@ -63,6 +64,12 @@ const styles = StyleSheet.create({
     descriptionT: {
         color:Colors.error,
     },
+    localisation: {
+        color:"#007188",
+        fontSize: 9,
+
+    },
+    
     iconsView: {
         alignItems: "center",
         alignContent: "center",

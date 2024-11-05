@@ -2,8 +2,8 @@ import * as React from "react";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { StyleSheet } from "react-native";
-// import Documentations from './Page'
-// import Page2 from './Pages'
+import Documentations from './Page'
+import Page2 from './Pages'
 // import PaChart from './chart'
 import DataView from './Info'
 
@@ -24,15 +24,34 @@ const TabPublic = () => {
             }}>
             <Tab.Screen
                 options={{
-                    title: "DataView",
+                    title: "Recomondations",
                     tabBarIcon: ({ color, size }) => (
-                        <FontAwesome5 name="bookmark" color={color} size={size} />
+                        <FontAwesome5 name="watchman-monitoring" color={color} size={size} />
                     ),
                 }}
                 name="DataView"
                 component={DataView}
             />
-          
+             <Tab.Screen
+                options={{
+                    title: "indicateurs de performance",
+                    tabBarIcon: ({ color, size }) => (
+                        <FontAwesome5 name="bookmark" color={color} size={size} />
+                    ),
+                }}
+                name="Documentations"
+                component={Documentations}
+            />
+                <Tab.Screen
+                options={{
+                    title: "KPI productions",
+                    tabBarIcon: ({ color, size }) => (
+                        <FontAwesome5 name="newspaper" color={color} size={size} />
+                    ),
+                }}
+                name="Pages"
+                component={Page2}
+            />
 
         </Tab.Navigator>
     );

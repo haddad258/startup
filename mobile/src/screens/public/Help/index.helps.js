@@ -12,7 +12,7 @@ const formationsAgriculture = [
       niveau: "Débutant",
       dateDebut: "2024-02-15",
       localisation: "Centre de formation agricole de Tunis",
-      responsable: "Institut National d'Agriculture",
+      responsable: "formateur 1",
       cout: "Gratuit",
   },
   {
@@ -23,7 +23,7 @@ const formationsAgriculture = [
       niveau: "Intermédiaire",
       dateDebut: "2024-03-10",
       localisation: "Centre régional de Sousse",
-      responsable: "Association des Irrigateurs de Tunisie",
+      responsable: "formateur 2",
       cout: "100 TND",
   },
   {
@@ -45,7 +45,7 @@ const formationsAgriculture = [
       niveau: "Avancé",
       dateDebut: "2024-05-20",
       localisation: "Centre d'Innovation Agricole de Kairouan",
-      responsable: "Office National de la Protection des Plantes",
+      responsable: "formateur 3",
       cout: "300 TND",
   },
   {
@@ -56,7 +56,7 @@ const formationsAgriculture = [
       niveau: "Débutant",
       dateDebut: "2024-06-15",
       localisation: "Maison des Agriculteurs de Sfax",
-      responsable: "Chambre de Commerce Agricole",
+      responsable: "formateur 4",
       cout: "150 TND",
   },
   {
@@ -67,7 +67,7 @@ const formationsAgriculture = [
       niveau: "Avancé",
       dateDebut: "2024-07-10",
       localisation: "Centre de Recherche Agritech de Monastir",
-      responsable: "Centre Technique des Cultures",
+      responsable: "formateur 5",
       cout: "500 TND",
   }
 ];

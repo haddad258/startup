@@ -17,70 +17,70 @@ const SignInScreen = ({ navigation }) => {
         </View>
 
         <View style={{ marginTop: 20 }}>
-        <View style={STYLES.inputContainer}>
-  <Icon
-    name="security"
-    color={Colors.primary}
-    size={20}
-    style={STYLES.inputIcon}
-  />
-  <TextInput
-    placeholder="Nom: "
-    style={STYLES.input}
-  />
-</View>
+          <View style={STYLES.inputContainer}>
+            <Icon
+              name="security"
+              color={Colors.primary}
+              size={20}
+              style={STYLES.inputIcon}
+            />
+            <TextInput
+              placeholder="Nom: "
+              style={STYLES.input}
+            />
+          </View>
 
-<View style={STYLES.inputContainer}>
-  <Icon
-    name="edit-road"
-    color={Colors.primary}
-    size={20}
-    style={STYLES.inputIcon}
-  />
-  <TextInput
-    placeholder="Coût: "
-    style={STYLES.input}
-  />
-</View>
+          <View style={STYLES.inputContainer}>
+            <Icon
+              name="edit-road"
+              color={Colors.primary}
+              size={20}
+              style={STYLES.inputIcon}
+            />
+            <TextInput
+              placeholder="Coût: "
+              style={STYLES.input}
+            />
+          </View>
 
-<View style={STYLES.inputContainer}>
-  <Icon
-    name="edit-location"
-    color={Colors.primary}
-    size={20}
-    style={STYLES.inputIcon}
-  />
-  <TextInput
-    placeholder="Description: "
-    style={STYLES.input}
-  />
-</View>
+          <View style={STYLES.inputContainer}>
+            <Icon
+              name="edit-location"
+              color={Colors.primary}
+              size={20}
+              style={STYLES.inputIcon}
+            />
+            <TextInput
+              placeholder="Description: "
+              style={STYLES.input}
+            />
+          </View>
 
-<View style={STYLES.inputContainer}>
-  <Icon
-    name="energy-savings-leaf"
-    color={Colors.primary}
-    size={20}
-    style={STYLES.inputIcon}
-  />
-  <TextInput
-    placeholder="Projet: "
-    style={STYLES.input}
-  />
-</View>
+          <View style={STYLES.inputContainer}>
+            <Icon
+              name="energy-savings-leaf"
+              color={Colors.primary}
+              size={20}
+              style={STYLES.inputIcon}
+            />
+            <TextInput
+              placeholder="Projet: "
+              style={STYLES.input}
+            />
+          </View>
 
-<View style={STYLES.inputContainer}>
-  <Icon
-    name="event-note"
-    color={Colors.primary}
-    size={20}
-    style={STYLES.inputIcon}
-  />
-  <TextInput
-    placeholder="Action: "
-    style={STYLES.input}
-  />
-</View>
+          <View style={STYLES.inputContainer}>
+            <Icon
+              name="event-note"
+              color={Colors.primary}
+              size={20}
+              style={STYLES.inputIcon}
+            />
+            <TextInput
+              placeholder="Action: "
+              style={STYLES.input}
+            />
+          </View>
 
 
 
@@ -92,7 +92,7 @@ const SignInScreen = ({ navigation }) => {
         </View>
 
 
-     
+
       </ScrollView>
     </SafeAreaView>
   );

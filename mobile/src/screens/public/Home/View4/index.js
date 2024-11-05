@@ -199,18 +199,6 @@ const SignInScreen = ({ navigation }) => {
             />
           </View>
 
-          <View style={STYLES.inputContainer}>
-            <Icon
-              name="security"
-              color={Colors.primary}
-              size={20}
-              style={STYLES.inputIcon}
-            />
-            <TextInput
-              placeholder="Stratégies de mitigation"
-              style={STYLES.input}
-            />
-          </View>
 
 
           <View style={STYLES.btnPrimary}>
@@ -230,11 +218,9 @@ const SignInScreen = ({ navigation }) => {
             marginBottom: 20,
           }}>
           <Text style={{ color: Colors.light, fontWeight: 'bold' }}>
-            Don`t have an account ?
           </Text>
           <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
             <Text style={{ color: Colors.pink, fontWeight: 'bold' }}>
-              Sign up
             </Text>
           </TouchableOpacity>
         </View>

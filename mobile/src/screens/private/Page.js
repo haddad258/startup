@@ -1,41 +1,83 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import VerticalBarGraph from '@chartiful/react-native-vertical-bar-graph';
 
-export default function VerticalBarGraphExample() {
+const KpiScreen = () => {
+  // Exemple de données KPI
+  const kpiData = {
+    totalHarvest: '5000 kg',
+    totalRevenue: '12,000 Dinars',
+    totalCost: '7,500 Dinars',
+    productivity: '80%',
+    landUtilization: '75%',
+  };
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Budget annuel</Text>
-      <VerticalBarGraph
-        data={[20, 45, 28, 80, 99, 43]}
-        labels={['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun']}
-        width={300}
-        height={300}
-        barRadius={5}
-        barWidthPercentage={0.5}
-        baseConfig={{
-          hasXAxisBackgroundLines: true,
-          xAxisLabelStyle: { rotation: 0, fontSize: 12, width: 60, yOffset: 4, xOffset: -10 },
-        }}
-        style={styles.graph}
-      />
+      <Text style={styles.title}>KPI de Travail</Text>
+      
+      <View style={styles.kpiContainer}>
+        <Text style={styles.kpiLabel}>Récolte totale :</Text>
+        <Text style={styles.kpiValue}>{kpiData.totalHarvest}</Text>
+      </View>
+
+      <View style={styles.kpiContainer}>
+        <Text style={styles.kpiLabel}>Revenu total :</Text>
+        <Text style={styles.kpiValue}>{kpiData.totalRevenue}</Text>
+      </View>
+
+      <View style={styles.kpiContainer}>
+        <Text style={styles.kpiLabel}>Coût total :</Text>
+        <Text style={styles.kpiValue}>{kpiData.totalCost}</Text>
+      </View>
+
+      <View style={styles.kpiContainer}>
+        <Text style={styles.kpiLabel}>Productivité :</Text>
+        <Text style={styles.kpiValue}>{kpiData.productivity}</Text>
+      </View>
+
+      <View style={styles.kpiContainer}>
+        <Text style={styles.kpiLabel}>Utilisation des terres :</Text>
+        <Text style={styles.kpiValue}>{kpiData.landUtilization}</Text>
+      </View>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 16
+    backgroundColor: '#f5f5f5',
+    padding: 20,
   },
   title: {
-    fontSize: 20,
+    fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 16,
+    color: '#333',
+    marginBottom: 20,
+    textAlign: 'center',
   },
-  graph: {
-    marginVertical: 8
-  }
+  kpiContainer: {
+    backgroundColor: '#fff',
+    padding: 15,
+    borderRadius: 10,
+    marginBottom: 15,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    elevation: 3,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  kpiLabel: {
+    fontSize: 16,
+    color: '#444',
+    fontWeight: 'bold',
+  },
+  kpiValue: {
+    fontSize: 16,
+    color: '#007bff',
+  },
 });
+
+export default KpiScreen;

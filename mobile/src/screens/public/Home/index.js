@@ -6,8 +6,8 @@ import { FontAwesome5 } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { StyleSheet } from "react-native";
 import Documentations from './Services'
-
-
+import HomePages from './Home'
+import myProfiles from './myprofiles'
 import { Colors } from '../../../core/theme'
 import DocumentationsScreens from "./View4/index";
 
@@ -25,11 +25,32 @@ const TabPublic = () => {
                 headerStyle: styles.headerStyle,
             }}>
 
+
+            <Tab.Screen
+                options={{
+                    title: "Home",
+                    tabBarIcon: ({ color, size }) => (
+                        <FontAwesome5 name="book-open" color={color} size={size} />
+                    ),
+                }}
+                name="HomePages"
+                component={HomePages}
+            />
+               <Tab.Screen
+                options={{
+                    title: "mon compte",
+                    tabBarIcon: ({ color, size }) => (
+                        <FontAwesome5 name="user" color={color} size={size} />
+                    ),
+                }}
+                name="myProfiles"
+                component={myProfiles}
+            />
             <Tab.Screen
                 options={{
                     title: "Projets",
                     tabBarIcon: ({ color, size }) => (
-                        <FontAwesome5 name="book-open" color={color} size={size} />
+                        <FontAwesome5 name="th-large" color={color} size={size} />
                     ),
                 }}
                 name="Documentations"
@@ -45,8 +66,8 @@ const TabPublic = () => {
                 name="Documentations2"
                 component={DocumentationsScreens}
             />
-          
-      
+
+
 
         </Tab.Navigator>
     );

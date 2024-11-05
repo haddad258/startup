@@ -11,6 +11,7 @@ import {
 import foodData from "./food-data.json";
 import ListItem from "./ListItem";
 import CartButton from "./CartButton";
+import { Colors } from "../../../core/theme";
 
 export default class Documentations extends React.Component {
   constructor(props) {
@@ -52,7 +53,10 @@ export default class Documentations extends React.Component {
                   color: "#ef6136"
                 }}
               >
-                Documentations
+                Documentations <Text  style={{
+                  fontSize: 10,
+                  color: '#000'
+                }}>Liste des documents requis pour un projet selon sa localisation.</Text>
               </Text>
 
         </View>

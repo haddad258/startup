@@ -13,7 +13,11 @@ const DiscoverScreen = ({navigation}) => {
                 {/* Back Button */}
                 <AntDesign name="arrowleft" size={24} color="black" onPress={() => navigation.navigate('HomeScreen')} />  
                 {/* Page Title */}
-                <Text style={{alignSelf:'center', fontSize:16}}>recommendations</Text>
+                <Text style={{alignSelf:'center', fontSize:16}}>Recommandations: 
+                <Text  style={{alignSelf:'center', fontSize:10}}>  nécessaires pour un projet en fonction de son emplacement</Text>
+
+                </Text>
+                
                 {/* Empty View */}
                 <AntDesign style={{opacity:0}} name="arrowleft" size={24} color="black"  /> 
             </View>
