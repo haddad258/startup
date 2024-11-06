@@ -3,7 +3,7 @@ import { FontAwesome5 } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { StyleSheet } from "react-native";
 import Documentations from './Documentations'
-
+import Formulaires from './Formulaires'
 
 import { Colors } from '../../../core/theme'
 import DocumentationsScreens from "./Homes";
@@ -43,7 +43,17 @@ const TabPublic = () => {
                 component={DocumentationsScreens}
             />
           
-      
+          <Tab.Screen
+                options={{
+                    title: "Dossier",
+                    tabBarIcon: ({ color, size }) => (
+                        <FontAwesome5 name="file-upload" color={color} size={size} />
+                    ),
+                }}
+                name="InfoFormulaires"
+                component={Formulaires}
+            />
+          
 
         </Tab.Navigator>
     );

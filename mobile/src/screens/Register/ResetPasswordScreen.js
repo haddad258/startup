@@ -24,7 +24,7 @@ export default function ResetPasswordScreen({ navigation }) {
     <Background>
       <BackButton goBack={navigation.goBack} />
       <Logo />
-      <Header>Reset your password.</Header>
+      <Header>Réinitialisez votre mot de passe.</Header>
       <TextInput
         label="Email"
         returnKeyType="done"
@@ -36,7 +36,7 @@ export default function ResetPasswordScreen({ navigation }) {
         autoCompleteType="email"
         textContentType="emailAddress"
         keyboardType="email-address"
-        description="You will receive an email with the reset link."
+        description="Vous recevrez un email avec le lien de réinitialisation"
       />
       <Button
         mode="contained"

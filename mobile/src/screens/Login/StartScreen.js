@@ -10,10 +10,9 @@ export default function StartScreen({ navigation }) {
   return (
     <Background>
       <Logo />
-      <Header>Welcome to Exlogrn</Header>
+      <Header>AGRICONNECT</Header>
       <Paragraph>
-        A starter app template for React Native Expo, featuring a ready-to-use
-        login screen.
+      l’assistant de poche pour optimiser vos cultures et gérer votre exploitation en toute simplicité.
       </Paragraph>
       <Button
         mode="contained"
@@ -25,7 +24,7 @@ export default function StartScreen({ navigation }) {
         mode="outlined"
         onPress={() => navigation.navigate("RegisterScreen")}
       >
-        Create an account
+        Créez un compte
       </Button>
     </Background>
   );
