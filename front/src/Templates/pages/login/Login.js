@@ -33,7 +33,7 @@ function Login() {
       try {
         const logRes = await login(values.email, values.password);
         if (logRes) {
-          navigate('/dashboard');
+          navigate('/supper/view/applications/reporting');
         } else {
           alert(i18n.t('failedLoginErrorMessage'));
         }

@@ -32,7 +32,7 @@ export function calculateHoursDifference(date1, date2) {
   let roundedDiffInHours = Number(diffInHours.toFixed(2));
   return roundedDiffInHours;
 }
-export function formatDate(dateString) {
+export function formatDateH(dateString) {
   const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
   return new Date(dateString).toLocaleDateString(undefined, options);
 };

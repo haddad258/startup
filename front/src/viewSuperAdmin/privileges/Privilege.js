@@ -92,7 +92,7 @@ const PrivilegesC = ({ refresh, selectedPrivilege }) => {
                      
                         <CCol md={6} className="position-relative">
                             <CFormLabel htmlFor="validationTooltip03">{i18n.t('privilegeInputLabel')}</CFormLabel>
-                            <CFormInput value={Privilege.privilege} disabled={isUpdateMode} onChange={(e) => setPrivilege({ ...Privilege, privilege: e.target.value })} type="title" id="validationTooltip03" required />
+                            <CFormInput value={Privilege.privilege} disabled={isUpdateMode} onChange={(e) => setPrivilege({ ...Privilege, privilege: e.target.value })} type="text" id="validationTooltip03" required />
                             <CFormFeedback tooltip invalid>
                             {i18n.t('requiredPrivilegeField')}
                             </CFormFeedback>
@@ -101,7 +101,7 @@ const PrivilegesC = ({ refresh, selectedPrivilege }) => {
                
                         <CCol md={6} className="position-relative">
                             <CFormLabel htmlFor="validationTooltip03">{i18n.t('descriptionInputLabel')}</CFormLabel>
-                            <CFormInput value={Privilege.description} onChange={(e) => setPrivilege({ ...Privilege, description: e.target.value })} type="title" id="validationTooltip03" required />
+                            <CFormInput value={Privilege.description} onChange={(e) => setPrivilege({ ...Privilege, description: e.target.value })} type="text" id="validationTooltip03" required />
                             <CFormFeedback tooltip invalid>
                             {i18n.t('requiredDescriptionField')}
                             </CFormFeedback>

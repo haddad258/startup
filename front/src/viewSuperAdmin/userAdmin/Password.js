@@ -20,22 +20,26 @@ import i18n from 'src/i18n';
 
 const initialUserAdminState = {
     password: '',
-
+    passwordValidation: '',
 };
-
 
 const PasswordAdmin = ({ refresh, selectedUserAdmin }) => {
     const [visible, setVisible] = useState(false);
     const [validated, setValidated] = useState(false);
-
     const [UserAdmin, setUserAdmin] = useState(initialUserAdminState);
+    const [passwordValidationError, setPasswordValidationError] = useState(false);
 
     useEffect(() => {
         setUserAdmin(initialUserAdminState);
+        setPasswordValidationError(false);
+        setValidated(false);
     }, [selectedUserAdmin]);
 
     const handleAddOrUpdate = async () => {
-        const result = await settingsUserAdmins.updateUsersAdminPassword({ password: UserAdmin.password }, selectedUserAdmin.id)
+        const result = await settingsUserAdmins.updateUsersAdminPassword(
+            { password: UserAdmin.password },
+            selectedUserAdmin.id
+        );
 
         if (result) {
             setVisible(false);
@@ -48,21 +52,36 @@ const PasswordAdmin = ({ refresh, selectedUserAdmin }) => {
     const handleSubmit = (event) => {
         event.preventDefault();
         const form = event.currentTarget;
+        if(passwordValidationError){
+            setPasswordValidationError(true)
 
+        }
         if (!form.checkValidity()) {
             event.stopPropagation();
         }
         setValidated(true);
 
-        if (form.checkValidity()) {
+        if (form.checkValidity() && !passwordValidationError) {
             handleAddOrUpdate();
         }
     };
 
+    const handlePasswordChange = (e) => {
+        setUserAdmin({ ...UserAdmin, password: e.target.value });
+        setValidated(false);
+        setPasswordValidationError(UserAdmin.passwordValidation !== e.target.value);
+    };
+
+    const handleConfirmPasswordChange = (e) => {
+        const confirmPassword = e.target.value;
+        setPasswordValidationError(confirmPassword !== UserAdmin.password);
+        setValidated(false);
+        setUserAdmin({ ...UserAdmin, passwordValidation: confirmPassword });
+    };
 
     return (
         <>
-            <CButton color={'warning'} onClick={() => setVisible(!visible)}>
+            <CButton color="warning" onClick={() => setVisible(!visible)}>
                 <CIcon icon={cilLockLocked} />
             </CButton>
             <CModal
@@ -73,7 +92,7 @@ const PasswordAdmin = ({ refresh, selectedUserAdmin }) => {
                 size="xl"
             >
                 <CModalHeader onClose={() => setVisible(false)}>
-                    <CModalTitle id="LiveDemoExampleLabel"> {i18n.t('updatePasswordTitle')}</CModalTitle>
+                    <CModalTitle id="LiveDemoExampleLabel">{i18n.t('updatePasswordTitle')}</CModalTitle>
                 </CModalHeader>
                 <CModalBody>
                     <CForm
@@ -83,25 +102,45 @@ const PasswordAdmin = ({ refresh, selectedUserAdmin }) => {
                         onSubmit={handleSubmit}
                     >
                         <CCol md={6} className="position-relative">
-                            <CFormLabel htmlFor="validationTooltip01">{i18n.t('passwordInputLabel')}</CFormLabel>
-                            <CFormInput value={UserAdmin.password} onChange={(e) => setUserAdmin({ ...UserAdmin, password: e.target.value })} type="password" id="validationTooltip01" defaultValue="" required />
+                            <CFormLabel htmlFor="passwordInput">{i18n.t('passwordInputLabel')}</CFormLabel>
+                            <CFormInput
+                                value={UserAdmin.password}
+                                onChange={handlePasswordChange}
+                                type="password"
+                                id="passwordInput"
+                                required
+                                pattern="^[A-Za-z0-9]{6,}$"
+                            />
                             <CFormFeedback tooltip invalid>
                                 {i18n.t('requiredPasswordField')}
                             </CFormFeedback>
                         </CCol>
+
                         <CCol md={6} className="position-relative">
-                            <CFormLabel htmlFor="validationTooltip01">{i18n.t('confirmPasswordInputLabel')}</CFormLabel>
-                            <CFormInput value={UserAdmin.password} onChange={(e) => setUserAdmin({ ...UserAdmin, password: e.target.value })} type="password" id="validationTooltip01" defaultValue="" required />
+                            <CFormLabel htmlFor="confirmPasswordInput">{i18n.t('confirmPasswordInputLabel')}</CFormLabel>
+                            <CFormInput
+                                value={UserAdmin.passwordValidation}
+                                onChange={handleConfirmPasswordChange}
+                                type="password"
+                                id="confirmPasswordInput"
+                                required
+                                pattern="^[A-Za-z0-9]{6,}$"
+                                isInvalid={passwordValidationError}
+                            />
                             <CFormFeedback tooltip invalid>
-                                {i18n.t('requiredConfirmPasswordField')}
+                                {passwordValidationError ? i18n.t('passwordMismatchError') : i18n.t('requiredConfirmPasswordField')}
                             </CFormFeedback>
                         </CCol>
-
+                        <CFormFeedback >
+                                {passwordValidationError ? i18n.t('passwordMismatchError') : i18n.t('requiressdConfirmPasswordField')}
+                            </CFormFeedback>
                         <CModalFooter>
                             <CButton color="secondary" onClick={() => setVisible(false)}>
                                 {i18n.t('closeButton')}
                             </CButton>
-                            <CButton color="primary" type="submit" >{i18n.t('saveButton')}</CButton>
+                            <CButton disabled={passwordValidationError} color="primary" type="submit">
+                                {i18n.t('saveButton')}
+                            </CButton>
                         </CModalFooter>
                     </CForm>
                 </CModalBody>

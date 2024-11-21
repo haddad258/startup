@@ -12,6 +12,7 @@ import PasswordAdmin from './Password'
 import i18n from 'src/i18n';
 // import ForTest from 'src/components/Commun/Test';
 import GenericTable from 'src/components/Generic.Table';
+import StatusRow from 'src/components/module.common/status.row';
 const UserAdmins = () => {
     const [List, setList] = useState([]);
 
@@ -33,16 +34,19 @@ const UserAdmins = () => {
         // { label: '#', field: 'index' },
         { label: i18n.t('firstNameInputLabel'), field: 'name', index: 'name' },
         { label: i18n.t('lastNameInputLabel'), field: 'lastname', index: 'lastname' },
-        { label: i18n.t('descriptionInputLabel'), field: 'description', index: 'description'},
+        { label: i18n.t('usernameInputLabel'), field: 'username', index: 'username' },
+        { label: i18n.t('usernameInputLabel'), field: 'username', index: 'username' },
+        { label: i18n.t('emailInputLabel'), field: 'email', index: 'email' },
         {
             label: i18n.t('actionLabel'),
             field: 'actions',
-            render: (item) => 
+            render: (item) =>
             (
                 <>
-                
-            <UserAdminsC refresh={()=>fetchUserAdmins()} selectedUserAdmin={item} />
-            <PasswordAdmin refresh={()=>fetchUserAdmins()} selectedUserAdmin={item} />
+
+                    <UserAdminsC refresh={() => fetchUserAdmins()} selectedUserAdmin={item} />
+                    <PasswordAdmin refresh={() => fetchUserAdmins()} selectedUserAdmin={item} />
+                    <StatusRow refresh={() => fetchUserAdmins()} status={item.status} data={"users"} entityName={i18n.t('usersList')} id={item.id} />
                 </>
             )
             ,
@@ -57,7 +61,7 @@ const UserAdmins = () => {
                         <strong>{i18n.t('usersList')} </strong>
                     </CCol>
                     <CCol md="6" xs="12" className="text-md-end mt-md-0 mt-3">
-                        <UserAdminsC refresh={()=>fetchUserAdmins()} />
+                        <UserAdminsC refresh={() => fetchUserAdmins()} />
                     </CCol>
                 </CRow>
             </CCardHeader>
@@ -69,7 +73,7 @@ const UserAdmins = () => {
                                 <strong>{i18n.t('usersList')}</strong>
                             </CCardHeader>
                             <CCardBody>
-                                    <GenericTable columns={columns} data={List} />
+                                <GenericTable columns={columns} data={List} />
                             </CCardBody>
                         </CCard>
                     </CCol>

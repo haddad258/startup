@@ -12,6 +12,7 @@ import QRCode from "react-qr-code";
 import CIcon from '@coreui/icons-react'
 import {  cilQrCode } from '@coreui/icons';
 import PropTypes from 'prop-types'; // Import PropTypes
+import i18n from 'src/i18n';
 function ProfileQr(props) {
     const [visible, setVisible] = useState(false);
     const [UpdateMode, setUpdateMode] = useState({});
@@ -23,7 +24,7 @@ function ProfileQr(props) {
 
     return (
         <>
-            <CButton color={"warning"} onClick={() => setVisible(!visible)}><CIcon icon={cilQrCode} /></CButton>
+            <CButton  style={{backgroundColor:"#f470e8"}} onClick={() => setVisible(!visible)}><CIcon icon={cilQrCode} /></CButton>
             <CModal
                 alignment="center"
                 visible={visible}
@@ -31,7 +32,7 @@ function ProfileQr(props) {
                 aria-labelledby="VerticallyCenteredExample"
             >
                 <CModalHeader onClose={() => setVisible(false)}>
-                    <CModalTitle id="LiveDemoExampleLabel">Profiles</CModalTitle>
+                    <CModalTitle id="LiveDemoExampleLabel">{i18n.t("QrCode")}</CModalTitle>
                 </CModalHeader>
                 <CModalBody>
                     <div style={{ height: "auto", margin: "0 auto", maxWidth: 256, width: "100%" }}>

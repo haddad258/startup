@@ -13,7 +13,7 @@ const AppFooter = () => {
       </div> */}
       <div className="ms-auto">
         <p onClick={() => console.log("test")} target="_blank" rel="noopener noreferrer">
-          <span className="me-1">{i18n.t('poweredByFooter')} startup V21-06 </span>
+          <span className="me-1">{i18n.t('poweredByFooter')} startup V20-11 </span>
         </p>
       </div>
     </CFooter>

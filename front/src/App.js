@@ -16,6 +16,7 @@ const LoginUser = React.lazy(() => import('./Templates/pages/loginUser/Login'));
 const Register = React.lazy(() => import('./Templates/pages/register/Register'));
 const Page404 = React.lazy(() => import('./Templates/pages/page404/Page404'));
 const Page500 = React.lazy(() => import('./Templates/pages/page500/Page500'));
+const PaymentModule = React.lazy(() => import('./payment/index'));
 
 // Define your routes as an array
 const routes = [
@@ -41,6 +42,7 @@ const routes = [
   { path: '/register', element: <Register /> },
   { path: '/404', element: <Page404 /> },
   { path: '/500', element: <Page500 /> },
+  { path: '/payment', element: <PaymentModule /> },
 ];
 
 const App = () => {

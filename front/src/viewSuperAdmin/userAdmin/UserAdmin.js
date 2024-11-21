@@ -110,14 +110,14 @@ const UserAdminsC = ({ refresh, selectedUserAdmin }) => {
                     >
                         <CCol md={6} className="position-relative">
                             <CFormLabel htmlFor="validationTooltip01">{i18n.t('firstNameInputLabel')}</CFormLabel>
-                            <CFormInput value={UserAdmin.name} onChange={(e) => setUserAdmin({ ...UserAdmin, name: e.target.value })} type="text" id="validationTooltip01" required />
+                            <CFormInput value={UserAdmin.name} onChange={(e) => setUserAdmin({ ...UserAdmin, name: e.target.value })} type="text" id="validationTooltip01" required  pattern="^[A-Za-z]{2,}$"/>
                             <CFormFeedback tooltip invalid>
                                 {i18n.t('requiredFirstNameField')}
                             </CFormFeedback>
                         </CCol>
                         <CCol md={6} className="position-relative">
                             <CFormLabel htmlFor="validationTooltip03">{i18n.t('lastNameInputLabel')}</CFormLabel>
-                            <CFormInput value={UserAdmin.lastname} onChange={(e) => setUserAdmin({ ...UserAdmin, lastname: e.target.value })} type="title" id="validationTooltip03" required />
+                            <CFormInput value={UserAdmin.lastname} onChange={(e) => setUserAdmin({ ...UserAdmin, lastname: e.target.value })} type="text" id="validationTooltip03" required pattern="^[A-Za-z]{2,}$" />
                             <CFormFeedback tooltip invalid>
                             {i18n.t('requiredLastNameField')}
                             </CFormFeedback>
@@ -125,7 +125,7 @@ const UserAdminsC = ({ refresh, selectedUserAdmin }) => {
 
                         <CCol md={6} className="position-relative">
                             <CFormLabel htmlFor="validationTooltip03">{i18n.t('usernameInputLabel')}</CFormLabel>
-                            <CFormInput value={UserAdmin.username} onChange={(e) => setUserAdmin({ ...UserAdmin, username: e.target.value })} type="title" id="validationTooltip03" required />
+                            <CFormInput value={UserAdmin.username} onChange={(e) => setUserAdmin({ ...UserAdmin, username: e.target.value })} type="text" id="validationTooltip03" required />
                             <CFormFeedback tooltip invalid>
                             {i18n.t('requiredUsernameField')}
                             </CFormFeedback>
@@ -142,7 +142,7 @@ const UserAdminsC = ({ refresh, selectedUserAdmin }) => {
                        
                         <CCol md={6} className="position-relative">
                             <CFormLabel htmlFor="validationTooltip03">{i18n.t('descriptionInputLabel')}</CFormLabel>
-                            <CFormInput value={UserAdmin.description} onChange={(e) => setUserAdmin({ ...UserAdmin, description: e.target.value })} type="title" id="validationTooltip03" required />
+                            <CFormInput value={UserAdmin.description} onChange={(e) => setUserAdmin({ ...UserAdmin, description: e.target.value })} type="text" id="validationTooltip03" required />
                             <CFormFeedback tooltip invalid>
                             {i18n.t('requiredDescriptionField')}
                             </CFormFeedback>

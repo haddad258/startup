@@ -10,6 +10,7 @@ import { settingsPrivileges } from 'src/services/SupperSettings/index';
 import GenericTable from 'src/components/Generic.Table';
 import PrivilegesC from './Privilege';
 import i18n from 'src/i18n';
+import StatusRow from 'src/components/module.common/status.row';
 // const ForTest = React.lazy(() => import('../../components/Commun/Test'))
 const Privileges = () => {
     const [List, setList] = useState([]);
@@ -31,11 +32,17 @@ const Privileges = () => {
     const columns = [
         // { label: '#', field: 'index' },
         { label: i18n.t('privilegeInputLabel'), field: 'privilege', index: 'privilege' },
-        { label: i18n.t('descriptionInputLabel'), field: 'description', index: 'description'},
+        { label: i18n.t('descriptionInputLabel'), field: 'description', index: 'description' },
         {
             label: i18n.t('actionLabel'),
             field: 'actions',
-            render: (item) => <PrivilegesC refresh={()=>fetchPrivileges()} selectedPrivilege={item} />,
+            render: (item) => (
+
+                <>
+                    <PrivilegesC refresh={() => fetchPrivileges()} selectedPrivilege={item} />
+                    <StatusRow refresh={() => fetchPrivileges()} status={item.status} data={"privilege"} entityName={i18n.t('privilegesList')} id={item.id} />
+                </>
+            )
         },
     ];
 
@@ -47,7 +54,7 @@ const Privileges = () => {
                         <strong>{i18n.t('privilegesList')} </strong>
                     </CCol>
                     <CCol md="6" xs="12" className="text-md-end mt-md-0 mt-3">
-                        <PrivilegesC refresh={()=>fetchPrivileges()} />
+                        <PrivilegesC refresh={() => fetchPrivileges()} />
                     </CCol>
                 </CRow>
             </CCardHeader>
@@ -59,7 +66,7 @@ const Privileges = () => {
                                 <strong>{i18n.t('privilegesList')}</strong>
                             </CCardHeader>
                             <CCardBody>
-                                    <GenericTable data={List} columns={columns}/>
+                                <GenericTable data={List} columns={columns} />
                             </CCardBody>
                         </CCard>
                     </CCol>

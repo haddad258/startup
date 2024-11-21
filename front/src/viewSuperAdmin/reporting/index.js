@@ -4,8 +4,10 @@ import {
     CCol,
     CCard,
     CCardHeader,
+    CCardBody
 } from '@coreui/react';
 import i18n from 'src/i18n';
+import ReportingDashboardCounting from './dashboard/dashbord.counting';
 const Reporting = () => {
     return (
         <CCard className="mb-4">
@@ -16,6 +18,18 @@ const Reporting = () => {
                     </CCol>
                 </CRow>
             </CCardHeader>
+            <CCardBody>
+                <ReportingDashboardCounting />
+                <CRow>
+                    <CCol xs={12} md={6} xl={6}>
+                        other details
+                    </CCol>
+                    <CCol xs={12} md={6} xl={6}>
+                        other details
+                    </CCol>
+                </CRow>
+
+            </CCardBody>
         </CCard>
     );
 };
