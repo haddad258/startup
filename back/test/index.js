@@ -24,7 +24,6 @@ const Apis = {
 async function fetchMultipleAPIs() {
   const startTime = performance.now();
   
-  console.log(Apis.api_planpacksPost);
   
   const promises = [];
   

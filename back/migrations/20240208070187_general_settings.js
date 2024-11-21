@@ -3,8 +3,10 @@ exports.up = function (knex) {
   return knex.raw('CREATE EXTENSION IF NOT EXISTS "uuid-ossp"')
     .then(() => knex.schema
       .createTable("privilege", function (table) {
+        table.uuid("id").notNullable().defaultTo(knex.raw('uuid_generate_v4()')).primary();
         table.string("privilege").unique();
         table.string("description");
+        table.integer("status").defaultTo(0);
         table.timestamps(true, true);  // Raccourci pour ajouter les champs created_at et updated_at
       })
       .createTable("users", function (table) {
@@ -26,12 +28,37 @@ exports.up = function (knex) {
         table.string("name");
         table.string("phone");
         table.integer("status").defaultTo(0);
-        table.timestamp("created_at").defaultTo(knex.fn.now());
-        table.timestamp("updated_at").defaultTo(knex.fn.now());
+        table.timestamps(true, true);  // created_at and updated_at
+
       })
+      .createTable("paymentmode", function (table) {
+        table.uuid("id").notNullable().defaultTo(knex.raw('uuid_generate_v4()')).primary();
+        table.string("name");
+        table.string("description");
+        table.string("secretId");
+        table.string("userId");
+        table.string("accountId");
+        table.string("tokenId");
+        table.string("authO");
+        table.string("attributionId");
+        table.string("requestId");
+        table.string("return_url");
+        table.string("cancel_url");
+        table.string("images");
+        table.integer("status").defaultTo(0);
+        table.timestamps(true, true);  // created_at and updated_at
+
+      })
+
     );
 };
+//////////update migrations downs////////////
 
 exports.down = function (knex) {
-  return knex.schema.dropTable('Users');
+  return knex.schema
+    .dropTableIfExists("paymentmode")
+    .dropTableIfExists("organization_gen_info")
+    .dropTableIfExists("users")
+    .dropTableIfExists("privilege")
+    .then(() => knex.raw('DROP EXTENSION IF EXISTS "uuid-ossp"'));
 };

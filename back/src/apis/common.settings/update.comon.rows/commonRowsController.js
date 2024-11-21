@@ -7,7 +7,6 @@ const app = require("../../../../index");
 
 const updatecommonRows = async (req, res, next) => {
   try {
-    console.log(req.body)
     await app.db
       .table(req.body.data)
       .update({ status:req.body.status })
@@ -25,7 +24,6 @@ const updatecommonRows = async (req, res, next) => {
 };
 const getListFiltred = async (req, res, next) => {
   try {
-    console.log(req.body)
     await app.db
       .table(req.body.entity)
       .select("*")

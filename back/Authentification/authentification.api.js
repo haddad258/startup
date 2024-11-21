@@ -2,11 +2,13 @@ const app = require("../index");
 const config = require("./config");
 const jwt = require("jsonwebtoken");
 const bcrypt = require('bcrypt-nodejs');
+const logger  = require("../helper/logs/logger")
 
 app.post("/api/root/login", async (req, res) => {
   try {
-    console.log("req.body")
     const { email, password } = req.body;
+    console.log(req.body)
+    logger.info(`transaction created / authorised with transaction id ${email}`);
     const [user] = await app.db
       .from("users")
       .select("*")

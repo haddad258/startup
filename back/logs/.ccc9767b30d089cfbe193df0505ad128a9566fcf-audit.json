@@ -1,0 +1,50 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "/home/haddadrafik258/Desktop/lcs/api/logs/.ccc9767b30d089cfbe193df0505ad128a9566fcf-audit.json",
+    "files": [
+        {
+            "date": 1731497019961,
+            "name": "/home/haddadrafik258/Desktop/lcs/api/logs/2024-11-13.log",
+            "hash": "64e14c09a8bade9fcbe6881a2dcb59daaa370e5b5ccb09f9532396cbe06bf2a2"
+        },
+        {
+            "date": 1731569606234,
+            "name": "/home/haddadrafik258/Desktop/lcs/api/logs/2024-11-14.log",
+            "hash": "2913be43d21e5c46867acbf3ad470c9472498286d2e5c2d4ceec4288d60bbe52"
+        },
+        {
+            "date": 1731655910947,
+            "name": "/home/haddadrafik258/Desktop/lcs/api/logs/2024-11-15.log",
+            "hash": "3de23482b0aecbe5cbe349a01b8704f26e52dbdf2c0a5cdf341df1ba6ecc9819"
+        },
+        {
+            "date": 1731745226341,
+            "name": "/home/haddadrafik258/Desktop/lcs/api/logs/2024-11-16.log",
+            "hash": "368655aa4fc2bac717788eaa75c148d5f65734926cc35a1392fdd9c87f90c124"
+        },
+        {
+            "date": 1731920253894,
+            "name": "/home/haddadrafik258/Desktop/lcs/api/logs/2024-11-18.log",
+            "hash": "f8d48520398ec1220b6dddeeaf3225b16f9e101b1a6d0a45e17fc34188ae066b"
+        },
+        {
+            "date": 1732008308207,
+            "name": "/home/haddadrafik258/Desktop/lcs/api/logs/2024-11-19.log",
+            "hash": "f9b9751daa9a61aad1471331c7e450a120da5ecee5274158816f0e4d4af34eee"
+        },
+        {
+            "date": 1732087095250,
+            "name": "/home/haddadrafik258/Desktop/lcs/api/logs/2024-11-20.log",
+            "hash": "d535f3280eb407c949cd8771d60e55e8d99fb924f696143c31a4b5553d48ce5d"
+        },
+        {
+            "date": 1732177502407,
+            "name": "/home/haddadrafik258/Desktop/lcs/api/logs/2024-11-21.log",
+            "hash": "a7b1bd56986cc355efae8f6998e422f52810da4a4669a3f4254fbcaddc59a2ed"
+        }
+    ],
+    "hashType": "sha256"
+}
