@@ -47,7 +47,7 @@ const StyledRoot = styled("div")(() => ({
 
 // initial login credentials
 const initialValues = {
-  email: "jason@ui-lib.com",
+  email: "agritech@agriconnect.com",
   password: "dummyPass",
   remember: true
 };

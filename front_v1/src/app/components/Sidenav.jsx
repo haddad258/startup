@@ -4,7 +4,7 @@ import Scrollbar from "react-perfect-scrollbar";
 
 import { MatxVerticalNav } from "app/components";
 import useSettings from "app/hooks/useSettings";
-import { navigations } from "app/navigations";
+import { navigations } from "app/navigations/navigations";
 
 // STYLED COMPONENTS
 const StyledScrollBar = styled(Scrollbar)(() => ({
