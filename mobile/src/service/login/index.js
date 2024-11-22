@@ -8,7 +8,8 @@ const showToast = message => {
 };
 const UserLoginAPI = async (data) => {
     try {
-        let result = await api.post(Apis.UserLoginAPI+"auths", data, {
+        console.log(Apis.UserLoginAPI,)
+        let result = await api.post(Apis.UserLoginAPI, data, {
             withCredentials: false,
             headers: {
                 "Access-Control-Allow-Origin": "*",
@@ -17,10 +18,11 @@ const UserLoginAPI = async (data) => {
                 changeOrigin: true,
             },
         });
+        
         if (result.data.error) {
             return null;
         }
-        return result.data;
+        return result;
     } catch (error) {
         showToast("authentifaition faild")
         return null;
@@ -28,13 +30,15 @@ const UserLoginAPI = async (data) => {
 };
 
 
-const Authenticate = async (data) => {
+const Authenticate = async (data,sessions) => {
     try {
-        await AsyncStorage.setItem('@Token_jwt', data.token)
-        // await  AsyncStorage.setItem('@user_Info', JSON.stringify(data))
-        await AsyncStorage.setItem('@refresh_token', JSON.stringify(data))
+        console.log(sessions)
+        await AsyncStorage.setItem('@Token_jwt', JSON.stringify(data))
+        await AsyncStorage.setItem('@Cookie',sessions)
+        // await AsyncStorage.setItem('@refresh_token', JSON.stringify(data))
         return true
     } catch (error) {
+        console.log("error",error)
         return (error)
     }
 };

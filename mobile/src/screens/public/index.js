@@ -9,6 +9,8 @@ import Help from "./Help";
 import Orders from "./orders";
 import Stocks from "./stocks";
 
+import Customers from './Customers'
+
 import { LoginScreen, Private } from '../index'
 
 import { Colors } from '../../core/theme'
@@ -26,6 +28,16 @@ const TabPublic = () => {
                 tabBarStyle: { backgroundColor: Colors.white },
                 headerStyle: styles.headerStyle,
             }}>
+            <Tab.Screen
+                options={{
+                    title: "Customers",
+                    tabBarIcon: ({ color, size }) => (
+                        <FontAwesome5 name="user" color={color} size={size} />
+                    ),
+                }}
+                name="Customers"
+                component={Customers}
+            />
 
             <Tab.Screen
                 options={{
