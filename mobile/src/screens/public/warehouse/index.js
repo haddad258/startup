@@ -5,7 +5,7 @@ import { StyleSheet } from "react-native";
 import WarhouseList from "./List";
 import DeliveryNotesList from "./DeliveryNote";
 import StockEntryList from "./StockEntry";
-
+import DataProduct from './Test'
 
 import { Colors } from '../../../core/theme'
 
@@ -51,6 +51,16 @@ const Warehouses = () => {
                 }}
                 name="StockEntryList"
                 component={StockEntryList}
+            />
+                 <Tab.Screen
+                options={{
+                    title: "DataProduct",
+                    tabBarIcon: ({ color, size }) => (
+                        <FontAwesome5 name="caret-square-left" color={color} size={size} />
+                    ),
+                }}
+                name="DataProduct"
+                component={DataProduct}
             />
         </Tab.Navigator>
     );
