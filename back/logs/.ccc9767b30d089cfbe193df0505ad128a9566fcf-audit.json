@@ -44,6 +44,21 @@
             "date": 1732177502407,
             "name": "/home/haddadrafik258/Desktop/lcs/api/logs/2024-11-21.log",
             "hash": "a7b1bd56986cc355efae8f6998e422f52810da4a4669a3f4254fbcaddc59a2ed"
+        },
+        {
+            "date": 1732261655447,
+            "name": "/home/haddadrafik258/Desktop/lcs/api/logs/2024-11-22.log",
+            "hash": "e8bd6264983a6b2ae96318d757b4918cd0952fba54210fbff8fb48a51b59c839"
+        },
+        {
+            "date": 1732520013818,
+            "name": "/home/haddadrafik258/Desktop/lcs/api/logs/2024-11-25.log",
+            "hash": "83d1b85731d86dfb219b227027f42b8858e664914de4daf137c72f47e07634b3"
+        },
+        {
+            "date": 1732605182444,
+            "name": "/home/haddadrafik258/Desktop/lcs/api/logs/2024-11-26.log",
+            "hash": "92eb6d66bd1e011c80d6a094bfe5494709b03a2d8c381e8633baf9c14399ee8a"
         }
     ],
     "hashType": "sha256"

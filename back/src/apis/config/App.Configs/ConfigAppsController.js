@@ -44,6 +44,7 @@ const updateConfigApps = async (req, res, next) => {
 
 const getAllConfigApps = async (req, res, next) => {
   try {
+    console.log(req.params.entity)
     await app.db
       .from(req.params.entity)
       .select("*")
@@ -68,6 +69,8 @@ const getAllConfigApps = async (req, res, next) => {
 
 const getConfigAppsById = async (req, res, next) => {
   try {
+    console.log(req.params.entity)
+    console.log(req.params.id)
     await app.db
       .from(req.params.entity)
       .select("*")

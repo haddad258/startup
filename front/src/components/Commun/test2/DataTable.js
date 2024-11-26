@@ -4,12 +4,12 @@ import { Table, Input, Space} from 'antd';
 
 const { Search } = Input;
 
-const DataTable = ({ columns, dataSource }) => {
-  const [filteredData, setFilteredData] = useState(dataSource);
+const DataTable = ({ columns, data }) => {
+  const [filteredData, setFilteredData] = useState(data);
 
   
   const handleSearch = (text) => {
-    const filteredDataSource = dataSource.filter((item) =>
+    const filteredDataSource = data.filter((item) =>
       Object.values(item.user).some((value) =>
         String(value).toLowerCase().includes(text.toLowerCase())
       )
@@ -40,7 +40,7 @@ const DataTable = ({ columns, dataSource }) => {
 
 DataTable.propTypes = {
   columns: PropTypes.arrayOf(PropTypes.object).isRequired,
-  dataSource: PropTypes.arrayOf(PropTypes.object).isRequired,
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default DataTable;
