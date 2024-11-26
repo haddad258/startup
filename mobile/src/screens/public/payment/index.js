@@ -2,18 +2,18 @@ import * as React from "react";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { StyleSheet } from "react-native";
-import ListArticles from "./List";
-import AddArticles from "./Add.Articles";
-
+import ListPayment from "./List";
+import PurchasInvoices from "./Purchase.Invoices";
+import PurchaseOrders from './Purchase.order'
 
 import { Colors } from '../../../core/theme'
 
 const Tab = createBottomTabNavigator();
 
-const TabPublic = () => {
+const Sales = () => {
     return (
         <Tab.Navigator
-            initialRouteName="ListArticles"
+            initialRouteName="ListPayment"
             screenOptions={{
                 headerTitleStyle: styles.headerTitleStyle,
                 tabBarActiveTintColor: Colors.info,
@@ -23,23 +23,33 @@ const TabPublic = () => {
             }}>
             <Tab.Screen
                 options={{
-                    title: "Liste Articles",
+                    title: "ListPayment",
                     tabBarIcon: ({ color, size }) => (
                         <FontAwesome5 name="list" color={color} size={size} />
                     ),
                 }}
-                name="ListArticles"
-                component={ListArticles}
+                name="ListPayment"
+                component={ListPayment}
             />
             <Tab.Screen
                 options={{
-                    title: "Ajout",
+                    title: "PurchasInvoices",
                     tabBarIcon: ({ color, size }) => (
-                        <FontAwesome5 name="plus" color={color} size={size} />
+                        <FontAwesome5 name="th-large" color={color} size={size} />
                     ),
                 }}
-                name="AddArticles"
-                component={AddArticles}
+                name="PurchasInvoices"
+                component={PurchasInvoices}
+            />
+                 <Tab.Screen
+                options={{
+                    title: "PurchaseOrders",
+                    tabBarIcon: ({ color, size }) => (
+                        <FontAwesome5 name="th-large" color={color} size={size} />
+                    ),
+                }}
+                name="PurchaseOrders"
+                component={PurchaseOrders}
             />
         </Tab.Navigator>
     );
@@ -58,4 +68,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default TabPublic;
+export default Sales;

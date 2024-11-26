@@ -2,18 +2,19 @@ import * as React from "react";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { StyleSheet } from "react-native";
-import ListArticles from "./List";
-import AddArticles from "./Add.Articles";
+import WarhouseList from "./List";
+import DeliveryNotesList from "./DeliveryNote";
+import StockEntryList from "./StockEntry";
 
 
 import { Colors } from '../../../core/theme'
 
 const Tab = createBottomTabNavigator();
 
-const TabPublic = () => {
+const Warehouses = () => {
     return (
         <Tab.Navigator
-            initialRouteName="ListArticles"
+            initialRouteName="WarhouseList"
             screenOptions={{
                 headerTitleStyle: styles.headerTitleStyle,
                 tabBarActiveTintColor: Colors.info,
@@ -23,23 +24,33 @@ const TabPublic = () => {
             }}>
             <Tab.Screen
                 options={{
-                    title: "Liste Articles",
+                    title: "WarhouseList",
                     tabBarIcon: ({ color, size }) => (
                         <FontAwesome5 name="list" color={color} size={size} />
                     ),
                 }}
-                name="ListArticles"
-                component={ListArticles}
+                name="WarhouseList"
+                component={WarhouseList}
             />
             <Tab.Screen
                 options={{
-                    title: "Ajout",
+                    title: "DeliveryNotesList",
                     tabBarIcon: ({ color, size }) => (
-                        <FontAwesome5 name="plus" color={color} size={size} />
+                        <FontAwesome5 name="file-contract" color={color} size={size} />
                     ),
                 }}
-                name="AddArticles"
-                component={AddArticles}
+                name="DeliveryNotesList"
+                component={DeliveryNotesList}
+            />
+              <Tab.Screen
+                options={{
+                    title: "StockEntryList",
+                    tabBarIcon: ({ color, size }) => (
+                        <FontAwesome5 name="caret-square-left" color={color} size={size} />
+                    ),
+                }}
+                name="StockEntryList"
+                component={StockEntryList}
             />
         </Tab.Navigator>
     );
@@ -58,4 +69,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default TabPublic;
+export default Warehouses;

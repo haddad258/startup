@@ -8,7 +8,7 @@ const showToast = message => {
 };
 const UserLoginAPI = async (data) => {
     try {
-        let result = await api.post(Apis.UserLoginAPI+"auths", data, {
+        let result = await api.post(Apis.UserLoginAPI, data, {
             withCredentials: false,
             headers: {
                 "Access-Control-Allow-Origin": "*",
@@ -17,10 +17,11 @@ const UserLoginAPI = async (data) => {
                 changeOrigin: true,
             },
         });
+        
         if (result.data.error) {
             return null;
         }
-        return result.data;
+        return result;
     } catch (error) {
         showToast("authentifaition faild")
         return null;
@@ -28,11 +29,12 @@ const UserLoginAPI = async (data) => {
 };
 
 
-const Authenticate = async (data) => {
+const Authenticate = async (data,sessions) => {
     try {
-        await AsyncStorage.setItem('@Token_jwt', data.token)
-        // await  AsyncStorage.setItem('@user_Info', JSON.stringify(data))
-        await AsyncStorage.setItem('@refresh_token', JSON.stringify(data))
+        console.log(sessions)
+        await AsyncStorage.setItem('@Token_jwt', JSON.stringify(data))
+        await AsyncStorage.setItem('@Cookie',sessions)
+        // await AsyncStorage.setItem('@refresh_token', JSON.stringify(data))
         return true
     } catch (error) {
         return (error)
@@ -42,6 +44,7 @@ const Logout = async (data) => {
     try {
         await AsyncStorage.removeItem('@Token_jwt')
         await AsyncStorage.removeItem('@refresh_token')
+        await AsyncStorage.removeItem('@Cookie')
         return true
     } catch (error) {
         return (error)
@@ -60,7 +63,7 @@ const GetStorage = async (data) => {
 };
 const GetStorageUserInfo = async (data) => {
     try {
-        var Token_jwt = await AsyncStorage.getItem('@refresh_token')
+        var Token_jwt = await AsyncStorage.getItem('@Cookie')
         // await  AsyncStorage.setItem('@user_Info', JSON.stringify(data))
         // await AsyncStorage.setItem('@refresh_token', data.token)
 
