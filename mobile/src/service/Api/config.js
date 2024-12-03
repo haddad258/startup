@@ -1,30 +1,24 @@
-const API_URL = "http://195.201.138.202:8006";
+const API_URL = "http://192.168.1.28:8009";
 const API_URLPublic = API_URL + "/public/";
 
 const Apis = {
-  UserLoginAPI: `${API_URL}/api/method/login`,
-  api_Dashboard: `${API_URL}/api/method/frappe.desk.query_report.get`,
+  UserLoginAPI: `${API_URL}/public/api/customers/config/`,
   Api_RegisterCustomer: `${API_URL}/public/api/customers/config/`,
-  api_customers: `${API_URL}/api/resource/Customer`,
-  api_articles: `${API_URL}/api/resource/Item`,
-  api_warehouses: `${API_URL}/api/resource/Warehouse`,
-  api_suppliers: `${API_URL}/api/resource/Supplier`,
-  api_orders: `${API_URL}/api/resource/Sales Order`,
-  api_invoices: `${API_URL}/api/resource/Sales Invoice`,
-  api_quotations: `${API_URL}/api/resource/Quotation`,
+
+
+  API_Advertising: `${API_URL}/public/api/advertising/`,
+  API_Articles: `${API_URL}/public/api/data/apps/list/articles`,
+  API_ArticlesFilter: `${API_URL}/public/api/data/apps/list/filterby/`,
+  API_Services: `${API_URL}/public/api/data/apps/list/services`,
+  API_Discount: `${API_URL}/public/api/discounts/discounts/list/active`,
   
-  api_payments: `${API_URL}/api/resource/Payment Entry`,
-  api_deliverynotes: `${API_URL}/api/resource/Delivery Note`,
-  api_stockEntry: `${API_URL}/api/resource/Stock Entry`,
 
+  API_DataApps: `${API_URL}/public/api/data/apps/config/`,
+  API_Publications: `${API_URL}/public/publications/details/blog`,
+  ////////////////////////////////////////////
+  Api_CustomerOrders: `${API_URL}/public/api/orders/`,
+  Api_CustomerOrdersDetails: `${API_URL}/public/api/details/orders/`,
 
-  api_purchaseOrders: `${API_URL}/api/resource/Purchase Order`,
-  api_purchaseInvoces: `${API_URL}/api/resource/Purchase Invoice`,
-
-
-
-  
-  
   
 
 

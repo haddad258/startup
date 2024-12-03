@@ -1,25 +1,25 @@
-import axios from "axios";
-import { API_URL } from "./config";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import axios from 'axios';
+import { API_URL } from './config';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 const instance = axios.create({
   baseURL: API_URL,
   headers: {
-    "Content-Type": "application/json",
-    "Access-Control-Allow-Origin": "*",
+    'Content-Type': 'multipart/form-data',
+
   },
 });
 instance.interceptors.request.use(
   async (config) => {
     const token = await AsyncStorage.getItem("@Token_jwt");
-    if (
-      config.url !== "url/api/customer/register" &&
-      token
-    ) {
-      config.headers["x-access-token"] = token;
-      config.headers["Authorization"] = "Bearer " + token;
+    if (token) {
+      // config.headers["Authorization"] = 'Bearer ' + token;  // for Spring Boot back-end
+      config.headers["x-access-token"] = token; // for Node.js Express back-end
+      config.headers["Authorization"] = 'Bearer ' + token; // for Node.js Express back-end
     }
-    return config;
+    return  config
+
   },
   (error) => {
     return Promise.reject(error);

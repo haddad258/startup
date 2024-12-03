@@ -12,13 +12,13 @@ const App = () => {
     <Provider theme={theme}>
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName="TabPublic"
+          initialRouteName="LoginScreen"
           screenOptions={{
             headerShown: false,
           }}
         >
-          <Stack.Screen name="TabPublic" component={TabPublic} />
           <Stack.Screen name="LoginScreen" component={LoginScreen} />
+          <Stack.Screen name="TabPublic" component={TabPublic} />
           {/* <Stack.Screen name="StartScreen" component={StartScreen} />
           <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
           <Stack.Screen name="ResetPasswordScreen" component={ResetPasswordScreen} />

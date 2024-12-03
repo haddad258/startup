@@ -4,6 +4,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const instance = axios.create({
   baseURL: API_URL,
+  withCredentials: true,
   headers: {
     "Content-Type": "application/json",
     "Access-Control-Allow-Origin": "*",
@@ -12,12 +13,16 @@ const instance = axios.create({
 instance.interceptors.request.use(
   async (config) => {
     const token = await AsyncStorage.getItem("@Token_jwt");
+    const cookies = await AsyncStorage.getItem("@Cookie");
+    console.log("sid=" + cookies)
     if (
       config.url !== "url/api/customer/register" &&
       token
     ) {
+      config.headers["Cookie"] = "sid="+cookies
       config.headers["x-access-token"] = token;
       config.headers["Authorization"] = "Bearer " + token;
+
     }
     return config;
   },

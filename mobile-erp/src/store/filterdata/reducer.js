@@ -9,7 +9,6 @@ const initialState = {
 };
 
 const ArticlesReducer = (state = initialState, action) => {
-  console.log("payload",state)
   switch (action.type) {
     case SET_FILTER_ID:
       return setFilterId(state, action.payload);

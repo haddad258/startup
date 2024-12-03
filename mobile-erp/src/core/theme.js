@@ -14,7 +14,7 @@ export const theme = {
     gray: "#95a5a6",
     text: "#ED1C24",
     error: '#e03f52',
-    backgroundColor: "#f4f4f9",
+    backgroundColor: "#4CB9E7",
     colorTiers: "#FFECD6"
 
   },

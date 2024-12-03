@@ -4,14 +4,15 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { StyleSheet } from "react-native";
 import HomeScreen from "./Home";
 import Articles from "./Articles";
-import Services from "./Services";
-import Help from "./Help";
-import Orders from "./orders";
-import Stocks from "./stocks";
+import Warehouses from "./warehouse/index";
+import Customers from './Customers'
+import supplierList from './Supplier'
+import Sales from './sales'
+import PaymentList from './payment'
+import { Colors } from "../../core/theme";
 
-import { LoginScreen, Private } from '../index'
 
-import { Colors } from '../../core/theme'
+
 
 const Tab = createBottomTabNavigator();
 
@@ -26,7 +27,6 @@ const TabPublic = () => {
                 tabBarStyle: { backgroundColor: Colors.white },
                 headerStyle: styles.headerStyle,
             }}>
-
             <Tab.Screen
                 options={{
                     title: "Home",
@@ -39,9 +39,19 @@ const TabPublic = () => {
             />
             <Tab.Screen
                 options={{
+                    title: "Customers",
+                    tabBarIcon: ({ color, size }) => (
+                        <FontAwesome5 name="user" color={color} size={size} />
+                    ),
+                }}
+                name="Customers"
+                component={Customers}
+            />
+            <Tab.Screen
+                options={{
                     title: "Articles",
                     tabBarIcon: ({ color, size }) => (
-                        <FontAwesome5 name="home" color={color} size={size} />
+                        <FontAwesome5 name="dolly-flatbed" color={color} size={size} />
                     ),
                 }}
                 name="Articles"
@@ -49,15 +59,46 @@ const TabPublic = () => {
             />
             <Tab.Screen
                 options={{
-                    title: "Services",
+                    title: "Fournisseurs",
                     tabBarIcon: ({ color, size }) => (
-                        <FontAwesome5 name="home" color={color} size={size} />
+                        <FontAwesome5 name="id-card" color={color} size={size} />
                     ),
                 }}
-                name="Services"
-                component={Services}
+                name="supplierList"
+                component={supplierList}
             />
             <Tab.Screen
+                options={{
+                    title: "Sales",
+                    tabBarIcon: ({ color, size }) => (
+                        <FontAwesome5 name="stream" color={color} size={size} />
+                    ),
+                }}
+                name="Sales"
+                component={Sales}
+            />
+            <Tab.Screen
+                options={{
+                    title: "PaymentList",
+                    tabBarIcon: ({ color, size }) => (
+                        <FontAwesome5 name="money-bill" color={color} size={size} />
+                    ),
+                }}
+                name="PaymentList"
+                component={PaymentList}
+            />
+
+            <Tab.Screen
+                options={{
+                    title: "Warehouses",
+                    tabBarIcon: ({ color, size }) => (
+                        <FontAwesome5 name="store" color={color} size={size} />
+                    ),
+                }}
+                name="Warehouses"
+                component={Warehouses}
+            />
+            {/*  <Tab.Screen
                 options={{
                     title: "Help",
                     tabBarIcon: ({ color, size }) => (
@@ -108,7 +149,7 @@ const TabPublic = () => {
                 name="LoginScreen"
                 component={LoginScreen}
             />
-
+ */}
 
 
 
