@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import Dashboard from "./Home";
+// import Dashboard from "../Components/Dashboard/Dashboard";
 
 const HomeScreen = () => {
   const menuItems = [
@@ -64,7 +64,7 @@ const HomeScreen = () => {
             </TouchableOpacity>
           </View>
           <View style={styles.datePicker}>
-            <Dashboard />
+            {/* <Dashboard /> */}
           </View>
         </View>
 

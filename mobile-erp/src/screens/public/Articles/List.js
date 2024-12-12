@@ -1,6 +1,7 @@
-import React, { useEffect, useState , useCallback} from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { FlatList, StyleSheet, Text, View } from "react-native";
 import ArticleItem from './Article'
+import ArticleCard from './ArticleIndex'
 import { Colors } from "../../../core/theme";
 import { useFocusEffect } from '@react-navigation/native';
 import { ArticleSettings } from "../../../service/doctype/index";
@@ -10,16 +11,16 @@ function Articles() {
     useEffect(() => {
         console.log('HomeScreen is focused');
         fetchArticles()
-      }, [])
+    }, [])
     useFocusEffect(
         useCallback(() => {
-          console.log('HomeScreen is focused');
-          return () => {
-            console.log('HomeScreen is unfocused');
-          };
+            console.log('HomeScreen is focused');
+            return () => {
+                console.log('HomeScreen is unfocused');
+            };
         }, [])
-      );
-      const fetchArticles = async () => {
+    );
+    const fetchArticles = async () => {
         try {
             const list = await ArticleSettings.getarticles(`?fields=["*"]`);
             if (list) {
@@ -35,6 +36,12 @@ function Articles() {
                 data={List}
                 vertical
                 renderItem={({ item }) => (<ArticleItem item={item} />)}
+                keyExtractor={item => item.name}
+            />
+             <FlatList
+                data={List}
+                vertical
+                renderItem={({ item }) => (<ArticleCard item={item} />)}
                 keyExtractor={item => item.name}
             />
         </View>

@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { StyleSheet } from "react-native";
 import ListArticles from "./List";
 import AddArticles from "./Add.Articles";
+import ArticlesBarcode from './Articles.Barcodes'
 
 
 import { Colors } from '../../../core/theme'
@@ -41,6 +42,17 @@ const TabPublic = () => {
                 name="AddArticles"
                 component={AddArticles}
             />
+            <Tab.Screen
+                options={{
+                    title: "ArticlesBarcode",
+                    tabBarIcon: ({ color, size }) => (
+                        <FontAwesome5 name="barcode" color={color} size={size} />
+                    ),
+                }}
+                name="ArticlesBarcode"
+                component={ArticlesBarcode}
+            />
+
         </Tab.Navigator>
     );
 }
