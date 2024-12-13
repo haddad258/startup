@@ -1,7 +1,7 @@
 
 const express = require("express");
 const SubscriptionController = require("./SubscriptionController");
-const authJwt = require("../../../../middlewares/authJwt");
+const authJwt = require("../../../../middlewares/jwt.validations/authJwt");
 const restRoutersubscriptions = express.Router();
 
 restRoutersubscriptions.post("/", [authJwt.verifyToken],  SubscriptionController.addSubscription);

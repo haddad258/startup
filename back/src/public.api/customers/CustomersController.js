@@ -6,6 +6,7 @@ const config = require("../../config");
 
 const jwt = require("jsonwebtoken");
 const bcrypt = require('bcrypt-nodejs');
+const errorHandlerDetailsres = require("../../middlewares/errorsHandler/error.handler.knex");
 
 const addCustomers = async (req, res, next) => {
   try {
@@ -30,10 +31,9 @@ const addCustomers = async (req, res, next) => {
         });
       });
   } catch (error) {
+    errorHandlerDetailsres.handleSqlError(error,res, next);
 
-    next(
-      new createHttpError.BadRequest("Invalid values to create a customers : " + error.message)
-    );
+  
   }
 };
 
@@ -51,7 +51,7 @@ const updateCustomers = async (req, res, next) => {
         });
       });
   } catch (error) {
-    next(new createHttpError.InternalServerError(error));
+    errorHandlerDetailsres.handleSqlError(error,res, next);
   }
 };
 const getCustomersById = async (req, res, next) => {
@@ -76,7 +76,9 @@ const getCustomersById = async (req, res, next) => {
         });
       });
   } catch (error) {
-    next(new createHttpError.BadRequest("Bad Request"));
+    //next(new createHttpError.BadRequest("Bad Request"));
+    errorHandlerDetailsres.handleSqlError(error,res, next);
+
   }
 };
 const LoginAPICustomers = async (req, res) => {

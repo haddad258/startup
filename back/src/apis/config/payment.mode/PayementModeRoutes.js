@@ -1,7 +1,7 @@
 
 const express = require("express");
 const PaymentModeController = require("./PaymentModeController");
-const authJwt = require("../../../middlewares/authJwt");
+const authJwt = require("../../../middlewares/jwt.validations/authJwt");
 const restRouterpaymentmode = express.Router();
 
 restRouterpaymentmode.post("/", [authJwt.verifyToken],  PaymentModeController.addPaymentMode);

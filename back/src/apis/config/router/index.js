@@ -1,4 +1,6 @@
-const app = require("../../../../index");
+const app = require("../../../../index")
+const errorHandlerDetailsres = require("../../../middlewares/errorsHandler/error.handler.knex");
+;
 const { restRouterconfigApp } = require("../App.Configs/ConfigAppsRoutes");
 const { restRouterconfigAppImages } = require("../App.Configs/ConfigAppsRoutesImages");
 const { restRouterarticles } = require("../Articles/ArticlesRoutes");

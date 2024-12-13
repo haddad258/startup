@@ -1,7 +1,7 @@
 
 const express = require("express");
 const PublicationController = require("./PublicationController");
-const authJwt = require("../../../../middlewares/authJwt");
+const authJwt = require("../../../../middlewares/jwt.validations/authJwt");
 const restRouterpublications = express.Router();
 
 restRouterpublications.post("/", [authJwt.verifyToken],  PublicationController.addPublication);

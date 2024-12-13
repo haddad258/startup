@@ -60,7 +60,7 @@ exports.up = function (knex) {
         table.uuid('customerId').unsigned().references('id').inTable('customers').onDelete('CASCADE');
         table.uuid('profileId').unsigned().references('id').inTable('profilesId').onDelete('CASCADE');
         table.string('note').notNullable();
-        table.string('imei').notNullable();
+        table.string('imei').notNullable().defaultTo("null");
         table.timestamps(true, true);  // Raccourci pour ajouter les champs created_at et updated_at
       })
       .createTable("paymentcards", function (table) {

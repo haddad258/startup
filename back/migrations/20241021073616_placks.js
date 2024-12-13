@@ -18,6 +18,7 @@ exports.up = function (knex) {
         table.uuid("id").notNullable().defaultTo(knex.raw('uuid_generate_v4()')).primary();
         table.uuid('articleId').unsigned().references('id').inTable('articles').onDelete('CASCADE');
         table.uuid('placksId').unsigned().references('id').inTable('placks').onDelete('CASCADE');
+        table.uuid('providersId').unsigned().references('id').inTable('providers').onDelete('CASCADE');
         table.integer('quantity');// Quantité en plack
         table.integer("status").defaultTo(0);
         table.timestamps(true, true);                       // Dates de création et mise à jour

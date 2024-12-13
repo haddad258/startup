@@ -1,7 +1,7 @@
 
 const express = require("express");
 const PaymentCardController = require("./PaymentCardController");
-const authJwt = require("../../../../middlewares/authJwt");
+const authJwt = require("../../../../middlewares/jwt.validations/authJwt");
 const restRouterpaymentcards = express.Router();
 
 restRouterpaymentcards.post("/", [authJwt.verifyToken],  PaymentCardController.addPaymentCard);

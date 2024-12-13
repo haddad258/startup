@@ -1,7 +1,7 @@
 
 const express = require("express");
 const OrganizationIgenInfoController = require("./OrganizationIgenInfoController");
-const authJwt = require("../../../middlewares/authJwt");
+const authJwt = require("../../../middlewares/jwt.validations/authJwt");
 const restRouterorganization_gen_info = express.Router();
 
 restRouterorganization_gen_info.post("/", [authJwt.verifyToken],  OrganizationIgenInfoController.addOrganizationIgenInfo);

@@ -13,7 +13,7 @@ require('./src/apis/config.orders/router/index')  //orderManagemendts
 
 require('./src/public.api/router/index')  //customers APIs  - Config Public APIs
 require('./src/public.api/customers/images.Customers') //Customers Images APIs
-require('./payment/app') //Customers Images APIs
+// require('./payment/app') //Customers Images APIs
 
 
 

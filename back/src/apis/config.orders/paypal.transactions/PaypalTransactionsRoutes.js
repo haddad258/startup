@@ -1,7 +1,7 @@
 
 const express = require("express");
 const PaypalTransactionsController = require("./PaypalTransactionsController");
-const authJwt = require("../../../middlewares/authJwt");
+const authJwt = require("../../../middlewares/jwt.validations/authJwt");
 const restRouterpaypal_transactions = express.Router();
 
 restRouterpaypal_transactions.post("/", /* [authJwt.verifyToken],  */ PaypalTransactionsController.addPaypalTransactions);

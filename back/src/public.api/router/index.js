@@ -2,6 +2,7 @@ const app = require("../../../index");
 const { restRouterarticlesDiscounts } = require("../Articles/ArticlesDiscountsRoutes");
 const { restRouterarticles } = require("../Articles/ArticlesRoutes");
 const { restRouterconfigApp } = require("../app.config/ConfigAppsRoutes");
+const { restRoutercommonRowsFilter } = require("../app.config/Filter/commonRowsRoutes");
 const { restRoutercustomers } = require("../customers/CustomersRoutes");
 const { restRouterorders } = require("../customers/orders.Customers/CustomerOrdersRoutes");
 const { restRouterpaymentcards } = require("../customers/payment.card/PaymentCardCustomersRoutes");
@@ -21,6 +22,7 @@ restRouter.use("/api/mobile/discounts/articles", restRouterarticlesDiscounts);
 
 restRouter.use("/api/mobile/ordes/customers", restRouterorders);
 restRouter.use("/api/mobile/payment/card", restRouterpaymentcards);
+restRouter.use("/api/mobile/entity/filtered", restRoutercommonRowsFilter);
 
 ///route imports and usage as needed
 module.exports = restRouter;

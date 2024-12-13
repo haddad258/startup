@@ -1,7 +1,7 @@
 
 const express = require("express");
 const ProviderCalendarController = require("./ProviderCalendarController");
-const authJwt = require("../../../../middlewares/authJwt");
+const authJwt = require("../../../../middlewares/jwt.validations/authJwt");
 const restRouterprovidercalendar = express.Router();
 
 restRouterprovidercalendar.post("/", [authJwt.verifyToken],  ProviderCalendarController.addProviderCalendar);

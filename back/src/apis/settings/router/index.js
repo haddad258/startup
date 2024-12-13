@@ -1,4 +1,6 @@
-const app = require("../../../../index");
+const app = require("../../../../index")
+const errorHandlerDetailsres = require("../../../middlewares/errorsHandler/error.handler.knex");
+;
 const express = require("express");
 
 const { restRouterusers } = require("../admins/UsersRoutes");

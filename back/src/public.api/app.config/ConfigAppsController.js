@@ -12,6 +12,7 @@ class ConfigApp {
     this.updatedAt = updatedAt;
   }
 }
+
 const getAllConfigApp = async (req, res, next) => {
   try {
     const rows = await app.db
@@ -36,7 +37,7 @@ const getAllConfigApp = async (req, res, next) => {
       data: configApps,
     });
   } catch (error) {
-    next(new createHttpError.InternalServerError("Internal Server Error"));
+    errorHandlerDetailsres.handleSqlError(error,res, next);
   }
 };
 
@@ -60,7 +61,7 @@ const getAllConfigApps = async (req, res, next) => {
         });
       });
   } catch (error) {
-    next(new createHttpError.InternalServerError("Internal Server Error"));
+    errorHandlerDetailsres.handleSqlError(error,res, next);
   }
 };
 
@@ -88,7 +89,9 @@ const getConfigAppsById = async (req, res, next) => {
       });
   } catch (error) {
     
-    next(new createHttpError.BadRequest("Bad Request"));
+    //next(new createHttpError.BadRequest("Bad Request"));
+    errorHandlerDetailsres.handleSqlError(error,res, next);
+
   }
 };
 

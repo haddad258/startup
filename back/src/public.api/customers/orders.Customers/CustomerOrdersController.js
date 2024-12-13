@@ -1,7 +1,9 @@
 
 const createHttpError = require("http-errors");
 const uuid = require("uuid");
-const app = require("../../../../index");
+const app = require("../../../../index")
+const errorHandlerDetailsres = require("../../../middlewares/errorsHandler/error.handler.knex");
+;
 
 const calculateTotals = (products) => {
   return products.reduce(
@@ -44,15 +46,16 @@ const addCustomerOrders = async (req, res, next) => {
     // Insert order details into ordersdetails table
     await app.db.table('ordersdetails').insert(orderDetails);
     // Respond with success message
+    console.log("heheheheh")
     res.status(200).json({
       message: "New orders created successfully",
       status: 200,
       orderId: orderId, // Optionally return the ID of the new order
-      data: req.body,
     });
   } catch (error) {
     console.error(error); // Log the error for debugging
-    next(new createHttpError.BadRequest("Invalid values to create an order."));
+    // next(new createHttpError.BadRequest("Invalid values to create an order."));
+    errorHandlerDetailsres.handleSqlError(error, res, next);
   }
 };
 
@@ -71,7 +74,7 @@ const updateCustomerOrders = async (req, res, next) => {
         });
       });
   } catch (error) {
-    next(new createHttpError.InternalServerError(error));
+    errorHandlerDetailsres.handleSqlError(error, res, next);
   }
 };
 
@@ -81,7 +84,7 @@ const getAllCustomerOrderss = async (req, res, next) => {
     await app.db
       .from("orders")
       .select("*")
-      .where("customerId","=",req.userId)
+      .where("customerId", "=", req.userId)
       .then((rows) => {
         if (rows.length === 0) {
           return res.json({
@@ -97,7 +100,7 @@ const getAllCustomerOrderss = async (req, res, next) => {
         });
       });
   } catch (error) {
-    next(new createHttpError.InternalServerError("Internal Server Error"));
+    errorHandlerDetailsres.handleSqlError(error, res, next);
   }
 };
 
@@ -123,7 +126,9 @@ const getCustomerOrdersById = async (req, res, next) => {
         });
       });
   } catch (error) {
-    next(new createHttpError.BadRequest("Bad Request"));
+    //next(new createHttpError.BadRequest("Bad Request"));
+    errorHandlerDetailsres.handleSqlError(error, res, next);
+
   }
 };
 
@@ -133,4 +138,3 @@ module.exports = {
   getAllCustomerOrderss,
   getCustomerOrdersById,
 };
-  

@@ -1,7 +1,7 @@
 
 const express = require("express");
 const ProvidersController = require("./ProvidersController");
-const authJwt = require("../../../middlewares/authJwt");
+const authJwt = require("../../../middlewares/jwt.validations/authJwt");
 const restRouterproviders = express.Router();
 
 restRouterproviders.post("/", [authJwt.verifyToken],  ProvidersController.addProviders);

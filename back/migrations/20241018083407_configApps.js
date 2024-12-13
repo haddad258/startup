@@ -35,7 +35,7 @@ exports.up = function (knex) {
             })
             .createTable("articles", function (table) {
                 table.uuid("id").notNullable().defaultTo(knex.raw('uuid_generate_v4()')).primary();
-                table.uuid('categorieId').unsigned().references('id').inTable('categories').onDelete('CASCADE');
+                table.uuid('categoryId').unsigned().references('id').inTable('categories').onDelete('CASCADE');
                 table.uuid('itemkitId').unsigned().references('id').inTable('itemkits').onDelete('CASCADE');
                 table.uuid('itemId').unsigned().references('id').inTable('items').onDelete('CASCADE');
                 table.uuid('brandId').unsigned().references('id').inTable('brands').onDelete('CASCADE');

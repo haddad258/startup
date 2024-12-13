@@ -12,7 +12,7 @@ exports.up = function (knex) {
         table.string("privilege").defaultTo("provider");  // Keep default as provider
         table.integer("status").defaultTo(0);  // Default status (e.g., active = 1, inactive = 0)
         table.string("email").unique().notNullable();  // Unique and mandatory email
-        table.string("password").notNullable();  // Mandatory password field for security
+        table.string("password");  // Mandatory password field for security
         table.timestamp("last_login");  // Track last login time
         table.string("phone_number").unique();  // Add unique phone number (optional)
         table.string("address");  // Optional address field for provider
