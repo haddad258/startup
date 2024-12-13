@@ -12,7 +12,6 @@ import { AuthProvider } from 'src/components/context/JWTAuthContext';
 import './i18n';
 import axios from 'axios';
 import i18next from 'i18next';
-
 const lang=localStorage.getItem('lang')||'fr';
 axios.defaults.headers.common['Accept-Language']=lang;
 i18next.changeLanguage(lang);

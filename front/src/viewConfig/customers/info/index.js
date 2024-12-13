@@ -9,6 +9,8 @@ import {
 } from '@coreui/react';
 import { settingsCustomers } from 'src/services/SupperSettings/index';
 import GenericTable from 'src/components/Generic.Table';
+// import DataTable from 'src/components/Generic.Tables';
+// import DataTableTest from 'src/components/Generic.Tables/Tables.NextGenerations';
 
 import i18n from 'src/i18n';
 import ListImagesCustomersC from './ListImagesCustomers';
@@ -30,13 +32,13 @@ const Customers = () => {
     useEffect(() => {
         fetchCustomers();
     }, []);
-
+   
     const columns = [
         { label: '#', field: 'index' },
-        { label: i18n.t('usename'), field: 'username' },
-        { label: i18n.t('emailInputLabel'), field: 'email' },
-        { label: i18n.t('cinInputLabel'), field: 'cin' },
-        { label: i18n.t('phoneInputLabel'), field: 'phone_number' },
+        { label: i18n.t('usename'), field: 'username',filter:true },
+        { label: i18n.t('emailInputLabel'), field: 'email' ,filter:false},
+        { label: i18n.t('cinInputLabel'), field: 'cin',filter:true },
+        { label: i18n.t('phoneInputLabel'), field: 'phone_number' ,filter:true},
 
         {
             label: i18n.t('ImageProcessLabel'),
@@ -88,6 +90,8 @@ const Customers = () => {
                             </CCardHeader>
                             <CCardBody>
                                 <GenericTable columns={columns} data={List} />
+                                {/* <DataTable columns={columns} data={List} /> */}
+                                {/* <DataTableTest columns={columns} data={List} /> */}
                             </CCardBody>
                         </CCard>
                     </CCol>

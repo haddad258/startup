@@ -32,7 +32,7 @@
           { label: '#', field: 'index' },
           { label: i18n.t('customerId'), field: 'customerId' },
           { label: i18n.t('profileId'), field: 'profileId' },
-          { label: i18n.t('appreciationInputLabel'), field: 'note' },
+          { label: i18n.t('noteInputLabel'), field: 'note' },
           
           {
               label:  i18n.t('actionLabel'),

@@ -1,0 +1,7 @@
+export { default as settingsProviderAdvertisements } from './provider.advertisements'
+export { default as settingsProviderArticles } from './provider.advertisements'
+export { default as settingsProviderCustomers } from './provider.advertisements'
+export { default as settingsProviderOrders } from './provider.advertisements'
+export { default as settingsProviderPublications } from './provider.advertisements'
+export { default as settingsProviderSubscriptions } from './provider.advertisements'
+export { default as settingsCalendersProviders } from './provider.advertisements'

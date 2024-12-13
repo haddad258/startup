@@ -8,6 +8,7 @@ import {
 } from '@coreui/react';
 import i18n from 'src/i18n';
 import ReportingDashboardCounting from './dashboard/dashbord.counting';
+import HandleError from 'src/components/Handle.Error';
 const Reporting = () => {
     return (
         <CCard className="mb-4">
@@ -22,7 +23,7 @@ const Reporting = () => {
                 <ReportingDashboardCounting />
                 <CRow>
                     <CCol xs={12} md={6} xl={6}>
-                        other details
+                        other details <HandleError/>
                     </CCol>
                     <CCol xs={12} md={6} xl={6}>
                         other details

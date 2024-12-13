@@ -15,7 +15,7 @@ import {
 } from '@coreui/react';
 import CIcon from '@coreui/icons-react';
 import { cilPen, cilPlus } from '@coreui/icons';
-import { settingsProviderCustomers } from 'src/services/SupperSettings';
+import { settingsProviderCustomers } from 'src/services/provider.API';
 import PropTypes from 'prop-types';
 import i18n from 'src/i18n';
 

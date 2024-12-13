@@ -71,4 +71,10 @@ const ApiSupperSettings = {
 
 };
 
-export { API_URL, Apis, ApiSupperSettings ,API_URLPublic ,API_URLPublicArticles ,API_URLPublicCustomers};
+
+
+const ApiProviderSettings = {
+  api_ProviderAdvertisements: `${API_URL}/api/`,
+
+};
+export { API_URL, Apis, ApiSupperSettings ,API_URLPublic ,API_URLPublicArticles ,API_URLPublicCustomers ,ApiProviderSettings};

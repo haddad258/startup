@@ -7,7 +7,7 @@
       CCardHeader,
       CCardBody,
   } from '@coreui/react';
-  import { settingsProviderArticles } from 'src/services/SupperSettings/index';
+  import { settingsProviderArticles } from 'src/services/provider.API';
   import GenericTable from 'src/components/Generic.Table';
   import ProviderArticlesC from './ProviderArticles'
   import i18n from 'src/i18n';

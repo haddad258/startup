@@ -110,7 +110,7 @@ const ArticlesConfigsC = ({ refresh, selectedArticlesConfigs }) => {
                             <CFormLabel htmlFor="categoriesSelect">{i18n.t('CategoriesList')}</CFormLabel>
                             <CFormSelect
                                 value={ArticlesConfig.categories}
-                                onChange={(e) => setFormdata({ ...ArticlesConfig, categorieId: e.target.value })}
+                                onChange={(e) => setFormdata({ ...ArticlesConfig, categoryId: e.target.value })}
                                 id="categoriesSelect"
                                 
                             >

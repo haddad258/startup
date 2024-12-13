@@ -15,11 +15,11 @@ import {
 } from '@coreui/react';
 import CIcon from '@coreui/icons-react';
 import { cilPen, cilPlus } from '@coreui/icons';
-import { settingsProviderAdvertisements } from 'src/services/SupperSettings';
+import { settingsCalendersProviders } from 'src/services/provider.API';
 import PropTypes from 'prop-types';
 import i18n from 'src/i18n';
 
-const initialProviderAdvertisementstate = {
+const initialCalendersProviderstate = {
     name: '',
     description: '',
     appreciation: ''
@@ -27,28 +27,28 @@ const initialProviderAdvertisementstate = {
 };
 
 
-const ProviderAdvertisementsC = ({ refresh, selectedProviderAdvertisements }) => {
+const CalendersProvidersC = ({ refresh, selectedCalendersProviders }) => {
     const [visible, setVisible] = useState(false);
     const [validated, setValidated] = useState(false);
     const [isUpdateMode, setIsUpdateMode] = useState(false);
 
-    const [ProviderAdvertisement, setFormdata] = useState(initialProviderAdvertisementstate);
+    const [CalendersProvider, setFormdata] = useState(initialCalendersProviderstate);
 
     useEffect(() => {
-        setIsUpdateMode(!!selectedProviderAdvertisements);
-        setFormdata(selectedProviderAdvertisements || initialProviderAdvertisementstate);
-    }, [selectedProviderAdvertisements]);
+        setIsUpdateMode(!!selectedCalendersProviders);
+        setFormdata(selectedCalendersProviders || initialCalendersProviderstate);
+    }, [selectedCalendersProviders]);
 
     const handleAddOrUpdate = async () => {
         const result = isUpdateMode
-            ? await settingsProviderAdvertisements.updateProviderAdvertisements(ProviderAdvertisement, ProviderAdvertisement.id)
-            : await settingsProviderAdvertisements.addProviderAdvertisements(ProviderAdvertisement);
+            ? await settingsCalendersProviders.updateCalendersProviders(CalendersProvider, CalendersProvider.id)
+            : await settingsCalendersProviders.addCalendersProviders(CalendersProvider);
 
         if (result) {
             setVisible(false);
             setValidated(false);
             setIsUpdateMode(false);
-            setFormdata(initialProviderAdvertisementstate);
+            setFormdata(initialCalendersProviderstate);
             refresh();
         }
     };
@@ -67,7 +67,7 @@ const ProviderAdvertisementsC = ({ refresh, selectedProviderAdvertisements }) =>
         }
     };
 
-    const modalTitle = useMemo(() => (isUpdateMode ? i18n.t('updateProviderAdvertisementTitle') : i18n.t('addProviderAdvertisementTitle')), [isUpdateMode]);
+    const modalTitle = useMemo(() => (isUpdateMode ? i18n.t('updateCalendersProviderTitle') : i18n.t('addCalendersProviderTitle')), [isUpdateMode]);
 
     return (
         <>
@@ -94,21 +94,21 @@ const ProviderAdvertisementsC = ({ refresh, selectedProviderAdvertisements }) =>
                     >
                         <CCol md={12} className="position-relative">
                             <CFormLabel htmlFor="validationTooltip01">{i18n.t('nameInputLabel')}</CFormLabel>
-                            <CFormInput value={ProviderAdvertisement.name} onChange={(e) => setFormdata({ ...ProviderAdvertisement, name: e.target.value })} type="text" id="validationTooltip01" defaultValue="" required />
+                            <CFormInput value={CalendersProvider.name} onChange={(e) => setFormdata({ ...CalendersProvider, name: e.target.value })} type="text" id="validationTooltip01" defaultValue="" required />
                             <CFormFeedback tooltip invalid>
                                 {i18n.t('requiredNameField')}
                             </CFormFeedback>
                         </CCol>
                         <CCol md={12} className="position-relative">
                             <CFormLabel htmlFor="validationTooltip03">{i18n.t('descriptionInputLabel')}</CFormLabel>
-                            <CFormInput value={ProviderAdvertisement.description} onChange={(e) => setFormdata({ ...ProviderAdvertisement, description: e.target.value })} type="text" id="validationTooltip03" required />
+                            <CFormInput value={CalendersProvider.description} onChange={(e) => setFormdata({ ...CalendersProvider, description: e.target.value })} type="title" id="validationTooltip03" required />
                             <CFormFeedback tooltip invalid>
                             {i18n.t('requiredDescriptionField')}
                             </CFormFeedback>
                         </CCol>
                         <CCol md={12} className="position-relative">
                             <CFormLabel htmlFor="validationTooltip03">{i18n.t('appreciationInputLabel')}</CFormLabel>
-                            <CFormInput value={ProviderAdvertisement.appreciation} onChange={(e) => setFormdata({ ...ProviderAdvertisement, appreciation: e.target.value })} type="text" id="validationTooltip03" required />
+                            <CFormInput value={CalendersProvider.appreciation} onChange={(e) => setFormdata({ ...CalendersProvider, appreciation: e.target.value })} type="title" id="validationTooltip03" required />
                             <CFormFeedback tooltip invalid>
                             {i18n.t('requiredAppreciationField')}
                             </CFormFeedback>
@@ -126,10 +126,10 @@ const ProviderAdvertisementsC = ({ refresh, selectedProviderAdvertisements }) =>
     );
 };
 
-ProviderAdvertisementsC.propTypes = {
+CalendersProvidersC.propTypes = {
     refresh: PropTypes.func.isRequired,
-    selectedProviderAdvertisements: PropTypes.object,
+    selectedCalendersProviders: PropTypes.object,
 };
 
-export default ProviderAdvertisementsC;
+export default CalendersProvidersC;
 

@@ -207,7 +207,7 @@ const _navAdmin = [
       },
       {
         component: CNavItem,
-        name: i18n.t('StatusOrders'),
+        name: i18n.t('StatusOrdersDetails'),
         to: '/accounts/settings/details/orders',
       },
     ],

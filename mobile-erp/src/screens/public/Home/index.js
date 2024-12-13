@@ -3,6 +3,7 @@ import {
   ActivityIndicator,
   FlatList,
   SafeAreaView,
+  ScrollView,
   StatusBar,
   StyleSheet,
   Text,
@@ -45,8 +46,7 @@ const HomeScreen = () => {
   );
 
   return (
-    <View style={styles.safeArea}>
-      <StatusBar barStyle="light-content" translucent={true} backgroundColor="transparent" />
+    <ScrollView style={styles.safeArea}>
       <View style={styles.container}>
         {/* Header */}
         <View style={styles.headerContainer}>
@@ -78,17 +78,17 @@ const HomeScreen = () => {
           <View style={styles.transactionsHeader}>
             <Text style={styles.transactionsTitle}>Recent Transactions</Text>
             <TouchableOpacity>
-              <Text style={styles.seeAll}>See All</Text>
+              <Text style={styles.seeAll}>See Asll</Text>
             </TouchableOpacity>
           </View>
           <FlatList
-            data={[1,2,3]}
+            data={[1,2,3,8998,8,82,23,33,5,28]}
             keyExtractor={(item) => item.name}
             renderItem={renderTransactionItem}
           />
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
