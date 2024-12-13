@@ -1,6 +1,6 @@
 const express = require("express");
 const DiscountArticlesController = require("../ArticlesController");
-const authJwt = require("../../../../middlewares/authJwt");
+const authJwt = require("../../../../middlewares/jwt.validations/authJwt");
 const restRouterdiscountarticles = express.Router();
 
 restRouterdiscountarticles.post("/", [authJwt.verifyToken],  DiscountArticlesController.addDiscountArticles);

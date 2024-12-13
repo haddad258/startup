@@ -4,56 +4,13 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const path = require("path");
 const swaggerJSDoc = require("swagger-jsdoc");
-const swaggerUi = require("swagger-ui-express");
 fs = require('fs');
-const swaggerDefinition = {
-  openapi: "3.0.0",
-  info: {
-    title: "API",
-    version: "1.0.0",
-    description: "Document for  plateform",
-    license: {
-      name: "Licensed Under MIT",
-      url: "https://spdx.org/licenses/MIT.html",
-    },
-    contact: {
-      name: "H.rafik",
-      url: "haddadrafik258@gmail.com",
-    },
-  },
-  servers: [
-    {
-      url: "http://localhost:8009",
-      description: "Development server",
-    },
-  ],
-  components: {
-    securitySchemes: {
-      jwt: {
-        type: "http",
-        scheme: "bearer",
-        in: "header",
-        bearerFormat: "JWT",
-      },
-    },
-  },
-  security: [
-    {
-      jwt: [],
-    },
-  ],
-};
-
-const options = {
-  swaggerDefinition,
-  // Paths to files containing OpenAPI definitions
-  apis: ["./src/apis/web/*.js", "./src/apis/mobile/*.js", "./src/apis/statistic/*.js"],
-};
+const { swaggerUi, swaggerSpec ,swaggerAuthMiddleware} = require('./swagger-docs');
 
 
 
-const swaggerSpec = swaggerJSDoc(options);
 const app = express();
+app.use('/api-docs',swaggerAuthMiddleware, swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use('/public', express.static(path.join(__dirname, 'public')));
 app.use(express.static(__dirname + "/public"));
 app.use(express.static(__dirname + "/public/build"));
@@ -61,6 +18,19 @@ app.use(express.static(__dirname + "/views"));
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use((err, req, res, next) => {
+  console.error(err); // Log error for debugging
+
+  if (res.headersSent) {
+    return next(err);
+  }
+
+  res.status(err.status || 500).json({
+    status: err.status || 500,
+    message: err.message || "Internal Server Error",
+    details: err.details || null, // Attach error details if available
+  });
+});
 app.use(function (req, res, next) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
@@ -79,6 +49,6 @@ module.exports = app;
 
 require("./contributor-1");
 
-app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
 console.log("listening on port " + env.port);
 app.listen(env.port || 80);

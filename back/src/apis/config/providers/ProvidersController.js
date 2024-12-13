@@ -1,7 +1,9 @@
 
 const createHttpError = require("http-errors");
 const uuid = require("uuid");
-const app = require("../../../../index");
+const app = require("../../../../index")
+const errorHandlerDetailsres = require("../../../middlewares/errorsHandler/error.handler.knex");
+;
 const bcrypt = require('bcrypt-nodejs');
 
 const addProviders = async (req, res, next) => {
@@ -37,7 +39,7 @@ const updateProviders = async (req, res, next) => {
         });
       });
   } catch (error) {
-    next(new createHttpError.InternalServerError(error));
+    errorHandlerDetailsres.handleSqlError(error,res, next);
   }
 };
 
@@ -61,7 +63,7 @@ const getAllProviders = async (req, res, next) => {
         });
       });
   } catch (error) {
-    next(new createHttpError.InternalServerError("Internal Server Error"));
+    errorHandlerDetailsres.handleSqlError(error,res, next);
   }
 };
 
@@ -87,7 +89,9 @@ const getProvidersById = async (req, res, next) => {
         });
       });
   } catch (error) {
-    next(new createHttpError.BadRequest("Bad Request"));
+    //next(new createHttpError.BadRequest("Bad Request"));
+    errorHandlerDetailsres.handleSqlError(error,res, next);
+
   }
 };
 const updateUserPassword = async (req, res, next) => {
@@ -105,7 +109,7 @@ const updateUserPassword = async (req, res, next) => {
         });
       });
   } catch (error) {
-    next(new createHttpError.InternalServerError(error));
+    errorHandlerDetailsres.handleSqlError(error,res, next);
   }
 };
 module.exports = {

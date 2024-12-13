@@ -60,7 +60,7 @@ function ProfileQr(props) {
     );
 };
 ProfileQr.propTypes = {
-    refresh: PropTypes.func.isRequired, // Ensure that 'refresh' is a function and is required
+    refresh: PropTypes.func, // Ensure that 'refresh' is a function and is required
     selectedProfile: PropTypes.object, // Prop to pass the selected Profile for update mode
 };
 export default ProfileQr;

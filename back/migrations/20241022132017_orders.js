@@ -6,6 +6,7 @@ exports.up = function (knex) {
                 table.uuid("id").notNullable().defaultTo(knex.raw('uuid_generate_v4()')).primary();
                 table.string('name');                           // Description of the order
                 table.string('description');                           // Description of the order
+                table.string('colors');                           // Description of the order
                 table.integer("events").defaultTo(0);                 // Status (same field kept for backward compatibility)
                 table.integer("status").defaultTo(0);                 // Status (same field kept for backward compatibility)
                 table.timestamps(true, true);                         // Created at and updated at timestamps

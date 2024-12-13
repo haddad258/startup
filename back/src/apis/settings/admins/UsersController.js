@@ -1,11 +1,14 @@
 
 const createHttpError = require("http-errors");
 const uuid = require("uuid");
-const app = require("../../../../index");
+const app = require("../../../../index")
+const errorHandlerDetailsres = require("../../../middlewares/errorsHandler/error.handler.knex");
+;
 const bcrypt = require('bcrypt-nodejs');
 
 const addUsers = async (req, res, next) => {
   try {
+    console.log(req.body)
     await app.db
       .table(`users`)
       .insert(req.body)
@@ -17,9 +20,7 @@ const addUsers = async (req, res, next) => {
         });
       });
   } catch (error) {
-    next(
-      new createHttpError.BadRequest("Invalid values to create a users.")
-    );
+    errorHandlerDetailsres.handleSqlError(error,res, next);
   }
 };
 
@@ -37,7 +38,7 @@ const updateUsers = async (req, res, next) => {
         });
       });
   } catch (error) {
-    next(new createHttpError.InternalServerError(error));
+    errorHandlerDetailsres.handleSqlError(error,res, next);
   }
 };
 const updateUserPassword = async (req, res, next) => {
@@ -56,7 +57,7 @@ const updateUserPassword = async (req, res, next) => {
         });
       });
   } catch (error) {
-    next(new createHttpError.InternalServerError(error));
+    errorHandlerDetailsres.handleSqlError(error,res, next);
   }
 };
 const getAllUserss = async (req, res, next) => {
@@ -79,7 +80,7 @@ const getAllUserss = async (req, res, next) => {
         });
       });
   } catch (error) {
-    next(new createHttpError.InternalServerError("Internal Server Error"));
+    errorHandlerDetailsres.handleSqlError(error,res, next);
   }
 };
 
@@ -105,7 +106,9 @@ const getUsersById = async (req, res, next) => {
         });
       });
   } catch (error) {
-    next(new createHttpError.BadRequest("Bad Request"));
+    //next(new createHttpError.BadRequest("Bad Request"));
+    errorHandlerDetailsres.handleSqlError(error,res, next);
+
   }
 };
 

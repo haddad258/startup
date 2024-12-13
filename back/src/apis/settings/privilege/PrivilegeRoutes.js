@@ -1,7 +1,7 @@
 
 const express = require("express");
 const PrivilegeController = require("./PrivilegeController");
-const authJwt = require("../../../middlewares/authJwt");
+const authJwt = require("../../../middlewares/jwt.validations/authJwt");
 
 const restRouterprivilege = express.Router();
 

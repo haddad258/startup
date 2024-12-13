@@ -1,7 +1,7 @@
 
 const express = require("express");
 const ProfilesCryptesController = require("./ProfilesCryptesController");
-const authJwt = require("../../../../middlewares/authJwt");
+const authJwt = require("../../../../middlewares/jwt.validations/authJwt");
 const restRouterprofilescryptes = express.Router();
 
 restRouterprofilescryptes.post("/", [authJwt.verifyToken],  ProfilesCryptesController.addProfilesCryptes);

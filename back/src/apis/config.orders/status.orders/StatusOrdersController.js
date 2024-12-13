@@ -1,7 +1,9 @@
 
 const createHttpError = require("http-errors");
 const uuid = require("uuid");
-const app = require("../../../../index");
+const app = require("../../../../index")
+const errorHandlerDetailsres = require("../../../middlewares/errorsHandler/error.handler.knex");
+;
 
 const addStatusOrders = async (req, res, next) => {
   try {
@@ -36,7 +38,7 @@ const updateStatusOrders = async (req, res, next) => {
         });
       });
   } catch (error) {
-    next(new createHttpError.InternalServerError(error));
+    errorHandlerDetailsres.handleSqlError(error,res, next);
   }
 };
 
@@ -60,7 +62,7 @@ const getAllStatusOrderss = async (req, res, next) => {
         });
       });
   } catch (error) {
-    next(new createHttpError.InternalServerError("Internal Server Error"));
+    errorHandlerDetailsres.handleSqlError(error,res, next);
   }
 };
 
@@ -86,7 +88,9 @@ const getStatusOrdersById = async (req, res, next) => {
         });
       });
   } catch (error) {
-    next(new createHttpError.BadRequest("Bad Request"));
+    //next(new createHttpError.BadRequest("Bad Request"));
+    errorHandlerDetailsres.handleSqlError(error,res, next);
+
   }
 };
 

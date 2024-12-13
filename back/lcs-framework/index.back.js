@@ -6,7 +6,9 @@ function generateScript(modelName, routeName) {
   const controllerScript = `
 const createHttpError = require("http-errors");
 const uuid = require("uuid");
-const app = require("../../../../index");
+const app = require("../../../../index")
+const errorHandlerDetailsres = require("../../../middlewares/errorsHandler/error.handler.knex");
+;
 
 const add${modelName} = async (req, res, next) => {
   try {
@@ -41,7 +43,7 @@ const update${modelName} = async (req, res, next) => {
         });
       });
   } catch (error) {
-    next(new createHttpError.InternalServerError(error));
+    errorHandlerDetailsres.handleSqlError(error,res, next);
   }
 };
 
@@ -65,7 +67,7 @@ const getAll${modelName}s = async (req, res, next) => {
         });
       });
   } catch (error) {
-    next(new createHttpError.InternalServerError("Internal Server Error"));
+    errorHandlerDetailsres.handleSqlError(error,res, next);
   }
 };
 
@@ -91,7 +93,9 @@ const get${modelName}ById = async (req, res, next) => {
         });
       });
   } catch (error) {
-    next(new createHttpError.BadRequest("Bad Request"));
+    //next(new createHttpError.BadRequest("Bad Request"));
+    errorHandlerDetailsres.handleSqlError(error,res, next);
+
   }
 };
 

@@ -1,7 +1,9 @@
 
 const createHttpError = require("http-errors");
 const uuid = require("uuid");
-const app = require("../../../../index");
+const app = require("../../../../index")
+const errorHandlerDetailsres = require("../../../middlewares/errorsHandler/error.handler.knex");
+;
 
 const addConfigApps = async (req, res, next) => {
   try {
@@ -17,10 +19,8 @@ const addConfigApps = async (req, res, next) => {
         });
       });
   } catch (error) {
-    console.log(error)
-    next(
-      new createHttpError.BadRequest("Invalid values to create a configApp.")
-    );
+    errorHandlerDetailsres.handleSqlError(error,res);
+    
   }
 };
 
@@ -38,7 +38,7 @@ const updateConfigApps = async (req, res, next) => {
         });
       });
   } catch (error) {
-    next(new createHttpError.InternalServerError(error));
+    errorHandlerDetailsres.handleSqlError(error,res, next);
   }
 };
 
@@ -63,7 +63,7 @@ const getAllConfigApps = async (req, res, next) => {
         });
       });
   } catch (error) {
-    next(new createHttpError.InternalServerError("Internal Server Error"));
+    errorHandlerDetailsres.handleSqlError(error,res, next);
   }
 };
 
@@ -91,7 +91,9 @@ const getConfigAppsById = async (req, res, next) => {
         });
       });
   } catch (error) {
-    next(new createHttpError.BadRequest("Bad Request"));
+    //next(new createHttpError.BadRequest("Bad Request"));
+    errorHandlerDetailsres.handleSqlError(error,res, next);
+
   }
 };
 const getImagesArticles = async (req, res, next) => {
@@ -117,7 +119,9 @@ const getImagesArticles = async (req, res, next) => {
         });
       });
   } catch (error) {
-    next(new createHttpError.BadRequest("Bad Request"));
+    //next(new createHttpError.BadRequest("Bad Request"));
+    errorHandlerDetailsres.handleSqlError(error,res, next);
+
   }
 };
 module.exports = {

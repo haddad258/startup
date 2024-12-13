@@ -1,7 +1,7 @@
 
 const express = require("express");
 const StatusOrdersController = require("./StatusOrdersController");
-const authJwt = require("../../../middlewares/authJwt");
+const authJwt = require("../../../middlewares/jwt.validations/authJwt");
 const restRouterstatusorders = express.Router();
 
 restRouterstatusorders.post("/", [authJwt.verifyToken],  StatusOrdersController.addStatusOrders);

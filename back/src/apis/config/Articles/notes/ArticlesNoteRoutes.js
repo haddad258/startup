@@ -1,7 +1,7 @@
 
 const express = require("express");
 const ArticlesNoteController = require("./ArticlesNoteController");
-const authJwt = require("../../../../middlewares/authJwt");
+const authJwt = require("../../../../middlewares/jwt.validations/authJwt");
 const restRouterarticlesnotes = express.Router();
 
 restRouterarticlesnotes.post("/", [authJwt.verifyToken],  ArticlesNoteController.addArticlesNote);

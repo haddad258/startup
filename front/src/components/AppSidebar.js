@@ -17,12 +17,17 @@ import { AppSidebarNav } from './AppSidebarNav';
 import Paths from 'src/services/common.settings/config';
 import _navAdmin from 'src/navigations/navigationAdmin';
 import _navComponenet from 'src/navigations/_navComponenet';
+import _navProvider from 'src/navigations/navigationsProviders';
+
+
 import i18n from 'src/i18n';
 function renderSidebarNav(user) {
   if (user.privilege === 'design') {
     return <AppSidebarNav items={_navComponenet} />;
   } else if (user.privilege === 'SUADMIN') {
     return <AppSidebarNav items={_navAdmin} />;
+  } else if (user.privilege === 'provider') {
+    return <AppSidebarNav items={_navProvider} />;
   }
   return null;
 }
@@ -32,7 +37,7 @@ function renderSidebarNavRH(user) {
   } else if (user.privilege === 'SUADMINRH') {
     return <AppSidebarNav items={_navAdmin} />;
   } else if (user.privilege === 'SUADMINRH') {
-    return <AppSidebarNav items={_navAdmin} />;
+    return <AppSidebarNav items={_navProvider} />;
 
   }
   return null;
@@ -45,9 +50,12 @@ function AppSidebar() {
 
   return (
     <CSidebar
-      className="border-end"
+      // className="border-end"
       colorScheme="dark"
       position="fixed"
+      // size="sm"
+      // placement="end"
+      //  dir="rtl"
       unfoldable={sidebarUnfoldable}
       visible={sidebarShow}
       onVisibleChange={(visible) => {
@@ -56,10 +64,10 @@ function AppSidebar() {
     >
       <CSidebarHeader className="border-bottom">
         <CSidebarBrand to="/">
-          <img src={Paths.appSrcLogo} alt="Logo" height={32}  />
-          <span 
-          className="small text-body-secondary"
-          style={{ textDecoration: 'none', marginLeft: '8px' }}
+          <img src={Paths.appSrcLogo} alt="Logo" height={32} />
+          <span
+            className="small text-body-secondary"
+            style={{ textDecoration: 'none', marginRight: '8px' }}
           >{i18n.t('SISidebarTitle')}</span>
           {/* <CIcon customClassName="sidebar-brand-full" icon={logo} height={32} /> */}
           <CIcon customClassName="sidebar-brand-narrow" icon={"sygnet"} height={32} />

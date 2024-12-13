@@ -1,7 +1,9 @@
 
 const createHttpError = require("http-errors");
 const uuid = require("uuid");
-const app = require("../../../../index");
+const app = require("../../../../index")
+const errorHandlerDetailsres = require("../../../middlewares/errorsHandler/error.handler.knex");
+;
 
 
 
@@ -11,7 +13,7 @@ const getAllCountTablesDashboards = async (req, res, next) => {
     const list = await app.db
       .select('table_name')
       .from('information_schema.tables')
-      .where('table_schema', 'public') // Change schema if needed
+      .where('table_schema', 'public')
     const tableNames = ["users",
       "paymentmode",
       "customers",
@@ -50,7 +52,7 @@ const getAllCountTablesDashboards = async (req, res, next) => {
 
   } catch (error) {
     console.error("Error fetching row counts: ", error);
-    next(new createHttpError.InternalServerError("Internal Server Error"));
+    errorHandlerDetailsres.handleSqlError(error,res, next);
   }
 };
 
@@ -79,11 +81,41 @@ const getKpiDashboardById = async (req, res, next) => {
         });
       });
   } catch (error) {
-    next(new createHttpError.BadRequest("Bad Request"));
+    //next(new createHttpError.BadRequest("Bad Request"));
+    errorHandlerDetailsres.handleSqlError(error,res, next);
+
   }
 };
+
+const getOrderCountByStatus = async (req, res) => {
+  try {
+    const totalOrdersResult = await app.db('orders')
+      .count('id as total_orders');
+    const totalOrders = totalOrdersResult[0].total_orders;
+    const result = await app.db('orders')
+      .select('statusorders.name as status_name')
+      .count('orders.id as order_count')
+      .leftJoin('statusorders', 'orders.paymentstatusId', '=', 'statusorders.id')
+      .groupBy('statusorders.name');
+    const response = result.map(item => ({
+      status_name: item.status_name,
+      order_count: item.order_count,
+      percentage: ((item.order_count / totalOrders) * 100).toFixed(2) + '%'
+    }));
+    res.json({
+      message: "Order count by status",
+      status: 200,
+      data: response
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Failed to get order counts by status' });
+  }
+};
+
 
 module.exports = {
   getAllCountTablesDashboards,
   getKpiDashboardById,
+  getOrderCountByStatus
 };

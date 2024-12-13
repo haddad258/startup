@@ -8,7 +8,7 @@ export const AppSidebarNav = ({ items }) => {
   const navLink = (name, icon, badge, indent = false) => {
 
     return (
-      <div style={{ display: "flex", alignItems: "center", color: "white" }}>
+      <div key={name} style={{ display: "flex", alignItems: "center", color: "white" }}>
         <>
           {icon ? (
             icon
@@ -35,7 +35,7 @@ export const AppSidebarNav = ({ items }) => {
     const isActive = location.pathname === item.to;
 
   return (
-    <NavLink style={{ textDecoration: "none", backgroundColor: "#FFAAFF" }} to={item.to}>
+    <NavLink  key={name}  style={{ textDecoration: "none" }} to={item.to}>
       <Component
         {...(rest.to &&
           !rest.items && {

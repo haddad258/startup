@@ -3,7 +3,7 @@ const createHttpError = require("http-errors");
 const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
-const authJwt = require("../../middlewares/authCustomer");
+const authJwt = require("../../middlewares/jwt.validations/authCustomer");
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {

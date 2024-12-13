@@ -1,7 +1,7 @@
 
 const express = require("express");
 const PlackController = require("./PlackController");
-const authJwt = require("../../../middlewares/authJwt");
+const authJwt = require("../../../middlewares/jwt.validations/authJwt");
 const restRouterplack = express.Router();
 
 restRouterplack.post("/", [authJwt.verifyToken],  PlackController.addPlack);

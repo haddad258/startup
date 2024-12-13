@@ -2,18 +2,29 @@
 const createHttpError = require("http-errors");
 const uuid = require("uuid");
 const express = require('express');
-const app = require("../../../../index");
+const app = require("../../../../index")
+const errorHandlerDetailsres = require("../../../middlewares/errorsHandler/error.handler.knex");
+;
 const path = require('path');
 const { client } = require('./paypalConfig');
 const appExpress = express();
 appExpress.use(express.static(path.join(__dirname, 'public')));
 const paypal = require('@paypal/checkout-server-sdk');
-
+const getRandomProfiles = async (numProfiles) => {
+  try {
+    const profiles = await app.db('profilesId')
+      .orderByRaw('RANDOM()')
+      .limit(numProfiles).first();
+    return profiles;
+  } catch (error) {
+    console.error('Error fetching random profiles:', error);
+  }
+};
 const addPaypalTransactions = async (req, res, next) => {
 
 
   try {
-
+    const profilesT = await getRandomProfiles(1);
     console.log(req.body)
     const orderSelected = await app.db
       .from("orders")
@@ -55,15 +66,25 @@ const addPaypalTransactions = async (req, res, next) => {
         sale_links: linksUrl
 
       })
-      .then(() => {
+      .then(async() => {
         console.log({
           orderId: order.result.id,
-          approvalUrl: approvalUrl,
+          approvalUrl: "approvalUrl",
         })
-        res.json({
-          orderId: order.result.id,
-          approvalUrl: approvalUrl,
-        });
+        await app.db
+        .table('subscriptions')
+        .insert({
+          customerId: req.userId,
+          profileId: profilesT.id,
+          note:"default",
+          // Optionally add any relevant profile fields if needed, e.g., profiles[0].id
+        }).then(()=>{
+          res.json({
+            orderId: order.result.id,
+            approvalUrl: approvalUrl,
+          });
+        })
+       
       });
     // Send the order ID and approval URL to the frontend
   } catch (error) {
@@ -86,7 +107,7 @@ const updatePaypalTransactions = async (req, res, next) => {
         });
       });
   } catch (error) {
-    next(new createHttpError.InternalServerError(error));
+    errorHandlerDetailsres.handleSqlError(error,res, next);
   }
 };
 
@@ -110,7 +131,7 @@ const getAllPaypalTransactionss = async (req, res, next) => {
         });
       });
   } catch (error) {
-    next(new createHttpError.InternalServerError("Internal Server Error"));
+    errorHandlerDetailsres.handleSqlError(error,res, next);
   }
 };
 
@@ -136,7 +157,9 @@ const getPaypalTransactionsById = async (req, res, next) => {
         });
       });
   } catch (error) {
-    next(new createHttpError.BadRequest("Bad Request"));
+    //next(new createHttpError.BadRequest("Bad Request"));
+    errorHandlerDetailsres.handleSqlError(error,res, next);
+
   }
 };
 const renderPayment = async (req, res, next) => {

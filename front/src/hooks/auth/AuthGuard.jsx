@@ -6,6 +6,8 @@ const AuthGuard = ({ children }) => {
   const { isAuthenticated } = useAuth();
   const { pathname } = useLocation();
   const hasAuthToken = !!localStorage.getItem('@accessToken');
+  // alert(pathname)
+
   if (isAuthenticated && hasAuthToken) return <>{children}</>;
   return <Navigate replace to="/login" state={{ from: pathname }} />;
 };

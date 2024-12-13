@@ -1,4 +1,6 @@
-const app = require("../../../../index");
+const app = require("../../../../index")
+const errorHandlerDetailsres = require("../../../middlewares/errorsHandler/error.handler.knex");
+;
 const { restRouterorders } = require("../orders/OrdersRoutes");
 const { restRouterstatusorders } = require("../status.orders/StatusOrdersRoutes");
 const { restRouterordersdetails } = require("../orders.details/OrdersDetailsRoutes");

@@ -25,15 +25,15 @@ function LoginUser() {
   const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
-      email: 'employeA',
-      password: 'employeA',
+      email: 'providerA',
+      password: 'providerA',
       remember: true
     },
     onSubmit: async (values) => {
       try {
         const logRes = await loginEmploye(values.email, values.password);
         if (logRes) {
-          navigate('/dashboard');
+          navigate('/providers/view/applications/reporting');
         } else {
           alert('Login failed');
         }

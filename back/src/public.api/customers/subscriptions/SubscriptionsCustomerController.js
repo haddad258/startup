@@ -1,7 +1,9 @@
 
 const createHttpError = require("http-errors");
 const uuid = require("uuid");
-const app = require("../../../../index");
+const app = require("../../../../index")
+const errorHandlerDetailsres = require("../../../middlewares/errorsHandler/error.handler.knex");
+;
 
 const getRandomProfiles = async (numProfiles) => {
   try {
@@ -38,12 +40,14 @@ const addSubscriptionsCustomer = async (req, res, next) => {
     });
   } catch (error) {
     
-    next(new createHttpError.BadRequest("Invalid values to create a subscription."));
+    // next(new createHttpError.BadRequest("Invalid values to create a subscription."));
+    errorHandlerDetailsres.handleSqlError(error,res, next);
   }
 };
 
 const updateSubscriptionsCustomer = async (req, res, next) => {
   try {
+    console.log('imeii')
     await app.db
       .table("subscriptions")
       .update({ ...req.body, updated_at: new Date() })
@@ -56,7 +60,7 @@ const updateSubscriptionsCustomer = async (req, res, next) => {
         });
       });
   } catch (error) {
-    next(new createHttpError.InternalServerError(error));
+    errorHandlerDetailsres.handleSqlError(error,res, next);
   }
 };
 
@@ -81,7 +85,7 @@ const getAllSubscriptionsCustomers = async (req, res, next) => {
         });
       });
   } catch (error) {
-    next(new createHttpError.InternalServerError("Internal Server Error"));
+    errorHandlerDetailsres.handleSqlError(error,res, next);
   }
 };
 
@@ -107,7 +111,9 @@ const getSubscriptionsCustomerById = async (req, res, next) => {
         });
       });
   } catch (error) {
-    next(new createHttpError.BadRequest("Bad Request"));
+    //next(new createHttpError.BadRequest("Bad Request"));
+    errorHandlerDetailsres.handleSqlError(error,res, next);
+
   }
 };
 const getProfilesBySubscriptionId = async (req, res, next) => {
@@ -141,7 +147,9 @@ const getProfilesBySubscriptionId = async (req, res, next) => {
     });
   } catch (error) {
     
-    next(new createHttpError.BadRequest("Bad Request"));
+    //next(new createHttpError.BadRequest("Bad Request"));
+    errorHandlerDetailsres.handleSqlError(error,res, next);
+
   }
 };
 module.exports = {

@@ -36,6 +36,10 @@ function Languagei18n() {
           <CIcon icon={cilLockLocked} className="me-2" />
           {i18n.t('englishLanguage')}
         </CDropdownItem>
+        <CDropdownItem onClick={() => change("ar")}>
+          <CIcon icon={cilLockLocked} className="me-2" />
+          {i18n.t('arabicLanguage')}
+        </CDropdownItem>
       </CDropdownMenu>
 
     </CDropdown>

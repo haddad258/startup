@@ -99,7 +99,7 @@ function App({ columns, data }) {
     },
     render: (text) =>
       searchedColumn === dataIndex ? (
-       <div style={{backgroundColor:'#FFAAFF'}} >
+       <div style={{backgroundColor:'#6b7ff7'}} >
         {searchText}
        </div>
       ) : (
