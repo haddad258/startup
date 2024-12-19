@@ -14,7 +14,7 @@ const getarticles = async (filter) => {
 const addarticles = async (status) => {
     try {
         const result = await api.post(Apis.api_articles,  status);
-        console.log(Apis.api_articles,status)
+        console.log(result)
         return result.data.error ? null : result.data;
     } catch (error) {
         console.error(error.response?.data?._server_messages);

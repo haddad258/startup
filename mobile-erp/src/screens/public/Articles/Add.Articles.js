@@ -2,14 +2,16 @@ import { Alert, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View 
 import React, { useState } from 'react';
 import { Colors } from '../../../core/theme';
 import { ArticleSettings } from '../../../service/doctype'; // Ensure this is properly configured
+import TextInputDoc from '../../../components/Doctype/TextInputDoc';
+import SelectInputDocs from '../../../components/Doctype/SelectInputDocs';
 
 const AddArticleScreen = ({ navigation }) => {
     const [item, setItem] = useState({
-        item_code: 'item_code',
-        item_name: 'item_name',
-        item_group: '000AR',
-        stock_uom: 'pce',
-        description: 'description'
+        item_code: '',
+        item_name: '',
+        item_group: '',
+        stock_uom: '',
+        description: ''
     });
 
     const handleSave = async () => {
@@ -27,7 +29,7 @@ const AddArticleScreen = ({ navigation }) => {
 
     return (
         <ScrollView style={styles.container}>
-            <TextInput
+            <TextInputDoc
                 placeholder="Item Code"
                 value={item.item_code}
                 onChangeText={(text) => setItem({ ...item, item_code: text })}
@@ -39,17 +41,20 @@ const AddArticleScreen = ({ navigation }) => {
                 onChangeText={(text) => setItem({ ...item, item_name: text })}
                 style={styles.input}
             />
-            <TextInput
+            <SelectInputDocs
                 placeholder="Item Group"
                 value={item.item_group}
-                onChangeText={(text) => setItem({ ...item, item_group: text })}
+                onChangeText={(option) => setItem({ ...item, item_group: option.name })}
                 style={styles.input}
+                doctype={"Item Group"}
             />
-            <TextInput
+            <SelectInputDocs
                 placeholder="Stock UOM"
                 value={item.stock_uom}
-                onChangeText={(text) => setItem({ ...item, stock_uom: text })}
+                onChangeText={(option) => setItem({ ...item, stock_uom: option.name })}
                 style={styles.input}
+                doctype={"UOM"}
+
             />
             <TextInput
                 placeholder="Description"

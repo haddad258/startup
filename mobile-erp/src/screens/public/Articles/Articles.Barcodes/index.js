@@ -30,7 +30,7 @@ export default function CameraValidate() {
       if (BarcodeSearch) {
         colseModal(); // Close modal on successful scan
         // setList(list?.data);
-        console.log(BarcodeSearch?.data);
+        console.log(BarcodeSearch?.data?.item_code);
       }
     } catch (error) {
       colseModal(); // Close modal on successful scan

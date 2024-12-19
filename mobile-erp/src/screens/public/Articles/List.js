@@ -14,7 +14,7 @@ function Articles() {
     }, [])
     useFocusEffect(
         useCallback(() => {
-            console.log('HomeScreen is focused');
+            fetchArticles()
             return () => {
                 console.log('HomeScreen is unfocused');
             };
@@ -32,12 +32,7 @@ function Articles() {
     };
     return (
         <View style={{ flex: 1, backgroundColor: Colors.white }}>
-            <FlatList
-                data={List}
-                vertical
-                renderItem={({ item }) => (<ArticleItem item={item} />)}
-                keyExtractor={item => item.name}
-            />
+         
              <FlatList
                 data={List}
                 vertical

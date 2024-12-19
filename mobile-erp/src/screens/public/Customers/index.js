@@ -1,45 +1,61 @@
-import React, { useEffect, useState , useCallback} from "react";
-import { FlatList, StyleSheet, Text, View } from "react-native";
-import Customers from './Customers'
-import { Colors } from "../../../core/theme";
-import { useFocusEffect } from '@react-navigation/native';
-import { CustomerSettings } from "../../../service/doctype/index";
-function Customer() {
-    const [List, setList] = useState([])
+import * as React from "react";
+import { FontAwesome5 } from "@expo/vector-icons";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { StyleSheet } from "react-native";
+import ListCustomers from "./List";
+import AddCustomerScreen from "./Add.Customers";
 
-    useEffect(() => {
-        console.log('HomeScreen is focused');
-        fetchCustomers()
-      }, [])
-    useFocusEffect(
-        useCallback(() => {
-        fetchCustomers()
-          console.log('HomeScreen is focused');
-          return () => {
-            console.log('HomeScreen is unfocused');
-          };
-        }, [])
-      );
-      const fetchCustomers = async () => {
-        try {
-            const list = await CustomerSettings.getcustomers(`?fields=["*"]`);
-            if (list) {
-                setList(list?.data);
-            }
-        } catch (error) {
-            console.error('Error fetching admin list:', error);
-        }
-    };
+
+import { Colors } from '../../../core/theme'
+
+const Tab = createBottomTabNavigator();
+
+const Sales = () => {
     return (
-        <View style={{ flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: Colors.white }}>
-            <FlatList
-                data={List}
-                numColumns={2}
-                vertical
-                renderItem={({ item }) => (<Customers item={item} />)}
-                keyExtractor={item => item.name}
+        <Tab.Navigator
+            initialRouteName="ListCustomers"
+            screenOptions={{
+                headerTitleStyle: styles.headerTitleStyle,
+                tabBarActiveTintColor: Colors.info,
+                tabBarInactiveTintColor: Colors.secondary,
+                tabBarStyle: { backgroundColor: Colors.white },
+                headerStyle: styles.headerStyle,
+            }}>
+            <Tab.Screen
+                options={{
+                    title: "ListCustomers",
+                    tabBarIcon: ({ color, size }) => (
+                        <FontAwesome5 name="list" color={color} size={size} />
+                    ),
+                }}
+                name="ListCustomers"
+                component={ListCustomers}
             />
-        </View>
+            <Tab.Screen
+                options={{
+                    title: "AddCustomerScreen",
+                    tabBarIcon: ({ color, size }) => (
+                        <FontAwesome5 name="plus" color={color} size={size} />
+                    ),
+                }}
+                name="AddCustomerScreen"
+                component={AddCustomerScreen}
+            />
+        </Tab.Navigator>
     );
 }
-export default Customer;
+
+const styles = StyleSheet.create({
+    headerTitleStyle: {
+        textAlign: "left",
+    },
+    logout: {
+        color: Colors.primary,
+        textAlign: "left",
+    },
+    headerStyle: {
+        backgroundColor: Colors.accent,
+    },
+});
+
+export default Sales;

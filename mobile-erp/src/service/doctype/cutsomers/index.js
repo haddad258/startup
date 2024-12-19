@@ -15,7 +15,7 @@ const addcustomers = async (data) => {
         const result = await api.post(Apis.api_customers, data);
         return result.data.error ? null : result.data;
     } catch (error) {
-        console.error(error);
+        console.error(error.response.data);
         return null;
     }
 };

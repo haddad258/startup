@@ -9,6 +9,8 @@ import Customers from './Customers'
 import supplierList from './Supplier'
 import Sales from './sales'
 import PaymentList from './payment'
+import CartScreen from './Cart'
+
 import { Colors } from "../../core/theme";
 
 
@@ -47,6 +49,19 @@ const TabPublic = () => {
                 name="Customers"
                 component={Customers}
             />
+            <Tab.Screen
+                options={{
+                    title: "CartScreen",
+                    tabBarIcon: ({ color, size }) => (
+                        <FontAwesome5 name="cart-plus" color={color} size={size} />
+                    ),
+                }}
+                name="CartScreen"
+                component={CartScreen}
+            />
+
+
+
             <Tab.Screen
                 options={{
                     title: "Articles",

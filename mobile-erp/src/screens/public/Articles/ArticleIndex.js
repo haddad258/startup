@@ -1,11 +1,37 @@
-import React from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, Image, StyleSheet, TouchableOpacity, Modal, TextInput, Button } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { addToCartMultiple, removeFromCart } from '../../../store/cart/actions';
+import { useDispatch } from 'react-redux';
+import { Colors } from '../../../core/theme';
 
-const ArticleCard = ({ item, onAddToCart, onPress }) => {
+const ArticleCard = ({ item }) => {
+  const [isModalVisible, setModalVisible] = useState(false);
+  const [quantity, setQuantity] = useState(1);
+  const dispatch = useDispatch();
+
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible);
+  };
+
+  const onAddToCart = () => {
+    console.log(`Adding to cart: ${item.name}, Quantity: ${quantity}`);
+    dispatch(addToCartMultiple(item.name, item, quantity));
+
+    setModalVisible(false); // Ferme la modal après l'ajout
+  };
+
+  const incrementQuantity = () => {
+    setQuantity((prevQuantity) => prevQuantity + 1);
+  };
+
+  const decrementQuantity = () => {
+    setQuantity((prevQuantity) => (prevQuantity > 1 ? prevQuantity - 1 : 1));
+  };
+
   return (
     <View style={styles.articleCard}>
-      <TouchableOpacity onPress={onPress} style={styles.articleContent}>
+      <TouchableOpacity onPress={()=>console.log(item)} style={styles.articleContent}>
         <Image source={{ uri: item.imageUrl }} style={styles.articleImage} />
         <View style={styles.articleDetails}>
           <Text style={styles.articleTitle}>{item.name} - {item.item_name}</Text>
@@ -13,18 +39,45 @@ const ArticleCard = ({ item, onAddToCart, onPress }) => {
           <Text style={styles.articleStock}>In Stock: {item.bal_qty}</Text>
           <View style={styles.articlePrice}>
             <Text style={styles.articleStock}>Prix de vente: </Text>
-            <Text style={styles.priceValue}> {item.selling_price_list_rate}</Text>
+            <Text style={styles.priceValue}> {item.standard_rate}</Text>
             <Text> ({item.currency})</Text>
           </View>
         </View>
       </TouchableOpacity>
       <MaterialCommunityIcons
-        name="cart-plus"
+        name="plus-circle-multiple"
         size={30}
-        color="#FF6B35"
+        color={Colors.primary}
         style={styles.addToCartIcon}
-        onPress={onAddToCart}
+        onPress={toggleModal}
       />
+
+      {/* Modal */}
+      <Modal
+        transparent={true}
+        visible={isModalVisible}
+        animationType="slide"
+        onRequestClose={toggleModal}
+      >
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <Text style={styles.modalTitle}>Ajouter au Panier</Text>
+            <View style={styles.quantityContainer}>
+              <TouchableOpacity onPress={decrementQuantity} style={styles.quantityButton}>
+                <Text style={styles.quantityButtonText}>-</Text>
+              </TouchableOpacity>
+              <Text style={styles.quantityText}>{quantity}</Text>
+              <TouchableOpacity onPress={incrementQuantity} style={styles.quantityButton}>
+                <Text style={styles.quantityButtonText}>+</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.modalActions}>
+              <Button title="Annuler" onPress={toggleModal} color="#ccc" />
+              <Button title="Ajouter" onPress={onAddToCart} color="#FF6B35" />
+            </View>
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 };
@@ -77,6 +130,57 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 10,
+  },
+  // Modal Styles
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0,0,0,0.5)',
+  },
+  modalContent: {
+    width: 300,
+    backgroundColor: '#FFF',
+    borderRadius: 10,
+    padding: 20,
+    alignItems: 'center',
+  },
+  modalTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  quantityContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    marginVertical: 10,
+    width: '60%',
+  },
+  quantityButton: {
+    width: 40,
+    height: 40,
+    borderRadius: 5,
+    backgroundColor: '#FF6B35',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  quantityButtonText: {
+    color: '#FFF',
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  quantityText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#333',
+    paddingHorizontal: 10,
+  },
+  modalActions: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
+    marginTop: 10,
   },
 });
 

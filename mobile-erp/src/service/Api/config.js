@@ -1,9 +1,18 @@
 const API_URL = "http://195.201.138.202:3005";
+// const API_URL = "http://192.168.100.82:9001";
+
+
 const API_URLPublic = API_URL + "/public/";
 
 const Apis = {
   UserLoginAPI: `${API_URL}/api/method/login`,
   api_Dashboard: `${API_URL}/api/method/frappe.desk.query_report.get`,
+  api_commonDoctypes: `${API_URL}/api/resource/`,
+
+
+
+
+  //////////////////////////////////////////////////////////////
   Api_RegisterCustomer: `${API_URL}/public/api/customers/config/`,
   api_customers: `${API_URL}/api/resource/Customer`,
   api_articles: `${API_URL}/api/resource/Item`,

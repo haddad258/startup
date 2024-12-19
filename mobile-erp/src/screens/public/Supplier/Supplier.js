@@ -7,10 +7,10 @@ import { Colors } from "../../../core/theme";
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-function Plan({ item, props }) {
+function Supplier({ item, props }) {
 
     const updateSupplier =(item)=>{
-        alert("to do products PlanPack")
+        alert("to do products SupplierPack")
     }
     return (
         <TouchableOpacity onPress={() =>updateSupplier(item)}>
@@ -80,4 +80,4 @@ const styles = StyleSheet.create({
         padding:10
     },
 })
-export default Plan
+export default Supplier
