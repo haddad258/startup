@@ -21,7 +21,7 @@ function DeliveryNotesList() {
       );
       const fetchDeliveryNotes = async () => {
         try {
-            const list = await DeliveryNoteSettings.getdeliverynotes(`?fields=["*"]`);
+            const list = await DeliveryNoteSettings.getdeliverynotes(`?fields=["*"]&limit_page_length=10000`);
             if (list) {
                 setList(list?.data);
             }

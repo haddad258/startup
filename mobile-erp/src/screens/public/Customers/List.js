@@ -22,7 +22,7 @@ function Customer() {
       );
       const fetchCustomers = async () => {
         try {
-            const list = await CustomerSettings.getcustomers(`?fields=["*"]`);
+            const list = await CustomerSettings.getcustomers(`?fields=["*"]&limit_page_length=10000`);
             if (list) {
                 setList(list?.data);
             }

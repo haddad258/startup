@@ -22,7 +22,7 @@ function Articles() {
     );
     const fetchArticles = async () => {
         try {
-            const list = await ArticleSettings.getarticles(`?fields=["*"]`);
+            const list = await ArticleSettings.getarticles(`?fields=["*"]&limit_page_length=10000`);
             if (list) {
                 setList(list?.data);
             }

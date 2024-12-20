@@ -4,7 +4,7 @@ import Suppliers from './Supplier'
 import { Colors } from "../../../core/theme";
 import { useFocusEffect } from '@react-navigation/native';
 import { SupplierSettings } from "../../../service/doctype/index";
-function supplierList() {
+function SupplierList() {
     const [List, setList] = useState([])
 
     useEffect(() => {
@@ -22,7 +22,7 @@ function supplierList() {
       );
       const fetchSuppliers = async () => {
         try {
-            const list = await SupplierSettings.getsuppliers(`?fields=["*"]`);
+            const list = await SupplierSettings.getsuppliers(`?fields=["*"]&limit_page_length=10000`);
             if (list) {
                 setList(list?.data);
             }
@@ -42,4 +42,4 @@ function supplierList() {
         </View>
     );
 }
-export default supplierList;
+export default SupplierList;

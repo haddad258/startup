@@ -12,57 +12,51 @@ import {
 } from 'react-native';
 import Dashboard from "./Home";
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }) => {
   const menuItems = [
-    { id: 1, label: "Clients", icon: "👥", navigation: "ClientScreen" },
-    { id: 2, label: "Sales Orders", icon: "🛒", navigation: "CommandeScreen" },
-    { id: 3, label: "Items", icon: "📦", navigation: "ArticleScreen" },
-    { id: 4, label: "Stock", icon: "🏷️", navigation: "StockScreen" },
-    { id: 5, label: "Payments", icon: "💳", navigation: "PaymentScreen" },
-    { id: 6, label: "Deliveries", icon: "🚚", navigation: "LivraisonScreen" },
+    { id: 1, label: "Clients", icon: "👥", navigation: "Customers" },
+    { id: 2, label: "Sales Orders", icon: "🛒", navigation: "Sales" },
+    { id: 3, label: "Articles", icon: "📦", navigation: "Articles" },
+    { id: 4, label: "Stock", icon: "🏷️", navigation: "Warehouses" },
+    { id: 5, label: "Payments", icon: "💳", navigation: "PaymentList" },
+    { id: 6, label: "CartScreen", icon: "🚚", navigation: "CartScreen" },
   ];
 
-  const renderMenuItem = (item) => {
-    // Replace these with your actual dynamic values
-    const badgeValue = 0; 
-
-    return (
-      <TouchableOpacity
-        style={styles.menuItem}
-        key={item.id}
-        onPress={() => navigation.navigate(item.navigation)}
-      >
-        <Text style={styles.menuIcon}>{item.icon}</Text>
-        <Text style={styles.menuLabel}>{item.label}</Text>
-      </TouchableOpacity>
-    );
-  };
+  const renderMenuItem = (item) => (
+    <TouchableOpacity
+      style={styles.menuItem}
+      key={item.id}
+      onPress={() => navigation.navigate(item.navigation)}
+    >
+      <Text style={styles.menuIcon}>{item.icon}</Text>
+      <Text style={styles.menuLabel}>{item.label}</Text>
+    </TouchableOpacity>
+  );
 
   const renderTransactionItem = ({ item }) => (
     <View style={styles.transactionItem}>
-      <Text>{item.created_at}</Text>
-      <Text>{item.operation_type}</Text>
+      <Text>{item.date || "No Date"}</Text>
+      <Text>{item.type || "No Type"}</Text>
     </View>
   );
 
+  const transactionsData = [
+    { id: 1, date: "2024-12-01", type: "Sale" },
+    { id: 2, date: "2024-12-02", type: "Refund" },
+    { id: 31, date: "2024-12-03", type: "Purchase" },
+    { id: 321, date: "2024-12-03", type: "Purchase" },
+    { id: 311, date: "2024-12-03", type: "Purchase" },
+    { id: 233, date: "2024-12-03", type: "Purchase" },
+    { id: 309, date: "2024-12-03", type: "Purchase" },
+    { id: 399, date: "2024-12-03", type: "Purchase" },
+    { id: 37, date: "2024-12-03", type: "Purchase" },
+  ];
+
   return (
-    <ScrollView style={styles.safeArea}>
+    <View style={styles.safeArea}>
       <View style={styles.container}>
         {/* Header */}
         <View style={styles.headerContainer}>
-          <View style={styles.header}>
-            <View style={styles.userProfile}>
-              <Text style={styles.menuIcon}>👤</Text>
-              <View>
-                <Text style={styles.greeting}>Hello,</Text>
-                <Text style={styles.userName}>Test</Text>
-              </View>
-            </View>
-            <TouchableOpacity style={styles.notificationIcon}>
-              <Text>🔔</Text>
-              {true && <ActivityIndicator size="large" color="#0000ff" />}
-            </TouchableOpacity>
-          </View>
           <View style={styles.datePicker}>
             <Dashboard />
           </View>
@@ -77,18 +71,18 @@ const HomeScreen = () => {
         <View style={styles.transactionsSection}>
           <View style={styles.transactionsHeader}>
             <Text style={styles.transactionsTitle}>Recent Transactions</Text>
-            <TouchableOpacity>
-              <Text style={styles.seeAll}>See Asll</Text>
+            <TouchableOpacity onPress={() => navigation.navigate("Sales")} >
+              <Text style={styles.seeAll}>See All</Text>
             </TouchableOpacity>
           </View>
           <FlatList
-            data={[1,2,3,8998,8,82,23,33,5,28]}
-            keyExtractor={(item) => item.name}
+            data={transactionsData}
+            keyExtractor={(item) => item.id.toString()}
             renderItem={renderTransactionItem}
           />
         </View>
       </View>
-    </ScrollView>
+    </View>
   );
 };
 
@@ -131,7 +125,6 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   datePicker: {
-    marginTop: 20,
     height: 80,
   },
   menuGrid: {
@@ -139,7 +132,7 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     justifyContent: "space-between",
     margin: 10,
-    marginTop: 100,
+    marginTop: 30,
   },
   menuItem: {
     width: "30%",
@@ -159,7 +152,6 @@ const styles = StyleSheet.create({
   },
   transactionsSection: {
     flex: 1,
-    marginTop: 30,
     marginHorizontal: 16,
   },
   transactionsHeader: {

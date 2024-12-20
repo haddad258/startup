@@ -21,7 +21,7 @@ function PurchaseOrders() {
       );
       const fetchOrders = async () => {
         try {
-            const list = await PurchaseOrderSettings.getpurchaseOrders(`?fields=["*"]`);
+            const list = await PurchaseOrderSettings.getpurchaseOrders(`?fields=["*"]&limit_page_length=10000`);
             if (list) {
                 setList(list?.data);
             }

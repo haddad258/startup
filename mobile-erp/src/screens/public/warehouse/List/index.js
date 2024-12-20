@@ -21,7 +21,7 @@ function WarehousesList() {
       );
       const fetchWarehouses = async () => {
         try {
-            const list = await WarehouseSettings.getwarehouses(`?fields=["*"]`);
+            const list = await WarehouseSettings.getwarehouses(`?fields=["*"]&limit_page_length=10000`);
             if (list) {
                 setList(list?.data);
             }

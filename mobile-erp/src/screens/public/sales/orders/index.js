@@ -14,6 +14,7 @@ function Orders() {
     useFocusEffect(
         useCallback(() => {
           console.log('HomeScreen is focused');
+          fetchOrders()
           return () => {
             console.log('HomeScreen is unfocused');
           };
@@ -21,9 +22,10 @@ function Orders() {
       );
       const fetchOrders = async () => {
         try {
-            const list = await OrderSettings.getorders(`?fields=["*"]`);
+            const list = await OrderSettings.getorders(`?fields=["*"]&limit_page_length=10000&limit_page_length=10000`);
             if (list) {
                 setList(list?.data);
+                console.log(list?.data.length);
             }
         } catch (error) {
             console.error('Error fetching admin list:', error);
@@ -31,7 +33,7 @@ function Orders() {
     };
     return (
         <View style={{ flex: 1, backgroundColor: Colors.white }}>
-            <Text>orders</Text>
+            <Text>ordessrs</Text>
            <FlatList
                 data={List}
                 vertical

@@ -22,7 +22,7 @@ function PaymentList() {
       );
       const fetchPayments = async () => {
         try {
-            const list = await PaymentSettings.getpayments(`?fields=["*"]`);
+            const list = await PaymentSettings.getpayments(`?fields=["*"]&limit_page_length=10000`);
             if (list) {
                 setList(list?.data);
             }

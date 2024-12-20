@@ -1,5 +1,5 @@
 // ERPNext instance URL
-const url = `http://192.168.100.82:9001/api/resource/Customer?fields=["*"]`; // Replace :doctype with your target doctype
+const url = `http://192.168.100.82:9001/api/resource/Customer?fields=["*"]&limit_page_length=10000`; // Replace :doctype with your target doctype
 
 // Session cookie retrieved from the login response
 const sessionCookie = "sid=f8968e96d6ce30ae2770d51ed54a844a6eec9ff277ed0a12d8c9f790";

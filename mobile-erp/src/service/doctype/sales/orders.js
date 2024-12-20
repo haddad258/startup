@@ -2,6 +2,7 @@ import api from '../../Api/api';
 import { Apis } from '../../Api/config';
 const getorders = async (filter) => {
     try {
+        console.log((Apis.api_orders +filter))
         const result = await api.get(Apis.api_orders +filter);
         return result.data.error ? null : result.data;
     } catch (error) {

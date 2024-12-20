@@ -21,7 +21,7 @@ function Invoices() {
       );
       const fetchInvoices = async () => {
         try {
-            const list = await InvoiceSettings.getinvoices(`?fields=["*"]`);
+            const list = await InvoiceSettings.getinvoices(`?fields=["*"]&limit_page_length=10000`);
             if (list) {
                 setList(list?.data);
             }

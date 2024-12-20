@@ -21,7 +21,7 @@ function EntryStockList() {
       );
       const fetchEntryStock = async () => {
         try {
-            const list = await StockEntrySettings.getstockEntry(`?fields=["*"]`);
+            const list = await StockEntrySettings.getstockEntry(`?fields=["*"]&limit_page_length=10000`);
             if (list) {
                 setList(list?.data);
             }

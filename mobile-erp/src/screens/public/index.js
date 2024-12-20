@@ -6,7 +6,7 @@ import HomeScreen from "./Home";
 import Articles from "./Articles";
 import Warehouses from "./warehouse/index";
 import Customers from './Customers'
-import supplierList from './Supplier'
+import SupplierList from './Supplier'
 import Sales from './sales'
 import PaymentList from './payment'
 import CartScreen from './Cart'
@@ -79,8 +79,8 @@ const TabPublic = () => {
                         <FontAwesome5 name="id-card" color={color} size={size} />
                     ),
                 }}
-                name="supplierList"
-                component={supplierList}
+                name="SupplierList"
+                component={SupplierList}
             />
             <Tab.Screen
                 options={{

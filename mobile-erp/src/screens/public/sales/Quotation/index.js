@@ -21,7 +21,7 @@ function Quotations() {
       );
       const fetchQuotations = async () => {
         try {
-            const list = await QuotationSettings.getquotations(`?fields=["*"]`);
+            const list = await QuotationSettings.getquotations(`?fields=["*"]&limit_page_length=10000`);
             if (list) {
                 setList(list?.data);
             }

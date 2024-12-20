@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
+import { Colors } from "../../../core/theme";
 
 const Dashboard = () => {
     return (
@@ -28,7 +29,7 @@ const styles = StyleSheet.create({
         borderBottomRightRadius: 20,
         overflow: "hidden", // Ensures content stays within rounded corners
         position: "relative", // Needed for layering
-        backgroundColor: "#001F4B", // Fallback background color
+        backgroundColor: Colors.primary, // Fallback background color
     },
     gradientEffect: {
         ...StyleSheet.absoluteFillObject, // Covers the entire container
@@ -41,7 +42,6 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
         alignItems: "center",
         paddingHorizontal: 20,
-        paddingTop: 30,
     },
     title: {
         fontSize: 18,
