@@ -4,6 +4,7 @@ import { Apis } from '../../Api/config';
 import { UserLogin } from '../../index';
 const getarticles = async (filter) => {
     try {
+        console.log(Apis.api_articles +filter)
         const result = await api.get(Apis.api_articles +filter);
         return result.data.error ? null : result.data;
     } catch (error) {

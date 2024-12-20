@@ -15,7 +15,7 @@ const Apis = {
   //////////////////////////////////////////////////////////////
   Api_RegisterCustomer: `${API_URL}/public/api/customers/config/`,
   api_customers: `${API_URL}/api/resource/Customer`,
-  api_articles: `${API_URL}/api/resource/Item`,
+  api_articles: `${API_URL}/api/resource/Item/`,
   api_articlesBarcode: `${API_URL}/api/method/erpnext.stock.utils.scan_barcode`,
   api_warehouses: `${API_URL}/api/resource/Warehouse`,
   api_suppliers: `${API_URL}/api/resource/Supplier`,

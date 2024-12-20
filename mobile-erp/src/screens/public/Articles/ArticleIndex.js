@@ -1,24 +1,43 @@
 import React, { useState } from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity, Modal, TextInput, Button } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Modal, Button } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { addToCartMultiple, removeFromCart } from '../../../store/cart/actions';
+import { addToCartMultiple } from '../../../store/cart/actions';
 import { useDispatch } from 'react-redux';
-import { Colors } from '../../../core/theme';
+import { Colors, units } from '../../../core/theme';
+import { ArticleSettings } from '../../../service/doctype';
 
 const ArticleCard = ({ item }) => {
-  const [isModalVisible, setModalVisible] = useState(false);
+  const [isAddToCartModalVisible, setAddToCartModalVisible] = useState(false);
+  const [isDetailsModalVisible, setDetailsModalVisible] = useState(false);
   const [quantity, setQuantity] = useState(1);
   const dispatch = useDispatch();
 
-  const toggleModal = () => {
-    setModalVisible(!isModalVisible);
+  const toggleAddToCartModal = () => {
+    setAddToCartModalVisible(!isAddToCartModalVisible);
+  };
+
+  const toggleDetailsModal = () => {
+    setDetailsModalVisible(!isDetailsModalVisible);
+  };
+
+
+  const fetchArticles = async (id) => {
+    try {
+      const list = await ArticleSettings.getarticles(id);
+      if (list) {
+        console.log(list?.data);
+        setDetailsModalVisible(!isDetailsModalVisible);
+      }
+    } catch (error) {
+      console.error('Error fetching admin list:', error);
+    }
   };
 
   const onAddToCart = () => {
     console.log(`Adding to cart: ${item.name}, Quantity: ${quantity}`);
     dispatch(addToCartMultiple(item.name, item, quantity));
 
-    setModalVisible(false); // Ferme la modal après l'ajout
+    setAddToCartModalVisible(false); // Close the modal after adding
   };
 
   const incrementQuantity = () => {
@@ -31,7 +50,7 @@ const ArticleCard = ({ item }) => {
 
   return (
     <View style={styles.articleCard}>
-      <TouchableOpacity onPress={()=>console.log(item)} style={styles.articleContent}>
+      <TouchableOpacity onPress={()=>fetchArticles(item.name)} style={styles.articleContent}>
         <View style={styles.articleDetails}>
           <Text style={styles.articleTitle}>{item.name} - {item.item_name}</Text>
           <Text style={styles.articleStock}>Group: {item.item_group}</Text>
@@ -48,18 +67,18 @@ const ArticleCard = ({ item }) => {
         size={30}
         color={Colors.primary}
         style={styles.addToCartIcon}
-        onPress={toggleModal}
+        onPress={toggleAddToCartModal}
       />
 
-      {/* Modal */}
+      {/* Modal 1 - Add to Cart Modal */}
       <Modal
         transparent={true}
-        visible={isModalVisible}
+        visible={isAddToCartModalVisible}
         animationType="slide"
-        onRequestClose={toggleModal}
+        onRequestClose={toggleAddToCartModal}
       >
-        <View style={styles.modalContainer}>
-          <View style={styles.modalContent}>
+        <View style={styles.addToCartModalContainer}>
+          <View style={styles.addToCartModalContent}>
             <Text style={styles.modalTitle}>Ajouter au Panier</Text>
             <View style={styles.quantityContainer}>
               <TouchableOpacity onPress={decrementQuantity} style={styles.quantityButton}>
@@ -71,9 +90,28 @@ const ArticleCard = ({ item }) => {
               </TouchableOpacity>
             </View>
             <View style={styles.modalActions}>
-              <Button title="Annuler" onPress={toggleModal} color="#ccc" />
+              <Button title="Annuler" onPress={toggleAddToCartModal} color="#ccc" />
               <Button title="Ajouter" onPress={onAddToCart} color="#FF6B35" />
             </View>
+          </View>
+        </View>
+      </Modal>
+
+      {/* Modal 2 - Details Modal */}
+      <Modal
+        transparent={true}
+        visible={isDetailsModalVisible}
+        animationType="fade"
+        onRequestClose={toggleDetailsModal}
+      >
+        <View style={styles.detailsModalContainer}>
+          <View style={styles.detailsModalContent}>
+            <Text style={styles.detailsModalTitle}>Détails de l'Article</Text>
+            <Text style={styles.detailsModalText}>Nom: {item.name}</Text>
+            <Text style={styles.detailsModalText}>Groupe: {item.item_group}</Text>
+            <Text style={styles.detailsModalText}>Stock: {item.bal_qty}</Text>
+            <Text style={styles.detailsModalText}>Prix: {item.standard_rate} {item.currency}</Text>
+            <Button title="Fermer" onPress={toggleDetailsModal} color="#FF6B35" />
           </View>
         </View>
       </Modal>
@@ -99,16 +137,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flex: 1,
   },
-  articleImage: {
-    width: 80,
-    height: 80,
-    borderRadius: 10,
-    marginRight: 10,
-  },
   articleDetails: {
     justifyContent: 'center',
     flex: 1,
-    margin:10
+    margin: 10,
   },
   articleTitle: {
     fontSize: 16,
@@ -131,14 +163,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 10,
   },
-  // Modal Styles
-  modalContainer: {
+
+  // Add to Cart Modal Styles
+  addToCartModalContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'rgba(0,0,0,0.5)',
   },
-  modalContent: {
+  addToCartModalContent: {
     width: 300,
     backgroundColor: '#FFF',
     borderRadius: 10,
@@ -181,6 +214,33 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     width: '100%',
     marginTop: 10,
+  },
+
+  // Details Modal Styles
+  detailsModalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0,0,0,0.7)',
+  },
+  detailsModalContent: {
+    width:units.width*0.9,
+    height:units.height*0.9,
+    backgroundColor: '#FFF',
+    borderRadius: 15,
+    padding: 20,
+    alignItems: 'flex-start',
+  },
+  detailsModalTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#333',
+    marginBottom: 10,
+  },
+  detailsModalText: {
+    fontSize: 16,
+    color: '#555',
+    marginBottom: 8,
   },
 });
 
