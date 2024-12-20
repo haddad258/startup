@@ -32,7 +32,6 @@ const ArticleCard = ({ item }) => {
   return (
     <View style={styles.articleCard}>
       <TouchableOpacity onPress={()=>console.log(item)} style={styles.articleContent}>
-        <Image source={{ uri: item.imageUrl }} style={styles.articleImage} />
         <View style={styles.articleDetails}>
           <Text style={styles.articleTitle}>{item.name} - {item.item_name}</Text>
           <Text style={styles.articleStock}>Group: {item.item_group}</Text>
@@ -109,6 +108,7 @@ const styles = StyleSheet.create({
   articleDetails: {
     justifyContent: 'center',
     flex: 1,
+    margin:10
   },
   articleTitle: {
     fontSize: 16,

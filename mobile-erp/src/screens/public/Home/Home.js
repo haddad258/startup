@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
         borderBottomRightRadius: 20,
         overflow: "hidden", // Ensures content stays within rounded corners
         position: "relative", // Needed for layering
-        backgroundColor: Colors.primary, // Fallback background color
+        backgroundColor: Colors.secondary, // Fallback background color
     },
     gradientEffect: {
         ...StyleSheet.absoluteFillObject, // Covers the entire container

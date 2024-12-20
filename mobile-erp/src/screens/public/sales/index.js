@@ -2,8 +2,8 @@ import * as React from "react";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { StyleSheet } from "react-native";
-import Orders from "./invoices";
-import Invoices from "./orders";
+import Orders from "./orders";
+import Invoices from "./invoices";
 
 
 import { Colors } from '../../../core/theme'

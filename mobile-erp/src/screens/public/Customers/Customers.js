@@ -1,32 +1,32 @@
-
-
 import * as React from "react";
-import { TouchableOpacity, Image, StyleSheet, Text, Dimensions, View } from "react-native";
+import { TouchableOpacity, StyleSheet, Text, Dimensions, View } from "react-native";
 import FontAwesome from "react-native-vector-icons/FontAwesome5";
-import { Colors } from "../../../core/theme";
-const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
+import { Colors ,units } from "../../../core/theme";
 
-function Plan({ item, props }) {
 
-    const updateSupplier =(item)=>{
-        alert("to do products PlanPack")
-    }
+function CustomerI({ item, props }) {
+    const updateSupplier = (item) => {
+        alert("To do: Products PlanPack");
+    };
+
     return (
-        <TouchableOpacity onPress={() =>updateSupplier(item)}>
+        <View>
             <View style={styles.container}>
                 <Text style={styles.title}>{item.name}</Text>
-                <Text style={styles.description}>{item.customer_group} </Text>
+                <Text style={styles.description}>{item.customer_group}</Text>
                 <Text style={styles.description}>{item.customer_type}</Text>
-                <Text style={styles.productDescription}>{item.owner} </Text>
+                <Text style={styles.productDescription}>{item.owner}</Text>
                 <View style={styles.iconsView}>
-                    <FontAwesome name="edit" size={20} color={Colors.info} />
-                    <FontAwesome name="trash" size={20} color={Colors.info} />
+                    <View style={styles.iconContainer}>
+                        <FontAwesome name="edit" size={18} color={Colors.info} />
+                    </View>
+                    <View style={styles.iconContainer}>
+                        <FontAwesome name="trash" size={18} color={Colors.danger} />
+                    </View>
                 </View>
             </View>
-            
-        </TouchableOpacity>
-    )
+        </View>
+    );
 }
 
 const styles = StyleSheet.create({
@@ -34,50 +34,54 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        margin: 5,
-        marginTop: 20,
-        width: (windowWidth / 2) - (windowWidth * 0.05),
+        margin: 10,
+        width: (units.width * 0.43),
         backgroundColor: Colors.white,
-        borderColor:Colors.primary,
+        borderColor: Colors.primary,
         borderWidth: 1,
-        borderRadius: 15
-    },
-    photo: {
-        width: windowWidth / 2.4,
-        height: windowHeight / 6,
         borderRadius: 15,
-        marginTop:3,
+        padding: 5,
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.2,
+        shadowRadius: 3,
+        elevation: 4,
     },
     title: {
-        fontSize: 17,
-        fontWeight: 'bold',
-        textAlign: 'center',
-        color: '#444444',
-        marginTop: 3,
-        marginRight: 5,
-        marginLeft: 5,
+        fontSize: 16,
+        fontWeight: '600',
+        color: '#333',
+        marginBottom: 8,
     },
     description: {
-        marginTop: 5,
-        marginBottom: 5
-    },
-    iconsView: {
-        alignItems: "center",
-        alignContent: "center",
-        justifyContent: "center",
-        flexDirection: 'row',
-        padding:10
+        fontSize: 14,
+        color: Colors.secondary,
+        marginBottom: 4,
     },
     productDescription: {
-        fontSize: 8,
-        color: Colors.primary,
-        marginBottom: 4,
-      },
-      iconsView: {
-        flexDirection: 'row',
-        justifyContent: 'space-around',  // Adjusted to evenly space icons
-        width: "100%",  // Expanded to full width
-        padding:10
+        fontSize: 12,
+        color: Colors.secondary,
+        marginBottom: 10,
     },
-})
-export default Plan
+    iconsView: {
+        flexDirection: 'row',
+        justifyContent: 'space-evenly',
+        width: "100%",
+        paddingVertical: 10,
+    },
+    iconContainer: {
+        width: 40,
+        height: 40,
+        borderRadius: 20,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#f5f5f5',
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 1 },
+        shadowOpacity: 0.1,
+        shadowRadius: 2,
+        elevation: 2,
+    },
+});
+
+export default CustomerI;

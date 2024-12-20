@@ -7,7 +7,7 @@ import Header from '../../components/Header'
 import Button from '../../components/Button'
 import TextInput from '../../components/TextInput'
 import { useDispatch } from 'react-redux';
-import { theme } from '../../core/theme'
+import { Colors, theme } from '../../core/theme'
 import { emailValidator } from '../../core/helpers/emailValidator'
 import { passwordValidator } from '../../core/helpers/passwordValidator'
 import { UserLogin } from '../../service'
@@ -113,7 +113,7 @@ export default function LoginScreen({ navigation }) {
                 </TouchableOpacity>
             </View>
             {isLoading ? (
-                <ActivityIndicator size="large" color="#0000ff" />
+                <ActivityIndicator size="large" color="#FFAAFF" />
             ) : (<Button mode="contained" onPress={onLoginPressed}>
                 Log in
             </Button>)}
@@ -141,10 +141,10 @@ const styles = StyleSheet.create({
     },
     forgot: {
         fontSize: 13,
-        color: theme.colors.secondary,
+        color: Colors.primary
     },
     link: {
         fontWeight: 'bold',
-        color: theme.colors.primary,
+        color: Colors.primary
     },
 })

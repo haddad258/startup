@@ -1,83 +1,95 @@
-
-
 import * as React from "react";
-import { TouchableOpacity, Image, StyleSheet, Text, Dimensions, View } from "react-native";
+import { TouchableOpacity, StyleSheet, Text, Dimensions, View, Image } from "react-native";
 import FontAwesome from "react-native-vector-icons/FontAwesome5";
-import { Colors } from "../../../core/theme";
-const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
+import { Colors, units } from "../../../core/theme";
 
-function Supplier({ item, props }) {
+const windowWidth = Dimensions.get("window").width;
 
-    const updateSupplier =(item)=>{
-        alert("to do products SupplierPack")
-    }
-    return (
-        <TouchableOpacity onPress={() =>updateSupplier(item)}>
-            <View style={styles.container}>
-                <Text style={styles.title}>{item.name}</Text>
-                <Text style={styles.description}>{item.customer_group} </Text>
-                <Text style={styles.description}>{item.customer_type}</Text>
-                <Text style={styles.productDescription}>{item.owner} </Text>
-                <View style={styles.iconsView}>
-                    <FontAwesome name="edit" size={20} color={Colors.info} />
-                    <FontAwesome name="trash" size={20} color={Colors.info} />
-                </View>
-            </View>
-            
-        </TouchableOpacity>
-    )
+function Supplier({ item }) {
+  const updateSupplier = (item) => {
+    alert("To do: products SupplierPack");
+  };
+
+  return (
+    <View>
+    <TouchableOpacity onPress={() => updateSupplier(item)} style={styles.card}>
+      {/* <View style={styles.imageContainer}>
+        <Image
+          source={{ uri: item.image || "https://via.placeholder.com/150" }}
+          style={styles.image}
+        />
+      </View> */}
+      <View style={styles.content}>
+        <Text style={styles.title}>{item.name}</Text>
+        <Text style={styles.description}>{item.customer_group}</Text>
+        <Text style={styles.description}>{item.customer_type}</Text>
+        <Text style={styles.owner}>Propriétaire : {item.owner}</Text>
+        <View style={styles.iconsView}>
+          <FontAwesome
+            name="edit"
+            size={20}
+            color={Colors.info}
+            onPress={() => alert("Modifier")}
+          />
+          <FontAwesome
+            name="trash"
+            size={20}
+            color={Colors.error}
+            onPress={() => alert("Supprimer")}
+          />
+        </View>
+      </View>
+    </TouchableOpacity>
+      </View>
+    );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        margin: 5,
-        marginTop: 20,
-        width: (windowWidth / 2) - (windowWidth * 0.05),
-        backgroundColor: Colors.white,
-        borderColor:Colors.primary,
-        borderWidth: 1,
-        borderRadius: 15
-    },
-    photo: {
-        width: windowWidth / 2.4,
-        height: windowHeight / 6,
-        borderRadius: 15,
-        marginTop:3,
-    },
-    title: {
-        fontSize: 17,
-        fontWeight: 'bold',
-        textAlign: 'center',
-        color: '#444444',
-        marginTop: 3,
-        marginRight: 5,
-        marginLeft: 5,
-    },
-    description: {
-        marginTop: 5,
-        marginBottom: 5
-    },
-    iconsView: {
-        alignItems: "center",
-        alignContent: "center",
-        justifyContent: "center",
-        flexDirection: 'row',
-        padding:10
-    },
-    productDescription: {
-        fontSize: 8,
-        color: Colors.primary,
-        marginBottom: 4,
-      },
-      iconsView: {
-        flexDirection: 'row',
-        justifyContent: 'space-around',  // Adjusted to evenly space icons
-        width: "100%",  // Expanded to full width
-        padding:10
-    },
-})
-export default Supplier
+  card: {
+    flex: 1,
+    width:units.width*0.45,
+    margin: 5,
+    backgroundColor: Colors.white,
+    borderRadius: 15,
+    overflow: "hidden",
+    borderColor: Colors.secondary,
+    borderWidth: 1,
+    elevation: 5,
+  },
+  imageContainer: {
+    width: "100%",
+    height: 120,
+    backgroundColor: Colors.gray,
+  },
+  image: {
+    width: "100%",
+    height: "100%",
+    resizeMode: "cover",
+  },
+  content: {
+    padding: 15,
+  },
+  title: {
+    fontSize: 18,
+    fontWeight: "bold",
+    color: Colors.primary,
+    marginBottom: 5,
+  },
+  description: {
+    fontSize: 14,
+    color: Colors.gray,
+    marginBottom: 5,
+  },
+  owner: {
+    fontSize: 12,
+    color: Colors.secondary,
+    fontStyle: "italic",
+    marginBottom: 10,
+  },
+  iconsView: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+});
+
+export default Supplier;

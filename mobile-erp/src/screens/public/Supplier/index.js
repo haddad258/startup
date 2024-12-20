@@ -31,7 +31,7 @@ function SupplierList() {
         }
     };
     return (
-        <View style={{ flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: Colors.white }}>
+        <View style={{ flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: Colors.backgroundColor }}>
             <FlatList
                 data={List}
                 numColumns={2}

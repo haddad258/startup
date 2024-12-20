@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import {
   ActivityIndicator,
   FlatList,
@@ -11,6 +11,8 @@ import {
   View,
 } from 'react-native';
 import Dashboard from "./Home";
+import { OrderSettings } from '../../../service/doctype';
+import { useFocusEffect } from '@react-navigation/native';
 
 const HomeScreen = ({ navigation }) => {
   const menuItems = [
@@ -21,6 +23,32 @@ const HomeScreen = ({ navigation }) => {
     { id: 5, label: "Payments", icon: "💳", navigation: "PaymentList" },
     { id: 6, label: "CartScreen", icon: "🚚", navigation: "CartScreen" },
   ];
+  const [List, setList] = useState([])
+
+  useEffect(() => {
+      console.log('HomeScreen is focused');
+      fetchOrders()
+    }, [])
+  useFocusEffect(
+      useCallback(() => {
+        console.log('HomeScreen is focused');
+        fetchOrders()
+        return () => {
+          console.log('HomeScreen is unfocused');
+        };
+      }, [])
+    );
+    const fetchOrders = async () => {
+      try {
+          const list = await OrderSettings.getorders(`?fields=["*"]&limit_page_length=10000&limit_page_length=10000`);
+          if (list) {
+              setList(list?.data);
+              console.log(list?.data.length);
+          }
+      } catch (error) {
+          console.error('Error fetching admin list:', error);
+      }
+  };
 
   const renderMenuItem = (item) => (
     <TouchableOpacity
@@ -35,22 +63,11 @@ const HomeScreen = ({ navigation }) => {
 
   const renderTransactionItem = ({ item }) => (
     <View style={styles.transactionItem}>
-      <Text>{item.date || "No Date"}</Text>
-      <Text>{item.type || "No Type"}</Text>
+      <Text>{item.name || "No Date"}</Text>
+      <Text>{item.price || "No Type"}</Text>
     </View>
   );
 
-  const transactionsData = [
-    { id: 1, date: "2024-12-01", type: "Sale" },
-    { id: 2, date: "2024-12-02", type: "Refund" },
-    { id: 31, date: "2024-12-03", type: "Purchase" },
-    { id: 321, date: "2024-12-03", type: "Purchase" },
-    { id: 311, date: "2024-12-03", type: "Purchase" },
-    { id: 233, date: "2024-12-03", type: "Purchase" },
-    { id: 309, date: "2024-12-03", type: "Purchase" },
-    { id: 399, date: "2024-12-03", type: "Purchase" },
-    { id: 37, date: "2024-12-03", type: "Purchase" },
-  ];
 
   return (
     <View style={styles.safeArea}>
@@ -76,8 +93,8 @@ const HomeScreen = ({ navigation }) => {
             </TouchableOpacity>
           </View>
           <FlatList
-            data={transactionsData}
-            keyExtractor={(item) => item.id.toString()}
+            data={List}
+            keyExtractor={(item) => item?.name?.toString()}
             renderItem={renderTransactionItem}
           />
         </View>
