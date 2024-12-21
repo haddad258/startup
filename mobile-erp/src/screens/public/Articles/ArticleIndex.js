@@ -23,7 +23,7 @@ const ArticleCard = ({ item }) => {
 
   const fetchArticles = async (id) => {
     try {
-      const list = await ArticleSettings.getarticles(id);
+      const list = await ArticleSettings.getarticlesInfo(id);
       if (list) {
         console.log(list?.data);
         setDetailsModalVisible(!isDetailsModalVisible);
@@ -50,14 +50,14 @@ const ArticleCard = ({ item }) => {
 
   return (
     <View style={styles.articleCard}>
-      <TouchableOpacity onPress={()=>fetchArticles(item.name)} style={styles.articleContent}>
+      <TouchableOpacity onPress={()=>fetchArticles(item.item_code)} style={styles.articleContent}>
         <View style={styles.articleDetails}>
-          <Text style={styles.articleTitle}>{item.name} - {item.item_name}</Text>
-          <Text style={styles.articleStock}>Group: {item.item_group}</Text>
-          <Text style={styles.articleStock}>In Stock: {item.bal_qty}</Text>
+          <Text style={styles.articleTitle}>{item.item_name} - {item.item_name}</Text>
+          <Text style={styles.articleStock}>packing unit: {item.packing_unit}</Text>
+          <Text style={styles.articleStock}>In Stock: {item.reference}</Text>
           <View style={styles.articlePrice}>
             <Text style={styles.articleStock}>Prix de vente: </Text>
-            <Text style={styles.priceValue}> {item.standard_rate}</Text>
+            <Text style={styles.priceValue}> {item.price_list_rate}</Text>
             <Text> ({item.currency})</Text>
           </View>
         </View>

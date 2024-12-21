@@ -44,12 +44,23 @@ const getarticlesBarcode = async (filter) => {
         return null;
     }
 };
-
+const getarticlesInfo = async (filter) => {
+    try {
+        console.log(Apis.api_articlesInfo +filter)
+        const result = await api.get(Apis.api_articlesInfo +filter);
+        return result.data.error ? null : result.data;
+    } catch (error) {
+        
+        return null;
+    }
+};
 const articlesFun = {
     getarticles,
     addarticles,
     updatearticles,
-    getarticlesBarcode
+    getarticlesBarcode,
+    getarticlesInfo
+
 };
 
 export default articlesFun;

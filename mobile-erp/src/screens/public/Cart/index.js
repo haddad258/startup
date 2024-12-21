@@ -48,10 +48,11 @@ function CartScreen({ navigation }) {
         items: Object.values(cartReducer.products).map((item) => ({
           qty: item.quantity,
           item_code: item?.product?.item_code,
-          rate: item?.product?.standard_rate,
-          amount: item.quantity * item?.product?.standard_rate,
+          rate: item?.product?.price_list_rate,
+          amount: item.quantity * item?.product?.price_list_rate,
         })),
       };
+
 
       const response = await OrderSettings.addorders(payload);
       if (response) {
@@ -83,7 +84,7 @@ function CartScreen({ navigation }) {
     <View style={styles.productCard}>
       <View style={styles.productDetails}>
         <Text style={styles.productName}>Product: {item.product?.name}</Text>
-        <Text style={styles.productPrice}>Price: {item.product?.standard_rate}</Text>
+        <Text style={styles.productPrice}>Price: {item.product?.price_list_rate}</Text>
         <View style={styles.quantityContainer}>
           <TouchableOpacity
             onPress={() => handleDecrement(item.product, item.quantity)}
