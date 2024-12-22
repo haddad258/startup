@@ -73,6 +73,16 @@ const TabPublic = () => {
                 name="Articles"
                 component={Articles}
             />
+                  <Tab.Screen
+                options={{
+                    title: "Sales",
+                    tabBarIcon: ({ color, size }) => (
+                        <FontAwesome5 name="stream" color={color} size={size} />
+                    ),
+                }}
+                name="Sales"
+                component={Sales}
+            />
                  <Tab.Screen
                 options={{
                     title: "PosConfig",
@@ -93,16 +103,7 @@ const TabPublic = () => {
                 name="SupplierList"
                 component={SupplierList}
             />
-            <Tab.Screen
-                options={{
-                    title: "Sales",
-                    tabBarIcon: ({ color, size }) => (
-                        <FontAwesome5 name="stream" color={color} size={size} />
-                    ),
-                }}
-                name="Sales"
-                component={Sales}
-            />
+      
             <Tab.Screen
                 options={{
                     title: "PaymentList",

@@ -53,7 +53,7 @@ const Warehouses = () => {
                 name="StockEntryList"
                 component={StockEntryList}
             />
-                 <Tab.Screen
+                 {/* <Tab.Screen
                 options={{
                     title: "DataProduct",
                     tabBarIcon: ({ color, size }) => (
@@ -62,7 +62,7 @@ const Warehouses = () => {
                 }}
                 name="DataProduct"
                 component={DataProduct}
-            />
+            /> */}
         </Tab.Navigator>
     );
 }

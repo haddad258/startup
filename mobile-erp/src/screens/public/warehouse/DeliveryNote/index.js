@@ -8,14 +8,14 @@ function DeliveryNotesList() {
     const [List, setList] = useState([])
 
     useEffect(() => {
-        console.log('HomeScreen is focused');
+        console.log('DeliveryNotesList is focused');
         fetchDeliveryNotes()
       }, [])
     useFocusEffect(
         useCallback(() => {
-          console.log('HomeScreen is focused');
+            fetchDeliveryNotes()
           return () => {
-            console.log('HomeScreen is unfocused');
+            console.log('DeliveryNotesList is unfocused');
           };
         }, [])
       );

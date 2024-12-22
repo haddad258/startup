@@ -61,13 +61,16 @@ const ArticleCard = ({ item }) => {
           </View>
         </View>
       </TouchableOpacity>
-      <MaterialCommunityIcons
-        name="plus-circle-multiple"
-        size={30}
-        color={Colors.primary}
-        style={styles.addToCartIcon}
-        onPress={toggleAddToCartModal}
-      />
+      <TouchableOpacity style={styles.actionButton}>
+        <MaterialCommunityIcons
+          name="plus-circle"
+          size={30}
+          color={Colors.primary}
+          style={styles.addToCartIcon}
+          onPress={toggleAddToCartModal}
+        />
+      </TouchableOpacity>
+
 
       {/* Modal 1 - Add to Cart Modal */}
       <Modal
@@ -114,7 +117,7 @@ const ArticleCard = ({ item }) => {
               Prix : {articleInfo.standard_rate} {articleInfo.currency}
             </Text>
             <Text style={styles.detailsModalText}>Entrepôt par défaut : {articleInfo.default_warehouse}</Text>
-        <Button title="Fermer" onPress={toggleDetailsModal} color="#FF6B35" />
+            <Button title="Fermer" onPress={toggleDetailsModal} color="#FF6B35" />
           </View>
         </View>
       </Modal>
@@ -166,7 +169,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 10,
   },
-
+  actionButton: {
+    height:50,
+    backgroundColor: "#f4f4f9",
+    borderRadius: 20,
+    borderWidth: 1,
+    borderColor: Colors.primary,
+  },
   // Add to Cart Modal Styles
   addToCartModalContainer: {
     flex: 1,
