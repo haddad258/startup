@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { FlatList, StyleSheet, Text, View } from "react-native";
-import ArticleItem from './Article'
 import ArticleCard from './ArticleIndex'
 import { Colors } from "../../../core/theme";
 import { useFocusEffect } from '@react-navigation/native';

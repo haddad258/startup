@@ -1,63 +1,76 @@
 import React from 'react';
-import {Image, Text, View, TouchableHighlight, StyleSheet,Dimensions} from 'react-native';
+import { Text, View, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import { Colors } from "../../../../core/theme";
+import { Colors, units } from "../../../../core/theme";
 
-const Card = ({item, navigation}) => {
+const Card = ({ item, navigation }) => {
   return (
-    <TouchableHighlight
-      underlayColor={Colors.white}
-      activeOpacity={0.9}
+    <TouchableOpacity
       onPress={() => console.log('DetailsScreen', item)}>
       <View style={styles.card}>
-       
-        <View style={{marginHorizontal: 20}}>
-          <Text style={{fontSize: 14, fontWeight: 'bold'}}>{item.name}</Text>
-          <Text style={{fontSize: 14, color: Colors.grey, marginTop: 2}}>
-            {item.company}
-          </Text>
+        <View style={styles.cardContent}>
+          <Text style={styles.cardTitle}>{item.name}</Text>
+          <Text style={styles.cardSubtitle}>{item.company}</Text>
+          <Text style={styles.cardDetails}>{item.warehouse_name}</Text>
         </View>
-        <View style={{marginHorizontal: 20,marginTop:10}}>
-          <Text style={{fontSize: 14, color: Colors.grey, marginTop: 2}}>
-            {item.warehouse_name}
-          </Text>
-        </View>
-        <View
-          style={{
-            marginTop: 10,
-            marginHorizontal: 20,
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-          }}>
-            
-          <Text style={{fontSize: 18, fontWeight: 'bold'}}>{item.rgt}</Text>
+        <View style={styles.cardFooter}>
+          <Text style={styles.cardPrice}>{item.rgt}</Text>
           <View style={styles.addToCartBtn}>
             <Icon name="eye" size={20} color={Colors.white} />
           </View>
         </View>
       </View>
-    </TouchableHighlight>
+    </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
   card: {
-    height:160,
-    width: Dimensions.get('screen').width / 2 - 20,
+    height: 180,
+    width: units.width *0.45,
     marginHorizontal: 10,
     marginBottom: 20,
-    paddingBottom: 20,
-    marginTop: 10,
-    borderRadius: 15,
-    elevation: 3,
-    borderWidth:1,
-    borderColor:Colors.gray,
+    padding: 15,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: Colors.primary,
     backgroundColor: Colors.white,
+    overflow: 'hidden',
+    elevation: 4, // Slight shadow for floating effect
+  },
+  cardContent: {
+    marginBottom: 12,
+  },
+  cardTitle: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: Colors.black,
+  },
+  cardSubtitle: {
+    fontSize: 14,
+    color: Colors.grey,
+    marginTop: 4,
+  },
+  cardDetails: {
+    fontSize: 14,
+    color: Colors.darkGray,
+    marginTop: 6,
+  },
+  cardFooter: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginTop: 12,
+  },
+  cardPrice: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: Colors.primary,
   },
   addToCartBtn: {
     height: 30,
     width: 30,
-    borderRadius: 20,
+    borderRadius: 15,
     backgroundColor: Colors.primary,
     justifyContent: 'center',
     alignItems: 'center',

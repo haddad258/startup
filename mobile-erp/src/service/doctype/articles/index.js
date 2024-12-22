@@ -46,11 +46,23 @@ const getarticlesBarcode = async (filter) => {
 };
 const getarticlesInfo = async (filter) => {
     try {
-        console.log(Apis.api_articlesInfo +filter)
+        console.log("Apis.api_articlesInfo",Apis.api_articlesInfo +filter)
         const result = await api.get(Apis.api_articlesInfo +filter);
         return result.data.error ? null : result.data;
     } catch (error) {
         
+        return null;
+    }
+};
+const addarticlesInfo = async (status) => {
+    try {
+        console.log(Apis.api_articlesInfo)
+        const result = await api.post(Apis.api_articlesInfo,  status);
+        console.log(result)
+        return result.data.error ? null : result.data;
+    } catch (error) {
+        console.error(error.response?.data?._server_messages);
+        console.error('Error creating item:', error.response?.data || error.message);
         return null;
     }
 };
@@ -59,7 +71,8 @@ const articlesFun = {
     addarticles,
     updatearticles,
     getarticlesBarcode,
-    getarticlesInfo
+    getarticlesInfo,
+    addarticlesInfo
 
 };
 
