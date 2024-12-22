@@ -37,7 +37,7 @@ function Articles() {
                 data={List}
                 vertical
                 renderItem={({ item }) => (<ArticleCard item={item} />)}
-                keyExtractor={(item) => item.modified}
+                keyExtractor={(item) => item.name}
             />
         </View>
     );

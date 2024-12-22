@@ -11,6 +11,7 @@ const ArticleCard = ({ item }) => {
   const [isDetailsModalVisible, setDetailsModalVisible] = useState(false);
   const [quantity, setQuantity] = useState(1);
   const dispatch = useDispatch();
+  const [articleInfo, setarticleInfo] = useState({})
 
   const toggleAddToCartModal = () => {
     setAddToCartModalVisible(!isAddToCartModalVisible);
@@ -25,7 +26,7 @@ const ArticleCard = ({ item }) => {
     try {
       const list = await ArticleSettings.getarticlesInfo(id);
       if (list) {
-        console.log(list?.data);
+        setarticleInfo(list?.data);
         setDetailsModalVisible(!isDetailsModalVisible);
       }
     } catch (error) {
@@ -34,9 +35,7 @@ const ArticleCard = ({ item }) => {
   };
 
   const onAddToCart = () => {
-    console.log(`Adding to cart: ${item.name}, Quantity: ${quantity}`);
     dispatch(addToCartMultiple(item.name, item, quantity));
-
     setAddToCartModalVisible(false); // Close the modal after adding
   };
 
@@ -50,7 +49,7 @@ const ArticleCard = ({ item }) => {
 
   return (
     <View style={styles.articleCard}>
-      <TouchableOpacity onPress={()=>fetchArticles(item.item_code)} style={styles.articleContent}>
+      <TouchableOpacity onPress={() => fetchArticles(item.item_code)} style={styles.articleContent}>
         <View style={styles.articleDetails}>
           <Text style={styles.articleTitle}>{item.item_name} - {item.item_name}</Text>
           <Text style={styles.articleStock}>packing unit: {item.packing_unit}</Text>
@@ -107,11 +106,15 @@ const ArticleCard = ({ item }) => {
         <View style={styles.detailsModalContainer}>
           <View style={styles.detailsModalContent}>
             <Text style={styles.detailsModalTitle}>Détails de l'Article</Text>
-            <Text style={styles.detailsModalText}>Nom: {item.name}</Text>
-            <Text style={styles.detailsModalText}>Groupe: {item.item_group}</Text>
-            <Text style={styles.detailsModalText}>Stock: {item.bal_qty}</Text>
-            <Text style={styles.detailsModalText}>Prix: {item.standard_rate} {item.currency}</Text>
-            <Button title="Fermer" onPress={toggleDetailsModal} color="#FF6B35" />
+            <Text style={styles.detailsModalText}>Nom : {articleInfo.item_name}</Text>
+            <Text style={styles.detailsModalText}>Code : {articleInfo.item_code}</Text>
+            <Text style={styles.detailsModalText}>Groupe : {articleInfo.item_group}</Text>
+            <Text style={styles.detailsModalText}>Stock : {articleInfo.bal_qty}</Text>
+            <Text style={styles.detailsModalText}>
+              Prix : {articleInfo.standard_rate} {articleInfo.currency}
+            </Text>
+            <Text style={styles.detailsModalText}>Entrepôt par défaut : {articleInfo.default_warehouse}</Text>
+        <Button title="Fermer" onPress={toggleDetailsModal} color="#FF6B35" />
           </View>
         </View>
       </Modal>
@@ -224,8 +227,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0.7)',
   },
   detailsModalContent: {
-    width:units.width*0.9,
-    height:units.height*0.9,
+    width: units.width * 0.9,
+    height: units.height * 0.9,
     backgroundColor: '#FFF',
     borderRadius: 15,
     padding: 20,

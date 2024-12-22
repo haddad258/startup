@@ -48,15 +48,17 @@ function CartScreen({ navigation }) {
         items: Object.values(cartReducer.products).map((item) => ({
           qty: item.quantity,
           item_code: item?.product?.item_code,
-          rate: item?.product?.price_list_rate,
-          amount: item.quantity * item?.product?.price_list_rate,
+          rate: item.product?.price_list_rate,
+          amount: item.quantity * item.product?.price_list_rate,
         })),
       };
 
+      console.log(payload)
 
       const response = await OrderSettings.addorders(payload);
       if (response) {
         alert('Order Created');
+        console.log(response)
         dispatch(clearCart());
       }
     } catch (error) {

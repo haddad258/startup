@@ -22,10 +22,10 @@ function Orders() {
       );
       const fetchOrders = async () => {
         try {
-            const list = await OrderSettings.getorders(`?fields=["*"]&limit_page_length=10000&limit_page_length=10000`);
+            const list = await OrderSettings.getorders(`?fields=["*"]&limit_page_length=10000`);
             if (list) {
-                setList(list?.data);
-                console.log(list?.data.length);
+                setList(list?.data.reverse());
+                console.log("list?.data");
             }
         } catch (error) {
             console.error('Error fetching admin list:', error);

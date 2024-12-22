@@ -5,7 +5,7 @@ import { StyleSheet } from "react-native";
 import ListArticles from "./List";
 import AddArticles from "./Add.Articles";
 import ArticlesBarcode from './Articles.Barcodes'
-
+import TabArticles from './ItemPrices'
 
 import { Colors } from '../../../core/theme'
 
@@ -51,6 +51,17 @@ const TabPublic = () => {
                 }}
                 name="ArticlesBarcode"
                 component={ArticlesBarcode}
+            />
+
+            <Tab.Screen
+                options={{
+                    title: "TabArticles",
+                    tabBarIcon: ({ color, size }) => (
+                        <FontAwesome5 name="bars" color={color} size={size} />
+                    ),
+                }}
+                name="TabArticles"
+                component={TabArticles}
             />
 
         </Tab.Navigator>

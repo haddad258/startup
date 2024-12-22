@@ -1,113 +1,115 @@
 import * as React from "react";
 import { TouchableOpacity, Image, StyleSheet, Text, Dimensions, View } from "react-native";
-import {Colors} from "../../../../core/theme";
-const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
+import { Colors, units } from "../../../../core/theme";
+import StatusBadge from "./Order.Details";
+
 function Item({ item, props }) {
   const gotoViewCustomer = (item) => {
-    console.log(item)
-  }
+    console.log(item);
+  };
+
   return (
     <TouchableOpacity
       key={item}
-      style={styles.itemThreeContainer}
+      style={styles.itemContainer}
       onPress={() => gotoViewCustomer(item)}
     >
-      <View style={styles.itemThreeSubContainer}>
-        <View style={styles.itemThreeContent}>
-          <Text style={styles.itemThreeBrand}>{item.name}-{item.set_warehouse}</Text>
-          <View>
-            <Text style={styles.itemThreeTitle}>{item.total}  </Text>
-            <Text style={styles.itemThreeSubtitle} numberOfLines={1}>
-              {item.company_address_display}  {item.city} { }
+      <View style={styles.contentContainer}>
+        <View style={styles.itemContent}>
+          <Text style={styles.itemBrand}>{item.name} - {item.set_warehouse}</Text>
+          <View style={styles.itemDetails}>
+            <Text style={styles.itemTitle}>{item.grand_total} {item.currency}</Text>
+            <Text style={styles.itemSubtitle} numberOfLines={1}>
+              {item.delivery_status}, {item.status}
             </Text>
-            <Text style={styles.itemThreeSubtitle} numberOfLines={1}>
+            <Text style={styles.itemCustomer} numberOfLines={1}>
               {item.customer_name}
             </Text>
           </View>
-          <View style={styles.itemThreeMetaContainer}>
+        </View>
 
-            <View
-              style={styles.badge}
-            >
-              <Text
-                style={{ fontSize: 10, color: Colors.white }}
-                styleName="bright"
-              >
-                {item.status}
-              </Text>
-            </View>
-
-            <Text style={styles.itemThreePrice}>{item.due_date}</Text>
-          </View>
+        <View style={styles.metaContainer}>
+         <StatusBadge  order={item}  />
         </View>
       </View>
-      <View style={styles.itemThreeHr} />
+
+      <View style={styles.divider} />
     </TouchableOpacity>
-
-  )
-
+  );
 }
 
-
 const styles = StyleSheet.create({
-  itemThreeContainer: {
-    backgroundColor: 'white',
-    width: windowWidth - 10,
-    // height: windowHeight / 6
+  itemContainer: {
+    backgroundColor: "#FFF",
+    margin: 8,
+    borderRadius: 15,
     borderColor: Colors.info,
-    borderWidth: 2,
-    margin: 4,
-    borderRadius: 20
+    borderWidth: 1,
+    shadowColor: "#000",
+    shadowOpacity: 0.1,
+    shadowOffset: { width: 0, height: 5 },
+    shadowRadius: 10,
+    elevation: 3,
+    overflow: "hidden",
   },
-  itemThreeSubContainer: {
-    flexDirection: 'row',
-    paddingVertical: 10,
+  contentContainer: {
+    padding: 15,
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
-  itemThreeImage: {
-    height: 100,
-    width: 100,
-  },
-  itemThreeContent: {
+  itemContent: {
     flex: 1,
-    paddingLeft: 15,
-    justifyContent: 'space-between',
   },
-  itemThreeBrand: {
-    fontSize: 14,
-    color: Colors.blue,
-    fontWeight: "bold"
-  },
-  itemThreeTitle: {
+  itemBrand: {
     fontSize: 16,
-    color: '#5F5F5F',
+    color: Colors.blue,
+    fontWeight: "700",
+    marginBottom: 8,
   },
-  itemThreeSubtitle: {
-    fontSize: 15,
-    color: '#a4a4a4',
+  itemDetails: {
+    marginVertical: 8,
   },
-  itemThreeMetaContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+  itemTitle: {
+    fontSize: 18,
+    color: "#4CAF50",
+    fontWeight: "600",
+    marginBottom: 5,
   },
-  itemThreePrice: {
-    fontSize: 15,
-    color: Colors.primary,
-    textAlign: 'left',
-    marginRight: 15
-
+  itemSubtitle: {
+    fontSize: 14,
+    color: "#757575",
+    marginBottom: 3,
   },
-  itemThreeHr: {
-    flex: 1,
-    height: 4,
+  itemCustomer: {
+    fontSize: 14,
+    color: "#9E9E9E",
+  },
+  metaContainer: {
+    alignItems: "flex-end",
+    justifyContent: "center",
   },
   badge: {
     backgroundColor: Colors.secondary,
-    borderRadius: 10,
+    borderRadius: 12,
     paddingHorizontal: 10,
-    paddingVertical: 5,
-    alignContent: "center"
+    paddingVertical: 4,
+    marginBottom: 8,
+    alignSelf: "flex-start",
+  },
+  badgeText: {
+    fontSize: 12,
+    color: Colors.white,
+    fontWeight: "600",
+  },
+  itemDate: {
+    fontSize: 14,
+    color: Colors.primary,
+  },
+  divider: {
+    height: 1,
+    backgroundColor: "#E0E0E0",
+    marginHorizontal: 15,
   },
 });
-export default Item
+
+export default Item;

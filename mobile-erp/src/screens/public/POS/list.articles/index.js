@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text, View} from 'react-native';
 
-const AddArticles = () => {
+const ListArticlesPos = () => {
   return (
     <View
       style={{
@@ -9,8 +9,8 @@ const AddArticles = () => {
         justifyContent: 'center',
         alignItems: 'center',
       }}>
-      <Text>AddArticlesPos!</Text>
+      <Text>ListArticlesPos!</Text>
     </View>
   );
 };
-export default AddArticles;
+export default ListArticlesPos;

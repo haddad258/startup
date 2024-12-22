@@ -10,7 +10,7 @@ import SupplierList from './Supplier'
 import Sales from './sales'
 import PaymentList from './payment'
 import CartScreen from './Cart'
-
+import PosConfig from './POS'
 import { Colors } from "../../core/theme";
 
 
@@ -61,7 +61,7 @@ const TabPublic = () => {
                 component={CartScreen}
             />
 
-
+       
 
             <Tab.Screen
                 options={{
@@ -72,6 +72,16 @@ const TabPublic = () => {
                 }}
                 name="Articles"
                 component={Articles}
+            />
+                 <Tab.Screen
+                options={{
+                    title: "PosConfig",
+                    tabBarIcon: ({ color, size }) => (
+                        <FontAwesome5 name="tablet-alt" color={color} size={size} />
+                    ),
+                }}
+                name="PosConfig"
+                component={PosConfig}
             />
             <Tab.Screen
                 options={{
@@ -108,23 +118,14 @@ const TabPublic = () => {
                 options={{
                     title: "Warehouses",
                     tabBarIcon: ({ color, size }) => (
-                        <FontAwesome5 name="store" color={color} size={size} />
+                        <FontAwesome5 name="warehouse" color={color} size={size} />
                     ),
                 }}
                 name="Warehouses"
                 component={Warehouses}
             />
+
             {/*  <Tab.Screen
-                options={{
-                    title: "Help",
-                    tabBarIcon: ({ color, size }) => (
-                        <FontAwesome5 name="home" color={color} size={size} />
-                    ),
-                }}
-                name="Help"
-                component={Help}
-            />
-            <Tab.Screen
                 options={{
                     title: "Private",
                     tabBarIcon: ({ color, size }) => (
