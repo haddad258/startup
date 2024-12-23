@@ -21,6 +21,7 @@ const TabPublic = () => {
                 tabBarInactiveTintColor: Colors.secondary,
                 tabBarStyle: { backgroundColor: Colors.white },
                 headerStyle: styles.headerStyle,
+                headerShown:false
             }}>
             <Tab.Screen
                 options={{

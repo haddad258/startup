@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -7,44 +7,66 @@ import {
   Modal,
   ScrollView,
   TextInput,
-  Button
+  FlatList,
 } from "react-native";
 import { CameraView } from "expo-camera";
 import Icon from "react-native-vector-icons/Entypo";
 import { ArticleSettings } from "../../../../service/doctype";
+import ArticleCard from "../ArticleIndex";
+import { Colors } from "../../../../core/theme";
 
 export default function CameraValidate() {
   const [modalVisible, setModalVisible] = useState(false);
   const [scanned, setScanned] = useState(false);
-  const [Barcode, setBarcode] = useState(false);
+  const [Barcode, setBarcode] = useState("");
+  const [List, setList] = useState([]);
 
   const handleBarcodeScanned = ({ type, data }) => {
     setScanned(true);
     alert(`Scanned type: ${type}, data: ${data}`);
-    setBarcode(data)
+    setBarcode(data);
     fetchArticles(data); // Close modal on successful scan
   };
+
+
   const fetchArticles = async (barcode) => {
     try {
-      const BarcodeSearch = await ArticleSettings.getarticlesBarcode({ search_value: barcode });
+    setList([])
+    const BarcodeSearch = await ArticleSettings.getarticlesBarcode({
+        search_value: barcode,
+      });
+
       if (BarcodeSearch) {
-        colseModal(); // Close modal on successful scan
-        // setList(list?.data);
-        console.log(BarcodeSearch?.data?.item_code);
+        console.log(BarcodeSearch.message.item_code)
+        fetchArticlesBarcode(BarcodeSearch.message.item_code);
+        closeModal(); // Close modal on successful scan
       }
     } catch (error) {
-      colseModal(); // Close modal on successful scan
-      console.error('Error BarcodeSearch:', error);
+      closeModal(); // Close modal on successful scan
+      console.error("Error BarcodeSearch:", error);
     }
   };
+
+  const fetchArticlesBarcode = async (filter) => {
+    try {
+      const list = await ArticleSettings.getarticles(`?fields=["*"]&filters={"item_name":"${filter}"}`);
+      if (list) {
+        setList(list?.data);
+      }
+    } catch (error) {
+      console.error("Error fetching article list:", error);
+    }
+  };
+
   const openModal = () => {
-    setScanned(true)
-    setModalVisible(true)
-  }
-  const colseModal = () => {
-    setScanned(false)
-    setModalVisible(false)
-  }
+    setScanned(true);
+    setModalVisible(true);
+  };
+
+  const closeModal = () => {
+    setScanned(false);
+    setModalVisible(false);
+  };
 
   return (
     <View style={styles.container}>
@@ -52,7 +74,7 @@ export default function CameraValidate() {
         <TextInput
           style={styles.inputs}
           placeholder="Barcode"
-          underlineColorAndroid='transparent'
+          underlineColorAndroid="transparent"
           value={Barcode}
           onChangeText={(text) => setBarcode(text)}
         />
@@ -66,12 +88,24 @@ export default function CameraValidate() {
         />
       </View>
 
+      <View style={styles.listContainer}>
+        <FlatList
+          data={List}
+          renderItem={({ item }) => <ArticleCard item={item} />}
+          keyExtractor={(item) => item.name}
+          contentContainerStyle={styles.flatListContent}
+          ItemSeparatorComponent={() => <View style={styles.itemSeparator} />}
+          ListEmptyComponent={
+            <Text style={styles.emptyMessage}>No articles found.</Text>
+          }
+        />
+      </View>
 
       <Modal
         animationType="fade"
         transparent={true}
         visible={modalVisible}
-        onRequestClose={() => colseModal()}
+        onRequestClose={() => closeModal()}
       >
         <View style={styles.popupOverlay}>
           <View style={styles.popup}>
@@ -99,20 +133,19 @@ export default function CameraValidate() {
                   }}
                   style={styles.camera}
                 />
-              
-              {  scanned &&  <TouchableOpacity
-                onPress={() => setScanned(false)}
-                style={styles.btnClose}
-              >
-                <Text style={styles.txtClose}>Scan Again</Text>
-              </TouchableOpacity>}
+
+                {scanned && (
+                  <TouchableOpacity
+                    onPress={() => setScanned(false)}
+                    style={styles.btnClose}
+                  >
+                    <Text style={styles.txtClose}>Scan Again</Text>
+                  </TouchableOpacity>
+                )}
               </ScrollView>
             </View>
             <View style={styles.popupButtons}>
-              <TouchableOpacity
-                onPress={() => colseModal()}
-                style={styles.btnClose}
-              >
+              <TouchableOpacity onPress={() => closeModal()} style={styles.btnClose}>
                 <Text style={styles.txtClose}>Close</Text>
               </TouchableOpacity>
             </View>
@@ -125,6 +158,7 @@ export default function CameraValidate() {
 
 const styles = StyleSheet.create({
   container: {
+    flex:1,
     alignItems: "center",
     justifyContent: "center",
     marginVertical: 20,
@@ -185,33 +219,45 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   inputContainer: {
-    backgroundColor: '#f9f9f9',
+    backgroundColor: "#f9f9f9",
     borderRadius: 25,
     width: 320,
     height: 50,
     marginBottom: 20,
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     paddingHorizontal: 15,
     borderWidth: 1,
-    borderColor: '#ddd',
-    shadowColor: '#000',
+    borderColor: "#ddd",
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 3,
     elevation: 2,
-  },
-
-  inputIcon: {
-    width: 30,
-    height: 30,
-    marginRight: 15,
-    justifyContent: 'center',
+    marginTop:50
   },
   inputs: {
     height: 45,
     marginLeft: 16,
-    borderBottomColor: '#FFFFFF',
     flex: 1,
+  },
+  listContainer: {
+    width: "100%",
+    paddingHorizontal: 10,
+    backgroundColor: Colors.white,
+  },
+  flatListContent: {
+    paddingVertical: 10,
+  },
+  itemSeparator: {
+    height: 1,
+    backgroundColor: "#ddd",
+    marginVertical: 10,
+  },
+  emptyMessage: {
+    textAlign: "center",
+    color: "#999",
+    fontSize: 16,
+    marginTop: 20,
   },
 });

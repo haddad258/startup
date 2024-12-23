@@ -3,16 +3,11 @@ import {
   Dimensions,
   SafeAreaView,
   View,
-  Image,
-  TextInput,
-  Text,
-  TouchableOpacity,
   FlatList,
   ScrollView,
   StyleSheet,
 } from 'react-native';
 import { Colors } from '../../../../core/theme';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Card from './Order'; // Adjust the path based on your file structure
 import SelectInputDocs from '../../../../components/Doctype/SelectInputDocs';
 import { useFocusEffect } from '@react-navigation/native';

@@ -35,7 +35,6 @@ const updatearticles = async (data) => {
 
 const getarticlesBarcode = async (filter) => {
     try {
-        console.log(Apis.api_articlesBarcode)
         const result = await api.post(Apis.api_articlesBarcode ,filter);
         console.log(result.data)
         return result.data.error ? null : result.data;

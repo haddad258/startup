@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { StyleSheet } from "react-native";
 import PosDetails from "./list.articles";
 import OrdersPos from "./list.orders.pos";
+import CartPosScreen from './Cart.Pos'
 import { Colors } from '../../../core/theme'
 
 const Tab = createBottomTabNavigator();
@@ -39,6 +40,16 @@ const PosConfig = () => {
                 }}
                 name="OrdersPos"
                 component={OrdersPos}
+            />
+                <Tab.Screen
+                options={{
+                    title: "Checkout",
+                    tabBarIcon: ({ color, size }) => (
+                        <FontAwesome5 name="list" color={color} size={size} />
+                    ),
+                }}
+                name="CartPosScreen"
+                component={CartPosScreen}
             />
        
         </Tab.Navigator>
