@@ -13,11 +13,11 @@ import { passwordValidator } from '../../core/helpers/passwordValidator'
 import { UserLogin } from '../../service'
 import { setUserInfo } from '../../store/user/action';
 export default function LoginScreen({ navigation }) {
-    const [email, setEmail] = useState({ value: 'administrator', error: '' })
-    const [password, setPassword] = useState({ value: '71870031', error: '' })
+    // const [email, setEmail] = useState({ value: 'administrator', error: '' })
+    // const [password, setPassword] = useState({ value: '71870031', error: '' })
    
-    // const [email, setEmail] = useState({ value: 'haddadrafik258@gmail.com', error: '' })
-    // const [password, setPassword] = useState({ value: 'iysaal', error: '' })
+    const [email, setEmail] = useState({ value: 'haddadrafik258@gmail.com', error: '' })
+    const [password, setPassword] = useState({ value: 'iysaal', error: '' })
     
     const [isLoading, setIsLoading] = useState(false);
     const dispatch = useDispatch();

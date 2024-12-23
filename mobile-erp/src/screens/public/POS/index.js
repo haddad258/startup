@@ -2,8 +2,8 @@ import * as React from "react";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { StyleSheet } from "react-native";
-import PosOffline from "./list.articles";
-import PosOnline from "./list.articles";
+import PosDetails from "./list.articles";
+import OrdersPos from "./list.orders.pos";
 import { Colors } from '../../../core/theme'
 
 const Tab = createBottomTabNavigator();
@@ -22,23 +22,23 @@ const PosConfig = () => {
         
             <Tab.Screen
                 options={{
-                    title: "PosOffline",
+                    title: "PosDetails",
                     tabBarIcon: ({ color, size }) => (
                         <FontAwesome5 name="th-large" color={color} size={size} />
                     ),
                 }}
-                name="PosOffline"
-                component={PosOffline}
+                name="PosDetails"
+                component={PosDetails}
             />
                 <Tab.Screen
                 options={{
-                    title: "PosOnline",
+                    title: "OrdersPos",
                     tabBarIcon: ({ color, size }) => (
                         <FontAwesome5 name="list" color={color} size={size} />
                     ),
                 }}
-                name="PosOnline"
-                component={PosOnline}
+                name="OrdersPos"
+                component={OrdersPos}
             />
        
         </Tab.Navigator>

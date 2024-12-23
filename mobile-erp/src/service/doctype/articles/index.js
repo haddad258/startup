@@ -56,7 +56,6 @@ const getarticlesInfo = async (filter) => {
 };
 const addarticlesInfo = async (status) => {
     try {
-        console.log(Apis.api_articlesInfo)
         const result = await api.post(Apis.api_articlesInfo,  status);
         console.log(result)
         return result.data.error ? null : result.data;
