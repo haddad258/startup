@@ -35,6 +35,7 @@ function Articles() {
              <FlatList
                 data={List}
                 vertical
+                numColumns={2}
                 renderItem={({ item }) => (<ArticleCard item={item} />)}
                 keyExtractor={(item) => item.name}
             />
