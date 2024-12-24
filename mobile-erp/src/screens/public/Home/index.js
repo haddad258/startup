@@ -21,7 +21,7 @@ const HomeScreen = ({ navigation }) => {
     { id: 3, label: "Articles", icon: "📦", navigation: "Articles" },
     { id: 4, label: "Stock", icon: "🏷️", navigation: "Warehouses" },
     { id: 5, label: "Payments", icon: "💳", navigation: "PaymentList" },
-    { id: 6, label: "CartScreen", icon: "🚚", navigation: "CartScreen" },
+    { id: 6, label: "Cart", icon: "🚚", navigation: "CartScreen" },
   ];
   const [List, setList] = useState([])
 
@@ -64,7 +64,7 @@ const HomeScreen = ({ navigation }) => {
   const renderTransactionItem = ({ item }) => (
     <View style={styles.transactionItem}>
       <Text>{item.name || "No Date"}</Text>
-      <Text>{item.price || "No Type"}</Text>
+      <Text>{item.status || "No Type"}</Text>
     </View>
   );
 
@@ -87,9 +87,9 @@ const HomeScreen = ({ navigation }) => {
         {/* Recent Transactions */}
         <View style={styles.transactionsSection}>
           <View style={styles.transactionsHeader}>
-            <Text style={styles.transactionsTitle}>Recent Transactions</Text>
+            <Text style={styles.transactionsTitle}>Transactions récentes</Text>
             <TouchableOpacity onPress={() => navigation.navigate("Sales")} >
-              <Text style={styles.seeAll}>See All</Text>
+              <Text style={styles.seeAll}>Plus de détails</Text>
             </TouchableOpacity>
           </View>
           <FlatList

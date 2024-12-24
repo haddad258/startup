@@ -30,7 +30,19 @@ const StatusBadge = ({ order }) => {
             console.error("Error fetching order details:", error);
         }
     };
-
+    const updateOrders = async () => {
+        try {
+            const list = await OrderSettings.updateorders(order.name, {
+                "status": "To Deliver and Bill"  
+            });
+            if (list) {
+                setOrderDetail(list?.data);
+                setModalVisible(true); // Show modal after fetching data
+            }
+        } catch (error) {
+            console.error("Error fetching order details:", error);
+        }
+    };
     return (
         <View>
             <TouchableOpacity
@@ -54,6 +66,9 @@ const StatusBadge = ({ order }) => {
                             <Text style={styles.detailText}>Customer: {orderDetail.customer}</Text>
                             <Text style={styles.detailText}>Status: {orderDetail.status}</Text>
                             <PrintOrder orderDetail={orderDetail} />
+                            <TouchableOpacity onPress={() => updateOrders()} style={styles.btnPrint}>
+                                <Text style={styles.btnText}>updateOrders</Text>
+                            </TouchableOpacity>
                             <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.btnPrint}>
                                 <Text style={styles.btnText}>Close</Text>
                             </TouchableOpacity>

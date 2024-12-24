@@ -26,7 +26,7 @@ function CartPosScreen({ navigation }) {
 
   const [deliveryDate, setDeliveryDate] = useState(formatDate(new Date()));
   const [customer, setCustomer] = useState('');
-  const [taxes, setTaxes] = useState([]);
+  const [taxes, setTaxes] = useState("");
 
   const handleIncrement = (product, quantity) => {
     dispatch(addToCartMultiple(product.name, product, quantity + 1));
@@ -42,6 +42,7 @@ function CartPosScreen({ navigation }) {
 
   const handleOrderCreation = async () => {
     try {
+      console.log("taxes",taxes)
       const payload = {
         customer,
         delivery_date: deliveryDate,
@@ -50,7 +51,7 @@ function CartPosScreen({ navigation }) {
         is_pos: 1,
         "payments": [
             {
-                "mode_of_payment": "Cash",
+                "mode_of_payment": taxes,
                 "amount": 130.0
             }
         ],
@@ -81,12 +82,12 @@ function CartPosScreen({ navigation }) {
         style={styles.emptyCartImage}
         source={{ uri: 'https://i.ibb.co/80t9PPy/Screenshot-from-2024-02-13-11-59-08.png' }}
       />
-      <Text style={styles.emptyCartText}>Your cart is empty!</Text>
+      <Text style={styles.emptyCartText}>Cart Vide!!</Text>
       <TouchableOpacity
         onPress={() => navigation.navigate('Articles')}
         style={styles.shopButton}
       >
-        <Text style={styles.shopButtonText}>Shop Now</Text>
+        <Text style={styles.shopButtonText}>POS</Text>
       </TouchableOpacity>
     </View>
   );
@@ -133,9 +134,9 @@ function CartPosScreen({ navigation }) {
       <SelectInputDocs
         placeholder="Taxes"
         value={taxes}
-        onChangeText={(option) => setTaxes([option])}
+        onChangeText={(option) => setTaxes(option.name)}
         style={styles.input}
-        doctype="Sales Taxes and Charges Template"
+        doctype="Mode of Payment"
       />
       <FlatList
         data={Object.values(cartReducer.products)}

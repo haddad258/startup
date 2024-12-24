@@ -19,11 +19,12 @@ const PosConfig = () => {
                 tabBarInactiveTintColor: Colors.secondary,
                 tabBarStyle: { backgroundColor: Colors.white },
                 headerStyle: styles.headerStyle,
+                headerShown:false
             }}>
         
             <Tab.Screen
                 options={{
-                    title: "PosDetails",
+                    title: "POS articles",
                     tabBarIcon: ({ color, size }) => (
                         <FontAwesome5 name="th-large" color={color} size={size} />
                     ),
@@ -33,9 +34,9 @@ const PosConfig = () => {
             />
                 <Tab.Screen
                 options={{
-                    title: "OrdersPos",
+                    title: "Orders Pos",
                     tabBarIcon: ({ color, size }) => (
-                        <FontAwesome5 name="list" color={color} size={size} />
+                        <FontAwesome5 name="history" color={color} size={size} />
                     ),
                 }}
                 name="OrdersPos"
@@ -45,7 +46,7 @@ const PosConfig = () => {
                 options={{
                     title: "Checkout",
                     tabBarIcon: ({ color, size }) => (
-                        <FontAwesome5 name="list" color={color} size={size} />
+                        <FontAwesome5 name="level-up-alt" color={color} size={size} />
                     ),
                 }}
                 name="CartPosScreen"

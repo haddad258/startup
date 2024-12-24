@@ -29,10 +29,11 @@ const TabPublic = () => {
                 tabBarStyle: { backgroundColor: Colors.white },
                 headerStyle: styles.headerStyle,
 
+
             }}>
             <Tab.Screen
                 options={{
-                    title: "Home",
+                    title: "Acceuil",
                     tabBarIcon: ({ color, size }) => (
                         <FontAwesome5 name="home" color={color} size={size} />
                     ),
@@ -42,7 +43,7 @@ const TabPublic = () => {
             />
             <Tab.Screen
                 options={{
-                    title: "Customers",
+                    title: "Clients",
                     tabBarIcon: ({ color, size }) => (
                         <FontAwesome5 name="user" color={color} size={size} />
                     ),
@@ -52,7 +53,7 @@ const TabPublic = () => {
             />
             <Tab.Screen
                 options={{
-                    title: "CartScreen",
+                    title: "Cart",
                     tabBarIcon: ({ color, size }) => (
                         <FontAwesome5 name="cart-plus" color={color} size={size} />
                     ),
@@ -75,7 +76,7 @@ const TabPublic = () => {
             />
                   <Tab.Screen
                 options={{
-                    title: "Sales",
+                    title: "Ventes",
                     tabBarIcon: ({ color, size }) => (
                         <FontAwesome5 name="stream" color={color} size={size} />
                     ),
@@ -85,7 +86,7 @@ const TabPublic = () => {
             />
                  <Tab.Screen
                 options={{
-                    title: "PosConfig",
+                    title: "POS",
                     tabBarIcon: ({ color, size }) => (
                         <FontAwesome5 name="tablet-alt" color={color} size={size} />
                     ),

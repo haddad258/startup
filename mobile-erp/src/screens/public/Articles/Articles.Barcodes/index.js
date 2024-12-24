@@ -37,7 +37,7 @@ export default function CameraValidate() {
       });
 
       if (BarcodeSearch) {
-        console.log(BarcodeSearch.message.item_code)
+        console.log("BarcodeSearch.message.item_code",BarcodeSearch.message.item_code)
         fetchArticlesBarcode(BarcodeSearch.message.item_code);
         closeModal(); // Close modal on successful scan
       }
@@ -49,7 +49,7 @@ export default function CameraValidate() {
 
   const fetchArticlesBarcode = async (filter) => {
     try {
-      const list = await ArticleSettings.getarticles(`?fields=["*"]&filters={"item_name":"${filter}"}`);
+      const list = await ArticleSettings.getarticles(`?fields=["*"]`);
       if (list) {
         setList(list?.data);
       }

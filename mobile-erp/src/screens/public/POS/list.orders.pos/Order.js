@@ -5,9 +5,7 @@ import {Colors} from '../../../../core/theme';
 
 const OrderCard = ({order, navigation}) => {
   return (
-    <TouchableOpacity
-      activeOpacity={0.8}
-      onPress={() => console.log('Order Details:', order)}>
+   
       <View style={styles.cardContainer}>
         {/* Render the card image */}
         {/* Render all the card details here */}
@@ -57,7 +55,6 @@ const OrderCard = ({order, navigation}) => {
           </View>
         </View>
       </View>
-    </TouchableOpacity>
   );
 };
 
@@ -66,14 +63,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 20,
+    flex: 1,
   },
   cardDetailsContainer: {
     height: 120,
     backgroundColor: Colors.white,
-    flex: 1,
-    borderTopRightRadius: 10,
-    borderBottomRightRadius: 10,
     padding: 20,
+    borderRadius:10,
+    borderColor:Colors.primary,
+    borderWidth:1,
     justifyContent: 'center',
   },
   cardImageContainer: {

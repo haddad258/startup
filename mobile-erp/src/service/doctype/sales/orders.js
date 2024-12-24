@@ -12,7 +12,9 @@ const getorders = async (filter) => {
 };
 const addorders = async (status) => {
     try {
+        console.log(Apis.api_orders)
         const result = await api.post(Apis.api_orders,  status);
+        console.log("result",result)
         return result.data.error ? null : result.data;
     } catch (error) {
         console.error(error.response?.data?._server_messages);
@@ -20,9 +22,11 @@ const addorders = async (status) => {
         return null;
     }
 };
-const updateorders = async (data) => {
+const updateorders = async (uri,data) => {
     try {
-        const result = await api.put(Apis.api_orders + data.id, data);
+        console.log((Apis.api_orders + uri))
+        const result = await api.put(Apis.api_orders + uri, data);
+        console.log(result.data)
         return result.data.error ? null : result.data;
     } catch (error) {
         console.error(error);

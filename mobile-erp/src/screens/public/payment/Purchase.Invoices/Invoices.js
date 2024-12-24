@@ -1,11 +1,9 @@
 import * as React from "react";
 import { TouchableOpacity, Image, StyleSheet, Text, Dimensions, View } from "react-native";
-import {Colors} from "../../../../core/theme";
-const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
+import {Colors, units} from "../../../../core/theme";
 function Item({ item, props }) {
   const gotoViewCustomer = (item) => {
-    console.log(item)
+    console.log('item',item)
   }
   return (
     <TouchableOpacity
@@ -17,12 +15,12 @@ function Item({ item, props }) {
         <View style={styles.itemThreeContent}>
           <Text style={styles.itemThreeBrand}>Invoices {item.name}-{item.set_warehouse}</Text>
           <View>
-            <Text style={styles.itemThreeTitle}>{item.total}  </Text>
+            <Text style={styles.itemThreeTitle}>{item.total} {item.currency}  </Text>
             <Text style={styles.itemThreeSubtitle} numberOfLines={1}>
-              {item.company_address_display}  {item.city} { }
+              {item.supplier}  {item.supplier_group} { }
             </Text>
             <Text style={styles.itemThreeSubtitle} numberOfLines={1}>
-              {item.customer_name}
+              {item.title}
             </Text>
           </View>
           <View style={styles.itemThreeMetaContainer}>
@@ -52,9 +50,8 @@ function Item({ item, props }) {
 
 const styles = StyleSheet.create({
   itemThreeContainer: {
-    backgroundColor: 'white',
-    width: windowWidth - 10,
-    // height: windowHeight / 6
+    backgroundColor: '#fff',
+    width: units.width - 10,
     borderColor: Colors.primary,
     borderWidth: 2,
     margin: 4,

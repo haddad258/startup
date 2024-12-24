@@ -15,7 +15,7 @@ function Item({ item, index }) {
   return (
     <TouchableOpacity
       key={item}
-      style={[styles.itemContainer, { backgroundColor: index % 2 === 0 ? Colors.white : Colors.white }]}
+      style={[styles.itemContainer, { backgroundColor: index % 2 === 0 ? "#fff" : "#fff"}]}
       onPress={() => console.log(item)}
     >
       <View style={styles.itemContent}>
@@ -32,13 +32,13 @@ function Item({ item, index }) {
             <Text style={styles.itemDate} numberOfLines={1}>{item.posting_date}</Text>
           </View>
           <View style={styles.actionButtons}>
-            <View style={[styles.badge, { backgroundColor: Colors.colorTiers }]}>
+            <View style={[styles.badge, { backgroundColor: Colors.gray }]}>
               <FontAwesome name="trash" color="white" size={18} />
             </View>
-            <View style={[styles.badge, { backgroundColor: Colors.colorTiers }]}>
+            <View style={[styles.badge, { backgroundColor: Colors.gray }]}>
               <FontAwesome name="edit" color="white" size={18} />
             </View>
-            <View style={[styles.badge, { backgroundColor: Colors.colorTiers }]}>
+            <View style={[styles.badge, { backgroundColor: Colors.gray }]}>
               <FontAwesome name="eye" color="white" size={18} />
             </View>
           </View>
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
   itemDate: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: Colors.colorTextTitles,
+    color: Colors.primary,
   },
   actionButtons: {
     flexDirection: 'row',
@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
   },
   separator: {
     height: 1,
-    backgroundColor: '#e0e0e0',
+    backgroundColor: Colors.secondary,
     marginTop: 10,
   },
 });

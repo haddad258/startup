@@ -31,7 +31,6 @@ function Quotations() {
     };
     return (
         <View style={{ flex: 1, backgroundColor: Colors.white }}>
-            <Text>invoces</Text>
              <FlatList
                 data={List}
                 vertical

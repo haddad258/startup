@@ -20,12 +20,14 @@ const TabArticles = () => {
                 tabBarInactiveTintColor: Colors.secondary,
                 tabBarStyle: { backgroundColor: Colors.white },
                 headerStyle: styles.headerStyle,
+                headerShown:false
+
             }}>
             <Tab.Screen
                 options={{
                     title: "Items",
                     tabBarIcon: ({ color, size }) => (
-                        <FontAwesome5 name="list" color={color} size={size} />
+                        <FontAwesome5 name="grip-vertical" color={color} size={size} />
                     ),
                 }}
                 name="ListArticles"

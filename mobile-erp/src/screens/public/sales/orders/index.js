@@ -33,7 +33,6 @@ function Orders() {
     };
     return (
         <View style={{ flex: 1, backgroundColor: Colors.white }}>
-            <Text>ordessrs</Text>
            <FlatList
                 data={List}
                 vertical

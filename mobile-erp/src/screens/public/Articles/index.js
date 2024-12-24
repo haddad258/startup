@@ -25,7 +25,7 @@ const TabPublic = () => {
             }}>
             <Tab.Screen
                 options={{
-                    title: "Liste Articles",
+                    title: "Liste Prix",
                     tabBarIcon: ({ color, size }) => (
                         <FontAwesome5 name="list" color={color} size={size} />
                     ),
@@ -45,7 +45,7 @@ const TabPublic = () => {
             />
             <Tab.Screen
                 options={{
-                    title: "ArticlesBarcode",
+                    title: "Code à barres",
                     tabBarIcon: ({ color, size }) => (
                         <FontAwesome5 name="barcode" color={color} size={size} />
                     ),
@@ -56,7 +56,7 @@ const TabPublic = () => {
 
             <Tab.Screen
                 options={{
-                    title: "TabArticles",
+                    title: "Items",
                     tabBarIcon: ({ color, size }) => (
                         <FontAwesome5 name="bars" color={color} size={size} />
                     ),

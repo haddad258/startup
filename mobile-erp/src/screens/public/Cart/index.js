@@ -72,12 +72,12 @@ function CartScreen({ navigation }) {
         style={styles.emptyCartImage}
         source={{ uri: 'https://i.ibb.co/80t9PPy/Screenshot-from-2024-02-13-11-59-08.png' }}
       />
-      <Text style={styles.emptyCartText}>Your cart is empty!</Text>
+      <Text style={styles.emptyCartText}>Cart Vide!</Text>
       <TouchableOpacity
         onPress={() => navigation.navigate('Articles')}
         style={styles.shopButton}
       >
-        <Text style={styles.shopButtonText}>Shop Now</Text>
+        <Text style={styles.shopButtonText}>Articles</Text>
       </TouchableOpacity>
     </View>
   );
@@ -115,7 +115,7 @@ function CartScreen({ navigation }) {
     <View style={styles.container}>
       <Text style={styles.inputDate}>Date: {deliveryDate}</Text>
       <SelectInputDocs
-        placeholder="Customer"
+        placeholder="Clients"
         value={customer}
         onChangeText={(option) => setCustomer(option.name)}
         style={styles.input}

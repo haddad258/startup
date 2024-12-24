@@ -21,12 +21,13 @@ const Sales = () => {
                 tabBarInactiveTintColor: Colors.secondary,
                 tabBarStyle: { backgroundColor: Colors.white },
                 headerStyle: styles.headerStyle,
+                headerShown:false
             }}>
             <Tab.Screen
                 options={{
-                    title: "Orders",
+                    title: "Commandes",
                     tabBarIcon: ({ color, size }) => (
-                        <FontAwesome5 name="list" color={color} size={size} />
+                        <FontAwesome5 name="file-alt" color={color} size={size} />
                     ),
                 }}
                 name="Orders"
@@ -34,7 +35,7 @@ const Sales = () => {
             />
             <Tab.Screen
                 options={{
-                    title: "Invoices",
+                    title: "Factures",
                     tabBarIcon: ({ color, size }) => (
                         <FontAwesome5 name="th-large" color={color} size={size} />
                     ),
@@ -44,9 +45,9 @@ const Sales = () => {
             />
               <Tab.Screen
                 options={{
-                    title: "Quotations",
+                    title: "Devis",
                     tabBarIcon: ({ color, size }) => (
-                        <FontAwesome5 name="th-large" color={color} size={size} />
+                        <FontAwesome5 name="equals" color={color} size={size} />
                     ),
                 }}
                 name="Quotations"

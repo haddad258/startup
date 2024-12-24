@@ -25,7 +25,7 @@ const Sales = () => {
             }}>
             <Tab.Screen
                 options={{
-                    title: "ListCustomers",
+                    title: "Liste",
                     tabBarIcon: ({ color, size }) => (
                         <FontAwesome5 name="list" color={color} size={size} />
                     ),
@@ -35,7 +35,7 @@ const Sales = () => {
             />
             <Tab.Screen
                 options={{
-                    title: "AddCustomerScreen",
+                    title: "Ajout",
                     tabBarIcon: ({ color, size }) => (
                         <FontAwesome5 name="plus" color={color} size={size} />
                     ),
