@@ -19,10 +19,11 @@ const addCustomers = async (req, res, next) => {
         });
       });
   } catch (error) {
+    errorHandlerDetailsres.handleSqlError(error,res, next);
     
-    next(
-      new createHttpError.BadRequest("Invalid values to create a customers.")
-    );
+    // next(
+    //   new createHttpError.BadRequest("Invalid values to create a customers.")
+    // );
   }
 };
 
@@ -98,6 +99,7 @@ const getCustomersById = async (req, res, next) => {
 const updateUserPassword = async (req, res, next) => {
   try {
     const { password } = req.body
+    console.log(req.body)
     await app.db
       .table("customers")
       .update({ password: bcrypt.hashSync(password), updated_at: new Date() })

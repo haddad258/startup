@@ -29,7 +29,7 @@
       }, []);
   
       const columns = [
-          { label: '#', field: 'index' },
+          //{ label: '#', field: 'index' },
           { label: i18n.t('customerId'), field: 'customerId' },
           { label: i18n.t('profileId'), field: 'profileId' },
           { label: i18n.t('noteInputLabel'), field: 'note' },

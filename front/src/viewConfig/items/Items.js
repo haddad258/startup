@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import {
     CButton,
     CModal,
@@ -19,6 +19,7 @@ import { cilPen, cilPlus } from '@coreui/icons';
 import { settingsConfigApps } from 'src/services/SupperSettings';
 import PropTypes from 'prop-types';
 import i18n from 'src/i18n';
+import { commonSettings } from 'src/services/common.settings';
 
 const initialItemstate = {
     name: '',
@@ -105,6 +106,22 @@ const ItemsC = ({ refresh, selectedItems }) => {
         }
     };
 
+    const filterChild = useCallback(async (filterId, entity, filterAttr, updateType) => {
+        try {
+            const list = await commonSettings.getFilterData(filterId, entity, filterAttr);
+            if (list) {
+                console.log(list?.data)
+                if (updateType === 'itemkits') {
+                    setlistItemsKits(list?.data);
+                } else if (updateType === 'items') {
+                    console.log(list?.data);
+                }
+            }
+        } catch (error) {
+            console.error('Error fetching admin list:', error);
+        }
+    }, []);
+
     return (
         <>
             <CButton color={isUpdateMode ? 'secondary' : 'primary'} onClick={() => openModals()}>
@@ -145,9 +162,10 @@ const ItemsC = ({ refresh, selectedItems }) => {
                         <CCol md={6} className="position-relative">
                             <CFormLabel htmlFor="itemkitsSelect">{i18n.t('CategoriesList')}</CFormLabel>
                             <CFormSelect
-                                value={Items.categories}
-                                onChange={(e) => console.log({ ...Items, categories: e.target.value })}
+                                value={Items.categoriesId}
+                                onChange={(e) => filterChild(e.target.value, "itemkits", "categoriesId", "itemkits")}
                                 id="itemkitsSelect"
+                                required
                             >
                                 <option value="">{i18n.t('selectCategoriesPlaceholder')}</option>
                                 {ListCategories?.map((category) => (
@@ -165,7 +183,8 @@ const ItemsC = ({ refresh, selectedItems }) => {
                             <CFormSelect
                                 value={Items.itemkitsId}
                                 onChange={(e) => setFormdata({ ...Items, itemkitsId: e.target.value })}
-                                id="itemkitsSelect"
+                                id="itemkitsSelect"itemkitsId
+                                required
                             >
                                 <option value="">{i18n.t('selectitemkitsPlaceholder')}</option>
                                 {listItemsKits?.map((itemkit) => (

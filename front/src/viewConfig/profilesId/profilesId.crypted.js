@@ -97,7 +97,7 @@ const ProfilesIdsCrypted = ({ refresh, selectedProfilesIds }) => {
                                 <CFormInput
                                     value={ProfilesIds[key]}
                                     onChange={(e) => setFormdata({ ...ProfilesIds, [key]: e.target.value })}
-                                    type={key === 'crypted' || key === 'activeDate' ? 'date' : 'text'}
+                                    type={ key === 'activeDate' ? 'date' : 'text'}
                                     id={key}
                                     required
                                 />

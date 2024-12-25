@@ -1,9 +1,11 @@
-const API_URL = "http://192.168.1.28:8009";
+const API_URL = "http://192.168.0.8:8009";
 const API_URLPublic = API_URL + "/public/";
 
 const Apis = {
   UserLoginAPI: `${API_URL}/public/api/customers/config/`,
   Api_RegisterCustomer: `${API_URL}/public/api/customers/config/`,
+  api_commonDoctypes: `${API_URL}/api/mobile/config/apps/`,
+  ////////////////////////////////////////////
 
 
   API_Advertising: `${API_URL}/public/api/advertising/`,
@@ -13,7 +15,6 @@ const Apis = {
   API_Discount: `${API_URL}/public/api/discounts/discounts/list/active`,
   
 
-  API_DataApps: `${API_URL}/public/api/data/apps/config/`,
   API_Publications: `${API_URL}/public/publications/details/blog`,
   ////////////////////////////////////////////
   Api_CustomerOrders: `${API_URL}/public/api/orders/`,

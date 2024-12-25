@@ -26,6 +26,7 @@ const updatecommonRows = async (req, res, next) => {
 };
 const getListFiltred = async (req, res, next) => {
   try {
+    console.log(req.body)
     await app.db
       .table(req.body.entity)
       .select("*")

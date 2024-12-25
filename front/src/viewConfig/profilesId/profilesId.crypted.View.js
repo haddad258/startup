@@ -38,7 +38,7 @@ const ProfilesIdsCrypteView = ({ refresh, selectedProfilesIds }) => {
 
 
     const columns = [
-        { label: '#', field: 'index' },
+        //{ label: '#', field: 'index' },
         { label: i18n.t('attr_aLabel'), field: 'attr_a' },
         { label: i18n.t('attr_bLabel'), field: 'attr_b' },
         { label: i18n.t('attr_cLabel'), field: 'attr_c' },

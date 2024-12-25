@@ -50,7 +50,9 @@ app.post("/api/root/users/login", async (req, res) => {
     const [user] = await app.db
       .from("customers")
       .select("*")
-      .where("customer.username", email);
+      .where("customer.username", email)
+      .andWhere("customer.username", email);
+      console.log(user)
     if (!user) {
       res.status(200).send({ notice: "User Not Found" });
     } else {

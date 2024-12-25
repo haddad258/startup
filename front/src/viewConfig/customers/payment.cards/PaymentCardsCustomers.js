@@ -41,7 +41,7 @@ const PaymentCardsCustomersC = ({  selectedPaymentCardsCustomers }) => {
         }
     };
     const columns = [
-        { label: '#', field: 'index' },
+        //{ label: '#', field: 'index' },
         { label: i18n.t('cardholderNameLabel'), field: 'cardholder_name' },
         { label: i18n.t('cardNumberLabel'), field: 'card_number_token' },
         { label: i18n.t('expirationDateLabel'), field: 'expiration_date' },

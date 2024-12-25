@@ -76,7 +76,7 @@ const OrderDetailsTransactionsC = ({ refresh, selectedOrderDetailsTransactions }
               <CCardHeader>
                   <CRow className="align-items-center">
                       <CCol md="6" xs="12">
-                          <strong>   { i18n.t('OrdersDetailsTableTransaction')}</strong>
+                          {/* <strong>   { i18n.t('OrdersDetailsTableTransaction')}</strong> */}
                       </CCol>
                       
                   </CRow>
@@ -86,7 +86,7 @@ const OrderDetailsTransactionsC = ({ refresh, selectedOrderDetailsTransactions }
                       <CCol xs="12">
                           <CCard className="mb-4">
                               <CCardHeader>
-                          <strong>{ i18n.t('OrdersDetailsTableTransaction')}</strong>
+                          {/* <strong>{ i18n.t('OrdersDetailsTableTransaction')}</strong> */}
                               </CCardHeader>
                               <CCardBody>
                                       <GenericTable columns={columns} data={OrderDetailsTransaction} />
@@ -101,7 +101,6 @@ const OrderDetailsTransactionsC = ({ refresh, selectedOrderDetailsTransactions }
                             <CButton color="secondary" onClick={() => setVisible(false)}>
                             {i18n.t('closeButton')}
                             </CButton>
-                            <CButton color="primary" type="submit" >{i18n.t('saveButton')}</CButton>
                         </CModalFooter>
                 </CModalBody>
             </CModal>

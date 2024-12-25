@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
     CButton,
     CModal,
@@ -19,6 +19,7 @@ import { settingsConfigArticles } from 'src/services/SupperSettings';
 import PropTypes from 'prop-types';
 import i18n from 'src/i18n';
 import fetchData from '../fetch.data';
+import { commonSettings } from 'src/services/common.settings';
 
 const initialArticlesConfigstate = {
 
@@ -32,7 +33,7 @@ const ArticlesConfigsC = ({ refresh, selectedArticlesConfigs }) => {
 
     const [ArticlesConfig, setFormdata] = useState(initialArticlesConfigstate);
     const [listCategories, setListCategories] = useState([]);
-    const [listArticlesConfigKits, setlistArticlesConfigKits] = useState([]);
+    const [listitemsKits, setlistitemsKits] = useState([]);
     const [listitems, setlistitems] = useState([]);
     const [listBrands, setListBrands] = useState([]);
     useEffect(() => {
@@ -74,7 +75,7 @@ const ArticlesConfigsC = ({ refresh, selectedArticlesConfigs }) => {
             ]);
 
             setListCategories(categories);
-            setlistArticlesConfigKits(itemkits);
+            setlistitemsKits(itemkits);
             setlistitems(items);
             setListBrands(brands);
             setVisible(prevVisible => !prevVisible); // Safely toggle the visibility
@@ -82,7 +83,22 @@ const ArticlesConfigsC = ({ refresh, selectedArticlesConfigs }) => {
             console.error('Error fetching data:', error);
         }
     };
-
+    const filterChild = useCallback(async (filterId, entity, filterAttr, updateType) => {
+        try {
+            const list = await commonSettings.getFilterData(filterId, entity, filterAttr);
+            if (list) {
+                console.log(list?.data)
+                if (updateType === 'itemkits') {
+                    setlistitemsKits(list?.data);
+                } else if (updateType === 'items') {
+                    setlistitems(list?.data);
+                    console.log(list.data)
+                }
+            }
+        } catch (error) {
+            console.error('Error fetching admin list:', error);
+        }
+    }, []);
     return (
         <>
             <CButton style={{ backgroundColor: "#8cf470" }} onClick={() => CreateNewData()}>
@@ -110,7 +126,9 @@ const ArticlesConfigsC = ({ refresh, selectedArticlesConfigs }) => {
                             <CFormLabel htmlFor="categoriesSelect">{i18n.t('CategoriesList')}</CFormLabel>
                             <CFormSelect
                                 value={ArticlesConfig.categories}
-                                onChange={(e) => setFormdata({ ...ArticlesConfig, categoryId: e.target.value })}
+                                onChange={(e) => {
+                                    filterChild(e.target.value, "itemkits", "categoriesId", "itemkits");
+                                    setFormdata({ ...ArticlesConfig, categoryId: e.target.value })}}
                                 id="categoriesSelect"
                                 
                             >
@@ -130,11 +148,15 @@ const ArticlesConfigsC = ({ refresh, selectedArticlesConfigs }) => {
                             <CFormLabel htmlFor="itemkitsSelect">{i18n.t('ItemKitsList')}</CFormLabel>
                             <CFormSelect
                                 value={ArticlesConfig.itemkits}
-                                onChange={(e) => setFormdata({ ...ArticlesConfig, itemkitId: e.target.value })}
+                                onChange={(e) =>{
+                                    filterChild(e.target.value, "items", "itemkitsId", "items")
+                                    setFormdata({ ...ArticlesConfig, itemkitId: e.target.value })}
+                               
+                                }
                                 id="itemkitsSelect"
                             >
                                 <option value="">{i18n.t('selectItemKitsPlaceholder')}</option>
-                                {listArticlesConfigKits?.map((itemkit) => (
+                                {listitemsKits?.map((itemkit) => (
                                     <option key={itemkit.id} value={itemkit.id}>
                                         {itemkit.name}
                                     </option>

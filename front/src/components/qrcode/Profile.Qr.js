@@ -24,7 +24,7 @@ function ProfileQr(props) {
 
     return (
         <>
-            <CButton  style={{backgroundColor:"#f470e8"}} onClick={() => setVisible(!visible)}><CIcon icon={cilQrCode} /></CButton>
+            <CButton  style={{backgroundColor:"#f470e8"}} onClick={() => setVisible(!visible)}><CIcon size="xl" icon={cilQrCode} /></CButton>
             <CModal
                 alignment="center"
                 visible={visible}
@@ -42,13 +42,13 @@ function ProfileQr(props) {
                             value={JSON.stringify(UpdateMode)}
                             viewBox={`0 0 500 400`}
                         />
+                        
                     </div>
 
                     <CModalFooter>
                         <CButton color="secondary" onClick={() => setVisible(false)}>
-                            Close
+                            {i18n.t("closeButton")}
                         </CButton>
-                        <CButton color="primary" type="submit" >Save changes</CButton>
                     </CModalFooter>
 
 

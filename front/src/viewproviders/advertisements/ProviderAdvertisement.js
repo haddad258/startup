@@ -112,7 +112,7 @@ const ProviderAdvertisementsC = ({ refresh, selectedProviderAdvertisements }) =>
                             <CFormFeedback tooltip invalid>
                             {i18n.t('requiredAppreciationField')}
                             </CFormFeedback>
-                        </CCol>
+                        </CCol>ss
                         <CModalFooter>
                             <CButton color="secondary" onClick={() => setVisible(false)}>
                             {i18n.t('closeButton')}

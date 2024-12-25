@@ -21,19 +21,20 @@ const TabPrivate = () => {
       }}
     >
   
-      <Stack.Screen
-        name="ArticlesFiltred"
-        component={ArticlesFiltred}
-        options={{
-          title: "Create account",
-          headerTitleStyle: styles.headerTitleStyle,
-        }}
-      />
+    
       <Stack.Screen
         name="DataAppsConfig"
         component={DataAppsConfig}
         options={{
           title: "DataAppsConfig",
+          headerTitleStyle: styles.headerTitleStyle,
+        }}
+      />
+        <Stack.Screen
+        name="ArticlesFiltred"
+        component={ArticlesFiltred}
+        options={{
+          title: "Create account",
           headerTitleStyle: styles.headerTitleStyle,
         }}
       />

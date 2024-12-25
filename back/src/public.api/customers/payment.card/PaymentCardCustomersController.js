@@ -50,6 +50,7 @@ const getAllPaymentCardCustomerss = async (req, res, next) => {
       .from("paymentcards")
       .select("*")
       .where('customerId', "=", req.userId)
+      .andWhere("status","=",1)
       .then((rows) => {
         if (rows.length === 0) {
           return res.json({

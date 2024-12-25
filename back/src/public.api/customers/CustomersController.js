@@ -39,10 +39,14 @@ const addCustomers = async (req, res, next) => {
 
 const updateCustomers = async (req, res, next) => {
   try {
+    console.log(req.body)
+    const { password, ...otherDetails } = req.body;
     await app.db
       .table("customers")
-      .update({ ...req.body, updated_at: new Date() })
-      .where("id", "=", req.params.id)
+      .update({ 
+        ...otherDetails,
+        password: bcrypt.hashSync(password),updated_at: new Date() })
+      .where("id", "=", req.userId)
       .then(() => {
         res.status(200).json({
           message: "Successfully updated",
@@ -56,23 +60,24 @@ const updateCustomers = async (req, res, next) => {
 };
 const getCustomersById = async (req, res, next) => {
   try {
+    console.log(req.userId)
     await app.db
       .from("customers")
       .select("*")
-      .where("id", "=", req.params.id)
+      .where("id", "=", req.userId)
       .then((rows) => {
         if (rows.length === 0) {
           return res.json({
             message: "customers not found with the given id",
             status: 200,
-            data: rows,
+            data: rows[0],
           });
         }
 
         res.json({
           message: "customers fetched with the given id",
           status: 200,
-          data: rows,
+            data: rows[0],
         });
       });
   } catch (error) {
@@ -96,7 +101,9 @@ const LoginAPICustomers = async (req, res) => {
     const [user] = await app.db
       .from("customers")
       .select("*")
-      .where("customers.email", email);
+      .where("customers.email", email)
+      .andWhere("status","=",1);
+      console.log(user)
 
     // Check if the user exists
     if (!user) {

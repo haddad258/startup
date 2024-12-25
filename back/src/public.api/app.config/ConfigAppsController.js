@@ -43,6 +43,7 @@ const getAllConfigApp = async (req, res, next) => {
 
 const getAllConfigApps = async (req, res, next) => {
   try {
+    console.log("/api/mobile/config/apps")
     await app.db
       .from(req.params.entity)
       .select("*")

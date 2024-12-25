@@ -155,12 +155,12 @@ const SubscriptionsC = ({ refresh, selectedSubscriptions }) => {
                                 value={Subscription.customerId}
                                 onChange={(e) => setFormdata({ ...Subscription, customerId: e.target.value })}
                                 id="customerIdSelect"
-                                required
+                                disabled
                             >
                                 <option value="">{i18n.t('selectcustomerIdPlaceholder')}</option>
                                 {Listcustomers?.map((customer) => (
                                     <option key={customer.id} value={customer.id}>
-                                        {customer.name}:{customer.username}
+                                        {customer.cin} : {customer.username}
                                     </option>
                                 ))}
                             </CFormSelect>

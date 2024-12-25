@@ -109,10 +109,10 @@ const PasswordAdmin = ({ refresh, selectedUserAdmin }) => {
                                 type="password"
                                 id="passwordInput"
                                 required
-                                pattern="^[A-Za-z0-9]{6,}$"
+                                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
                             />
                             <CFormFeedback tooltip invalid>
-                                {i18n.t('requiredPasswordField')}
+                                {i18n.t('requiredPasswordField')} :{i18n.t('passwordMismatchError')}
                             </CFormFeedback>
                         </CCol>
 
@@ -124,11 +124,11 @@ const PasswordAdmin = ({ refresh, selectedUserAdmin }) => {
                                 type="password"
                                 id="confirmPasswordInput"
                                 required
-                                pattern="^[A-Za-z0-9]{6,}$"
+                                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
                                 isInvalid={passwordValidationError}
                             />
                             <CFormFeedback tooltip invalid>
-                                {passwordValidationError ? i18n.t('passwordMismatchError') : i18n.t('requiredConfirmPasswordField')}
+                            {i18n.t('requiressdConfirmPasswordField')}:  {passwordValidationError ? i18n.t('requiredPasswordField') : i18n.t('requiredConfirmPasswordField')}
                             </CFormFeedback>
                         </CCol>
                         <CFormFeedback >

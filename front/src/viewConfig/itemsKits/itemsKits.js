@@ -124,6 +124,7 @@ const ItemsKitsC = ({ refresh, selectedItemsKits }) => {
                                 value={ItemsKits.categoriesId}
                                 onChange={(e) => setFormdata({ ...ItemsKits, categoriesId: e.target.value })}
                                 id="itemkitsSelect"
+                                required
                             >
                                 <option value="">{i18n.t('selectCategoriesPlaceholder')}</option>
                                 {ListCategories?.map((category) => (

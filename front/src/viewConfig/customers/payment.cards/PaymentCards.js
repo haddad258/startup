@@ -100,6 +100,7 @@ const PaymentCardsC = ({ refresh, selectedPaymentCards }) => {
                                 id="cardholderName"
                                 required
                                 pattern="^[a-zA-Z\s]+$"
+                                disabled
                             />
                             <CFormFeedback tooltip invalid>
                                 {i18n.t('requiredCardholderName')}
@@ -114,6 +115,7 @@ const PaymentCardsC = ({ refresh, selectedPaymentCards }) => {
                                 id="cardNumber"
                                 required
                                 pattern="^(4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14})$"
+                                disabled
                             />
                             <CFormFeedback tooltip invalid>
                                 {i18n.t('requiredCardNumber')}
@@ -126,6 +128,7 @@ const PaymentCardsC = ({ refresh, selectedPaymentCards }) => {
                                 onChange={(e) => setFormdata({ ...paymentCardData, card_email: e.target.value })}
                                 type="email"
                                 required
+                                disabled
                             />
                             <CFormFeedback tooltip invalid>
                                 {i18n.t('requiredCardemail')}
@@ -139,6 +142,7 @@ const PaymentCardsC = ({ refresh, selectedPaymentCards }) => {
                                 type="text"
                                 id="expirationDate"
                                 required
+                                disabled
                             />
                             <CFormFeedback tooltip invalid>
                                 {i18n.t('requiredExpirationDate')}
@@ -152,20 +156,22 @@ const PaymentCardsC = ({ refresh, selectedPaymentCards }) => {
                                 type="text"
                                 id="cardType"
                                 required
+                                disabled
                             />
                             <CFormFeedback tooltip invalid>
                                 {i18n.t('requiredCardType')}
                             </CFormFeedback>
                         </CCol>
-                        <CCol md={12} className="position-relative">
+                        {/* <CCol md={12} className="position-relative">
                             <CFormLabel htmlFor="billingAddress">{i18n.t('billingAddressLabel')}</CFormLabel>
                             <CFormInput
                                 value={paymentCardData.billing_address}
                                 onChange={(e) => setFormdata({ ...paymentCardData, billing_address: e.target.value })}
                                 type="text"
                                 id="billingAddress"
+                                disabled
                             />
-                        </CCol>
+                        </CCol> */}
                         <CModalFooter>
                             <CButton color="secondary" onClick={() => setVisible(false)}>
                                 {i18n.t('closeButton')}

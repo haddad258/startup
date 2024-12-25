@@ -25,7 +25,7 @@ import OrderDetailsTransactionsC from 'src/viewConfig/orders/order.transactions/
 
 
 const OrdersCustomersList = ({  selectedOrdersCustomers }) => {
-    const [visible, setVisible] = useState(false);
+    const [VisibleOrders, setVisibleOrders] = useState(false);
 
     const [OrdersCustomers, setOrdersCustomers] = useState([]);
 
@@ -34,14 +34,14 @@ const OrdersCustomersList = ({  selectedOrdersCustomers }) => {
             const list = await settingsCustomers.getOrdersByCustomers(selectedOrdersCustomers.id);
             if (list) {
                 setOrdersCustomers(list?.data);
-                setVisible(!visible)
+                setVisibleOrders(!VisibleOrders)
             }
         } catch (error) {
             console.error('Error fetching admin list:', error);
         }
     };
     const columns = [
-        { label: '#', field: 'index' },
+        //{ label: '#', field: 'index' },
         { label: i18n.t('ordernumberInputLabel'), field: 'order_number' },
         { label: i18n.t('priceInputLabel'), field: 'price' },
         { label: i18n.t('quantityLabel'), field: 'quantity' },
@@ -69,12 +69,12 @@ const OrdersCustomersList = ({  selectedOrdersCustomers }) => {
 
             <CModal
                 alignment="center"
-                visible={visible}
-                onClose={() => setVisible(false)}
+                visible={VisibleOrders}
+                onClose={() => setVisibleOrders(false)}
                 aria-labelledby="VerticallyCenteredExample"
                 size="xl"
             >
-                <CModalHeader onClose={() => setVisible(false)}>
+                <CModalHeader onClose={() => setVisibleOrders(false)}>
                     <CModalTitle id="LiveDemoExampleLabel">{i18n.t('ListOrdersCustomersTitle')}</CModalTitle>
                 </CModalHeader>
                 <CModalBody>
@@ -91,7 +91,7 @@ const OrdersCustomersList = ({  selectedOrdersCustomers }) => {
                         </CCol>
                     </CRow>
                     <CModalFooter>
-                        <CButton color="secondary" onClick={() => setVisible(false)}>
+                        <CButton color="secondary" onClick={() => setVisibleOrders(false)}>
                             {i18n.t('closeButton')}
                         </CButton>
                     </CModalFooter>

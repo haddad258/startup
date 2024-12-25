@@ -107,7 +107,7 @@ const ArticlesC = ({ refresh, selectedArticles }) => {
                         
                         <CCol md={12} className="position-relative">
                             <CFormLabel htmlFor="validationTooltip04">{i18n.t('barcodeInputLabel')}</CFormLabel>
-                            <CFormInput value={Articles.barcode} onChange={(e) => setFormdata({ ...Articles, barcode: e.target.value })} type="text" id="validationTooltip04" />
+                            <CFormInput value={Articles.barcode} onChange={(e) => setFormdata({ ...Articles, barcode: e.target.value })} type="text" id="validationTooltip04" required />
                             <CFormFeedback tooltip invalid>
                                 {i18n.t('requiredBarcodeField')}
                             </CFormFeedback>

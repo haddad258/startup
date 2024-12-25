@@ -29,7 +29,7 @@
       }, []);
   
       const columns = [
-          { label: '#', field: 'index' },
+          //{ label: '#', field: 'index' },
           { label: i18n.t('articleInputLabel'), field: 'articleId' },
           { label: i18n.t('providerInputLabel'), field: 'providersId' },
           { label: i18n.t('providerInputLabel'), field: 'providersId' },

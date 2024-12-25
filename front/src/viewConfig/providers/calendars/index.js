@@ -30,7 +30,7 @@ const ProviderCalendars = () => {
     }, []);
 
     const columns = [
-        { label: '#', field: 'index' },
+        //{ label: '#', field: 'index' },
         { label: i18n.t('providerInputLabel'), field: 'providersId' },
         { label: i18n.t('startInputLabel'), field: 'start' },
         { label: i18n.t('endInputLabel'), field: 'end' },

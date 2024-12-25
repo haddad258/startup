@@ -10,8 +10,9 @@ import useAuth from '../hooks/useAuth';
 
 function AppContent() {
   const { user } = useAuth();
-  const routes = user.privilege === 'SUADMIN' ? routeSupper : [];
+  const routes = (user.privilege === 'SUADMIN' ||user.privilege === 'SUADMINRH') ? routeSupper : [];
   const RouteConfig = user.privilege === 'SUADMIN' ? routeConfig : [];
+  const RouteConfigRH = user.privilege === 'SUADMINRH' ? routeConfig : [];
   const routesProviders = user.privilege === 'provider' ? routeProviders : [];
   const routesViewDesign = user.privilege === 'design' ? routesTemplate : [];
 
@@ -64,6 +65,18 @@ function AppContent() {
               />
             ) : null
           )}
+    {RouteConfigRH.map((route, idx) =>
+            route.element ? (
+              <Route
+                key={idx}
+                path={route.path}
+                exact={route.exact}
+                name={route.name} Z
+                element={<route.element />}
+              />
+            ) : null
+          )}
+
 
 
 

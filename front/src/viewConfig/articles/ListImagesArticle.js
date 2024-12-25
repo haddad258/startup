@@ -48,7 +48,7 @@ const ListImagesArticlesC = ({ refresh, selectedListImagesArticles }) => {
                 size="xl"
             >
                 <CModalHeader onClose={() => setVisible(false)}>
-                    <CModalTitle id="LiveDemoExampleLabel">{i18n.t("addListImagesArticleTitle")}</CModalTitle>
+                    <CModalTitle id="LiveDemoExampleLabel">{i18n.t("ListImagesArticleTitle")}</CModalTitle>
                 </CModalHeader>
                 <CModalBody>
                     <CRow>

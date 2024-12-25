@@ -18,9 +18,7 @@ const addProfilesCryptes = async (req, res, next) => {
       });
   } catch (error) {
     console.log(error)
-    next(
-      new createHttpError.BadRequest("Invalid values to create a profilescryptes.")
-    );
+    errorHandlerDetailsres.handleSqlError(error,res, next);
   }
 };
 

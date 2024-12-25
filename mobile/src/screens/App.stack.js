@@ -12,7 +12,7 @@ const App = () => {
     <Provider theme={theme}>
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName="LoginScreen"
+          initialRouteName="TabPublic"
           screenOptions={{
             headerShown: false,
           }}

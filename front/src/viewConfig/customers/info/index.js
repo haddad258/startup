@@ -34,7 +34,7 @@ const Customers = () => {
     }, []);
    
     const columns = [
-        { label: '#', field: 'index' },
+        //{ label: '#', field: 'index' },
         { label: i18n.t('usename'), field: 'username',filter:true },
         { label: i18n.t('emailInputLabel'), field: 'email' ,filter:false},
         { label: i18n.t('cinInputLabel'), field: 'cin',filter:true },

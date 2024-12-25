@@ -35,7 +35,7 @@ const Articles = () => {
     }, []);
 
     const columns = [
-        { label: '#', field: 'index' },
+        //{ label: '#', field: 'index' },
         { label: i18n.t('nameInputLabel'), field: 'name' },
         { label: i18n.t('descriptionInputLabel'), field: 'description' },
         {

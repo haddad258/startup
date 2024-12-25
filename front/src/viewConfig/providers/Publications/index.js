@@ -32,7 +32,7 @@ const Publications = () => {
       }, []);
   
       const columns = [
-          { label: '#', field: 'index' },
+          //{ label: '#', field: 'index' },
           { label: i18n.t('contentInputLabel'), field: 'content' },
           { label: i18n.t('hashtagInputLabel'), field: 'hashtag' },
           { label: i18n.t('imageUrlInputLabel'), field: 'appreciation' },

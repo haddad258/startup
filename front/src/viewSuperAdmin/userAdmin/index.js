@@ -31,7 +31,7 @@ const UserAdmins = () => {
     }, []);
 
     const columns = [
-        // { label: '#', field: 'index' },
+        // //{ label: '#', field: 'index' },
         { label: i18n.t('firstNameInputLabel'), field: 'name', index: 'name' },
         { label: i18n.t('lastNameInputLabel'), field: 'lastname', index: 'lastname' },
         { label: i18n.t('usernameInputLabel'), field: 'username', index: 'username' },

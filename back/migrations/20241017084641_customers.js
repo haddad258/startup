@@ -72,7 +72,7 @@ exports.up = function (knex) {
         table.string("expiration_date").notNullable();    // Format MM/YY or YYYY-MM
         table.string("card_type").notNullable();          // e.g., "Visa", "MasterCard"
         table.string("billing_address").nullable();       // Optional billing address
-        table.integer("status").defaultTo(0);
+        table.integer("status").defaultTo(1);
         table.timestamps(true, true);  // Raccourci pour ajouter les champs created_at et updated_at
       })
       .createTable("customerimages", function (table) {

@@ -9,7 +9,7 @@
   } from '@coreui/react';
   import { settingsTransactions } from 'src/services/SupperSettings/index';
   import GenericTable from 'src/components/Generic.Table';
-  import TransactionsC from './Transactions'
+//   import TransactionsC from './Transactions'
   import i18n from 'src/i18n';
   const Transactions = () => {
       const [List, setList] = useState([]);
@@ -29,7 +29,7 @@
       }, []);
   
       const columns = [
-          { label: '#', field: 'index' },
+          //{ label: '#', field: 'index' },
           { label: i18n.t('intentLabel'), field: 'intent' },
           { label: i18n.t('stateLabel'), field: 'state' },
           { label: i18n.t('payer_statusLabel'), field: 'payer_status' },
@@ -38,11 +38,11 @@
           { label: i18n.t('payment_linksLabel'), field: 'payment_links' },
           { label: i18n.t('sale_linksLabel'), field: 'sale_links' },
           
-          {
-              label:  i18n.t('actionLabel'),
-              field: 'actions',
-              render: (item) => <TransactionsC refresh={()=>fetchTransactions()} selectedTransactions={item} />,
-          },
+        //   {
+        //       label:  i18n.t('actionLabel'),
+        //       field: 'actions',
+        //       render: (item) => <TransactionsC refresh={()=>fetchTransactions()} selectedTransactions={item} />,
+        //   },
       ];
   
       return (
@@ -52,9 +52,9 @@
                       <CCol md="6" xs="12">
                           <strong>   { i18n.t('TransactionsTableTitle')}</strong>
                       </CCol>
-                      <CCol md="6" xs="12" className="text-md-end mt-md-0 mt-3">
+                      {/* <CCol md="6" xs="12" className="text-md-end mt-md-0 mt-3">
                           <TransactionsC refresh={()=>fetchTransactions()} />
-                      </CCol>
+                      </CCol> */}
                   </CRow>
               </CCardHeader>
               <CCardBody>

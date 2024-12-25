@@ -3,6 +3,9 @@ const ApisCommon = {
   api_update_status_row: `${API_URL_Common}/api/common/update/status/rows`,
   api_update_status_rowops: `${API_URL_Common}/api/common/update/status/ops/rows`,
   ///////////////////////////dashboard and KPI//////////////////////////////////:
+  api_get_filer_row: `${API_URL_Common}/api/common/get/filterd/data/byid`,
+  
+  ///////////////////////////dashboard and KPI//////////////////////////////////:
   api_get_Kpi_countings_tables: `${API_URL_Common}/kpi/dashboard/count/tables/index`,
 };
 

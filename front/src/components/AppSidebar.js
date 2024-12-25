@@ -16,6 +16,7 @@ import useAuth from 'src/hooks/useAuth';
 import { AppSidebarNav } from './AppSidebarNav';
 import Paths from 'src/services/common.settings/config';
 import _navAdmin from 'src/navigations/navigationAdmin';
+import _navAdminReduced from 'src/navigations/navigationAdmin.reduced';
 import _navComponenet from 'src/navigations/_navComponenet';
 import _navProvider from 'src/navigations/navigationsProviders';
 
@@ -25,7 +26,7 @@ function renderSidebarNav(user) {
   if (user.privilege === 'design') {
     return <AppSidebarNav items={_navComponenet} />;
   } else if (user.privilege === 'SUADMIN') {
-    return <AppSidebarNav items={_navAdmin} />;
+    return <AppSidebarNav items={_navAdminReduced} />;
   } else if (user.privilege === 'provider') {
     return <AppSidebarNav items={_navProvider} />;
   }
@@ -36,7 +37,7 @@ function renderSidebarNavRH(user) {
     return <AppSidebarNav items={_navComponenet} />;
   } else if (user.privilege === 'SUADMINRH') {
     return <AppSidebarNav items={_navAdmin} />;
-  } else if (user.privilege === 'SUADMINRH') {
+  } else if (user.privilege === 'provider') {
     return <AppSidebarNav items={_navProvider} />;
 
   }

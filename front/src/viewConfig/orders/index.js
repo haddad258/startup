@@ -9,7 +9,7 @@ import {
 } from '@coreui/react';
 import { settingsOrders, settingsStatusOrders } from 'src/services/SupperSettings/index';
 import GenericTable from 'src/components/Generic.Table';
-import OrdersC from './orders.create/Orders'
+// import OrdersC from './orders.create/Orders'
 import i18n from 'src/i18n';
 import OrderDetailsIndexsC from './orders.details/order.Details.Index';
 import OrderDetailsTransactionsC from './order.transactions/order.Details.Transactions';
@@ -53,7 +53,7 @@ const Orders = () => {
         fetchAllData();// eslint-disable-next-line
     },[]);
     const columns = [
-        { label: '#', field: 'index' },
+        //{ label: '#', field: 'index' },
         { label: i18n.t('ordernumberInputLabel'), field: 'order_number' },
         { label: i18n.t('priceInputLabel'), field: 'price' },
         { label: i18n.t('quantityLabel'), field: 'quantity' },
@@ -77,11 +77,11 @@ const Orders = () => {
         },
 
 
-        {
-            label: i18n.t('actionLabel'),
-            field: 'actions',
-            render: (item) => <OrdersC refresh={() => fetchAllData()} selectedOrders={item} />,
-        },
+        // {
+        //     label: i18n.t('actionLabel'),
+        //     field: 'actions',
+        //     render: (item) => <OrdersC refresh={() => fetchAllData()} selectedOrders={item} />,
+        // },
     ];
 
     return (

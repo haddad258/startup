@@ -7,6 +7,7 @@ const errorHandlerDetailsres = require("../../../middlewares/errorsHandler/error
 
 const addProfilesId = async (req, res, next) => {
   try {
+    console.log(req.body)
     await app.db
       .table(`profilesId`)
       .insert(req.body)
@@ -18,9 +19,10 @@ const addProfilesId = async (req, res, next) => {
         });
       });
   } catch (error) {
-    next(
-      new createHttpError.BadRequest("Invalid values to create a profilesId.")
-    );
+    console.log(error)
+    errorHandlerDetailsres.handleSqlError(error,res, next);
+
+   
   }
 };
 

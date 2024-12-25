@@ -22,8 +22,7 @@ import i18n from 'src/i18n';
 const initialAdvertisementState = {
     name: '',
     content: '',  // Updated to include content
-    type: 'percentage', // Default to percentage
-    images: '',  // Updated to include images
+    type: 'popup', // Default to percentage
 };
 
 const AdvertisementsC = ({ refresh, selectedAdvertisements }) => {
@@ -138,19 +137,7 @@ const AdvertisementsC = ({ refresh, selectedAdvertisements }) => {
                             <CFormFeedback tooltip invalid>{i18n.t('requiredTypeField')}</CFormFeedback>
                         </CCol>
 
-                        <CCol md={12} className="position-relative">
-                            <CFormLabel htmlFor="validationImages">{i18n.t('imagesInputLabel')}</CFormLabel>
-                            <CFormInput
-                                value={Advertisements.images}
-                                onChange={(e) => setFormdata({ ...Advertisements, images: e.target.value })}
-                                type="text"
-                                id="validationImages"
-                                required
-                            />
-                            <CFormFeedback tooltip invalid>
-                                {i18n.t('requiredImagesField')}
-                            </CFormFeedback>
-                        </CCol>
+                   
 
                         <CModalFooter>
                             <CButton color="secondary" onClick={() => setVisible(false)}>

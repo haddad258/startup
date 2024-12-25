@@ -17,6 +17,7 @@ import { cilPen, cilPlus } from '@coreui/icons';
 import { settingsProfilesIds } from 'src/services/SupperSettings';
 import PropTypes from 'prop-types';
 import i18n from 'src/i18n';
+import { formatDateInput } from 'src/helpers/date';
 
 const initialProfilesIdstate = {
     lpa_esim: '',
@@ -32,7 +33,7 @@ const initialProfilesIdstate = {
     countryCode: 'default',
     operator: 'default',
     description: 'default',
-    status: 0,
+    status: "0",
     activeDate: '',
 };
 
@@ -44,7 +45,12 @@ const ProfilesIdsC = ({ refresh, selectedProfilesIds }) => {
 
     useEffect(() => {
         setIsUpdateMode(!!selectedProfilesIds);
-        setFormdata(selectedProfilesIds || initialProfilesIdstate);
+        console.log(selectedProfilesIds?.activeDate)
+        setFormdata({
+            ...initialProfilesIdstate,
+            ...selectedProfilesIds,
+            activeDate: formatDateInput(selectedProfilesIds?.activeDate) || ''  // Ensure activeDate is an empty string if not present
+        });
     }, [selectedProfilesIds]);
 
     const handleAddOrUpdate = async () => {
@@ -104,18 +110,18 @@ const ProfilesIdsC = ({ refresh, selectedProfilesIds }) => {
                             <CCol md={6} className="position-relative" key={index}>
                                 <CFormLabel htmlFor={key}>{i18n.t(`${key}Label`)}</CFormLabel>
                                 <CFormInput
-                                    value={ProfilesIds[key]}
+                                    value={key === 'activeDate' ? ProfilesIds[key] : ProfilesIds[key]}
                                     onChange={(e) => setFormdata({ ...ProfilesIds, [key]: e.target.value })}
                                     type={key === 'activeDate' ? 'date' : key === 'status' ? 'number' : 'text'}
                                     id={key}
-                                    required={key !== 'description' && key !== 'status'}
+                                    required={key !== 'description'}
                                 />
+
                                 <CFormFeedback tooltip invalid>
                                     {i18n.t(`required${key}Field`)}
                                 </CFormFeedback>
                             </CCol>
                         ))}
-
 
                         <CModalFooter>
                             <CButton color="secondary" onClick={() => setVisible(false)}>

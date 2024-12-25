@@ -1,38 +1,29 @@
 import { DefaultTheme } from 'react-native-paper'
+import { Dimensions } from 'react-native';
 
 export const theme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
 
-    primary: "#0F2167",
-    secondary: "#3559E0",
-    info: "#4CB9E7",
-    light: "#eaeaf6",
-    white: "#f4f4f9",
-    black: "#3c3c3d",
-    gray: "#95a5a6",
-    text: "#ED1C24",
-    error: '#e03f52',
-    backgroundColor: "#f4f4f9",
-    colorTiers: "#FFECD6"
+
 
   },
 }
 export const Colors = {
+  primary: "#A47864",        // Brun chaud pour les actions principales
+  secondary: "#6B9080",      // Vert sauge apaisant pour les accents
+  light: "#F6F5F3",          // Blanc cassé subtil pour les arrière-plans légers
+  gray: "#8D8D92",           // Gris doux pour les bordures et textes secondaires
+  white: "#FFFFFF",          // Blanc pur pour le texte et les arrière-plans clairs
+  black: "#2D2D34",          // Noir charbon pour les textes à fort contraste
+  text: "#4F4A4B",           // Gris anthracite pour le texte principal
+  error: "#D64550",          // Rouge terre cuite pour les erreurs et alertes
+  backgroundColor: "#ECEBE7",// Beige doux pour les arrière-plans
+  colorTiers: "#C7B198",     // Brun clair pour des tons neutres élégants
+  colorTextTitles: "#E07A5F",// Orange terre cuite pour mettre en valeur les titres
+};
 
-  primary: "#0F2167",
-  secondary: "#3559E0",
-  info: "#4CB9E7",
-  light: "#eaeaf6",
-  white: "#f4f4f9",
-  black: "#3c3c3d",
-  gray: "#95a5a6",
-  text: "#ED1C24",
-  error: '#e03f52',
-  backgroundColor: "#4CB9E7",
-  colorTiers: "#FFECD6"
-}
 export const SIZES = {
   // global sizes
   base: 8,
@@ -66,4 +57,9 @@ export const FONTS = {
   body3: { fontSize: SIZES.body3, lineHeight: 22 },
   body4: { fontSize: SIZES.body4, lineHeight: 22 },
   body5: { fontSize: SIZES.body5, lineHeight: 22 },
+};
+
+export const units = {
+  width: Dimensions.get('window').width,
+  height: Dimensions.get('window').height,
 };

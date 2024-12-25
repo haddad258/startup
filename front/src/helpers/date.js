@@ -8,6 +8,13 @@ export function formatDate(date) {
   }
   return momentDate.format('YYYY-MM-DD HH:mm');
 }
+export function formatDateInput  (dateString) {
+  const date = new Date(dateString);
+  const year = date.getFullYear(); // Récupère l'année
+  const month = String(date.getMonth() + 1).padStart(2, '0'); // Récupère le mois, en ajoutant 1 car les mois sont indexés à partir de 0
+  const day = String(date.getDate()).padStart(2, '0'); // Récupère le jour et s'assure qu'il a deux chiffres
+  return `${year}-${month}-${day}`; // Format final YYYY-MM-DD
+};
 
 export function dateForm(date) {
   const momentDate = moment(date);

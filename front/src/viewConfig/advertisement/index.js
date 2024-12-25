@@ -31,7 +31,7 @@ import ImagesConfigsC from 'src/components/Images/add.image.Folder';
       }, []);
   
       const columns = [
-          { label: '#', field: 'index' },
+          //{ label: '#', field: 'index' },
           { label: i18n.t('nameInputLabel'), field: 'name' },
           { label: i18n.t('contentInputLabel'), field: 'content' },
           { label: i18n.t('typeInputLabel'), field: 'type' },
