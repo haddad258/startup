@@ -31,7 +31,7 @@ const TabPrivate = () => {
         }}
       />
         <Stack.Screen
-        name="ArticlesFiltred"
+        name="ArticlesFiltered"
         component={ArticlesFiltred}
         options={{
           title: "Create account",

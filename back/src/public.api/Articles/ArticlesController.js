@@ -58,7 +58,7 @@ const getArticlesById = async (req, res, next) => {
 };
 const getAllArticlesDisounts = async (req, res, next) => {
   try {
-    console.log("heeer")
+    console.log("getAllArticlesDisounts")
     await app.db
       .from("discountarticles")
       .join("articles", "discountarticles.articleId", "articles.id") // Join with the articles table
@@ -82,8 +82,34 @@ const getAllArticlesDisounts = async (req, res, next) => {
   }
 };
 
+const getAllArticlesRecommanded = async (req, res, next) => {
+  try {
+    console.log("getAllArticlesRecommanded")
+    await app.db
+      .from("articles")
+      .select("*")
+      .then((rows) => {
+        if (rows.length === 0) {
+          return res.json({
+            message: "articles not found with the given id",
+            status: 200,
+            data: rows,
+          });
+        }
+        res.json({
+          message: "articles fetched",
+          status: 200,
+          data: rows,
+        });
+      });
+  } catch (error) {
+    errorHandlerDetailsres.handleSqlError(error,res, next);
+  }
+};
+
 module.exports = {
   getAllArticless,
   getArticlesById,
-  getAllArticlesDisounts
+  getAllArticlesDisounts,
+  getAllArticlesRecommanded
 };

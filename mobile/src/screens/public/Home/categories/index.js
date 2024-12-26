@@ -13,7 +13,7 @@ function Categories() {
             const list = await CommonDocTypes.getcommonDoctypes("entity/categories");
             if (list) {
                 setList(list?.data);
-                console.log(list?.data);
+                
             }
         } catch (error) {
             console.error("Error fetching admin list:", error);
@@ -45,7 +45,7 @@ function Categories() {
                 horizontal
                 showsHorizontalScrollIndicator={false}
                 renderItem={({ item }) => <Category item={item} />}
-                keyExtractor={(item) => item.name}
+                keyExtractor={(item) => item.id}
                 contentContainerStyle={styles.flatListContainer}
             />
         </View>

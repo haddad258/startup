@@ -8,17 +8,22 @@ import {
 } from 'react-native';
 import { Colors, units } from '../../../../core/theme';
 import { API_URLPublic } from '../../../../service/Api/config';
-
+import { useNavigation } from '@react-navigation/native';
 const Category = ({ item }) => {
   const [currentSelected, setCurrentSelected] = useState(null);
-
+  const navigation = useNavigation(); // Access navigation object
+  const handlePress = () => {
+    console.log("heheheeh")
+    setCurrentSelected(item.id);
+    navigation.navigate('ArticlesFiltered', { categoryId: item.id }); // Pass category ID as a parameter
+  };
   return (
     <TouchableOpacity
       style={[
         styles.categoryTouchable,
         currentSelected === item.id && styles.selectedTouchable,
       ]}
-      onPress={() => console.log(item.id)}
+      onPress={() => handlePress()}
       activeOpacity={0.8}
     >
       <View

@@ -114,7 +114,7 @@ const ItemsC = ({ refresh, selectedItems }) => {
                 if (updateType === 'itemkits') {
                     setlistItemsKits(list?.data);
                 } else if (updateType === 'items') {
-                    console.log(list?.data);
+                    
                 }
             }
         } catch (error) {

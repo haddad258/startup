@@ -15,7 +15,7 @@ const foods = [
     },
     {
       id: '3',
-      name: 'Chicken Burger',
+      name: 'Chickeeen Burger',
       ingredients: 'Fried Chicken',
       price: '5.10',
       image: require('../../../../../assets/image1.png')

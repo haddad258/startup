@@ -3,7 +3,6 @@ import { FontAwesome5 } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { StyleSheet } from "react-native";
 import HomeScreen from "./Home";
-import Articles from "./Articles";
 import Services from "./Services";
 import Help from "./Help";
 import Orders from "./orders";
@@ -38,16 +37,7 @@ const TabPublic = () => {
                 name="HomeScreen"
                 component={HomeScreen}
             />
-            <Tab.Screen
-                options={{
-                    title: "Articles",
-                    tabBarIcon: ({ color, size }) => (
-                        <FontAwesome5 name="home" color={color} size={size} />
-                    ),
-                }}
-                name="Articles"
-                component={Articles}
-            />
+   
             <Tab.Screen
                 options={{
                     title: "Services",
