@@ -31,6 +31,7 @@ const UserLoginAPI = async (data) => {
 
 const Authenticate = async (data) => {
     try {
+        console.log(data)
         await AsyncStorage.setItem('@Token_jwt', data.token)
         // await  AsyncStorage.setItem('@user_Info', JSON.stringify(data))
         await AsyncStorage.setItem('@refresh_token', JSON.stringify(data))

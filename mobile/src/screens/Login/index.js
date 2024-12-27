@@ -15,10 +15,10 @@ import { setUserInfo } from '../../store/user/action';
 export default function LoginScreen({ navigation }) {
     // const [email, setEmail] = useState({ value: 'administrator', error: '' })
     // const [password, setPassword] = useState({ value: 'trust@2025', error: '' })
-   
-    const [email, setEmail] = useState({ value: 'haddadrafik258@gmail.com', error: '' })
-    const [password, setPassword] = useState({ value: 'iysaal', error: '' })
-    
+
+    const [email, setEmail] = useState({ value: 'haddadpo@mail.com', error: '' })
+    const [password, setPassword] = useState({ value: '12345', error: '' })
+
     const [isLoading, setIsLoading] = useState(false);
     const dispatch = useDispatch();
 
@@ -39,19 +39,15 @@ export default function LoginScreen({ navigation }) {
         console.log(login)
         if (login) {
             // Check if cookies are available
-            const [cookies] = login.headers.get("set-cookie");
-            if (cookies) {
-                const sidMatch = cookies.match(/sid=([^;]+)/)[1]; // Match sid cookie
-                if (sidMatch) {
-                    dispatch(setUserInfo(login.data));
-                    var localstorage = await UserLogin.Authenticate(login.data, sidMatch)
-                    if (localstorage) {
-                        navigation.reset({
-                            index: 0,
-                            routes: [{ name: 'TabPublic' }],
-                        })
-                    }
-                }
+            var localstorage = await UserLogin.Authenticate(login.data)
+            if (localstorage) {
+
+                navigation.reset({
+                    index: 0,
+                    routes: [{ name: 'TabUsersAccount' }],
+                })
+            dispatch(setUserInfo(login.data));
+
             }
 
 

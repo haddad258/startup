@@ -5,6 +5,7 @@ import Register from './Register';
 import LoginScreen from '../Login'
 import { StyleSheet } from "react-native";
 import { Colors } from "../../core/theme"
+import TabUsersAccount from "./menu";
 
 const Stack = createStackNavigator();
 
@@ -38,6 +39,15 @@ const TabPrivate = () => {
           headerTitleStyle: styles.headerTitleStyle,
         }}
       />
+     <Stack.Screen
+        name="TabUsersAccount"
+        component={TabUsersAccount}
+        options={{
+          title: "TabUsersAccount",
+          headerTitleStyle: styles.headerTitleStyle,
+        }}
+      />
+
     </Stack.Navigator>
   );
 };
