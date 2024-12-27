@@ -133,6 +133,11 @@ const Register = ({ navigation }) => {
                     <Text style={styles.buttonText}>Save</Text>
                 </TouchableOpacity>
             </View>
+            <View style={styles.row}>
+                <TouchableOpacity onPress={() => navigation.replace('LoginScreen')}>
+                    <Text style={styles.link}>Login !</Text>
+                </TouchableOpacity>
+            </View>
         </ScrollView>
     );
 };

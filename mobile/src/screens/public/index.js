@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { StyleSheet } from "react-native";
 import HomeScreen from "./Home";
 import ArticleDiscounts from "./Article.Discounts";
-import Help from "./Help";
+import Suppliers from "./Supplier";
 import Orders from "./orders";
 import Stocks from "./stocks";
 
@@ -50,13 +50,13 @@ const TabPublic = () => {
             />
             <Tab.Screen
                 options={{
-                    title: "Help",
+                    title: "Suppliers",
                     tabBarIcon: ({ color, size }) => (
                         <FontAwesome5 name="home" color={color} size={size} />
                     ),
                 }}
-                name="Help"
-                component={Help}
+                name="Suppliers"
+                component={Suppliers}
             />
             <Tab.Screen
                 options={{

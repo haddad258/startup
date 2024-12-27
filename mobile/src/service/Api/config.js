@@ -13,8 +13,12 @@ const Apis = {
   API_Articles_Discount: `${API_URL}/api/mobile/discounts/articles/disounts`,
   
   ////////////////////////////////////////////
+  API_Suppliers: `${API_URL}/api/mobile/discounts/articles/disounts`,
+  ////////////////////////////////////////////
+  
 
 
+  //////////////////////////////////////////
   API_Advertising: `${API_URL}/public/api/advertising/`,
   API_ArticlesFilter: `${API_URL}/public/api/data/apps/list/filterby/`,
   API_Services: `${API_URL}/public/api/data/apps/list/services`,
