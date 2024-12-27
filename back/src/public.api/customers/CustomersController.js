@@ -11,7 +11,7 @@ const errorHandlerDetailsres = require("../../middlewares/errorsHandler/error.ha
 const addCustomers = async (req, res, next) => {
   try {
     const { password, ...otherDetails } = req.body;
-
+    console.log(req.body)
     // Hash the password
 
     // Insert the new customer with the hashed password

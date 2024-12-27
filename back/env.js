@@ -1,6 +1,6 @@
 const env = {
   key: "MySuP3R_z3kr3t.",
-  port: 8009,
+  port: 8010,
   port1: 3002,
 
   databaseConfig: {

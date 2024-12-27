@@ -201,7 +201,7 @@ const Cards = () => {
                 <CCardImage
                   orientation="top"
                   style={{ width: "100%", height: "auto", maxWidth: "10rem", maxHeight: "10rem" }}
-                  src={"http://127.0.0.1:8009/public/articles/neo.jpg"}
+                  src={"http://127.0.0.1:8010/public/articles/neo.jpg"}
                 />
                 <CCardBody>
                   <CCardTitle>Card card to save it</CCardTitle>

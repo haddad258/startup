@@ -1,9 +1,9 @@
-const API_URL = "http://192.168.1.17:8009";
+const API_URL = "http://192.168.1.17:8010";
 const API_URLPublic = API_URL + "/public/";
 
 const Apis = {
   UserLoginAPI: `${API_URL}/public/api/customers/config/`,
-  Api_RegisterCustomer: `${API_URL}/public/api/customers/config/`,
+  Api_RegisterCustomer: `${API_URL}/api/mobile/customers`,
   api_commonDoctypes: `${API_URL}/api/mobile/config/apps/`,
   ////////////////////////////////////////////
 
