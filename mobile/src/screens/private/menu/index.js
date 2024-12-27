@@ -5,7 +5,7 @@ import { StyleSheet } from "react-native";
 import HomeScreen from "./Home";
 import OrderScreen from "./orders";
 import Info from './info'
-
+import CartScreen from "./Cart";
 
 import { Colors } from '../../../core/theme'
 
@@ -54,7 +54,16 @@ const TabUsersAccount = () => {
                 name="OrderScreen"
                 component={OrderScreen}
             />
-
+            <Tab.Screen
+                options={{
+                    title: "CartScreen",
+                    tabBarIcon: ({ color, size }) => (
+                        <FontAwesome5 name="home" color={color} size={size} />
+                    ),
+                }}
+                name="CartScreen"
+                component={CartScreen}
+            />
 
 
 

@@ -3,6 +3,7 @@ import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Colors, units } from '../../../core/theme';
 import { API_URLPublic } from '../../../service/Api/config';
+import ArticleCardView from './Articles.view';
 
 const Articles = ({ Article }) => {
   return (
@@ -18,9 +19,8 @@ const Articles = ({ Article }) => {
         <Text style={styles.articleDescription}>{Article.description}</Text>
         <View style={styles.bottomRow}>
           <Text style={styles.articlePrice}>${Article.price}</Text>
-          <TouchableOpacity style={styles.addToCartBtn}>
-            <Icon name="add" size={20} color={Colors.white} />
-          </TouchableOpacity>
+         
+          < ArticleCardView article={Article} />
         </View>
       </View>
     </TouchableOpacity>
