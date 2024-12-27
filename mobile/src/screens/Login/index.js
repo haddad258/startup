@@ -33,9 +33,10 @@ export default function LoginScreen({ navigation }) {
 
 
         var login = await UserLogin.UserLoginAPI(JSON.stringify({
-            usr: email.value,
-            pwd: password.value
+            email: email.value,
+            password: password.value
         }))
+        console.log(login)
         if (login) {
             // Check if cookies are available
             const [cookies] = login.headers.get("set-cookie");

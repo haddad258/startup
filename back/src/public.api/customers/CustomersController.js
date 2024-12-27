@@ -89,7 +89,7 @@ const getCustomersById = async (req, res, next) => {
 const LoginAPICustomers = async (req, res) => {
   try {
     const { email, password } = req.body;
-
+     console.log(req.body)
     // Check if email or password is missing
     if (!email || !password) {
       return res.status(400).send({ notice: "Email and password are required." });
@@ -102,7 +102,7 @@ const LoginAPICustomers = async (req, res) => {
       .from("customers")
       .select("*")
       .where("customers.email", email)
-      .andWhere("status","=",1);
+      // .andWhere("status","=",1);
       console.log(user)
 
     // Check if the user exists

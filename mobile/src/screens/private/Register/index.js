@@ -12,12 +12,12 @@ const Register = ({ navigation }) => {
         formState: { errors },
     } = useForm({
         defaultValues: {
-            firstname: 'testAPP',
-            lastname: 'testAPP',
-            username: 'testAPP',
-            email: 'testAPP@mail.com',
-            password: 'testAPP',
-            phone_number: '27738383939',
+            firstname: '',
+            lastname: '',
+            username: '',
+            email: '',
+            password: '',
+            phone_number: '',
         }
     });
 

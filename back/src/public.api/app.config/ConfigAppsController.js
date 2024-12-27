@@ -3,6 +3,7 @@ const createHttpError = require("http-errors");
 const uuid = require("uuid");
 const app = require("../../../index");
 const config = require("../../config");
+const errorHandlerDetailsres = require("../../middlewares/errorsHandler/error.handler.knex");
 class ConfigApp {
   constructor(id, name, description, createdAt, updatedAt) {
     this.id = id;
