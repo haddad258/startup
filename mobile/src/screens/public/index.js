@@ -6,7 +6,7 @@ import HomeScreen from "./Home";
 import ArticleDiscounts from "./Article.Discounts";
 import Suppliers from "./Supplier";
 import Orders from "./orders";
-import Stocks from "./stocks";
+import TabPublication from "./publications";
 
 import { LoginScreen, Private } from '../index'
 
@@ -81,13 +81,13 @@ const TabPublic = () => {
 
             <Tab.Screen
                 options={{
-                    title: "Stocks",
+                    title: "TabPublication",
                     tabBarIcon: ({ color, size }) => (
                         <FontAwesome5 name="home" color={color} size={size} />
                     ),
                 }}
-                name="Stocks"
-                component={Stocks}
+                name="TabPublication"
+                component={TabPublication}
             />
             <Tab.Screen
                 options={{

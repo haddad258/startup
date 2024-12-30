@@ -15,6 +15,9 @@ const Apis = {
   ////////////////////////////////////////////
   API_Suppliers: `${API_URL}/api/mobile/discounts/articles/disounts`,
   ////////////////////////////////////////////
+  api_OrderCustomer: `${API_URL}/api/mobile/ordes/customers`,
+  Api_CustomerOrdersDetails: `${API_URL}/api/mobile/ordes/customers`,
+
   
 
 
@@ -27,8 +30,6 @@ const Apis = {
 
   API_Publications: `${API_URL}/public/publications/details/blog`,
   ////////////////////////////////////////////
-  Api_CustomerOrders: `${API_URL}/public/api/orders/`,
-  Api_CustomerOrdersDetails: `${API_URL}/public/api/details/orders/`,
 
   
 

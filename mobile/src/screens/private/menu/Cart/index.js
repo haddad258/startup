@@ -11,11 +11,14 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { useSelector, useDispatch } from 'react-redux';
 import { Colors } from '../../../../core/theme';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 import {
   addToCartMultiple,
   clearCart,
   removeFromCart,
 } from '../../../../store/cart/actions';
+import { OrderCustomerSettings } from '../../../../service/doctype';
 
 function CartScreen({ navigation }) {
   const cartReducer = useSelector((state) => state.cartReducer);
@@ -36,22 +39,13 @@ function CartScreen({ navigation }) {
 
   const handleOrderCreation = async () => {
     try {
-      const payload = {
-        customer,
-        items: Object.values(cartReducer.products).map((item) => ({
-          qty: item.quantity,
-          item_code: item?.product?.item_code,
-          rate: item.product?.price_list_rate,
-          amount: item.quantity * item.product?.price_list_rate,
-        })),
-      };
-
-      console.log(payload)
-
-      const response = "await OrderSettings.addorders(payload)";
-      if (response) {
-        alert('Order Created');
-        console.log(response)
+      const list = await OrderCustomerSettings.addOrderCustomer({
+        ...cartReducer,
+        orderDetails: Object.values(cartReducer.products),
+    });
+      if (list) {
+    
+        console.log(list)
         dispatch(clearCart());
       }
     } catch (error) {
@@ -120,7 +114,7 @@ function CartScreen({ navigation }) {
           onPress={handleOrderCreation}
           style={styles.checkoutButton}
         >
-          <Text style={styles.checkoutButtonText}>Proceed to Checkout</Text>
+          <Text style={styles.checkoutButtonText}> Checkout</Text>
         </TouchableOpacity>
       )}
     </View>

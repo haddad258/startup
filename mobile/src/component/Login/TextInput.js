@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     marginVertical: 8,
   },
   input: {
-    backgroundColor: Colors.secondary,
+    backgroundColor: Colors.white,
     borderRadius:10
   },
   description: {

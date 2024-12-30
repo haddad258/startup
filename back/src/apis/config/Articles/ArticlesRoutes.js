@@ -5,6 +5,7 @@ const restRouterarticles = express.Router();
 
 
 restRouterarticles.post("/", [authJwt.verifyToken],  ArticlesController.addArticles);
+restRouterarticles.post("/filter/data", [authJwt.verifyToken],  ArticlesController.getFilterArticles);
 restRouterarticles.put("/:id", [authJwt.verifyToken],  ArticlesController.updateArticles);
 restRouterarticles.get("/", [authJwt.verifyToken],  ArticlesController.getAllArticless);
 restRouterarticles.get("/:id", [authJwt.verifyToken],  ArticlesController.getArticlesById);

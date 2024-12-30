@@ -12,6 +12,16 @@ import createNotification from 'src/components/Handle.Error/notifications';
           return null;
       }
   };
+  const getFilterArticles = async (data) => {
+    console.log(data)
+    try {
+        const result = await api.post(ApiSupperSettings.api_ArticlesFilter,data);
+        return result.data.error ?createNotification("error",JSON.stringify(result?.data?.error),JSON.stringify(result?.data?.error)) : result.data;
+    } catch (error) {
+        createNotification("error",JSON.stringify(error?.response?.data),JSON.stringify(error?.response?.data))
+        return null;
+    }
+};
   const addArticles = async (status) => {
       try {
           const result = await api.post(ApiSupperSettings.api_Articles, status);
@@ -47,7 +57,8 @@ import createNotification from 'src/components/Handle.Error/notifications';
       getArticles,
       addArticles,
       updateArticles,
-      getArticlesImages
+      getArticlesImages,
+      getFilterArticles
       
   };
   

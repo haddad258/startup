@@ -21,11 +21,36 @@ const addArticles = async (req, res, next) => {
     errorHandlerDetailsres.handleSqlError(error,res);
   }
 };
+const getFilterArticles = async (req, res, next) => {
+  try {
+
+    console.log("getFilterArticles",req.body)
+    await app.db
+      .table(`articles`)
+      .select("*")
+      .where(req?.body?.entityFilter,"=",req?.body?.id)
+      .then((rows) => {
+        if (rows.length === 0) {
+          return res.json({
+            message: "articles not found with the given id",
+            status: 200,
+            data: rows,
+          });
+        }
+        res.json({
+          message: "articles fetched",
+          status: 200,
+          data: rows,
+        });
+      });
+  } catch (error) {
+    errorHandlerDetailsres.handleSqlError(error,res);
+  }
+};
 
 const updateArticles = async (req, res, next) => {
   try {
-    console.log(req.body)
-    console.log(req.params.id)
+   
     await app.db
       .table("articles")
       .update({ ...req.body, updated_at: new Date() })
@@ -285,7 +310,7 @@ module.exports = {
   updateArticles,
   getAllArticless,
   getArticlesById,
-
+  getFilterArticles,
 
 
   addDiscountArticles,

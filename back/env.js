@@ -10,7 +10,7 @@ const env = {
       port: "5432",
       user: "postgres",
       password: "psql",
-      database: "testlogi",
+      database: "testApp",
     },
     debug: true,
     migrations: {

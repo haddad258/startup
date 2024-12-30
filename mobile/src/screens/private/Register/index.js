@@ -25,7 +25,7 @@ const Register = ({ navigation }) => {
         console.log(data);
 
         try {
-            const response = await CustomerSettings.addCustomers({...data,username:data.phone_number,cin:data.phone_number});
+            const response = await CustomerSettings.addCustomers({...data,username:data.phone_number});
             console.log('Customer added successfully:', response);
             Alert.alert('Success', 'Customer added successfully!', [
                 { text: 'OK', onPress: () => navigation.goBack() },

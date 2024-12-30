@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import Dashboard from "./Home";
 import { useFocusEffect } from '@react-navigation/native';
+import { Colors } from '../../../../core/theme';
 
 const HomeScreen = ({ navigation }) => {
   const menuItems = [
@@ -120,7 +121,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#f5f5f5",
   },
   headerContainer: {
-    backgroundColor: "#FF5733",
+    backgroundColor: Colors.colorTextTitles,
     borderRadius: 10,
     padding: 15,
     paddingTop: 40,

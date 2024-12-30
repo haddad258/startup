@@ -1,5 +1,4 @@
-
-  import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useMemo } from 'react';
 import {
     CButton,
     CModal,
@@ -7,120 +6,147 @@ import {
     CModalTitle,
     CModalBody,
     CModalFooter,
-    CForm,
+    CCard,
+    CCardBody,
+    CCardHeader,
+    CRow,
     CCol,
-    CFormLabel,
-    CFormFeedback,
-    CFormInput,
+    CCardImage,
+    CCardFooter
 } from '@coreui/react';
 import CIcon from '@coreui/icons-react';
-import { cilPen, cilPlus } from '@coreui/icons';
-import { settingsOrders } from 'src/services/SupperSettings';
+import { cilPlus } from '@coreui/icons';
 import PropTypes from 'prop-types';
 import i18n from 'src/i18n';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../../store/cart/actions';
 
-const initialOrderstate = {
-    name: '',
-    description: '',
-    note: ''
+import { settingsConfigApps, settingsConfigArticles } from 'src/services/SupperSettings';
+import { API_URLPublic } from 'src/services/Api/config';
+import CurrentOrder from './CurrentOrder';
 
-};
+const initialArticles = [];
 
 
-const OrdersC = ({ refresh, selectedOrders }) => {
+const OrdersC = ({ refresh }) => {
+    const [articles, setArticles] = useState(initialArticles);
+    const [categories, setcategories] = useState([]);
     const [visible, setVisible] = useState(false);
-    const [validated, setValidated] = useState(false);
-    const [isUpdateMode, setIsUpdateMode] = useState(false);
+    const dispatch = useDispatch();
 
-    const [Orders, setFormdata] = useState(initialOrderstate);
+    const addToOrder = (article) => {
+        dispatch(addToCart(article.id, article, 1));
+    };
 
-    useEffect(() => {
-        setIsUpdateMode(!!selectedOrders);
-        setFormdata(selectedOrders || initialOrderstate);
-    }, [selectedOrders]);
-
-    const handleAddOrUpdate = async () => {
-        const result = isUpdateMode
-            ? await settingsOrders.updateOrders(Orders, Orders.id)
-            : await settingsOrders.addOrders(Orders);
-
-        if (result) {
-            setVisible(false);
-            setValidated(false);
-            setIsUpdateMode(false);
-            setFormdata(initialOrderstate);
-            refresh();
+    const fetchCategories = async () => {
+        try {
+            const list = await settingsConfigApps.getConfigApps("entity/categories");
+            if (list) {
+                setcategories(list?.data);
+            }
+        } catch (error) {
+            console.error('Error fetching admin list:', error);
         }
     };
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        const form = event.currentTarget;
-
-        if (!form.checkValidity()) {
-            event.stopPropagation();
-        }
-        setValidated(true);
-
-        if (form.checkValidity()) {
-            handleAddOrUpdate();
+    const fetchArticles = async () => {
+        try {
+            const list = await settingsConfigArticles.getArticles();
+            if (list) {
+                setArticles(list?.data);
+            }
+        } catch (error) {
+            console.error('Error fetching admin list:', error);
         }
     };
 
-    const modalTitle = useMemo(() => (isUpdateMode ? i18n.t('updateOrdersTitle') : i18n.t('addOrdersTitle')), [isUpdateMode]);
+    const filterArticles = async (id) => {
+        try {
+            const list = await settingsConfigArticles.getFilterArticles({ id, entityFilter: "categoryId" });
+            if (list) {
+                setArticles(list?.data);
+            }
+        } catch (error) {
+            console.error('Error fetching admin list:', error);
+        }
+    };
+
+    const fetchAllData = async () => {
+        try {
+            await Promise.all([fetchCategories(), fetchArticles()]);
+            setVisible(true);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    };
+
+
+   
+
+    const modalTitle = useMemo(() => i18n.t('manageOrderTitle'), []);
 
     return (
         <>
-            <CButton color={isUpdateMode ? 'secondary' : 'primary'} onClick={() => setVisible(!visible)}>
-                <CIcon icon={isUpdateMode ? cilPen : cilPlus} />
+            <CButton color="primary" onClick={() => fetchAllData()}>
+                <CIcon icon={cilPlus} /> Open POS
             </CButton>
 
             <CModal
                 alignment="center"
                 visible={visible}
                 onClose={() => setVisible(false)}
-                aria-labelledby="VerticallyCenteredExample"
-                size="xl"
+                fullscreen
             >
                 <CModalHeader onClose={() => setVisible(false)}>
-                    <CModalTitle id="LiveDemoExampleLabel">{modalTitle}  <h3>Ongoing dev</h3> </CModalTitle>
+                    <CModalTitle>{modalTitle}</CModalTitle>
                 </CModalHeader>
                 <CModalBody>
-                    <CForm
-                        className="row g-3 needs-validation"
-                        noValidate
-                        validated={validated}
-                        onSubmit={handleSubmit}
-                    >
-                        <CCol md={12} className="position-relative">
-                            <CFormLabel htmlFor="validationTooltip01">{i18n.t('nameInputLabel')}</CFormLabel>
-                            <CFormInput value={Orders.name} onChange={(e) => setFormdata({ ...Orders, name: e.target.value })} type="text" id="validationTooltip01" defaultValue="" required />
-                            <CFormFeedback tooltip invalid>
-                                {i18n.t('requiredNameField')}
-                            </CFormFeedback>
+                    <CRow>
+                        <CCol md={8}>
+                            <h5>Articles</h5>
+                            <CCol md={12} className="categories-col" style={{ overflowX: 'auto', whiteSpace: 'nowrap' }}>
+                                <CRow className="d-flex flex-nowrap">
+                                    {categories?.map((category) => (
+                                        <CCol onClick={() => filterArticles(category.id)} md={1} key={category.id} className="d-inline-block">
+                                            <CCard>
+                                                <CCardHeader>{category.name}</CCardHeader>
+                                                <CCardBody>
+                                                    <CCardImage src={API_URLPublic + "categories/" + category?.images} />
+                                                </CCardBody>
+                                            </CCard>
+                                        </CCol>
+                                    ))}
+                                </CRow>
+                                <hr style={{ marginTop: '10px', borderTop: '6px solid #000' }} />
+                            </CCol>
+                            <CRow>
+                                {articles.map((article) => (
+                                    <CCol onClick={() => addToOrder(article)} key={article.id} md={2}>
+                                        <CCard>
+                                            <CCardHeader>{article.name}</CCardHeader>
+                                            <CCardBody>
+                                                <CCardImage src={API_URLPublic + "articles/" + article?.images} />
+                                            </CCardBody>
+                                            <CCardFooter>
+                                                <p>{article.price}</p>
+                                            </CCardFooter>
+                                        </CCard>
+                                    </CCol>
+                                ))}
+                            </CRow>
                         </CCol>
-                        <CCol md={12} className="position-relative">
-                            <CFormLabel htmlFor="validationTooltip03">{i18n.t('descriptionInputLabel')}</CFormLabel>
-                            <CFormInput value={Orders.description} onChange={(e) => setFormdata({ ...Orders, description: e.target.value })} type="text" id="validationTooltip03" required />
-                            <CFormFeedback tooltip invalid>
-                            {i18n.t('requiredDescriptionField')}
-                            </CFormFeedback>
+
+                        <CCol md={4}>
+                            <h5>Current Order</h5>
+                            <CurrentOrder />
                         </CCol>
-                        <CCol md={12} className="position-relative">
-                            <CFormLabel htmlFor="validationTooltip03">{i18n.t('noteInputLabel')}</CFormLabel>
-                            <CFormInput value={Orders.note} onChange={(e) => setFormdata({ ...Orders, note: e.target.value })} type="text" id="validationTooltip03" required />
-                            <CFormFeedback tooltip invalid>
-                            {i18n.t('requiredAppreciationField')}
-                            </CFormFeedback>
-                        </CCol>
-                        <CModalFooter>
-                            <CButton color="secondary" onClick={() => setVisible(false)}>
-                            {i18n.t('closeButton')}
-                            </CButton>
-                            <CButton color="primary" type="submit" >{i18n.t('saveButton')}</CButton>
-                        </CModalFooter>
-                    </CForm>
+                    </CRow>
                 </CModalBody>
+                <CModalFooter>
+                    <CButton color="secondary" onClick={() => setVisible(false)}>
+                        Close
+                    </CButton>
+                </CModalFooter>
             </CModal>
         </>
     );
@@ -128,8 +154,6 @@ const OrdersC = ({ refresh, selectedOrders }) => {
 
 OrdersC.propTypes = {
     refresh: PropTypes.func.isRequired,
-    selectedOrders: PropTypes.object,
 };
 
 export default OrdersC;
-

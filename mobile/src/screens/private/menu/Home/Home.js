@@ -5,7 +5,6 @@ import { Colors } from "../../../../core/theme";
 const Dashboard = () => {
     return (
         <View style={styles.headerContainer}>
-            <View style={styles.gradientEffect} />
             <View style={styles.contentContainer}>
                 <View>
                     <Text style={styles.title}>Current Budget</Text>
@@ -31,11 +30,7 @@ const styles = StyleSheet.create({
         position: "relative", // Needed for layering
         backgroundColor: Colors.secondary, // Fallback background color
     },
-    gradientEffect: {
-        ...StyleSheet.absoluteFillObject, // Covers the entire container
-        backgroundColor: "rgba(255, 69, 0, 0.2)", // Semi-transparent orange
-        borderBottomRightRadius: 20, // Matches parent container
-    },
+  
     contentContainer: {
         flex: 1,
         flexDirection: "row",

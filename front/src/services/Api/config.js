@@ -33,6 +33,8 @@ const ApiSupperSettings = {
   
   api_ConfigApps: `${API_URL}/api/config/apps/`,
   api_Articles: `${API_URL}/api/configs/articles/`,
+  api_ArticlesFilter: `${API_URL}/api/configs/articles/filter/data`,
+  
   api_ArticlesImages: `${API_URL}/api/images/articles/`,
   
   api_ArticlesDiscount: `${API_URL}/api/configs/discounts/articles/`,

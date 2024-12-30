@@ -9,7 +9,7 @@ const Help = () => {
         justifyContent: 'center',
         alignItems: 'center',
       }}>
-      <Text>All stocks!</Text>
+      <Text>All stoaacks!</Text>
     </View>
   );
 };

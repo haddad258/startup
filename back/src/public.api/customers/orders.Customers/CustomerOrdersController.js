@@ -15,13 +15,11 @@ const calculateTotals = (products) => {
     { totalQuantity: 0, totalPrice: 0 }
   );
 };
-// Example of using the reducer
-
 const addCustomerOrders = async (req, res, next) => {
   try {
-    // Calculate totals from the request body
-    const totals = calculateTotals(req.body);
     console.log(req.body);
+    // Calculate totals from the request body
+    const totals = calculateTotals(req.body?.orderDetails);
 
     // Insert new order and retrieve the inserted order ID
     const [orderId] = await app.db
@@ -29,18 +27,18 @@ const addCustomerOrders = async (req, res, next) => {
       .insert({
         customerId: req.userId,
         price: totals.totalPrice,
-        quantity: totals.totalQuantity,
+        quantity: 20,
       })
       .returning('id'); // Ensure to return the ID of the inserted order
     console.log('New Order ID:', orderId);
     // Prepare order details based on the request body
-    const orderDetails = req.body.map(item => ({
+    const orderDetails = req.body?.orderDetails?.map(item => ({
       articleId: item.articleId, // Ensure the item has this field
       placksId: item.placksId, // Ensure the item has this field
       providerId: item.providerId, // Ensure the item has this field
       ordersId: orderId.id, // Link the details to the newly created order
-      quantity: item.qty,
-      price: item.totalPrice,
+      quantity: item.quantity,
+      price: parseFloat(item.price),
       status: item.status || 0, // Default status if not provided
     }));
     // Insert order details into ordersdetails table
@@ -58,6 +56,7 @@ const addCustomerOrders = async (req, res, next) => {
     errorHandlerDetailsres.handleSqlError(error, res, next);
   }
 };
+
 
 
 const updateCustomerOrders = async (req, res, next) => {

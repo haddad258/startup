@@ -4,6 +4,7 @@ import { Colors, SIZES } from "../../../core/theme";
 import { useFocusEffect } from "@react-navigation/native";
 import Article from "../Articles";
 import { SettingsArticles } from "../../../service/doctype";
+import Brands from "./brands";
 
 function ArticleDiscounts() {
     const [List, setList] = useState([]);
@@ -36,6 +37,7 @@ function ArticleDiscounts() {
 
     return (
         <View style={styles.container}>
+            <Brands />
             <Text style={styles.header}>Nos Discount</Text>
             <Text style={styles.subText}>
                 Explorez une variété de Discount pour répondre à vos besoins.

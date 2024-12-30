@@ -7,7 +7,7 @@ exports.up = function (knex) {
         table.string("firstname");  // Make firstname mandatory
         table.string("lastname");   // Make lastname mandatory
         table.string("username").unique().notNullable();  // Unique and mandatory username
-        table.string("cin").unique().notNullable();  // Unique and mandatory username
+        table.string("cin");  // Unique and mandatory username
         table.string("description").defaultTo('');  // Default description to an empty string
         table.string("privilege").defaultTo("customer");  // Keep default as customer
         table.integer("status").defaultTo(0);  // Default status (e.g., active = 1, inactive = 0)

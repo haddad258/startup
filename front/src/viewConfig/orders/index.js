@@ -9,11 +9,11 @@ import {
 } from '@coreui/react';
 import { settingsOrders, settingsStatusOrders } from 'src/services/SupperSettings/index';
 import GenericTable from 'src/components/Generic.Table';
-// import OrdersC from './orders.create/Orders'
+import OrdersC from './orders.create/Orders'
 import i18n from 'src/i18n';
 import OrderDetailsIndexsC from './orders.details/order.Details.Index';
 import OrderDetailsTransactionsC from './order.transactions/order.Details.Transactions';
-import OrderStatus from './orders.create/order.status'
+import OrderStatus from './order.status/order.status'
 import { formatDataFK } from 'src/helpers/filed.return';
 
 
@@ -24,10 +24,10 @@ const Orders = () => {
     const fetchOrders = async () => {
         try {
             const list = await settingsOrders.getOrders();
-            return list?.data; 
+            return list?.data;
         } catch (error) {
             console.error('Error fetching admin list:', error);
-            return null; 
+            return null;
         }
     };
 
@@ -37,7 +37,7 @@ const Orders = () => {
             return list?.data;
         } catch (error) {
             console.error('Error fetching admin status list:', error);
-            return null; 
+            return null;
         }
     };
     const fetchAllData = async () => {
@@ -51,7 +51,7 @@ const Orders = () => {
     };
     useEffect(() => {
         fetchAllData();// eslint-disable-next-line
-    },[]);
+    }, []);
     const columns = [
         //{ label: '#', field: 'index' },
         { label: i18n.t('ordernumberInputLabel'), field: 'order_number' },
@@ -63,7 +63,7 @@ const Orders = () => {
         {
             label: i18n.t('UpdateStatusOrders'),
             field: 'actions',
-            render: (item) => <OrderStatus    selectedStatus={formatDataFK(item.paymentstatusId, ListStatus, "name")}  refresh={() => fetchAllData()} selectedOrders={item} />,
+            render: (item) => <OrderStatus selectedStatus={formatDataFK(item.paymentstatusId, ListStatus, "name")} refresh={() => fetchAllData()} selectedOrders={item} />,
         },
         {
             label: i18n.t('OrdersDetailsLabel'),
@@ -91,7 +91,9 @@ const Orders = () => {
                     <CCol md="6" xs="12">
                         <strong>   {i18n.t('OrdersTableTitle')}</strong>
                     </CCol>
-
+                    <CCol md="6" xs="12" className="text-md-end mt-md-0 mt-3">
+                        <OrdersC refresh={() => fetchAllData()} />
+                    </CCol>
                 </CRow>
             </CCardHeader>
             <CCardBody>

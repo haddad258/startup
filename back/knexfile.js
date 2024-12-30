@@ -8,7 +8,7 @@ module.exports = {
       user: "postgres",
       password: "psql",
      // database: "testdel",
-      database: "softsim",
+      database: "testApp",
     },
  
   },
