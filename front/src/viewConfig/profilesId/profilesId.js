@@ -18,6 +18,7 @@ import { settingsProfilesIds } from 'src/services/SupperSettings';
 import PropTypes from 'prop-types';
 import i18n from 'src/i18n';
 import { formatDateInput } from 'src/helpers/date';
+import { getPatternByKey } from 'src/helpers/pattern';
 
 const initialProfilesIdstate = {
     lpa_esim: '',
@@ -115,6 +116,8 @@ const ProfilesIdsC = ({ refresh, selectedProfilesIds }) => {
                                     type={key === 'activeDate' ? 'date' : key === 'status' ? 'number' : 'text'}
                                     id={key}
                                     required={key !== 'description'}
+                                    pattern={getPatternByKey(key).source}
+
                                 />
 
                                 <CFormFeedback tooltip invalid>
