@@ -53,42 +53,9 @@ const HomeScreen = ({ navigation }) => {
           style={style.input}
           doctype={"Customer"}
         />
-
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={style.mainContainer}>
-          {/* <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-            }}>
-            {item.map((item, index) => (
-              <View key={'pet' + index} style={{ alignItems: 'center' }}>
-                <TouchableOpacity
-                  onPress={() => {
-                    console.log(item.name);
-                  }}
-                  style={[
-                    style.categoryBtn,
-                    {
-                      backgroundColor:
-                        Colors.primary
-                    },
-                  ]}>
-                  <Icon
-                    name={"cart"}
-                    size={30}
-                    color={
-                      Colors.white
-                    }
-                  />
-                </TouchableOpacity>
-                <Text style={style.categoryBtnName}>{item.name}</Text>
-              </View>
-            ))}
-          </View> */}
-
-          {/* Pet Cards */}
           <View style={{ marginTop: 5 }}>
             <FlatList
               showsVerticalScrollIndicator={false}

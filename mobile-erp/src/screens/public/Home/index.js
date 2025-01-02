@@ -1,27 +1,23 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import {
-  ActivityIndicator,
   FlatList,
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
 } from 'react-native';
 import Dashboard from "./Home";
-import { OrderSettings } from '../../../service/doctype';
 import { useFocusEffect } from '@react-navigation/native';
+import { Colors } from '../../../core/theme';
 
 const HomeScreen = ({ navigation }) => {
   const menuItems = [
     { id: 1, label: "Clients", icon: "👥", navigation: "Customers" },
     { id: 2, label: "Sales Orders", icon: "🛒", navigation: "Sales" },
     { id: 3, label: "Articles", icon: "📦", navigation: "Articles" },
-    { id: 4, label: "Stock", icon: "🏷️", navigation: "Warehouses" },
     { id: 5, label: "Payments", icon: "💳", navigation: "PaymentList" },
     { id: 6, label: "Cart", icon: "🚚", navigation: "CartScreen" },
+    { id: 4, label: "Logout", icon: "🏷️", navigation: "LoginScreen" },
   ];
   const [List, setList] = useState([])
 
@@ -40,7 +36,7 @@ const HomeScreen = ({ navigation }) => {
     );
     const fetchOrders = async () => {
       try {
-          const list = await OrderSettings.getorders(`?fields=["*"]&limit_page_length=10000&limit_page_length=10000`);
+          const list = "await OrderSettings.getorders(`?fields=["*"]&limit_page_length=10000&limit_page_length=10000`)";
           if (list) {
               setList(list?.data);
               console.log(list?.data.length);
@@ -49,12 +45,18 @@ const HomeScreen = ({ navigation }) => {
           console.error('Error fetching admin list:', error);
       }
   };
+  const changeMenu = (nav)=>{
+    // if(nav==="LoginScreen"){
+      navigation.navigate(nav)
+
+    // }
+  }
 
   const renderMenuItem = (item) => (
     <TouchableOpacity
       style={styles.menuItem}
       key={item.id}
-      onPress={() => navigation.navigate(item.navigation)}
+      onPress={() => changeMenu(item.navigation)}
     >
       <Text style={styles.menuIcon}>{item.icon}</Text>
       <Text style={styles.menuLabel}>{item.label}</Text>
@@ -115,7 +117,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#f5f5f5",
   },
   headerContainer: {
-    backgroundColor: "#FF5733",
+    backgroundColor: Colors.colorTextTitles,
     borderRadius: 10,
     padding: 15,
     paddingTop: 40,

@@ -8,6 +8,8 @@ const showToast = message => {
 };
 const UserLoginAPI = async (data) => {
     try {
+        console.log(Apis.UserLoginAPI)
+        console.log(data)
         let result = await api.post(Apis.UserLoginAPI, data, {
             withCredentials: false,
             headers: {

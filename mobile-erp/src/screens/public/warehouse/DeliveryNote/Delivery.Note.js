@@ -5,14 +5,14 @@ import { Colors } from '../../../../core/theme';
 const DeliveryNote = ({ item }) => (
   <TouchableOpacity onPress={() => console.log(item)} style={styles.eventBox}>
     <View style={styles.dateContainer}>
-      <Text style={styles.eventDay}>{item.base_rounded_total}</Text>
+      <Text style={styles.eventDay}>{item.name}</Text>
       <Text style={styles.eventMonth}>{item.posting_date}</Text>
     </View>
     <View style={styles.eventContent}>
       <Text style={styles.eventTitle}>{item.title}</Text>
       <View style={styles.eventDetails}>
         <Text style={styles.eventAmount}>Amount: {item.amount_eligible_for_commission}</Text>
-        <Text style={styles.eventReturn}>Return Against: {item.return_against}</Text>
+        <Text style={styles.eventReturn}>base_rounded_total: {item.base_rounded_total}</Text>
         <Text style={styles.eventTotal}>Net Total: {item.net_total}</Text>
       </View>
     </View>

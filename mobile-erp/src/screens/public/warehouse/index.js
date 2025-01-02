@@ -35,7 +35,7 @@ const Warehouses = () => {
             />
             <Tab.Screen
                 options={{
-                    title: "DeliveryNotesList",
+                    title: "DeliveryNotes",
                     tabBarIcon: ({ color, size }) => (
                         <FontAwesome5 name="file-contract" color={color} size={size} />
                     ),

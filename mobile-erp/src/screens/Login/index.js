@@ -16,8 +16,8 @@ export default function LoginScreen({ navigation }) {
     // const [email, setEmail] = useState({ value: 'administrator', error: '' })
     // const [password, setPassword] = useState({ value: 'trust@2025', error: '' })
    
-    const [email, setEmail] = useState({ value: 'haddadrafik258@gmail.com', error: '' })
-    const [password, setPassword] = useState({ value: 'iysaal', error: '' })
+    const [email, setEmail] = useState({ value: 'admin@trust-house.com', error: '' })
+    const [password, setPassword] = useState({ value: 'admin@trust', error: '' })
     
     const [isLoading, setIsLoading] = useState(false);
     const dispatch = useDispatch();

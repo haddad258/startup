@@ -12,7 +12,7 @@ const Dashboard = () => {
                     <Text style={styles.amount}>12,000 TND</Text>
                 </View>
                 <Image
-                    source={require('./../../../../assets/iteslab.png')}
+                    source={require('./../../../../assets/erp.png')}
                     style={styles.icon}
                     resizeMode="contain"
                 />

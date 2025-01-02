@@ -45,8 +45,9 @@ const getarticlesBarcode = async (filter) => {
 };
 const getarticlesInfo = async (filter) => {
     try {
-        console.log("Apis.api_articlesInfo",Apis.api_articlesInfo +filter)
+        console.log("Apis",Apis.api_articlesInfo +filter)
         const result = await api.get(Apis.api_articlesInfo +filter);
+        console.log("result")
         return result.data.error ? null : result.data;
     } catch (error) {
         

@@ -1,4 +1,4 @@
-const API_URL = "http://192.168.1.17:8010";
+const API_URL = "http://192.168.100.82:8010";
 const API_URLPublic = API_URL + "/public/";
 
 const Apis = {

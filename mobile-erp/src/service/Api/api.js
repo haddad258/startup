@@ -14,7 +14,6 @@ instance.interceptors.request.use(
   async (config) => {
     const token = await AsyncStorage.getItem("@Token_jwt");
     const cookies = await AsyncStorage.getItem("@Cookie");
-    console.log("sid=" + cookies)
     if (
       config.url !== "url/api/customer/register" &&
       token
