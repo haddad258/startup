@@ -7,6 +7,7 @@ const windowWidth = Dimensions.get("window").width;
 
 function Supplier({ item }) {
   const updateSupplier = (item) => {
+    console.log(item)
     alert("To do: products SupplierPack");
   };
 
@@ -21,19 +22,19 @@ function Supplier({ item }) {
       </View> */}
       <View style={styles.content}>
         <Text style={styles.title}>{item.name}</Text>
-        <Text style={styles.description}>{item.customer_group}</Text>
-        <Text style={styles.description}>{item.customer_type}</Text>
-        <Text style={styles.owner}>Propriétaire : {item.owner}</Text>
+        <Text style={styles.description}>{item.custom_phone}</Text>
+        <Text style={styles.description}>{item.supplier_group}</Text>
+        <Text style={styles.owner}>Unpaid : {item.custom_total_unpaid}</Text>
         <View style={styles.iconsView}>
           <FontAwesome
             name="edit"
-            size={20}
+            size={15}
             color={Colors.info}
             onPress={() => alert("Modifier")}
           />
           <FontAwesome
             name="trash"
-            size={20}
+            size={15}
             color={Colors.error}
             onPress={() => alert("Supprimer")}
           />
@@ -70,9 +71,9 @@ const styles = StyleSheet.create({
     padding: 15,
   },
   title: {
-    fontSize: 18,
+    fontSize: 12,
     fontWeight: "bold",
-    color: Colors.primary,
+    color: Colors.secondary,
     marginBottom: 5,
   },
   description: {

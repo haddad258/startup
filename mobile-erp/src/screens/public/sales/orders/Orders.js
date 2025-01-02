@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   itemBrand: {
-    fontSize: 16,
+    fontSize: 14,
     color: Colors.blue,
     fontWeight: "700",
     marginBottom: 8,
@@ -70,13 +70,13 @@ const styles = StyleSheet.create({
     marginVertical: 8,
   },
   itemTitle: {
-    fontSize: 18,
+    fontSize: 13,
     color: "#4CAF50",
     fontWeight: "600",
     marginBottom: 5,
   },
   itemSubtitle: {
-    fontSize: 14,
+    fontSize: 12,
     color: "#757575",
     marginBottom: 3,
   },

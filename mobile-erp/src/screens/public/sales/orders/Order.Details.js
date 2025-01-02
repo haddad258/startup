@@ -102,8 +102,8 @@ const StatusBadge = ({ order }) => {
 
 const styles = StyleSheet.create({
     badge: {
-        paddingVertical: 12,
-        paddingHorizontal: 25,
+        paddingVertical: 5,
+        paddingHorizontal: 10,
         borderRadius: 25,
         justifyContent: "center",
         marginVertical: 10,
@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
     badgeText: {
         color: "#fff",
         fontWeight: "bold",
-        fontSize: 16,
+        fontSize: 12,
     },
     modalOverlay: {
         flex: 1,
@@ -153,14 +153,14 @@ const styles = StyleSheet.create({
         paddingBottom: 20, // Add padding for better spacing
     },
     modalTitle: {
-        fontSize: 20,
+        fontSize: 14,
         fontWeight: "bold",
         color: "#333",
         marginBottom: 15,
         textAlign: "center",
     },
     detailText: {
-        fontSize: 16,
+        fontSize: 14,
         color: "#555",
         marginVertical: 5,
     },
@@ -181,7 +181,7 @@ const styles = StyleSheet.create({
         shadowRadius: 3,
     },
     itemName: {
-        fontSize: 16,
+        fontSize: 14,
         fontWeight: "600",
         color: "#333",
     },

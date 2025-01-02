@@ -167,7 +167,7 @@ const styles = StyleSheet.create({
   },
   menuLabel: {
     marginTop: 5,
-    fontSize: 14,
+    fontSize: 12,
   },
   transactionsSection: {
     flex: 1,
@@ -179,12 +179,12 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   transactionsTitle: {
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: "bold",
   },
   seeAll: {
     color: "#FF5733",
-    fontSize: 14,
+    fontSize: 13,
   },
   transactionItem: {
     flexDirection: "row",

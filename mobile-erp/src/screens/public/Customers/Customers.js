@@ -18,10 +18,10 @@ function CustomerI({ item, props }) {
                 <Text style={styles.productDescription}>{item.owner}</Text>
                 <View style={styles.iconsView}>
                     <View style={styles.iconContainer}>
-                        <FontAwesome name="edit" size={18} color={Colors.info} />
+                        <FontAwesome name="edit" size={10} color={Colors.info} />
                     </View>
                     <View style={styles.iconContainer}>
-                        <FontAwesome name="trash" size={18} color={Colors.danger} />
+                        <FontAwesome name="trash" size={10} color={Colors.danger} />
                     </View>
                 </View>
             </View>
@@ -48,13 +48,13 @@ const styles = StyleSheet.create({
         elevation: 4,
     },
     title: {
-        fontSize: 16,
+        fontSize: 12,
         fontWeight: '600',
         color: '#333',
         marginBottom: 8,
     },
     description: {
-        fontSize: 14,
+        fontSize: 10,
         color: Colors.secondary,
         marginBottom: 4,
     },
@@ -70,8 +70,8 @@ const styles = StyleSheet.create({
         paddingVertical: 10,
     },
     iconContainer: {
-        width: 40,
-        height: 40,
+        width: 30,
+        height: 30,
         borderRadius: 20,
         justifyContent: 'center',
         alignItems: 'center',

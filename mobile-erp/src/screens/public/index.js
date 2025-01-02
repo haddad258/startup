@@ -30,7 +30,7 @@ const TabPublic = () => {
         tabBarLabelStyle: { fontSize: 10 },
         tabBarStyle: {
           backgroundColor: Colors.white,
-          borderTopWidth: 0,
+          borderTopWidth: 1,
           elevation: 0,
         },
         // Apply a transition preset for screen changes

@@ -33,13 +33,13 @@ function Item({ item, index }) {
           </View>
           <View style={styles.actionButtons}>
             <View style={[styles.badge, { backgroundColor: Colors.gray }]}>
-              <FontAwesome name="trash" color="white" size={18} />
+              <FontAwesome name="trash" color="white" size={15} />
             </View>
             <View style={[styles.badge, { backgroundColor: Colors.gray }]}>
-              <FontAwesome name="edit" color="white" size={18} />
+              <FontAwesome name="edit" color="white" size={15} />
             </View>
             <View style={[styles.badge, { backgroundColor: Colors.gray }]}>
-              <FontAwesome name="eye" color="white" size={18} />
+              <FontAwesome name="eye" color="white" size={15} />
             </View>
           </View>
         </View>
@@ -60,22 +60,23 @@ const styles = StyleSheet.create({
   },
   itemContent: {
     flexDirection: 'row',
+    justifyContent:"center"
   },
   itemDetails: {
     flex: 1,
-    paddingHorizontal: 10,
+    paddingHorizontal: 16,
   },
   itemMainContent: {
     flex: 1,
     justifyContent: 'space-between',
   },
   itemId: {
-    fontSize: 16,
+    fontSize: 12,
     fontWeight: 'bold',
     color: Colors.secondary,
   },
   itemSubText: {
-    fontSize: 14,
+    fontSize: 12,
     color: '#7d7d7d',
   },
   itemName: {
@@ -84,11 +85,11 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   itemParty: {
-    fontSize: 16,
+    fontSize: 14,
     color: '#000',
   },
   itemDate: {
-    fontSize: 16,
+    fontSize: 12,
     fontWeight: 'bold',
     color: Colors.primary,
   },
@@ -98,7 +99,7 @@ const styles = StyleSheet.create({
   },
   badge: {
     borderRadius: 20,
-    padding: 8,
+    padding: 5,
     marginHorizontal: 5,
     justifyContent: 'center',
     alignItems: 'center',
