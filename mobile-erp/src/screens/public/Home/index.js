@@ -9,6 +9,7 @@ import {
 import Dashboard from "./Home";
 import { useFocusEffect } from '@react-navigation/native';
 import { Colors } from '../../../core/theme';
+import { OrderSettings } from "../../../service/doctype/index"
 
 const HomeScreen = ({ navigation }) => {
   const menuItems = [
@@ -36,10 +37,9 @@ const HomeScreen = ({ navigation }) => {
     );
     const fetchOrders = async () => {
       try {
-          const list = "await OrderSettings.getorders(`?fields=["*"]&limit_page_length=10000&limit_page_length=10000`)";
+          const list = await OrderSettings.getorders(`?fields=["*"]&limit_page_length=10000&limit_page_length=10000`);
           if (list) {
               setList(list?.data);
-              console.log(list?.data.length);
           }
       } catch (error) {
           console.error('Error fetching admin list:', error);

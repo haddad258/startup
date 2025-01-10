@@ -2,11 +2,9 @@ import React, { useState } from "react";
 import { TouchableOpacity, Text, StyleSheet, View, Modal, FlatList, ScrollView } from "react-native";
 import { Colors } from "../../../../core/theme";
 import { OrderSettings } from "../../../../service/doctype";
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import PrintOrder from "../../../../components/printer";
 
 const StatusBadge = ({ order }) => {
-    const [status, setStatus] = useState(order.status);
     const [orderDetail, setOrderDetail] = useState({});
     const [modalVisible, setModalVisible] = useState(false);
 
@@ -33,7 +31,7 @@ const StatusBadge = ({ order }) => {
     const updateOrders = async () => {
         try {
             const list = await OrderSettings.updateorders(order.name, {
-                "status": "To Deliver and Bill"  
+                "status": "To Deliver and Bill"
             });
             if (list) {
                 setOrderDetail(list?.data);
@@ -46,10 +44,10 @@ const StatusBadge = ({ order }) => {
     return (
         <View>
             <TouchableOpacity
-                style={[styles.badge, { backgroundColor: statusColors[status] || Colors.primary }]}
+                style={[styles.badge, { backgroundColor: statusColors[order.status] || Colors.primary }]}
                 onPress={fetchOrders}
             >
-                <Text style={styles.badgeText}>{status}</Text>
+                <Text style={styles.badgeText}>{order.status}</Text>
             </TouchableOpacity>
 
             <Modal
@@ -91,7 +89,7 @@ const StatusBadge = ({ order }) => {
                             </View>
 
                             {/* Print and Close Buttons */}
-                          
+
                         </ScrollView>
                     </View>
                 </View>
