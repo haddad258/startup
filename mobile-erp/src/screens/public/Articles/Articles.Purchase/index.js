@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { FlatList, StyleSheet, Text, View } from "react-native";
 import ArticleCard from './ArticleIndex'
-import { Colors } from "../../../core/theme";
+import { Colors } from "../../../../core/theme";
 import { useFocusEffect } from '@react-navigation/native';
-import { ArticleSettings } from "../../../service/doctype/index";
-function Articles() {
+import { ArticleSettings } from "../../../../service/doctype/index";
+function ArticlesPurchase() {
     const [List, setList] = useState([])
 
     useEffect(() => {
@@ -21,7 +21,7 @@ function Articles() {
     );
     const fetchArticles = async () => {
         try {
-            const list = await ArticleSettings.getarticles(`?fields=["*"]&filters={"selling":1}&limit_page_length=10000`);
+            const list = await ArticleSettings.getarticles(`?fields=["*"]&filters={"selling":0}&limit_page_length=10000`);
             if (list) {
                 setList(list?.data);
             }
@@ -41,4 +41,4 @@ function Articles() {
         </View>
     );
 }
-export default Articles;
+export default ArticlesPurchase;

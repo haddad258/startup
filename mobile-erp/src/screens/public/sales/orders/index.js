@@ -36,7 +36,7 @@ function Orders() {
            <FlatList
                 data={List}
                 vertical
-                renderItem={({ item }) => (<OrderItem item={item} />)}
+                renderItem={({ item }) => (<OrderItem item={item}  onreload={()=>fetchOrders()} />)}
                 keyExtractor={item => item.name}
             /> 
         </View>

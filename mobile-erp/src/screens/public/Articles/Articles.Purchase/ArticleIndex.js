@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Modal, Button } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { addToCartMultiple } from '../../../store/cart/actions';
+import { purchaseAddToCartMultiple } from '../../../../store/cart.purchase/actions';
 import { useDispatch } from 'react-redux';
-import { Colors, units } from '../../../core/theme';
-import { ArticleSettings } from '../../../service/doctype';
+import { Colors, units } from '../../../../core/theme';
+import { ArticleSettings } from '../../../../service/doctype';
 
 const ArticleCard = ({ item }) => {
   const [isAddToCartModalVisible, setAddToCartModalVisible] = useState(false);
@@ -37,7 +37,7 @@ const ArticleCard = ({ item }) => {
   };
 
   const onAddToCart = () => {
-    dispatch(addToCartMultiple(item.name, item, quantity));
+    dispatch(purchaseAddToCartMultiple(item.name, item, quantity));
     setAddToCartModalVisible(false); // Close the modal after adding
   };
 
@@ -64,9 +64,9 @@ const ArticleCard = ({ item }) => {
       </TouchableOpacity>
       <TouchableOpacity style={styles.actionButton}>
         <MaterialCommunityIcons
-          name="cart"
+          name="plus-circle"
           size={30}
-          color={Colors.primary}
+          color={Colors.secondary}
           style={styles.addToCartIcon}
           onPress={toggleAddToCartModal}
         />
@@ -172,10 +172,10 @@ const styles = StyleSheet.create({
   },
   actionButton: {
     height:50,
-    backgroundColor: "#f4f4f9",
+    backgroundColor: "#FFAAFF",
     borderRadius: 20,
     borderWidth: 1,
-    borderColor: Colors.primary,
+    borderColor: Colors.secondary,
   },
   // Add to Cart Modal Styles
   addToCartModalContainer: {

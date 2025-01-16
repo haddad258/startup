@@ -10,22 +10,22 @@ import {
 import Entypo from 'react-native-vector-icons/Entypo';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { useSelector, useDispatch } from 'react-redux';
-import { Colors } from '../../../core/theme';
+import { Colors } from '../../../../core/theme';
 import {
   addToCartMultiple,
-  clearCart,
-  removeFromCart,
-} from '../../../store/cart/actions';
-import SelectInputDocs from '../../../components/Doctype/SelectInputDocs';
-import { OrderSettings } from '../../../service/doctype';
-import { formatDate } from '../../../core/helpers/formdate';
+  purchaseClearCart,
+  purchaseRemoveFromCart,
+} from '../../../../store/cart.purchase/actions';
+import SelectInputDocs from '../../../../components/Doctype/SelectInputDocs';
+import { PurchaseInvoiceSettings } from '../../../../service/doctype';
+import { formatDate } from '../../../../core/helpers/formdate';
 
-function CartScreen({ navigation }) {
-  const cartReducer = useSelector((state) => state.cartReducer);
+function CartScreenPurchase({ navigation }) {
+  const cartReducer = useSelector((state) => state.purchaseCartReducer);
   const dispatch = useDispatch();
 
   const [deliveryDate, setDeliveryDate] = useState(formatDate(new Date()));
-  const [customer, setCustomer] = useState('');
+  const [supplier, setSupplier] = useState('');
   const [taxes, setTaxes] = useState([]);
 
   const handleIncrement = (product, quantity) => {
@@ -36,16 +36,18 @@ function CartScreen({ navigation }) {
     if (quantity > 1) {
       dispatch(addToCartMultiple(product.name, product, quantity - 1));
     } else {
-      dispatch(removeFromCart(product.name));
+      dispatch(purchaseRemoveFromCart(product.name));
     }
   };
 
   const handleOrderCreation = async () => {
     try {
       const payload = {
-        customer,
+        supplier,
         delivery_date: deliveryDate,
-        
+        due_date: deliveryDate,
+        "currency": "DZD",
+        "conversion_rate": 1.2,
         items: Object.values(cartReducer.products).map((item) => ({
           qty: item.quantity,
           item_code: item?.product?.item_code,
@@ -56,11 +58,11 @@ function CartScreen({ navigation }) {
 
       console.log(payload)
 
-      const response = await OrderSettings.addorders(payload);
+      const response = await PurchaseInvoiceSettings.addpurchaseInvoces(payload);
       if (response) {
         alert('Order Created');
         console.log(response)
-        dispatch(clearCart());
+        dispatch(purchaseClearCart());
       }
     } catch (error) {
       console.error('Error creating order:', error);
@@ -105,7 +107,7 @@ function CartScreen({ navigation }) {
           name="trash"
           size={20}
           color={Colors.error}
-          onPress={() => dispatch(removeFromCart(item.product.name))}
+          onPress={() => dispatch(purchaseRemoveFromCart(item.product.name))}
           style={styles.trashIcon}
         />
       </View>
@@ -116,11 +118,11 @@ function CartScreen({ navigation }) {
     <View style={styles.container}>
       <Text style={styles.inputDate}>Date: {deliveryDate}</Text>
       <SelectInputDocs
-        placeholder="Clients"
-        value={customer}
-        onChangeText={(option) => setCustomer(option.name)}
+        placeholder="Fournisseur"
+        value={supplier}
+        onChangeText={(option) => setSupplier(option.name)}
         style={styles.input}
-        doctype="Customer"
+        doctype="Supplier"
       />
       <SelectInputDocs
         placeholder="Taxes"
@@ -255,4 +257,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CartScreen;
+export default CartScreenPurchase;

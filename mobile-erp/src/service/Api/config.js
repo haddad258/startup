@@ -1,5 +1,5 @@
-const API_URL = "http://195.201.138.202:2025";
-// const API_URL = "http://192.168.100.82:9001";
+// const API_URL = "http://195.201.138.202:2025";
+const API_URL = "http://192.168.100.82:9001";
 // const API_URL="https://iysaal.erpnext.com"
 
 const API_URLPublic = API_URL + "/public/";
@@ -27,7 +27,7 @@ const Apis = {
   api_pos: `${API_URL}/api/resource/POS Invoice`,
   //////////////////////////////////////////////////////////
 
-  api_payments: `${API_URL}/api/resource/Payment Entry`,
+  api_payments: `${API_URL}/api/resource/Payment Entry/`,
   api_deliverynotes: `${API_URL}/api/resource/Delivery Note`,
   api_stockEntry: `${API_URL}/api/resource/Stock Entry`,
   

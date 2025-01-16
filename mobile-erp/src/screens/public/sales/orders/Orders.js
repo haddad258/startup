@@ -2,8 +2,9 @@ import * as React from "react";
 import { TouchableOpacity, Image, StyleSheet, Text, Dimensions, View } from "react-native";
 import { Colors, units } from "../../../../core/theme";
 import StatusBadge from "./Order.Details";
+import CreatePayment from "./order.create.payment";
 
-function Item({ item, props }) {
+function Item({ item, onreload }) {
   const gotoViewCustomer = (item) => {
     console.log(item);
   };
@@ -29,7 +30,8 @@ function Item({ item, props }) {
         </View>
 
         <View style={styles.metaContainer}>
-         <StatusBadge  order={item}  />
+         <StatusBadge  order={item}  onreload={()=>onreload()} />
+         <CreatePayment  order={item}  />
         </View>
       </View>
 

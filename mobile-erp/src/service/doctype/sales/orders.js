@@ -26,18 +26,19 @@ const updateorders = async (uri, data) => {
     try {
         console.log((Apis.api_orders + uri))
         console.log(data)
-        const result = await api.put(Apis.api_orders + uri, {
-            "notes": "Updated delivery date as per client's request",
-             "status": "Cancelled",
-            "items": [
-                {
-                    "item_code": "art0002",
-                    "qty": 104,
-                    "rate": 180,
-                },
-               
-            ]
-        });
+        const result = await api.put(Apis.api_orders + uri,data);
+        console.log(result.data)
+        return result.data.error ? null : result.data;
+    } catch (error) {
+        console.error(error.response.data);
+        console.error(error);
+        return null;
+    }
+};
+const createPaymentEntry = async ( data) => {
+    try {
+       console.log('Apis.api_ordersCreatePayement',Apis.api_payments ,data)
+        const result = await api.post(Apis.api_payments ,data);
         console.log(result.data)
         return result.data.error ? null : result.data;
     } catch (error) {
@@ -53,6 +54,7 @@ const ordersFun = {
     getorders,
     addorders,
     updateorders,
+    createPaymentEntry
 };
 
 export default ordersFun;

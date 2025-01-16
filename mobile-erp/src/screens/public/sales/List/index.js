@@ -32,6 +32,7 @@ function PaymentList() {
     };
     return (
         <View style={{ flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: Colors.backgroundColor }}>
+            <Text>{List.length }</Text>
             <FlatList
                 data={List}
                 vertical

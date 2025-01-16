@@ -2,21 +2,12 @@ import React, { useState } from "react";
 import { TouchableOpacity, Text, StyleSheet, View, Modal, FlatList, ScrollView } from "react-native";
 import { Colors } from "../../../../core/theme";
 import { OrderSettings } from "../../../../service/doctype";
-import PrintOrder from "../../../../components/printer";
+import SelectInputDocs from "../../../../components/Doctype/SelectInputDocs";
 
-const StatusBadge = ({ order,onreload }) => {
+const CreatePayment = ({ order }) => {
     const [orderDetail, setOrderDetail] = useState({});
+    const [paymentMode, setpaymentMode] = useState('')
     const [modalVisible, setModalVisible] = useState(false);
-
-    // Define background colors for different statuses
-    const statusColors = {
-        Draft: "#FFA500",
-        "To Deliver and Bill": "#4682B4",
-        "On Hold": "#800080",
-        Delivered: "#32CD32",
-        Cancelled: "#FF4500",
-    };
-
     const fetchOrders = async () => {
         try {
             const list = await OrderSettings.getorders(order.name);
@@ -30,12 +21,30 @@ const StatusBadge = ({ order,onreload }) => {
     };
     const updateOrders = async () => {
         try {
-            const list = await OrderSettings.updateorders(order.name, {
-                "docstatus": 1
-            });
+            console.log(orderDetail.customer)
+
+            const paymentData = {
+                doctype: 'Payment Entry',
+                payment_type: 'Receive',
+                party_type: 'Customer',
+                party: orderDetail.customer, // Le client associé à la commande
+                paid_amount: 3000,
+                received_amount: 2000,
+                mode_of_payment: paymentMode,
+                "target_exchange_rate": 1.0,
+                "paid_to": "Bank - CO",  
+                "paid_to_account_currency": "USD", 
+                references: [
+                    {
+                        reference_doctype: 'Sales Order',
+                        reference_name: orderDetail.name, // Nom ou ID de la commande de vente
+                        allocated_amount: orderDetail.total,
+                    },
+                ],
+            };
+            const list = await OrderSettings.createPaymentEntry(paymentData);
             if (list) {
-                setOrderDetail(list?.data);
-                onreload()
+                setModalVisible(true); // Show modal after fetching data
             }
         } catch (error) {
             console.error("Error fetching order details:", error);
@@ -43,13 +52,13 @@ const StatusBadge = ({ order,onreload }) => {
     };
     return (
         <View>
-            <TouchableOpacity
-                style={[styles.badge, { backgroundColor: statusColors[order.status] || Colors.primary }]}
+           {order.status !== "Draft"  &&<TouchableOpacity
+                style={[styles.badge, { backgroundColor: Colors.primary }]}
                 onPress={fetchOrders}
             >
-                <Text style={styles.badgeText}>{order.status}</Text>
+                <Text style={styles.badgeText}>Create Payment</Text>
             </TouchableOpacity>
-
+}
             <Modal
                 animationType="slide"
                 transparent={true}
@@ -63,35 +72,32 @@ const StatusBadge = ({ order,onreload }) => {
                             {/* Render order details */}
                             <Text style={styles.detailText}>Customer: {orderDetail.customer}</Text>
                             <Text style={styles.detailText}>Status: {orderDetail.status}</Text>
-                            <PrintOrder orderDetail={orderDetail} />
+                            <Text style={styles.detailText}>total: {orderDetail.total}</Text>
                             <TouchableOpacity onPress={() => updateOrders()} style={styles.btnPrint}>
-                                <Text style={styles.btnText}>Submit</Text>
+                                <Text style={styles.btnText}>updatessOrders</Text>
                             </TouchableOpacity>
-                            <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.btnPrint}>
-                                <Text style={styles.btnText}>Close</Text>
-                            </TouchableOpacity>
+
                             <View style={styles.divider} />
-                            <FlatList
-                                data={orderDetail?.items}
-                                renderItem={({ item }) => (
-                                    <View style={styles.itemCard}>
-                                        <Text style={styles.itemName}>{item.item_code}</Text>
-                                        <Text style={styles.itemDetail}>Qty: {item.qty}</Text>
-                                        <Text style={styles.itemDetail}>Amount: {item.amount}</Text>
-                                    </View>
-                                )}
-                                keyExtractor={(item) => item.name}
+                            <SelectInputDocs
+                                placeholder="payment Mode"
+                                value={paymentMode}
+                                onChangeText={(option) => setpaymentMode(option.name)}
+                                style={styles.input}
+                                doctype="Mode of Payment"
                             />
+                         
+
                             <View style={styles.divider} />
-                            <View style={styles.totalRow}>
-                                <Text style={styles.totalText}>Total</Text>
-                                <Text style={styles.totalText}>{orderDetail.total}</Text>
-                            </View>
+
 
                             {/* Print and Close Buttons */}
 
                         </ScrollView>
+                        <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.btnPrint}>
+                            <Text style={styles.btnText}>Close</Text>
+                        </TouchableOpacity>
                     </View>
+
                 </View>
             </Modal>
         </View>
@@ -130,10 +136,9 @@ const styles = StyleSheet.create({
     },
     modalOverlay: {
         flex: 1,
+        justifyContent: "center",
         alignItems: "center",
-        marginTop:10,
-        paddingTop:10,
-        backgroundColor: "rgba(0, 0, 0, 0.3)", // Darker overlay
+        backgroundColor: "rgba(0, 0, 0, 0.6)", // Darker overlay
     },
     modalContent: {
         width: "90%",
@@ -218,4 +223,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default StatusBadge;
+export default CreatePayment;

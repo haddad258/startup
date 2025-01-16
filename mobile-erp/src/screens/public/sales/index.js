@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { StyleSheet } from "react-native";
 import Orders from "./orders";
 import Invoices from "./invoices";
-
+import ListPayment from './List'
 
 import { Colors } from '../../../core/theme'
 import Quotations from "./Quotation";
@@ -21,7 +21,7 @@ const Sales = () => {
                 tabBarInactiveTintColor: Colors.secondary,
                 tabBarStyle: { backgroundColor: Colors.white },
                 headerStyle: styles.headerStyle,
-                headerShown:false
+                headerShown: false
             }}>
             <Tab.Screen
                 options={{
@@ -43,7 +43,17 @@ const Sales = () => {
                 name="Invoices"
                 component={Invoices}
             />
-              <Tab.Screen
+            <Tab.Screen
+                options={{
+                    title: "Paiements",
+                    tabBarIcon: ({ color, size }) => (
+                        <FontAwesome5 name="list" color={color} size={size} />
+                    ),
+                }}
+                name="ListPayment"
+                component={ListPayment}
+            />
+            <Tab.Screen
                 options={{
                     title: "Devis",
                     tabBarIcon: ({ color, size }) => (
