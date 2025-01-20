@@ -6,7 +6,10 @@
   "scripts": {
     "start": "nodemon --exec node index.js",
     "test": "mocha",
-    "knex": "knex "
+    "knex": "knex ",
+    "migrate": "npx knex migrate:latest",
+    "migrate:rollback": "npx knex migrate:rollback",
+    "seed": "npx knex seed:run"
   },
   "keywords": [],
   "author": "",

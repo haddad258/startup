@@ -1,14 +1,14 @@
 module.exports = {
   development: {
-    client: "postgresql",
+    client: "mysql",
     connection: {
       // filename: "./dev.postgresql",
       host: "127.0.0.1",
-      port: "5432",
-      user: "postgres",
-      password: "psql",
+      port: "3306",
+      user: "root",
+      password: "98263574",
      // database: "testdel",
-      database: "esim_migration_v3",
+      database: "logistic",
     },
  
   },
