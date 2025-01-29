@@ -1,6 +1,6 @@
 const env = {
   key: "MySuP3R_z3kr3t.",
-  port: 8009,
+  port: 8010,
   port1: 3002,
 
   databaseConfig: {
@@ -10,7 +10,7 @@ const env = {
       port: "5432",
       user: "postgres",
       password: "psql",
-      database: "testlogi",
+      database: "testA",
     },
     debug: true,
     migrations: {

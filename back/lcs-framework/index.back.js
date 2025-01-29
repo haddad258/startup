@@ -107,7 +107,7 @@ module.exports = {
   const routeScript = `
 const express = require("express");
 const ${modelName}Controller = require("./${modelName.toLowerCase()}Controller");
-const authJwt = require("../../../middlewares/authJwt");
+const authJwt = require("../../../middlewares/jwt.validations/authJwt");
 const restRouter${routeName} = express.Router();
 
 restRouter${routeName}.post("/", [authJwt.verifyToken],  ${modelName}Controller.add${modelName});

@@ -7,12 +7,12 @@ exports.up = async function (knex) {
     await knex.raw('CREATE EXTENSION IF NOT EXISTS "uuid-ossp";');
   }
   return knex.schema
-    .createTable("privilege", function (table) {
+    .createTable("privilegeA", function (table) {
       table.string("privilege").unique();
       table.string("description");
       table.timestamps(true, true);
     })
-    .createTable("users", function (table) {
+    .createTable("usersB", function (table) {
       table.uuid("id").primary().defaultTo(knex.raw(generateUUID(knex)));
       table.string("name");
       table.string("lastname");
@@ -26,7 +26,7 @@ exports.up = async function (knex) {
       table.timestamp("last_login");
       table.timestamps(true, true);
     })
-    .createTable("organization_gen_info", function (table) {
+    .createTable("organization_gen_infoc", function (table) {
       table.uuid("id").primary().defaultTo(knex.raw(generateUUID(knex)));
       table.string("name");
       table.string("phone");

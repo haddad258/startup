@@ -1,7 +1,7 @@
 
 const express = require("express");
 const UsersController = require("./UsersController");
-const authJwt = require("../../../middlewares/authJwt");
+const authJwt = require("../../../middlewares/jwt.validations/authJwt");
 
 const restRouterusers = express.Router();
 
