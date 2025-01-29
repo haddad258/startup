@@ -11,10 +11,11 @@ import Sales from './sales';
 import PaymentList from './payment';
 import CartScreen from './Cart';
 import PosConfig from './POS';
+import StockManagement from './stock.management'
 import { Colors } from "../../core/theme";
 import { TransitionPresets } from '@react-navigation/stack'; // Import transition presets
 import SyncModeModal from "../../components/icon.sync";
-
+import {modeApp} from '../../service/Api/config'
 const Tab = createBottomTabNavigator();
 
 const TabPublic = () => {
@@ -40,7 +41,7 @@ const TabPublic = () => {
         ),
       }}
     >
-      <Tab.Screen
+      { modeApp ==="stock" && <Tab.Screen
         options={{
           title: "Acceuil",
           tabBarIcon: ({ color, size }) => (
@@ -49,8 +50,8 @@ const TabPublic = () => {
         }}
         name="HomeScreen"
         component={HomeScreen}
-      />
-      <Tab.Screen
+      />}
+       { modeApp ==="stock" && <Tab.Screen
         options={{
           title: "Clients",
           tabBarIcon: ({ color, size }) => (
@@ -59,8 +60,8 @@ const TabPublic = () => {
         }}
         name="Customers"
         component={Customers}
-      />
-      <Tab.Screen
+      />}
+       { modeApp ==="prod" && <Tab.Screen
         options={{
           title: "Cart",
           tabBarIcon: ({ color, size }) => (
@@ -69,8 +70,8 @@ const TabPublic = () => {
         }}
         name="CartScreen"
         component={CartScreen}
-      />
-      <Tab.Screen
+      />}
+       { modeApp ==="prod" && <Tab.Screen
         options={{
           title: "Articles",
           tabBarIcon: ({ color, size }) => (
@@ -79,8 +80,8 @@ const TabPublic = () => {
         }}
         name="Articles"
         component={Articles}
-      />
-      <Tab.Screen
+      />}
+       { modeApp ==="prod" && <Tab.Screen
         options={{
           title: "Ventes",
           tabBarIcon: ({ color, size }) => (
@@ -89,8 +90,8 @@ const TabPublic = () => {
         }}
         name="Sales"
         component={Sales}
-      />
-      <Tab.Screen
+      />}
+       { modeApp ==="prod" && <Tab.Screen
         options={{
           title: "POS",
           tabBarIcon: ({ color, size }) => (
@@ -99,8 +100,8 @@ const TabPublic = () => {
         }}
         name="PosConfig"
         component={PosConfig}
-      />
-      <Tab.Screen
+      />}
+       { modeApp ==="prod" && <Tab.Screen
         options={{
           title: "Fournisseurs",
           tabBarIcon: ({ color, size }) => (
@@ -109,8 +110,8 @@ const TabPublic = () => {
         }}
         name="SupplierList"
         component={SupplierList}
-      />
-      <Tab.Screen
+      />}
+       { modeApp ==="prod" && <Tab.Screen
         options={{
           title: "PaymentList",
           tabBarIcon: ({ color, size }) => (
@@ -119,8 +120,8 @@ const TabPublic = () => {
         }}
         name="PaymentList"
         component={PaymentList}
-      />
-      <Tab.Screen
+      />}
+       { modeApp ==="prod" && <Tab.Screen
         options={{
           title: "Warehouses",
           tabBarIcon: ({ color, size }) => (
@@ -129,7 +130,18 @@ const TabPublic = () => {
         }}
         name="Warehouses"
         component={Warehouses}
-      />
+      />}
+
+       { modeApp ==="stock" && <Tab.Screen
+        options={{
+          title: "StockManagement",
+          tabBarIcon: ({ color, size }) => (
+            <FontAwesome5 name="warehouse" color={color} size={size} />
+          ),
+        }}
+        name="StockManagement"
+        component={StockManagement}
+      />}
     </Tab.Navigator>
   );
 };
@@ -147,7 +159,7 @@ const styles = StyleSheet.create({
   },
   iconContainer: {
     marginLeft: 15,
-    marginRight:15
+    marginRight: 15
   },
 });
 

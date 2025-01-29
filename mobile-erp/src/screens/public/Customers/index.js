@@ -10,7 +10,7 @@ import { Colors } from '../../../core/theme'
 
 const Tab = createBottomTabNavigator();
 
-const Sales = () => {
+const Customers = () => {
     return (
         <Tab.Navigator
             initialRouteName="ListCustomers"
@@ -60,4 +60,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Sales;
+export default Customers;

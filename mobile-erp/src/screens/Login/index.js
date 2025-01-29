@@ -16,9 +16,10 @@ export default function LoginScreen({ navigation }) {
     // const [email, setEmail] = useState({ value: 'haddadrafik258@gmail.com', error: '' })
     // const [password, setPassword] = useState({ value: '98263574', error: '' })
    
-    const [email, setEmail] = useState({ value: 'Administrator', error: '' })
-    const [password, setPassword] = useState({ value: 'trust@2025', error: '' })
-    
+    // const [email, setEmail] = useState({ value: 'haddadrafik258@gmail.com', error: '' })
+    // const [password, setPassword] = useState({ value: 'trust@2025', error: '' })
+    const [email, setEmail] = useState({ value: '', error: '' })
+    const [password, setPassword] = useState({ value: '', error: '' })
     const [isLoading, setIsLoading] = useState(false);
     const dispatch = useDispatch();
 
@@ -47,7 +48,7 @@ export default function LoginScreen({ navigation }) {
                     if (localstorage) {
                         navigation.reset({
                             index: 0,
-                            routes: [{ name: 'TabPublic' }],
+                            routes: [{ name: 'StockManagement' }],
                         })
                     }
                 }

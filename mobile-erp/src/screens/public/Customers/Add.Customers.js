@@ -12,7 +12,9 @@ const AddCustomerScreen = ({ navigation }) => {
         customer_type: '', // Default value
         customer_group: '', // Default value
         territory: '',
-        email_id: ''
+        email_id: '',
+        custom_phone:''
+
     });
 
     const handleSave = async () => {
@@ -30,7 +32,7 @@ const AddCustomerScreen = ({ navigation }) => {
             );
             return;
         }
-    
+
         try {
             console.log(customer);
             const response = await CustomerSettings.addcustomers(customer);
@@ -80,6 +82,13 @@ const AddCustomerScreen = ({ navigation }) => {
                 onChangeText={(text) => setCustomer({ ...customer, email_id: text })}
                 style={styles.input}
             />
+            <TextInput
+                placeholder="Tél"
+                value={customer.custom_phone}
+                onChangeText={(text) => setCustomer({ ...customer, custom_phone: text })}
+                style={styles.input}
+            />
+
             <View style={{ marginBottom: 50 }}>
                 <TouchableOpacity style={styles.button} onPress={handleSave}>
                     <Text style={styles.buttonText}>Save</Text>

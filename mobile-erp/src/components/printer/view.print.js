@@ -1,3 +1,4 @@
+import {imagePrinter} from '../../service/Api/config'
 export function returnhtml(total, status, customer, items,) {
 
     let ListProduct = '';
@@ -110,7 +111,7 @@ export function returnhtml(total, status, customer, items,) {
                 <div class="row">
                     <div class="column">
                         <div class="header">
-                            <img src="https://i.ibb.co/sQ1d8Rb/images.jpg" alt="Logo">
+                            <img src=${imagePrinter} alt="Logo">
                         </div>
                     </div>
                     <div class="column">

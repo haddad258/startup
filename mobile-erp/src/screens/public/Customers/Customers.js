@@ -5,17 +5,17 @@ import { Colors ,units } from "../../../core/theme";
 
 
 function CustomerI({ item, props }) {
-    const updateSupplier = (item) => {
-        alert("To do: Products PlanPack");
+    const updatestomer = () => {
+        console.log("To do: Products PlanPack",Object.keys(item));
     };
 
     return (
-        <View>
+        <TouchableOpacity onPress={()=>updatestomer()} >
             <View style={styles.container}>
                 <Text style={styles.title}>{item.name}</Text>
                 <Text style={styles.description}>{item.customer_group}</Text>
                 <Text style={styles.description}>{item.customer_type}</Text>
-                <Text style={styles.productDescription}>{item.owner}</Text>
+                <Text style={styles.productDescription}>{item.custom_phone}</Text>
                 <View style={styles.iconsView}>
                     <View style={styles.iconContainer}>
                         <FontAwesome name="edit" size={10} color={Colors.info} />
@@ -25,7 +25,7 @@ function CustomerI({ item, props }) {
                     </View>
                 </View>
             </View>
-        </View>
+        </TouchableOpacity>
     );
 }
 

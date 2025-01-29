@@ -1,3 +1,7 @@
+const imagePrinter ="https://i.ibb.co/xK2jS7N8/erp.png"
+const modeApp = 'stock'
+// const modeApp = 'prod'
+// const modeApp = 'advanced'
 const API_URL = "http://195.201.138.202:2030";
 // const API_URL = "http://192.168.100.82:9001";
 // const API_URL="https://iysaal.erpnext.com"
@@ -34,15 +38,12 @@ const Apis = {
 
   api_purchaseOrders: `${API_URL}/api/resource/Purchase Order`,
   api_purchaseInvoces: `${API_URL}/api/resource/Purchase Invoice`,
-
-
-
-  
-  
-  
-
-
-
-
 };
-export { API_URL, Apis, API_URLPublic };
+const API_Stock_Management ={
+  api_articles: `${API_URL}/api/resource/Item Price/`,
+
+
+}
+
+
+export { API_URL, Apis, API_URLPublic ,modeApp,imagePrinter ,API_Stock_Management };
