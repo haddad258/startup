@@ -8,14 +8,14 @@ function Invoices() {
   const [List, setList] = useState([])
 
   useEffect(() => {
-    console.log('HomeScreen is focused');
+    
     fetchInvoices()
   }, [])
   useFocusEffect(
     useCallback(() => {
       fetchInvoices()
       return () => {
-        console.log('HomeScreen is unfocused');
+        //nsole.log('HomeScreen is unfocused');
       };
     }, [])
   );

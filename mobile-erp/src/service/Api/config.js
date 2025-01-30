@@ -41,8 +41,9 @@ const Apis = {
   api_purchaseInvoces: `${API_URL}/api/resource/Purchase Invoice`,
 };
 const API_Stock_Management ={
-  api_articles_warehouse: `${API_URL}/api/resource/Bin`,
-  fortest: `${API_URL}/api/method/frappe.client.get_list`,
+  api_articles_warehouse: `${API_URL}/api/method/frappe.client.get_list`,
+  api_Pricearticles_warehouse: `${API_URL}/api/resource/Item Price/`,
+  api_articles_filter: `${API_URL}/api/method/frappe.desk.search.search_link`,
   
   
 

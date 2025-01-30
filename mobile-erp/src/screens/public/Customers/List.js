@@ -8,15 +8,15 @@ function Customer() {
     const [List, setList] = useState([])
 
     useEffect(() => {
-        console.log('HomeScreen is focused');
+        
         fetchCustomers()
       }, [])
     useFocusEffect(
         useCallback(() => {
         fetchCustomers()
-          console.log('HomeScreen is focused');
+          
           return () => {
-            console.log('HomeScreen is unfocused');
+            //nsole.log('HomeScreen is unfocused');
           };
         }, [])
       );

@@ -54,12 +54,10 @@ function CartScreen({ navigation }) {
         })),
       };
 
-      console.log(payload)
 
       const response = await OrderSettings.addorders(payload);
       if (response) {
         alert('Order Created');
-        console.log(response)
         dispatch(clearCart());
       }
     } catch (error) {

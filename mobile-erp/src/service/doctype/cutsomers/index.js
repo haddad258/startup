@@ -2,7 +2,6 @@ import api from '../../Api/api';
 import { Apis } from '../../Api/config';
 const getcustomers = async (filter) => {
     try {
-        console.log("Apis.api_customers",Apis.api_customers)
         const result = await api.get(Apis.api_customers+filter );
         return result.data.error ? null : result.data;
     } catch (error) {

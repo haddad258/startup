@@ -15,7 +15,6 @@ function PrintOrder({ orderDetail }) {
             orderDetail.customer || "Anonymous", // Default to "Anonymous" if customer is undefined
             orderDetail.items || [] // Default to an empty array if items is undefined
         );
-        console.log('orderDetail',orderDetail)
         try {
             const printOptions = {
                 html: htmlRender,

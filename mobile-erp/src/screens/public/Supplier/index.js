@@ -8,15 +8,15 @@ function SupplierList() {
     const [List, setList] = useState([])
 
     useEffect(() => {
-        console.log('HomeScreen is focused');
+        
         fetchSuppliers()
       }, [])
     useFocusEffect(
         useCallback(() => {
         fetchSuppliers()
-          console.log('HomeScreen is focused');
+          
           return () => {
-            console.log('HomeScreen is unfocused');
+            //nsole.log('HomeScreen is unfocused');
           };
         }, [])
       );

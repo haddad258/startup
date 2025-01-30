@@ -17,7 +17,6 @@ const AddArticleScreen = ({ navigation }) => {
     const handleSave = async () => {
         try {
             const response = await ArticleSettings.addarticlesInfo(item);
-            console.log('Article added successfully:', response);
             Alert.alert('Success', 'Article added successfully!', [
                 { text: 'OK', onPress: () => navigation.goBack() },
             ]);

@@ -23,15 +23,15 @@ const HomeScreen = ({ navigation }) => {
   const [List, setList] = useState([])
 
   useEffect(() => {
-      console.log('HomeScreen is focused');
+      
       fetchOrders()
     }, [])
   useFocusEffect(
       useCallback(() => {
-        console.log('HomeScreen is focused');
+        
         fetchOrders()
         return () => {
-          console.log('HomeScreen is unfocused');
+          //nsole.log('HomeScreen is unfocused');
         };
       }, [])
     );

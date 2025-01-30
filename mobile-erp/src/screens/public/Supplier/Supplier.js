@@ -7,7 +7,6 @@ const windowWidth = Dimensions.get("window").width;
 
 function Supplier({ item }) {
   const updateSupplier = (item) => {
-    console.log(item)
     alert("To do: products SupplierPack");
   };
 

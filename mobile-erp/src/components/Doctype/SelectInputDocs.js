@@ -20,11 +20,9 @@ const SelectInputDocs = ({ placeholder, value, onChangeText, style, doctype }) =
     const GetDoctype = async () => {
 
         try {
-            console.log(doctype + `?fields=["*"]&limit_page_length=10000`)
             const list = await CommonDocTypes.getcommonDoctypes(doctype + `?fields=["*"]&limit_page_length=10000`);
             if (list) {
                 setList(list?.data);
-                console.log("list?.data");
                 setModalVisible(true);
 
             }

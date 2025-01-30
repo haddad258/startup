@@ -24,11 +24,11 @@ const ArticleCard = ({ item }) => {
 
   const fetchArticles = async (id) => {
     try {
-      console.log(item)
+      
       const list = await ArticleSettings.getarticlesInfo(id);
       if (list) {
         setarticleInfo(list?.data);
-        console.log(list?.data);
+        
         setDetailsModalVisible(!isDetailsModalVisible);
       }
     } catch (error) {

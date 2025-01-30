@@ -39,7 +39,7 @@ const HomeScreen = ({ navigation }) => {
       GetDoctype()
       console.log('ArticlesPos is focused');
       return () => {
-        console.log('HomeScreen is unfocused');
+        //nsole.log('HomeScreen is unfocused');
       };
     }, [])
   );

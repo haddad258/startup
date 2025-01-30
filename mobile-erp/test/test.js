@@ -21,11 +21,9 @@ async function loginToERPNext() {
 
         // Check if the login was successful
         if (response.ok) {
-            console.log("Login successful!",response.headers);
 
             // Retrieve and log cookies for session management
             const cookies = response.headers.get("set-cookie");
-            console.log("Session cookies:", typeof cookies);
 
             // Use these cookies for subsequent API calls
         } else {

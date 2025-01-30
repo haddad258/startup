@@ -8,14 +8,12 @@ function DeliveryNotesList() {
     const [List, setList] = useState([])
 
     useEffect(() => {
-        console.log('DeliveryNotesList is focused');
         fetchDeliveryNotes()
       }, [])
     useFocusEffect(
         useCallback(() => {
             fetchDeliveryNotes()
           return () => {
-            console.log('DeliveryNotesList is unfocused');
           };
         }, [])
       );

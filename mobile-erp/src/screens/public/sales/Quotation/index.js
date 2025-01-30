@@ -8,14 +8,14 @@ function Quotations() {
     const [List, setList] = useState([])
 
     useEffect(() => {
-        console.log('HomeScreen is focused');
+        
         fetchQuotations()
       }, [])
     useFocusEffect(
         useCallback(() => {
           fetchQuotations();
           return () => {
-            console.log('HomeScreen is unfocused');
+            //nsole.log('HomeScreen is unfocused');
           };
         }, [])
       );

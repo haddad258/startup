@@ -19,7 +19,6 @@ const SyncModeModal = () => {
   const closeModal = () => setModalVisible(false);
 
   const handleOptionSelect = (option) => {
-    console.log(`Selected: ${option}`); // Log the selected option
     dispatch(setSyncMode(option)); // Dispatch the selected mode
     closeModal();
   };

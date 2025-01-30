@@ -8,7 +8,6 @@ const sessionCookie = "sid=12e6d96b4b4fc683f51b81bcd0b54605ade0c30d750ccc085bdc8
 async function fetchDoctypeResource() {
     try {
         // Make the GET request with the session cookie
-        console.log(url)
         const response = await fetch(url, {
             method: "GET",
             headers: {
@@ -20,7 +19,6 @@ async function fetchDoctypeResource() {
         // Handle the response
         if (response.ok) {
             const data = await response.json();
-            console.log("Fetched Doctype Data:", data.data);
         } else {
             const errorText = await response.text();
             console.error("Failed to fetch data:", response.status, errorText);

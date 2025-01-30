@@ -14,6 +14,7 @@ const addCustomers = async (status) => {
     try {
         console.log(Apis.Api_RegisterCustomer)
         const result = await api.post(Apis.Api_RegisterCustomer, status);
+        console.log(result)
         return result.data.error ? null : result.data;
     } catch (error) {
         console.error(error);

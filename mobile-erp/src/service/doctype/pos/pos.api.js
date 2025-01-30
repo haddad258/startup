@@ -2,9 +2,7 @@ import api from '../../Api/api';
 import { Apis } from '../../Api/config';
 const getpos = async (filter) => {
     try {
-        console.log((Apis.api_pos +filter))
         const result = await api.get(Apis.api_pos +filter);
-        console.log(result)
         return result.data.error ? null : result.data;
     } catch (error) {
         
@@ -14,7 +12,6 @@ const getpos = async (filter) => {
 const addpos = async (status) => {
     try {
         const result = await api.post(Apis.api_pos,  status);
-        console.log(result.data)
         return result.data.error ? null : result.data;
     } catch (error) {
         console.error(error.response?.data?._server_messages);

@@ -34,12 +34,10 @@ const AddCustomerScreen = ({ navigation }) => {
         }
 
         try {
-            console.log(customer);
             const response = await CustomerSettings.addcustomers(customer);
-            console.log('Customer added successfully:', response);
-            Alert.alert('Success', 'Customer added successfully!', [
-                { text: 'OK', onPress: () => navigation.goBack() },
-            ]);
+            // Alert.alert('Success', 'Customer added successfully!', [
+            //     { text: 'OK', onPress: () => navigation.goBack() },
+            // ]);
         } catch (error) {
             console.error('Error adding customer:', error);
             Alert.alert('Error', 'Failed to add the customer. Please try again.');

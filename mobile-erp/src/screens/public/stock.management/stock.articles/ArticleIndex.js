@@ -25,12 +25,7 @@ const ArticleCard = ({ item }) => {
   const fetchArticles = async (id) => {
     try {
       console.log("item",item)
-      const list = await ArticleSettings.getarticlesInfo("id");
-      if (list) {
-        setarticleInfo(list?.data);
-        console.log(list?.data);
-        setDetailsModalVisible(!isDetailsModalVisible);
-      }
+     
     } catch (error) {
       console.error('Error fetching admin list:', error);
     }
@@ -51,14 +46,12 @@ const ArticleCard = ({ item }) => {
 
   return (
     <View style={styles.articleCard}>
-      <TouchableOpacity onPress={() => fetchArticles(item.item_code)} style={styles.articleContent}>
+      <TouchableOpacity onPress={() => fetchArticles(item)} style={styles.articleContent}>
         <View style={styles.articleDetails}>
-          <Text style={styles.articleTitle}>{item.item_code} - {item.item_name}</Text>
-          <Text style={styles.articleStock}>packing unit: {item.uom}</Text>
+          <Text style={styles.articleTitle}>Article: {item.item_code}  {item?.info?.item_name}</Text>
+          <Text style={styles.articleStock}>Stock: ({item.actual_qty}- {item.stock_uom})</Text>
           <View style={styles.articlePrice}>
-            <Text style={styles.articleStock}>Prix de vente: </Text>
-            <Text style={styles.priceValue}> {item.actual_qty}</Text>
-            <Text> ({item.actual_qty})- pce</Text>
+            <Text style={styles.priceValue}> prix {item?.info?.price_list_rate} {item?.info?.currency} </Text>
           </View>
         </View>
       </TouchableOpacity>

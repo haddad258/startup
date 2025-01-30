@@ -8,14 +8,14 @@ function ArticlesPurchase() {
     const [List, setList] = useState([])
 
     useEffect(() => {
-        console.log('HomeScreen is focused');
+        
         fetchArticles()
     }, [])
     useFocusEffect(
         useCallback(() => {
             fetchArticles()
             return () => {
-                console.log('HomeScreen is unfocused');
+                //nsole.log('HomeScreen is unfocused');
             };
         }, [])
     );

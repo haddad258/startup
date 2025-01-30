@@ -19,7 +19,6 @@ async function fetchDoctypeResource() {
         // Handle the response
         if (response.ok) {
             const data = await response.json();
-            console.log("Fetched Doctype Data:", data);
         } else {
             const errorText = await response.text();
             console.error("Failed to fetch data:", response.status, errorText);

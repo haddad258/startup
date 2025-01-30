@@ -8,14 +8,14 @@ function PurchaseOrders() {
     const [List, setList] = useState([])
 
     useEffect(() => {
-        console.log('HomeScreen is focused');
+        
         fetchOrders()
       }, [])
     useFocusEffect(
         useCallback(() => {
-          console.log('HomeScreen is focused');
+          
           return () => {
-            console.log('HomeScreen is unfocused');
+            //nsole.log('HomeScreen is unfocused');
           };
         }, [])
       );

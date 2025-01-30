@@ -2,7 +2,6 @@ import api from '../../Api/api';
 import { Apis } from '../../Api/config';
 const getorders = async (filter) => {
     try {
-        console.log((Apis.api_orders + filter))
         const result = await api.get(Apis.api_orders + filter);
         return result.data.error ? null : result.data;
     } catch (error) {
@@ -12,9 +11,7 @@ const getorders = async (filter) => {
 };
 const addorders = async (status) => {
     try {
-        console.log(Apis.api_orders)
         const result = await api.post(Apis.api_orders, status);
-        console.log("result", result)
         return result.data.error ? null : result.data;
     } catch (error) {
         console.error(error.response?.data?._server_messages);
@@ -24,10 +21,7 @@ const addorders = async (status) => {
 };
 const updateorders = async (uri, data) => {
     try {
-        console.log((Apis.api_orders + uri))
-        console.log(data)
         const result = await api.put(Apis.api_orders + uri,data);
-        console.log(result.data)
         return result.data.error ? null : result.data;
     } catch (error) {
         console.error(error.response.data);
@@ -37,9 +31,7 @@ const updateorders = async (uri, data) => {
 };
 const createPaymentEntry = async ( data) => {
     try {
-       console.log('Apis.api_ordersCreatePayement',Apis.api_payments ,data)
         const result = await api.post(Apis.api_payments ,data);
-        console.log(result.data)
         return result.data.error ? null : result.data;
     } catch (error) {
         console.error(error.response.data);

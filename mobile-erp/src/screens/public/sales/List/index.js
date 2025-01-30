@@ -8,15 +8,15 @@ function PaymentList() {
     const [List, setList] = useState([])
 
     useEffect(() => {
-        console.log('HomeScreen is focused');
+        
         fetchPayments()
       }, [])
     useFocusEffect(
         useCallback(() => {
         fetchPayments()
-          console.log('HomeScreen is focused');
+          
           return () => {
-            console.log('HomeScreen is unfocused');
+            //nsole.log('HomeScreen is unfocused');
           };
         }, [])
       );

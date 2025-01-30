@@ -56,12 +56,10 @@ function CartScreenPurchase({ navigation }) {
         })),
       };
 
-      console.log(payload)
 
       const response = await PurchaseInvoiceSettings.addpurchaseInvoces(payload);
       if (response) {
         alert('Order Created');
-        console.log(response)
         dispatch(purchaseClearCart());
       }
     } catch (error) {

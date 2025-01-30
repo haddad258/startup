@@ -4,7 +4,6 @@ import { Apis } from '../../Api/config';
 import { UserLogin } from '../../index';
 const getarticles = async (filter) => {
     try {
-        console.log(Apis.api_articles +filter)
         const result = await api.get(Apis.api_articles +filter);
         return result.data.error ? null : result.data;
     } catch (error) {
@@ -15,7 +14,6 @@ const getarticles = async (filter) => {
 const addarticles = async (status) => {
     try {
         const result = await api.post(Apis.api_articles,  status);
-        console.log(result)
         return result.data.error ? null : result.data;
     } catch (error) {
         console.error(error.response?.data?._server_messages);
@@ -36,7 +34,6 @@ const updatearticles = async (data) => {
 const getarticlesBarcode = async (filter) => {
     try {
         const result = await api.post(Apis.api_articlesBarcode ,filter);
-        console.log(result.data)
         return result.data.error ? null : result.data;
     } catch (error) {
         
@@ -45,10 +42,10 @@ const getarticlesBarcode = async (filter) => {
 };
 const getarticlesInfo = async (filter) => {
     try {
-        console.log("Apis",Apis.api_articlesInfo +filter)
-        const result = await api.get(Apis.api_articlesInfo +filter);
-        console.log("result")
-        return result.data.error ? null : result.data;
+      console.log(Apis.api_articlesInfo +filter)
+      const result = await api.get(Apis.api_articlesInfo+filter);
+      console.log(result.data)
+      return result.data.error ? null : result.data;
     } catch (error) {
         
         return null;
@@ -57,7 +54,6 @@ const getarticlesInfo = async (filter) => {
 const addarticlesInfo = async (status) => {
     try {
         const result = await api.post(Apis.api_articlesInfo,  status);
-        console.log(result)
         return result.data.error ? null : result.data;
     } catch (error) {
         console.error(error.response?.data?._server_messages);

@@ -37,7 +37,6 @@ export default function CameraValidate() {
       });
 
       if (BarcodeSearch) {
-        console.log("BarcodeSearch.message.item_code",BarcodeSearch.message.item_code)
         fetchArticlesBarcode(BarcodeSearch.message.item_code);
         closeModal(); // Close modal on successful scan
       }

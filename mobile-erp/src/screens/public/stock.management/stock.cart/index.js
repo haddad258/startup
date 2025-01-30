@@ -41,6 +41,7 @@ function CartScreen({ navigation }) {
 
   const handleOrderCreation = async () => {
     try {
+      console.log(cartReducer)
       const payload = {
         customer,
         delivery_date: deliveryDate,
@@ -59,7 +60,7 @@ function CartScreen({ navigation }) {
       if (response) {
         alert('Order Created');
         console.log(response)
-        dispatch(clearCart());
+        // dispatch(clearCart());
       }
     } catch (error) {
       console.error('Error creating order:', error);
@@ -74,7 +75,7 @@ function CartScreen({ navigation }) {
       />
       <Text style={styles.emptyCartText}>Cart Vide!</Text>
       <TouchableOpacity
-        onPress={() => navigation.navigate('Articles')}
+        onPress={() => navigation.navigate('StockArticles')}
         style={styles.shopButton}
       >
         <Text style={styles.shopButtonText}>Articles</Text>
@@ -85,8 +86,8 @@ function CartScreen({ navigation }) {
   const renderCartItem = ({ item }) => (
     <View style={styles.productCard}>
       <View style={styles.productDetails}>
-        <Text style={styles.productName}>Product: {item.product?.item_code}</Text>
-        <Text style={styles.productPrice}>Price: {item.product?.price_list_rate}</Text>
+        <Text style={styles.productName} numberOfLines={2} >Product: {item.product?.info?.item_name}</Text>
+        <Text style={styles.productPrice}>Price: {item.product?.info?.price_list_rate}</Text>
         <View style={styles.quantityContainer}>
           <TouchableOpacity
             onPress={() => handleDecrement(item.product, item.quantity)}
@@ -134,7 +135,7 @@ function CartScreen({ navigation }) {
           onPress={handleOrderCreation}
           style={styles.checkoutButton}
         >
-          <Text style={styles.checkoutButtonText}>Proceed to Checkout</Text>
+          <Text style={styles.checkoutButtonText}>Checkout   </Text>
         </TouchableOpacity>
       )}
     </View>
@@ -207,10 +208,10 @@ const styles = StyleSheet.create({
   },
   productDetails: {
     flex: 1,
-    marginLeft: 30,
   },
   productName: {
-    fontSize: 16,
+    fontSize: 14,
+    margin:3,
     fontWeight: '600',
     color: Colors.primary,
   },
