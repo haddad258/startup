@@ -3,7 +3,7 @@ import { FlatList, StyleSheet, Text, View } from "react-native";
 import ArticleCard from './ArticleIndex'
 import { Colors } from "../../../../core/theme";
 import { useFocusEffect } from '@react-navigation/native';
-import { ArticleSettings } from "../../../../service/doctype/index";
+import { StockArticlesWarhouse } from "../../../../service/doctype/index";
 function Articles() {
     const [List, setList] = useState([])
 
@@ -20,10 +20,11 @@ function Articles() {
     );
     const fetchArticles = async () => {
         try {
-            const list = await ArticleSettings.getarticlesInfo(`?fields=["*"]&limit_page_length=10000`);;
+            const list = await StockArticlesWarhouse.getarticlesOnStock(`?doctype=Bin&fields=["*"]&filters=[["actual_qty", ">", 30]]`);
+            console.log(list)
             if (list) {
-                setList(list?.data);
-                console.log(list?.data?.length);
+                setList(list?.message);
+                console.log(list?.message?.length);
             }
         } catch (error) {
             console.error('Error fetching admin list:', error);

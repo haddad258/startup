@@ -8,9 +8,6 @@ export { default as QuotationSettings} from "./sales/quotation";
 export { default as PosAPI} from "./pos/pos.api";
 
 
-export { default as OrderSettings} from "./sales/orders";
-export { default as DeliveryNoteSettings } from "./warehouses/delivery.note";
-export { default as StockEntrySettings } from "./warehouses/stock.entry";
 
 export { default as DashboadSettings } from "./dashboard";
 
@@ -19,4 +16,8 @@ export { default as PurchaseOrderSettings } from "./payment/index.purchase.order
 export { default as PurchaseInvoiceSettings } from "./payment/index.purchase.invoices";
 
 
-
+//////////////////////////////////////////////////////////////////
+export { default as OrderSettings} from "./sales/orders";
+export { default as DeliveryNoteSettings } from "./warehouses/delivery.note";
+export { default as StockEntrySettings } from "./warehouses/stock.entry";
+export { default as StockArticlesWarhouse } from "./warehouses/warehouse.stock.management";

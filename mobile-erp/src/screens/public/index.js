@@ -61,7 +61,7 @@ const TabPublic = () => {
         name="Customers"
         component={Customers}
       />}
-       { modeApp ==="prod" && <Tab.Screen
+       { modeProd==="prod" && <Tab.Screen
         options={{
           title: "Cart",
           tabBarIcon: ({ color, size }) => (
@@ -71,7 +71,7 @@ const TabPublic = () => {
         name="CartScreen"
         component={CartScreen}
       />}
-       { modeApp ==="prod" && <Tab.Screen
+       { modeProd==="prod" && <Tab.Screen
         options={{
           title: "Articles",
           tabBarIcon: ({ color, size }) => (
@@ -81,7 +81,7 @@ const TabPublic = () => {
         name="Articles"
         component={Articles}
       />}
-       { modeApp ==="prod" && <Tab.Screen
+       { modeProd==="prod" && <Tab.Screen
         options={{
           title: "Ventes",
           tabBarIcon: ({ color, size }) => (
@@ -91,7 +91,7 @@ const TabPublic = () => {
         name="Sales"
         component={Sales}
       />}
-       { modeApp ==="prod" && <Tab.Screen
+       { modeProd==="prod" && <Tab.Screen
         options={{
           title: "POS",
           tabBarIcon: ({ color, size }) => (
@@ -101,7 +101,7 @@ const TabPublic = () => {
         name="PosConfig"
         component={PosConfig}
       />}
-       { modeApp ==="prod" && <Tab.Screen
+       { modeProd==="prod" && <Tab.Screen
         options={{
           title: "Fournisseurs",
           tabBarIcon: ({ color, size }) => (
@@ -111,7 +111,7 @@ const TabPublic = () => {
         name="SupplierList"
         component={SupplierList}
       />}
-       { modeApp ==="prod" && <Tab.Screen
+       { modeProd==="prod" && <Tab.Screen
         options={{
           title: "PaymentList",
           tabBarIcon: ({ color, size }) => (
@@ -121,7 +121,7 @@ const TabPublic = () => {
         name="PaymentList"
         component={PaymentList}
       />}
-       { modeApp ==="prod" && <Tab.Screen
+       { modeProd==="prod" && <Tab.Screen
         options={{
           title: "Warehouses",
           tabBarIcon: ({ color, size }) => (

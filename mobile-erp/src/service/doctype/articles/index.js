@@ -65,13 +65,18 @@ const addarticlesInfo = async (status) => {
         return null;
     }
 };
+
+
+
+
+
 const articlesFun = {
     getarticles,
     addarticles,
     updatearticles,
     getarticlesBarcode,
     getarticlesInfo,
-    addarticlesInfo
+    addarticlesInfo,
 
 };
 

@@ -1,5 +1,6 @@
 const imagePrinter ="https://i.ibb.co/xK2jS7N8/erp.png"
 const modeApp = 'stock'
+const modeProd = 'stock'
 // const modeApp = 'prod'
 // const modeApp = 'advanced'
 const API_URL = "http://195.201.138.202:2030";
@@ -40,7 +41,10 @@ const Apis = {
   api_purchaseInvoces: `${API_URL}/api/resource/Purchase Invoice`,
 };
 const API_Stock_Management ={
-  api_articles: `${API_URL}/api/resource/Item Price/`,
+  api_articles_warehouse: `${API_URL}/api/resource/Bin`,
+  fortest: `${API_URL}/api/method/frappe.client.get_list`,
+  
+  
 
 
 }

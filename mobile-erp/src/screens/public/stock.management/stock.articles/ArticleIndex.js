@@ -24,8 +24,8 @@ const ArticleCard = ({ item }) => {
 
   const fetchArticles = async (id) => {
     try {
-      console.log(item)
-      const list = await ArticleSettings.getarticlesInfo(id);
+      console.log("item",item)
+      const list = await ArticleSettings.getarticlesInfo("id");
       if (list) {
         setarticleInfo(list?.data);
         console.log(list?.data);
@@ -57,8 +57,8 @@ const ArticleCard = ({ item }) => {
           <Text style={styles.articleStock}>packing unit: {item.uom}</Text>
           <View style={styles.articlePrice}>
             <Text style={styles.articleStock}>Prix de vente: </Text>
-            <Text style={styles.priceValue}> {item.price_list_rate}</Text>
-            <Text> ({item.currency})</Text>
+            <Text style={styles.priceValue}> {item.actual_qty}</Text>
+            <Text> ({item.actual_qty})- pce</Text>
           </View>
         </View>
       </TouchableOpacity>
