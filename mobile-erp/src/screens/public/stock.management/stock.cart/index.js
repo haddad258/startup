@@ -59,8 +59,8 @@ function CartScreen({ navigation }) {
       const response = await OrderSettings.addorders(payload);
       if (response) {
         alert('Order Created');
-        console.log(response)
-        // dispatch(clearCart());
+        
+        dispatch(clearCart()); 
       }
     } catch (error) {
       console.error('Error creating order:', error);
