@@ -6,7 +6,7 @@ import { Colors ,units } from "../../../core/theme";
 
 function CustomerI({ item, props }) {
     const updatestomer = () => {
-        console.log("To do: Products PlanPack",Object.keys(item));
+        console.log("To do: Products PlanPack",(item));
     };
 
     return (
@@ -16,6 +16,7 @@ function CustomerI({ item, props }) {
                 <Text style={styles.description}>{item.customer_group}</Text>
                 <Text style={styles.description}>{item.customer_type}</Text>
                 <Text style={styles.productDescription}>{item.custom_phone}</Text>
+                <Text style={styles.customerPrice}>{item.custom_total_unpaid} DA</Text>
                 <View style={styles.iconsView}>
                     <View style={styles.iconContainer}>
                         <FontAwesome name="edit" size={10} color={Colors.info} />
@@ -32,9 +33,8 @@ function CustomerI({ item, props }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
         margin: 10,
+        paddingRight: 10,
         width: (units.width * 0.43),
         backgroundColor: Colors.white,
         borderColor: Colors.primary,
@@ -52,16 +52,29 @@ const styles = StyleSheet.create({
         fontWeight: '600',
         color: '#333',
         marginBottom: 8,
+        paddingLeft: 10,
+
     },
     description: {
-        fontSize: 10,
+        fontSize: 12,
         color: Colors.secondary,
         marginBottom: 4,
+        paddingLeft: 10,
+
     },
     productDescription: {
         fontSize: 12,
         color: Colors.secondary,
         marginBottom: 10,
+        paddingLeft: 10,
+
+    },
+    customerPrice: {
+        fontSize: 15,
+        color: Colors.primary,
+        marginBottom: 10,
+        paddingLeft: 10,
+
     },
     iconsView: {
         flexDirection: 'row',

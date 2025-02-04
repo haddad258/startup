@@ -41,11 +41,10 @@ function CartScreen({ navigation }) {
 
   const handleOrderCreation = async () => {
     try {
-      console.log(cartReducer)
       const payload = {
         customer,
         delivery_date: deliveryDate,
-        
+
         items: Object.values(cartReducer.products).map((item) => ({
           qty: item.quantity,
           item_code: item?.product?.item_code,
@@ -54,16 +53,31 @@ function CartScreen({ navigation }) {
         })),
       };
 
-      console.log(payload)
 
       const response = await OrderSettings.addorders(payload);
       if (response) {
         alert('Order Created');
-        console.log(response)
+        updateOrders(response?.data?.name)
         // dispatch(clearCart());
       }
     } catch (error) {
       console.error('Error creating order:', error);
+    }
+  };
+
+  const updateOrders = async (name) => {
+    try {
+      console.log("docstatus", name)
+      const list = await OrderSettings.updateorders(name, {
+        "docstatus": 1
+      });
+      if (list) {
+        console.log(list?.data);
+        dispatch(clearCart());
+
+      }
+    } catch (error) {
+      console.error("Error fetching order details:", error);
     }
   };
 
@@ -75,7 +89,9 @@ function CartScreen({ navigation }) {
       />
       <Text style={styles.emptyCartText}>Cart Vide!</Text>
       <TouchableOpacity
-        onPress={() => navigation.navigate('StockArticles')}
+        onPress={() => navigation.navigate('StockArticlesT')
+          
+        }
         style={styles.shopButton}
       >
         <Text style={styles.shopButtonText}>Articles</Text>
@@ -122,7 +138,7 @@ function CartScreen({ navigation }) {
         style={styles.input}
         doctype="Customer"
       />
-  
+
       <FlatList
         data={Object.values(cartReducer.products)}
         keyExtractor={(item) => item.name}
@@ -182,8 +198,8 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     alignItems: 'center',
     elevation: 3,
-    borderColor:Colors.primary,
-    borderWidth:1
+    borderColor: Colors.primary,
+    borderWidth: 1
   },
   input: {
     height: 60,
@@ -204,14 +220,14 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     textAlign: 'center',
     backgroundColor: '#fff',
-    fontWeight:"bold"
+    fontWeight: "bold"
   },
   productDetails: {
     flex: 1,
   },
   productName: {
     fontSize: 14,
-    margin:3,
+    margin: 3,
     fontWeight: '600',
     color: Colors.primary,
   },

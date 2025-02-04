@@ -24,8 +24,6 @@ const updateorders = async (uri, data) => {
         const result = await api.put(Apis.api_orders + uri,data);
         return result.data.error ? null : result.data;
     } catch (error) {
-        console.error(error.response.data);
-        console.error(error);
         return null;
     }
 };

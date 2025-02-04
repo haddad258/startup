@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { theme } from '../core/theme'
 import { TabPublic,LoginScreen ,StockManagement} from './index';
+import StockArticles from './public/stock.management/stock.articles'
 
 const Stack = createStackNavigator();
 
@@ -20,6 +21,7 @@ const App = () => {
           <Stack.Screen name="LoginScreen" component={LoginScreen} />
           <Stack.Screen name="TabPublic" component={TabPublic} />
           <Stack.Screen name="StockManagement" component={StockManagement} />
+          <Stack.Screen name="StockArticlesT" component={StockArticles} />
 
           
           {/* <Stack.Screen name="StartScreen" component={StartScreen} />
