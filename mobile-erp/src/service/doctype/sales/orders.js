@@ -21,7 +21,9 @@ const addorders = async (status) => {
 };
 const updateorders = async (uri, data) => {
     try {
+        console.log((Apis.api_orders + uri,data))
         const result = await api.put(Apis.api_orders + uri,data);
+        console.log('result',result.data)
         return result.data.error ? null : result.data;
     } catch (error) {
         return null;

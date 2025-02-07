@@ -30,10 +30,13 @@ const StatusBadge = ({ order,onreload }) => {
     };
     const updateOrders = async () => {
         try {
-            const list = await OrderSettings.updateorders(order.name, {
+                console.log("list")
+                const list = await OrderSettings.updateorders(order.name, {
                 "docstatus": 1
             });
-            if (list) {
+                console.log("list",list)
+                if (list) {
+                console.log(list)
                 setOrderDetail(list?.data);
                 onreload()
             }

@@ -31,7 +31,7 @@ function Item({ item, onreload }) {
 
         <View style={styles.metaContainer}>
          <StatusBadge  order={item}  onreload={()=>onreload()} />
-         {/* <CreatePayment  order={item}  /> */}
+         <CreatePayment  order={item}  />
         </View>
       </View>
 

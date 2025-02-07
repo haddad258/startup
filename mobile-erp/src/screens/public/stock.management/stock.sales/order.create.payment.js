@@ -3,11 +3,13 @@ import { TouchableOpacity, Text, StyleSheet, View, Modal, FlatList, ScrollView }
 import { Colors } from "../../../../core/theme";
 import { OrderSettings } from "../../../../service/doctype";
 import SelectInputDocs from "../../../../components/Doctype/SelectInputDocs";
+import TextInputDoc from '../../../../components/Doctype/TextInputDoc';
 
 const CreatePayment = ({ order }) => {
     const [orderDetail, setOrderDetail] = useState({});
     const [paymentMode, setpaymentMode] = useState('')
     const [modalVisible, setModalVisible] = useState(false);
+    const [paid_amount,setpaid_amount]=useState("")
     const fetchOrders = async () => {
         try {
             const list = await OrderSettings.getorders(order.name);
@@ -28,12 +30,12 @@ const CreatePayment = ({ order }) => {
                 payment_type: 'Receive',
                 party_type: 'Customer',
                 party: orderDetail.customer, // Le client associé à la commande
-                paid_amount: 3000,
-                received_amount: 2000,
+                paid_amount: parseFloat(paid_amount),
+                received_amount: parseFloat(paid_amount),
                 mode_of_payment: paymentMode,
                 "target_exchange_rate": 1.0,
-                "paid_to": "Bank - CO",  
-                "paid_to_account_currency": "USD", 
+                "paid_to": "Bank - CO",
+                "paid_to_account_currency": "USD",
                 references: [
                     {
                         reference_doctype: 'Sales Order',
@@ -44,7 +46,7 @@ const CreatePayment = ({ order }) => {
             };
             const list = await OrderSettings.createPaymentEntry(paymentData);
             if (list) {
-                setModalVisible(true); // Show modal after fetching data
+                setModalVisible(false); // Show modal after fetching data
             }
         } catch (error) {
             console.error("Error fetching order details:", error);
@@ -52,13 +54,13 @@ const CreatePayment = ({ order }) => {
     };
     return (
         <View>
-           {order.status !== "Draft"  &&<TouchableOpacity
+            {order.status !== "Draft" && <TouchableOpacity
                 style={[styles.badge, { backgroundColor: Colors.primary }]}
                 onPress={fetchOrders}
             >
                 <Text style={styles.badgeText}>Create Payment</Text>
             </TouchableOpacity>
-}
+            }
             <Modal
                 animationType="slide"
                 transparent={true}
@@ -68,14 +70,12 @@ const CreatePayment = ({ order }) => {
                 <View style={styles.modalOverlay}>
                     <View style={styles.modalContent}>
                         <ScrollView contentContainerStyle={styles.scrollViewContent}>
-                            <Text style={styles.modalTitle}>Order Details - {order.name}</Text>
+                            <Text style={styles.modalTitle}>commande Num - {order.name}</Text>
                             {/* Render order details */}
-                            <Text style={styles.detailText}>Customer: {orderDetail.customer}</Text>
+                            <Text style={styles.detailText}>Clients: {orderDetail.customer}</Text>
                             <Text style={styles.detailText}>Status: {orderDetail.status}</Text>
                             <Text style={styles.detailText}>total: {orderDetail.total}</Text>
-                            <TouchableOpacity onPress={() => updateOrders()} style={styles.btnPrint}>
-                                <Text style={styles.btnText}>updatessOrders</Text>
-                            </TouchableOpacity>
+                        
 
                             <View style={styles.divider} />
                             <SelectInputDocs
@@ -85,7 +85,12 @@ const CreatePayment = ({ order }) => {
                                 style={styles.input}
                                 doctype="Mode of Payment"
                             />
-                         
+                            <TextInputDoc
+                                placeholder="paid_amount"
+                                value={paid_amount}
+                                onChangeText={(text) => setpaid_amount(text)}
+                                style={styles.input}
+                            />
 
                             <View style={styles.divider} />
 
@@ -93,8 +98,11 @@ const CreatePayment = ({ order }) => {
                             {/* Print and Close Buttons */}
 
                         </ScrollView>
+                        <TouchableOpacity onPress={() => updateOrders()} style={styles.btnPrintC}>
+                                <Text style={styles.btnText}>Confirmer</Text>
+                            </TouchableOpacity>
                         <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.btnPrint}>
-                            <Text style={styles.btnText}>Close</Text>
+                            <Text style={styles.btnText}>fermer</Text>
                         </TouchableOpacity>
                     </View>
 
@@ -124,6 +132,16 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         backgroundColor: Colors.gray,
+        borderRadius: 5,
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        marginTop: 10,
+    },
+    btnPrintC: {
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: Colors.primary,
         borderRadius: 5,
         paddingVertical: 10,
         paddingHorizontal: 20,

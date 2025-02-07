@@ -8,6 +8,7 @@ import StockOffline from './stock.offline'
 import StockSales from './stock.sales'
 import Customers from '../Customers'
 import Dashboard from './stock.dashboard'
+import StockPayment from './stock.payment'
 import SyncModeModal from "../../../components/icon.sync";
 import { TransitionPresets } from '@react-navigation/stack'; // Import transition presets
 
@@ -92,7 +93,19 @@ const StockManagement = () => {
 
             <Tab.Screen
                 options={{
-                    title: "StockOffline",
+                    title: "Paiment",
+                    tabBarIcon: ({ color, size }) => (
+                        <FontAwesome5 name="file-alt" color={color} size={size} />
+                    ),
+                }}
+                name="StockPayment"
+                component={StockPayment}
+            />
+
+
+            <Tab.Screen
+                options={{
+                    title: "Offline",
                     tabBarIcon: ({ color, size }) => (
                         <FontAwesome5 name="file-alt" color={color} size={size} />
                     ),

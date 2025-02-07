@@ -16,7 +16,7 @@ const HomeScreen = ({ navigation }) => {
     { id: 1, label: "Clients", icon: "👥", navigation: "CustomerStock" },
     { id: 2, label: "Commandes", icon: "🛒", navigation: "StockSales" },
     { id: 3, label: "Articles", icon: "📦", navigation: "StockArticles" },
-    { id: 5, label: "Payments", icon: "💳", navigation: "PaymentList" },
+    { id: 5, label: "Payments", icon: "💳", navigation: "StockPayment" },
     { id: 6, label: "Cart", icon: "🚚", navigation: "StockCarts" },
     { id: 4, label: "Logout", icon: "🏷️", navigation: "LoginScreen" },
   ];
