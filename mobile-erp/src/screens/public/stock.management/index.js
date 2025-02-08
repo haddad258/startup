@@ -9,6 +9,10 @@ import StockSales from './stock.sales'
 import Customers from '../Customers'
 import Dashboard from './stock.dashboard'
 import StockPayment from './stock.payment'
+import StockKPI from './stock.KPI'
+import StockKPi from './stock.KPI/index.two'
+
+
 import SyncModeModal from "../../../components/icon.sync";
 import { TransitionPresets } from '@react-navigation/stack'; // Import transition presets
 
@@ -113,6 +117,32 @@ const StockManagement = () => {
                 name="StockOffline"
                 component={StockOffline}
             />
+
+            <Tab.Screen
+                options={{
+                    headerShown: false, // Cache le header
+                    title: "StockKPI",
+                    tabBarIcon: ({ color, size }) => (
+                        <FontAwesome5 name="file-alt" color={color} size={size} />
+                    ),
+                }}
+                name="StockKPI"
+                component={StockKPI}
+            />
+
+            <Tab.Screen
+                name="StockKPi"
+                component={StockKPi}
+                options={{
+                    title: "KPI",
+                    headerShown: false, // Cache le header
+                    tabBarIcon: ({ color, size }) => (
+                        <FontAwesome5 name="file-alt" color={color} size={size} />
+                    ),
+                }}
+            />
+
+
 
 
         </Tab.Navigator>

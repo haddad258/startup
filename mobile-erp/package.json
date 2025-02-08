@@ -9,6 +9,9 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@chartiful/react-native-horizontal-bar-graph": "^0.1.2",
+    "@chartiful/react-native-line-graph": "^0.1.2",
+    "@chartiful/react-native-vertical-bar-graph": "^0.1.2",
     "@react-native-async-storage/async-storage": "1.23.1",
     "@react-native/js-polyfills": "^0.76.3",
     "@react-navigation/bottom-tabs": "^6.6.1",
@@ -33,6 +36,7 @@
     "react": "18.3.1",
     "react-i18next": "^15.0.2",
     "react-native": "0.76.7",
+    "react-native-chart-kit": "^6.12.0",
     "react-native-document-picker": "^9.3.1",
     "react-native-gesture-handler": "~2.20.2",
     "react-native-paper": "^5.12.5",

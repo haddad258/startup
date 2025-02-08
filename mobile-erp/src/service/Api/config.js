@@ -51,4 +51,4 @@ const API_Stock_Management ={
 }
 
 
-export { API_URL, Apis, API_URLPublic ,modeApp,imagePrinter ,API_Stock_Management };
+export { API_URL, Apis, API_URLPublic ,modeApp,modeProd,imagePrinter ,API_Stock_Management };

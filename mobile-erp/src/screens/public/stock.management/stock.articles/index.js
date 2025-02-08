@@ -65,7 +65,7 @@ function Articles() {
     //         formData.append("ignore_user_permissions", "0");
     //         formData.append("reference_doctype", "Sales Order Item");
     //         formData.append("page_length", "10");
-    //         formData.append("fields", JSON.stringify(["*"])); // Convertir en JSON
+            // formData.append("fields", JSON.stringify(["*"])); // Convertir en JSON
     //         formData.append("query", "erpnext.controllers.queries.item_query");
     //         const list = await StockArticlesWarhouse.filterArticlesOnStock(formData);
     //         if (list) {

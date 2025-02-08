@@ -15,7 +15,7 @@ import StockManagement from './stock.management'
 import { Colors } from "../../core/theme";
 import { TransitionPresets } from '@react-navigation/stack'; // Import transition presets
 import SyncModeModal from "../../components/icon.sync";
-import {modeApp} from '../../service/Api/config'
+import {modeApp,modeProd} from '../../service/Api/config'
 const Tab = createBottomTabNavigator();
 
 const TabPublic = () => {
@@ -61,7 +61,7 @@ const TabPublic = () => {
         name="Customers"
         component={Customers}
       />}
-       { modeProd==="prod" && <Tab.Screen
+       { modeApp==="prod" && <Tab.Screen
         options={{
           title: "Cart",
           tabBarIcon: ({ color, size }) => (
@@ -71,7 +71,7 @@ const TabPublic = () => {
         name="CartScreen"
         component={CartScreen}
       />}
-       { modeProd==="prod" && <Tab.Screen
+       { modeApp==="stock" && <Tab.Screen
         options={{
           title: "Articles",
           tabBarIcon: ({ color, size }) => (
@@ -81,7 +81,7 @@ const TabPublic = () => {
         name="Articles"
         component={Articles}
       />}
-       { modeProd==="prod" && <Tab.Screen
+       { modeProd==="stock" && <Tab.Screen
         options={{
           title: "Ventes",
           tabBarIcon: ({ color, size }) => (
@@ -91,7 +91,7 @@ const TabPublic = () => {
         name="Sales"
         component={Sales}
       />}
-       { modeProd==="prod" && <Tab.Screen
+       { modeApp==="stock" && <Tab.Screen
         options={{
           title: "POS",
           tabBarIcon: ({ color, size }) => (
@@ -101,7 +101,7 @@ const TabPublic = () => {
         name="PosConfig"
         component={PosConfig}
       />}
-       { modeProd==="prod" && <Tab.Screen
+       { modeApp==="stock" && <Tab.Screen
         options={{
           title: "Fournisseurs",
           tabBarIcon: ({ color, size }) => (
@@ -111,7 +111,7 @@ const TabPublic = () => {
         name="SupplierList"
         component={SupplierList}
       />}
-       { modeProd==="prod" && <Tab.Screen
+       { modeProd==="stock" && <Tab.Screen
         options={{
           title: "PaymentList",
           tabBarIcon: ({ color, size }) => (
@@ -121,7 +121,7 @@ const TabPublic = () => {
         name="PaymentList"
         component={PaymentList}
       />}
-       { modeProd==="prod" && <Tab.Screen
+       { modeProd==="stock" && <Tab.Screen
         options={{
           title: "Warehouses",
           tabBarIcon: ({ color, size }) => (
@@ -134,7 +134,7 @@ const TabPublic = () => {
 
        { modeApp ==="stock" && <Tab.Screen
         options={{
-          title: "StockManagement",
+          title: "Stock Management",
           tabBarIcon: ({ color, size }) => (
             <FontAwesome5 name="warehouse" color={color} size={size} />
           ),
