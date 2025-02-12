@@ -9,7 +9,7 @@ const Dashboard = () => {
             <View style={styles.contentContainer}>
                 <View>
                     <Text style={styles.title}>Current Budget</Text>
-                    <Text style={styles.amount}></Text>
+                    <Text style={styles.amount}>5609 $</Text>
                 </View>
                 <Image
                     source={require('./../../../../assets/erp.png')}

@@ -89,9 +89,9 @@ const HomeScreen = ({ navigation }) => {
         {/* Recent Transactions */}
         <View style={styles.transactionsSection}>
           <View style={styles.transactionsHeader}>
-            <Text style={styles.transactionsTitle}>Transactions récentes</Text>
+            <Text style={styles.transactionsTitle}>Transactions</Text>
             <TouchableOpacity onPress={() => navigation.navigate("Sales")} >
-              <Text style={styles.seeAll}>Plus de détails</Text>
+              <Text style={styles.seeAll}>more details</Text>
             </TouchableOpacity>
           </View>
           <FlatList

@@ -14,16 +14,15 @@ const windowWidth = Dimensions.get("window").width;
 const ChartExamples = () => {
   return (
     <ScrollView style={styles.container}>
-      
-      {/* 📈 Line Chart */}
-      <Text style={styles.title}>Évolution Mensuelle des Ventes</Text>
+      {/* Sales Growth */}
+      <Text style={styles.title}>Sales Growth</Text>
       <LineChart
         data={{
-          labels: ["Jan", "Fév", "Mar", "Avr", "Mai", "Juin"],
+          labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
           datasets: [
             {
               data: [50, 90, 70, 110, 130, 80],
-              color: (opacity = 1) => `rgba(255, 99, 132, ${opacity})`, // Rouge
+              color: (opacity = 1) => `rgba(0, 163, 255, ${opacity})`,
             },
           ],
         }}
@@ -34,11 +33,11 @@ const ChartExamples = () => {
         style={styles.graph}
       />
 
-      {/* 📊 Bar Chart */}
-      <Text style={styles.title}>Chiffre d'Affaires par Mois</Text>
+      {/* Revenue per Month */}
+      <Text style={styles.title}>Revenue per Month</Text>
       <BarChart
         data={{
-          labels: ["Jan", "Fév", "Mar", "Avr", "Mai", "Juin"],
+          labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
           datasets: [
             {
               data: [3000, 5000, 7000, 10000, 12000, 15000],
@@ -47,20 +46,20 @@ const ChartExamples = () => {
         }}
         width={windowWidth - 40}
         height={220}
-        yAxisLabel="€"
+        yAxisLabel="$"
         chartConfig={chartConfig}
         style={styles.graph}
         fromZero
       />
 
-      {/* 🍰 Pie Chart */}
-      <Text style={styles.title}>Répartition des Produits Vendus</Text>
+      {/* Product Sales Distribution */}
+      <Text style={styles.title}>Product Sales Distribution</Text>
       <PieChart
         data={[
-          { name: "Produit A", population: 40, color: "#4CB9E7", legendFontColor: "#3c3c3d" },
-          { name: "Produit B", population: 30, color: "#3559E0", legendFontColor: "#3c3c3d" },
-          { name: "Produit C", population: 20, color: "#FFECD6", legendFontColor: "#3c3c3d" },
-          { name: "Produit D", population: 10, color: "#ED1C24", legendFontColor: "#3c3c3d" },
+          { name: "Product A", population: 40, color: "#1C7D7E", legendFontColor: "#333" },
+          { name: "Product B", population: 30, color: "#EBB434", legendFontColor: "#333" },
+          { name: "Product C", population: 20, color: "#457B9D", legendFontColor: "#333" },
+          { name: "Product D", population: 10, color: "#E63946", legendFontColor: "#333" },
         ]}
         width={windowWidth - 40}
         height={220}
@@ -71,11 +70,11 @@ const ChartExamples = () => {
         absolute
       />
 
-      {/* 🚀 Progress Chart */}
-      <Text style={styles.title}>Progression des Objectifs</Text>
+      {/* Goal Progress */}
+      <Text style={styles.title}>Goal Progress</Text>
       <ProgressChart
         data={{
-          labels: ["Ventes", "CA", "Clients"],
+          labels: ["Sales", "Revenue", "Customers"],
           data: [0.7, 0.5, 0.9],
         }}
         width={windowWidth - 40}
@@ -84,8 +83,8 @@ const ChartExamples = () => {
         style={styles.graph}
       />
 
-      {/* 📅 Contribution Graph */}
-      <Text style={styles.title}>Activité Commerciale</Text>
+      {/* Sales Activity */}
+      <Text style={styles.title}>Sales Activity</Text>
       <ContributionGraph
         values={[
           { date: "2024-01-02", count: 1 },
@@ -101,12 +100,12 @@ const ChartExamples = () => {
         chartConfig={chartConfig}
       />
 
-      {/* 📦 Stacked Bar Chart */}
-      <Text style={styles.title}>Ventes par Catégorie</Text>
+      {/* Sales by Category */}
+      <Text style={styles.title}>Sales by Category</Text>
       <StackedBarChart
         data={{
-          labels: ["Jan", "Fév", "Mar", "Avr", "Mai"],
-          legend: ["Électronique", "Vêtements", "Accessoires"],
+          labels: ["Jan", "Feb", "Mar", "Apr", "May"],
+          legend: ["Electronics", "Clothing", "Accessories"],
           data: [
             [5000, 3000, 2000],
             [7000, 5000, 3000],
@@ -114,41 +113,40 @@ const ChartExamples = () => {
             [9000, 7000, 5000],
             [10000, 8000, 6000],
           ],
-          barColors: ["#4CB9E7", "#ED1C24", "#FFECD6"],
+          barColors: ["#1C7D7E", "#EBB434", "#E63946"],
         }}
         width={windowWidth - 40}
         height={220}
         chartConfig={chartConfig}
         style={styles.graph}
       />
-      
     </ScrollView>
   );
 };
 
 const chartConfig = {
-  backgroundGradientFrom: "#fff",
-  backgroundGradientTo: "#fff",
+  backgroundGradientFrom: "#f4f4f9",
+  backgroundGradientTo: "#f4f4f9",
   decimalPlaces: 0,
-  color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
-  labelColor: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+  color: (opacity = 1) => `rgba(51, 51, 51, ${opacity})`,
+  labelColor: (opacity = 1) => `rgba(51, 51, 51, ${opacity})`,
   propsForDots: {
     r: "6",
     strokeWidth: "2",
-    stroke: "#4CB9E7",
+    stroke: "#1C7D7E",
   },
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#f4f4f9",
     padding: 20,
   },
   title: {
     fontSize: 18,
     fontWeight: "bold",
-    color: "#3c3c3d",
+    color: "#333",
     marginBottom: 10,
     textAlign: "center",
   },

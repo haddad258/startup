@@ -43,9 +43,9 @@ const TabPublic = () => {
     >
       { modeApp ==="stock" && <Tab.Screen
         options={{
-          title: "Acceuil",
+          title: "Home",
           tabBarIcon: ({ color, size }) => (
-            <FontAwesome5 name="home" color={color} size={size} />
+            <FontAwesome5 name="home" color={color} size={20} />
           ),
         }}
         name="HomeScreen"
@@ -53,9 +53,9 @@ const TabPublic = () => {
       />}
        { modeApp ==="stock" && <Tab.Screen
         options={{
-          title: "Clients",
+          title: "Customers",
           tabBarIcon: ({ color, size }) => (
-            <FontAwesome5 name="user" color={color} size={size} />
+            <FontAwesome5 name="user" color={color} size={18} />
           ),
         }}
         name="Customers"
@@ -65,7 +65,7 @@ const TabPublic = () => {
         options={{
           title: "Cart",
           tabBarIcon: ({ color, size }) => (
-            <FontAwesome5 name="cart-plus" color={color} size={size} />
+            <FontAwesome5 name="cart-plus" color={color} size={18} />
           ),
         }}
         name="CartScreen"
@@ -75,7 +75,7 @@ const TabPublic = () => {
         options={{
           title: "Articles",
           tabBarIcon: ({ color, size }) => (
-            <FontAwesome5 name="dolly-flatbed" color={color} size={size} />
+            <FontAwesome5 name="dolly-flatbed" color={color} size={20} />
           ),
         }}
         name="Articles"
@@ -83,9 +83,9 @@ const TabPublic = () => {
       />}
        { modeProd==="stock" && <Tab.Screen
         options={{
-          title: "Ventes",
+          title: "sales",
           tabBarIcon: ({ color, size }) => (
-            <FontAwesome5 name="stream" color={color} size={size} />
+            <FontAwesome5 name="stream" color={color} size={18} />
           ),
         }}
         name="Sales"
@@ -95,7 +95,7 @@ const TabPublic = () => {
         options={{
           title: "POS",
           tabBarIcon: ({ color, size }) => (
-            <FontAwesome5 name="tablet-alt" color={color} size={size} />
+            <FontAwesome5 name="tablet-alt" color={color} size={20} />
           ),
         }}
         name="PosConfig"
@@ -103,9 +103,9 @@ const TabPublic = () => {
       />}
        { modeApp==="stock" && <Tab.Screen
         options={{
-          title: "Fournisseurs",
+          title: "Provider",
           tabBarIcon: ({ color, size }) => (
-            <FontAwesome5 name="id-card" color={color} size={size} />
+            <FontAwesome5 name="id-card" color={color} size={20} />
           ),
         }}
         name="SupplierList"
@@ -113,9 +113,9 @@ const TabPublic = () => {
       />}
        { modeProd==="stock" && <Tab.Screen
         options={{
-          title: "PaymentList",
+          title: "Payment",
           tabBarIcon: ({ color, size }) => (
-            <FontAwesome5 name="money-bill" color={color} size={size} />
+            <FontAwesome5 name="money-bill" color={color} size={18} />
           ),
         }}
         name="PaymentList"
@@ -123,9 +123,9 @@ const TabPublic = () => {
       />}
        { modeProd==="stock" && <Tab.Screen
         options={{
-          title: "Warehouses",
+          title: "Warehouse",
           tabBarIcon: ({ color, size }) => (
-            <FontAwesome5 name="warehouse" color={color} size={size} />
+            <FontAwesome5 name="warehouse" color={color} size={15} />
           ),
         }}
         name="Warehouses"
@@ -134,9 +134,9 @@ const TabPublic = () => {
 
        { modeApp ==="stock" && <Tab.Screen
         options={{
-          title: "Stock Management",
+          title: "KPI",
           tabBarIcon: ({ color, size }) => (
-            <FontAwesome5 name="warehouse" color={color} size={size} />
+            <FontAwesome5 name="poll" color={color} size={size} />
           ),
         }}
         name="StockManagement"

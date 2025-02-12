@@ -10,11 +10,11 @@ const App = () => {
   return (
     <ScrollView contentContainerStyle={styles.scrollContainer}>
       <View style={styles.container}>
-        {/* KPI des ventes */}
-        <Text style={styles.title}>Sales performance</Text>
+        {/* Sales Performance */}
+        <Text style={styles.title}>Sales Performance</Text>
         <VerticalBarGraph
           data={[50, 75, 100, 125, 90, 110, 130]}
-          labels={['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin', 'Juil']}
+          labels={['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul']}
           width={windowWidth - 90}
           height={250}
           barRadius={5}
@@ -29,11 +29,12 @@ const App = () => {
           }}
           style={styles.graph}
         />
-                {/* Stock des articles */}
-                <Text style={styles.title}>Item stock status</Text>
+        
+        {/* Item Stock Status */}
+        <Text style={styles.title}>Item Stock Status</Text>
         <HorizontalBarGraph
           data={[150, 120, 80, 200, 180, 130]}
-          labels={['Produit A', 'Produit B', 'Produit C', 'Produit D', 'Produit E', 'Produit F']}
+          labels={['Product A', 'Product B', 'Product C', 'Product D', 'Product E', 'Product F']}
           width={windowWidth - 20}
           height={225}
           barRadius={7}
@@ -59,11 +60,12 @@ const App = () => {
           }}
           style={styles.graph}
         />
-        {/* KPI des articles */}
-        <Text style={styles.title}>Tendance des articles</Text>
+
+        {/* Article Trends */}
+        <Text style={styles.title}>Article Trends</Text>
         <LineGraph
           data={[30, 50, 40, 80, 60]}
-          labels={['Art A', 'Art B', 'Art G', 'ART M', 'Mai']}
+          labels={['Item A', 'Item B', 'Item G', 'Item M', 'May']}
           width={windowWidth - 90}
           height={200}
           lineColor="#6f42c1"
@@ -81,8 +83,6 @@ const App = () => {
           }}
           style={styles.graph}
         />
-
-
       </View>
     </ScrollView>
   );
