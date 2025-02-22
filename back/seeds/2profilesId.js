@@ -1,5 +1,5 @@
 const profiles = [];
-const totalProfiles = 50;
+const totalProfiles = 2;
 
 for (let i = 1; i <= totalProfiles; i++) {
     profiles.push({

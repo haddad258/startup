@@ -19,7 +19,7 @@ exports.seed = async function (knex) {
       lastname: "Rafik",
       email:"haddadrafik258@gmail.com",
       description: "this user is created by seed migrations",
-      username: 'adminA',
+      username: 'haddadrafik258@gmail.com',
       password: "$2a$10$I0aARcnKuvL0GD6/1B3lzuvoyPR2nffdr0LePjQGdhf.QazsBazbS",
     },
   ])
